@@ -1,0 +1,22 @@
+diff --git a/docroot/sites/all/modules/contrib/link/link.module b/docroot/sites/all/modules/contrib/link/link.module
+index 8afb58b..472b371 100644
+--- a/docroot/sites/all/modules/contrib/link/link.module
++++ b/docroot/sites/all/modules/contrib/link/link.module
+@@ -389,6 +389,17 @@ function _link_load($field, $item, $instance) {
+  *
+  */
+ function _link_process(&$item, $delta, $field, $entity, $instance) {
++  // Unset query to prevent duplicates
++  if (!empty($item['query'])) {
++    $item['url'] .= '?' . http_build_query($item['query']);
++    $item['query'] = array();
++  }
++  // Unset fragment to prevent duplicates
++  if (!empty($item['fragment'])) {
++    $item['url'] .= '#' . $item['fragment'];
++    $item['fragment'] = '';
++  }
++
+   // Trim whitespace from URL.
+   if (!empty($item['url'])) {
+     $item['url'] = trim($item['url']);

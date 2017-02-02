@@ -1,0 +1,67 @@
+{
+    "db" : {
+        "host": "db",
+        "username" : "root",
+        "password" : "root",
+        "port": 3306,
+        "database" : "vesafe"
+    },
+    "admin" : {
+        "username": "admin",
+        "password": "admin",
+        "email": "account@example.com"
+    },
+    "uri": "http://vesafe.local.ro",
+    "solr_server": {
+        "name": "Apache Solr server",
+        "enabled": 1,
+        "description": "",
+        "scheme": "http",
+        "host": "127.0.0.1",
+        "port": 8080,
+        "path": "/solr/vesafe",
+        "http_user": "",
+        "http_password": "",
+        "excerpt": false,
+        "retrieve_data": false,
+        "highlight_data": false,
+        "skip_schema_check": null,
+        "solr_version": "",
+        "http_method": "AUTO",
+        "apachesolr_read_only": null,
+        "apachesolr_direct_commit": 1,
+        "apachesolr_soft_commit": 1
+    },
+    "ldap_read": {
+      "disabled": 0,
+      "status": 1,
+      "ldap_type":"openldap",
+      "address":"ldap.server.address",
+      "bindpw": "pass",
+      "port": 389
+    },
+    "ldap_write": {
+      "disabled": 0,
+      "status": 1,
+      "ldap_type":"openldap",
+      "address":"ldap.server.address",
+      "bindpw": "pass",
+      "port": 389
+    },
+    "variables": {
+        "environment": "production",
+        "site_name": "OIRA",
+        "site_mail": "account@example.com",
+        "file_temporary_path": "/tmp",
+        "hwc_crm_data_dir": "/path/to/dir",
+        "smtp_on": 0,
+        "smtp_queue": 0,
+        "smtp_host": "some.smtp.server",
+        "smtp_hostbackup": "",
+        "smtp_port": 25,
+        "smtp_protocol": "tls",
+        "smtp_username": "account@example.com",
+        "stage_file_proxy_hotlink": false,
+        "search_api_attachments_extract_using": "solr"
+    }
+}

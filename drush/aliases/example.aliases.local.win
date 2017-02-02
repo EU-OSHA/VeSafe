@@ -1,0 +1,13 @@
+<?php
+
+// Example of local setting.
+$aliases['osha.local'] = array(
+  'uri' => 'osha-develop.localhost',
+  'root' => 'c:/edw/projects/OSHA/src/osha-website-develop/docroot',
+  '%dump-dir' => 'c:/tmp',
+  'os' => 'Windows',
+);
+// For windows development environments only
+$aliases['osha.staging.sync']['no-cache'] = TRUE;
+// add this line in ~/.drush/drushrc.php
+// $options['target-dump'] = 'c:/tmp/target-dump.sql.gz';

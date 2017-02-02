@@ -1,0 +1,31 @@
+diff --git a/docroot/sites/all/modules/contrib/entity_collection/entity_collection.admin.inc b/docroot/sites/all/modules/contrib/entity_collection/entity_collection.admin.inc
+index 07c38de..f04d5db 100644
+--- a/docroot/sites/all/modules/contrib/entity_collection/entity_collection.admin.inc
++++ b/docroot/sites/all/modules/contrib/entity_collection/entity_collection.admin.inc
+@@ -71,14 +71,14 @@ function entity_collection_form($form = array(), &$form_state = array()) {
+   $form['title'] = array(
+     '#type' => 'textfield',
+     '#required' => TRUE,
+-    '#default_value' => $entity_collection->title,
++    '#default_value' => !empty($entity_collection->eid) ? $entity_collection->name : '',
+     '#title' => t('Title'),
+   );
+   // Machine-readable name.
+   $form['name'] = array(
+     '#type' => 'machine_name',
+-    '#default_value' => $entity_collection->name,
+-    '#disabled' => isset($entity_collection->name),
++    '#default_value' => !empty($entity_collection->eid) ? $entity_collection->name : '',
++    '#disabled' => !empty($entity_collection->eid),
+     '#required' => TRUE,
+     '#machine_name' => array(
+       'exists' => 'entity_collection_load',
+@@ -221,6 +221,8 @@ function entity_collection_form_validate($form, &$form_state) {
+   $entity_collection->style = $form_state['values']['style'];
+   $entity_collection->row = $form_state['values']['row'];
+   field_attach_form_validate('entity_collection', $entity_collection, $form, $form_state);
++  // Error will occur on re render if validation error because of missing function.
++  ctools_include('context-admin');
+ }
+ 
+ /**
