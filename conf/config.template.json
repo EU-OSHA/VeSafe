@@ -8,7 +8,7 @@
     },
     "admin" : {
         "username": "admin",
-        "password": "admin",
+        "password": "password",
         "email": "account@example.com"
     },
     "uri": "http://vesafe.local.ro",
