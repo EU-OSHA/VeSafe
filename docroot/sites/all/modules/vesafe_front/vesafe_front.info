@@ -1,0 +1,10 @@
+name = vesafe_front
+description = VeSafe front-end features
+core = 7.x
+package = VeSafe
+version = 7.x-1.0
+dependencies[] = ctools
+dependencies[] = page_manager
+features[ctools][] = page_manager:pages_default:1
+features[features_api][] = api:2
+features[page_manager_handlers][] = node_view__panel_context_1ed91e3f-cec0-4bdd-ab0d-06e08bcd52ea
