@@ -28,7 +28,6 @@ regions[contact_form_widget]   = 'Contact form widget'
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/override.css
 scripts[] = js/vendor/jquery.dotdotdot.js
-scripts[] = js/vesafe-frontend.js
 files[] = theme/menu/menu.inc
 
 ;;;;;;;;;;;;;;;;;;;;;
