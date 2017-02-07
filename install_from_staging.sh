@@ -1,7 +1,18 @@
 #!/bin/bash
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+WHITE='\033[1;37m'
+
 # Go to docroot/
 cd docroot/
+
+db_en=`drush --exact --format=string vget environment`
+# Avoid dropping non-local environments
+if [ "$?" == 0 ] && [ "$db_en" != 'local' ]; then
+  echo -e "${RED}Refusing to drop non-local db instance, use «drush vset environment local»' to override${WHITE}\n";
+  exit -1
+fi
 
 drush sql-drop -y
 ecode=$?
@@ -10,20 +21,7 @@ if [ ${ecode} != 0 ]; then
   exit ${ecode};
 fi
 
-pre_update=  post_update=
-while getopts b:a:f opt; do
-  case $opt in
-  b)
-      pre_update=$OPTARG
-      ;;
-  a)
-      post_update=$OPTARG
-      ;;
-  f) files="files"
-  esac
-done
-
-# Sync from edw staging
+# Sync from staging
 drush downsync_sql @staging @self -y
 ecode=$?
 if [ ${ecode} != 0 ]; then
@@ -31,13 +29,14 @@ if [ ${ecode} != 0 ]; then
   exit ${ecode};
 fi
 
+# Set the environment to local
+drush vset environment local
 
 if [ ! -z "$pre_update" ]; then
   echo "Run pre update"
   ../$pre_update
 fi
 
-# Devify - development settings
 drush devify --yes
 ecode=$?
 if [ ${ecode} != 0 ]; then
@@ -52,8 +51,6 @@ if [ ${ecode} != 0 ]; then
   exit ${ecode};
 fi
 
-# Build the site
-#drush osha_build -y
 drush updatedb -y
 if [ ${ecode} != 0 ]; then
   echo "updatedb has returned an error"
