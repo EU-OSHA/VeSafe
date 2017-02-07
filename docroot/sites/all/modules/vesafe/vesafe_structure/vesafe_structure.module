@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the vesafe_structure feature.
+ */
+
+include_once 'vesafe_structure.features.inc';
