@@ -143,14 +143,14 @@ function vesafe_structure_field_default_field_instances() {
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'rows' => 5,
+        'rows' => 2,
       ),
       'type' => 'text_textarea',
       'weight' => 2,
