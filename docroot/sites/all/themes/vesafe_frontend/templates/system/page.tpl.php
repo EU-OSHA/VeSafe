@@ -133,7 +133,7 @@
     <?php endif; ?>
   </div>
 </header>
-<div class="page-content container">
+<div class="page-content">
   <div class="page-content-header">
     <div class="page-content-header-container">
       <div class="container breadcrum-container">
