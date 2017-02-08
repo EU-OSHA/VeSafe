@@ -264,6 +264,10 @@ cristiroma ~/Work/osha/vesafe $
 **Note:** 
 If the script fails, you can look into the script and try to execute commands one-by-one using `drush -v -d` to debug.
 
+### Solr installation
+
+[TODO]
+
 ##Repository Layout##
 Breakdown for what each directory/file is used for. See also readme inside directories.
 
