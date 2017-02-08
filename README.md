@@ -1,45 +1,94 @@
-OSHA
-====
-
-Build scripts and source code for the Osha project
-
-[![Build Status](http://ci.edw.ro/buildStatus/icon?job=php-osha)](http://ci.edw.ro/job/php-osha/)
-[![Code Climate](https://codeclimate.com/github/EU-OSHA/osha-website/badges/gpa.svg)](https://codeclimate.com/github/EU-OSHA/osha-website)
+VeSafe
+======
 
 ##Pre-requisites
 
-1. Install Drush (7.0-dev):
+Note: setting up a LAMP stack is outside the scope of this project, it depends on the
+operating system and is subject to each developer's decision. 
+We are providing a general guide to setup your project.
 
-   * Install composer (```curl -sS https://getcomposer.org/installer | php```) somwhere in the PATH, and rename ```composer.phar``` to ```composer```.
-   * Clone drush repo in your working directory (i.e. ~/Work) - ```git clone git@github.com:drush-ops/drush.git ~/Work/drush```)
-   * ```cd ~/Work/drush```
-   * ```composer install``` - install drush w/composer
-   * ```sudo ln -s ~/Work/drush/drush /usr/bin/``` - add to PATH
+In order to make the project work the following assumptions are made:
 
-2. Virtual host for your Drupal instance that points to the docroot/ directory from this repo
+  * You have a working LAMP stack on your dev machine
+  * You have `drush` installed and working on your computer. To install Drush I recommend to install from source repo like this:
 
-##Quick start##
+    ```
+    cd /opt
+    git clone https://github.com/drush-ops/drush.git
+    cd drush
+    git checkout 8.1.3 (if is not working properly, try 7.3.0)
+    composer install (subsequent updates to Drush requires to re-run composer install.)
+    ```
+   
+   * Add drush executable to your $PATH (i.e. `ln -s /opt/drush/drush /usr/bin`), open a console and run `drush init` to set up .drush directory as well as aliases and shortcuts
 
-1. Copy [conf/config.template.json](https://github.com/EU-OSHA/osha-website/blob/master/conf/config.template.json)
-to `config.json` and customize to suit your environment
+
+
+##Project setup
+
+### Prepare drush 
+
+Edit `~/.drush/drushrc.php` and add this snippet:
+
+   ```php
+
+    <?php
+    $repo_dir = drush_get_option('root') ? drush_get_option('root') : getcwd();
+    $success = drush_shell_exec('cd %s && git rev-parse --show-toplevel 2> ' . drush_bit_bucket(), $repo_dir);
+    if ($success) {
+       $output = drush_shell_exec_output();
+       $repo = $output[0];
+       $options['config'] = $repo . '/drush/drushrc.php';
+       $options['include'] = $repo . '/drush/commands';
+       $options['alias-path'] = $repo . '/drush/aliases';
+    }
+   ```
+
+
+## Setup database
+
+Create a database called `osha_vesafe` in your MySQL database.
+You can either use `root` with password, or setup another user and password to connect from Drupal
+
+## Setup Apache VH
+
+Checkout locally the VeSafe from repository, and create a VirtualHost **in** Apache to point to the $PROJECT/docroot/ directory, for example:
+
+    ```
+    <VirtualHost *:8080>
+        ServerName vesafe.local.ro
+        DocumentRoot /Users/cristiroma/Work/osha/vesafe/docroot/
+        <Directory /Users/cristiroma/Work/osha/vesafe/docroot/>
+            AllowOverride All
+            Order allow,deny
+            Allow from all
+            # Required for httpd 2.4
+            Require all granted
+        </Directory>
+    </VirtualHost>
+    ```
+
+Then restart apache to pick the new VH, then check http://vesafe.local.ro works. At this stage Drupal should ask to make a new installation. **DON'T! MOVE ON!**
+
+## Project setup 
+
+* Copy `conf/config.template.json` to `conf/config.json` and customize to suit your environment, for example:
 
     ```json
     {
         "db" : {
-            "host": "database server ip or name, ex: localhost",
-            "username" : "database username, ex. user1",
-            "password" : "database password, ex. password1",
+            "host": "localhost",
+            "username" : "root",
+            "password" : "root",
             "port": 3306,
-            "database" : "database name, ex. osha_test",
-            "root_username": "root",
-            "root_password": "s3cr3t"
+            "database" : "osha_vesafe"
         },
         "admin" : {
-            "username": "admin",
-            "password": "admin",
-            "email": "your.email@domain.org"
+            "username": "vesafe_admin",
+            "password": "password",
+            "email": "account@example.com"
         },
-        "uri": "http://you-vh.localhost",
+        "uri": "http://vesafe.local.ro",
         "solr_server": {
             "name": "Apache Solr server",
             "enabled": 1,
@@ -62,88 +111,63 @@ to `config.json` and customize to suit your environment
         },
         "variables": {
             "site_mail": "your.email@domain.org",
-            "site_name": "OSHA",
+            "site_name": "VeSafe",
             "osha_data_dir": "/home/osha/data",
             "file_temporary_path": "/tmp"
         }
     }
     ```
 
-2. Copy the following code into `~/.drush/drushrc.php` (create if necessary)
+* Create file `drush/aliases/aliases.local.php` and define your drush staging alias, like this:
 
-    ```php
-        <?php
-            $repo_dir = drush_get_option('root') ? drush_get_option('root') : getcwd();
-            $success = drush_shell_exec('cd %s && git rev-parse --show-toplevel 2> ' . drush_bit_bucket(), $repo_dir);
-            if ($success) {
-                $output = drush_shell_exec_output();
-                $repo = $output[0];
-                $options['config'] = $repo . '/drush/drushrc.php';
-                $options['include'] = $repo . '/drush/commands';
-                $options['alias-path'] = $repo . '/drush/aliases';
-            }
-    ```
+  Note: replace `yourname` below with your username, i.e. `cristiroma`, `john` whatever.
 
-3 Create file drush/aliases/aliases.local.php and define your drush local alias (see example in drush/aliases/osha.aliases.drushrc.php)
-  Redefine your osha.staging.sync alias as you need. Default one might not be accessible to you.
+  ```php
+  $aliases['staging'] = array(
+    'uri' => 'http://vesafe.edw.ro',
+    'db-allows-remote' => TRUE,
+    'remote-host' => '5.9.54.24',
+    'remote-user' => 'php',
+    'root' => '/var/www/html/osha-vesafe/docroot',
+    'path-aliases' => array(
+      '%files' => 'sites/default/files',
+    ),
+    'command-specific' => array(
+      'sql-sync' => array(
+        'simulate' => '1',
+        'source-dump' => '/tmp/osha-vesafe-dump-yourname.sql',
+      ),
+    ),
+  );
+  ```
 
-4 Run install_from_staging.sh
-  ex: ./install_from_staging.sh -b update_s4_before.sh -a update_s4_after.sh
+* Create `docroot/sites/default/settings.local.php` file, example:
 
-3 (deprecated). Run [install.sh](https://github.com/EU-OSHA/osha-website/blob/master/install.sh) (wrapper around few drush commands)
+  Note: Later you can add more settings here, custom to your installation, like `memcached`, `varnish` etc.
+
+  ```php
+  <?php
+  $databases = array (
+    'default' =>
+      array (
+        'default' =>
+          array (
+            'database' => 'osha_vesafe',
+            'username' => 'root',
+            'password' => 'root',
+            'host' => 'localhost',
+            'port' => '',
+            'driver' => 'mysql',
+            'prefix' => '',
+          ),
+      ),
+  );
+  ```
+
+
+* Run `install_from_staging.sh`
 
 *Warning*: Running install.sh on an existing instance *will destroy* that instance (database) loosing all customisations
-
-*Note:* You have to pass `--migrate` to install the migrations (taxonomies)
-
-4. (deprecated) (Optional) To run the migration/migration tests see the documentation from [osha_migration](https://github.com/EU-OSHA/osha-website/tree/master/docroot/sites/all/modules/osha_migration) module
-
-Updating an existing instance
-=============================
-
-To update an existing instance without reinstalling (and loosing existing content):
-
-* Update the code repository from Github (`git pull [origin develop]`)
-* Run `update.sh` which reverts all features and updates the migrated data
-
-*Note:* You have to pass `--migrate` to update the migrations (taxonomies)
-
-The output of the console should look like this:
-
-```
-No database updates required                                                                                          [success]
-'all' cache was cleared.                                                                                              [success]
-Finished performing updates.                                                                                          [ok]
-The following modules will be reverted: osha_taxonomies, osha
-Do you really want to continue? (y/n): y
-Reverted osha_taxonomies.field_base.                                                                                  [ok]
-Reverted osha_taxonomies.field_instance.                                                                              [ok]
-Reverted osha_taxonomies.taxonomy.                                                                                    [ok]
-Reverted osha.language.                                                                                               [ok]
-Reverted osha.variable.                                                                                               [ok]
-'all' cache was cleared.                                                                                              [success]
-Built!                                                                                                                [success]
-Updating NACE codes taxonomy
-Processed 996 (0 created, 996 updated, 0 failed, 0 ignored) in 117.9 sec (507/min) - done with 'NaceCodes'            [completed]
-Updating ESENER taxonomy
-Processed 147 (0 created, 147 updated, 0 failed, 0 ignored) in 9.1 sec (967/min) - done with 'EsenerTaxonomy'         [completed]
-Updating Publication types taxonomy
-Processed 9 (0 created, 9 updated, 0 failed, 0 ignored) in 0.6 sec (957/min) - done with 'PublicationTypesTaxonomy'   [completed]
-Updating Multilingual Thesaurus taxonomy
-Processed 1728 (0 created, 1728 updated, 0 failed, 0 ignored) in 185.1 sec (560/min) - done with 'ThesaurusTaxonomy'  [completed]
-'all' cache was cleared.                                                                                              [success]
-```
-
-Running tests
-=============
-
-You can use the test.sh script to launch the set of tests designed for the OSHA project.
-
-Command usage:
-
-* `./test.sh` - Runs all tests from the OSHA group
-* `./test.sh ClassNameTest` - Runs all the test methods from the ClassNameTest test class
-* `./test.sh ClassNameTest testName1,testName2` - Runs only the two tests from the entire class
 
 
 
@@ -177,10 +201,5 @@ Summary:
 * _master_ - The production branch, updated with each release.
 * _develop_ - Main development branch. Tests are performed on this branch
 * _release-_* - Release branches
-
-##Translation workflow##
-
-* Module page - https://www.drupal.org/project/tmgmt
-* FAQs: https://www.drupal.org/node/1547632
 
 -- edw
