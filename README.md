@@ -52,7 +52,7 @@ You can either use `root` with password, or setup another user and password to c
 
 ## Setup Apache VH
 
-Checkout locally the VeSafe from repository, and create a VirtualHost **in** Apache to point to the $PROJECT/docroot/ directory, for example:
+Checkout locally the VeSafe from repository, and create a VirtualHost **in** Apache to point to the $PROJECT/docroot/ directory, for example: 
 
     ```
     <VirtualHost *:8080>
@@ -69,6 +69,16 @@ Checkout locally the VeSafe from repository, and create a VirtualHost **in** Apa
     ```
 
 Then restart apache to pick the new VH, then check http://vesafe.local.ro works. At this stage Drupal should ask to make a new installation. **DON'T! MOVE ON!**
+
+Note:  You can checkout your project locally using git:
+
+```
+git clone git@github.com:EU-OSHA/VeSafe.git
+git checkout develop
+```
+
+Later, please work on your own branch! Branching and development is described in detail here: https://github.com/EU-OSHA/osha-website/wiki
+
 
 ## Project setup 
 
@@ -167,7 +177,40 @@ Then restart apache to pick the new VH, then check http://vesafe.local.ro works.
 
 * Run `install_from_staging.sh`
 
-*Warning*: Running install.sh on an existing instance *will destroy* that instance (database) loosing all customisations
+*Warning*: Running `install_from_staging.sh` on an existing instance *will destroy* that instance (database) loosing all db changes (i.e. panels, blocks etc.)!
+
+The console output should look like this:
+
+```
+
+cristiroma ~/Work/osha/vesafe $ ./install_from_staging.sh 
+Command variable-get needs a higher bootstrap level to run - you will need to invoke drush from a more functional Drupal environment to run this command.              [error]
+The drush command 'vget environment' could not be executed.                                                                                                            [error]
+Do you really want to drop all tables in the database osha_vesafe? (y/n): y
+SQL Sync running... NOTE: if you do not have ssh passwordless logins setup, you may be asked for your password multiple times.You will destroy data in osha_vesafe and replace with data from 5.9.54.24/osha_vesafe.
+Do you really want to continue? (y/n): y
+Starting to dump database on Source.                                                                                                                                   [ok]
+Database dump saved to /tmp/osha-vesafe-dump-cristiroma.sql.gz                                                                                                         [success]
+You will delete files in /tmp/target-dump.sql.gz and replace with data from php@5.9.54.24:/tmp/osha-vesafe-dump-cristiroma.sql.gz
+Do you really want to continue? (y/n): y
+Copying dump file from Source to Destination.                                                                                                                          [ok]
+Starting to import dump file onto Destination database.                                                                                                                [ok]
+
+environment was set to "local".                                                                                                                                        [success]
+
+The following operations will be done on the target database:
+ * Reset passwords and email addresses in users table
+ * Truncate Drupal's sessions table
+ * Delete all data submitted to webforms (depending on the site config, may contain sensitive data).
+
+Do you really want to sanitize the current database? (y/n): y
+Devified!                                                                                                                                                              [success]
+Devify Solr ServerNo Solr Server (machine name: solr_server) found in databaseNo database updates required                                                                                                                                           [success]
+Devify Solr ServerLdap read devified!                                                                                                                                                    [success]
+Ldap write devified!                                                                                                                                                   [success]
+cristiroma ~/Work/osha/vesafe $ 
+
+```
 
 
 
