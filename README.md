@@ -20,7 +20,7 @@ In order to make the project work the following assumptions are made:
     composer install (subsequent updates to Drush requires to re-run composer install.)
     ```
    
-   * Add drush executable to your $PATH (i.e. `ln -s /opt/drush/drush /usr/bin`), open a console and run `drush init` to set up .drush directory as well as aliases and shortcuts
+   * Add drush executable to your $PATH (i.e. `ln -s /opt/drush/drush /usr/bin`), open a console and run `drush init` to set up `~/.drush` directory as well as aliases and shortcuts
 
 
 
