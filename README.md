@@ -26,9 +26,15 @@ In order to make the project work the following assumptions are made:
 
 ##Project setup
 
-### Prepare drush 
+### Setup database
 
-Edit `~/.drush/drushrc.php` and add this snippet:
+Create a database called `osha_vesafe` in your MySQL database.
+You can either use `root` with password, or setup another user and password to connect from Drupal
+
+
+### Prepare drush
+
+Assuming you open a console and `drush` works, edit `~/.drush/drushrc.php` and add this snippet:
 
    ```php
 
@@ -44,13 +50,7 @@ Edit `~/.drush/drushrc.php` and add this snippet:
     }
    ```
 
-
-## Setup database
-
-Create a database called `osha_vesafe` in your MySQL database.
-You can either use `root` with password, or setup another user and password to connect from Drupal
-
-## Setup Apache VH
+### Setup Apache VH
 
 Checkout locally the VeSafe from repository, and create a VirtualHost **in** Apache to point to the $PROJECT/docroot/ directory, for example: 
 
@@ -70,7 +70,14 @@ Checkout locally the VeSafe from repository, and create a VirtualHost **in** Apa
 
 Then restart apache to pick the new VH, then check http://vesafe.local.ro works. At this stage Drupal should ask to make a new installation. **DON'T! MOVE ON!**
 
-Note:  You can checkout your project locally using git:
+Notes:  
+* You need to add the domain  (i.e. `vesafe.local.ro`) to your local `hosts` file (`/etc/hosts` or `C:\Windows\System32\drivers\etc\hosts`) like this
+  
+  ``
+  127.0.0.1  vesafe.local.ro
+  ``
+
+* You can checkout your project locally using git:
 
 ```
 git clone git@github.com:EU-OSHA/VeSafe.git
@@ -80,7 +87,7 @@ git checkout develop
 Later, please work on your own branch! Branching and development is described in detail here: https://github.com/EU-OSHA/osha-website/wiki
 
 
-## Project setup 
+### Project setup 
 
 * Copy `conf/config.template.json` to `conf/config.json` and customize to suit your environment, for example:
 
@@ -150,6 +157,49 @@ Later, please work on your own branch! Branching and development is described in
     ),
   );
   ```
+  
+  Note: After this if you go in the `docroot` and run `drush` in console you should see something like this:
+
+  ```
+  cristiroma ~/Work/osha/vesafe/docroot $ drush sa
+  @none
+  @osha
+  @osha.staging
+  @self
+  default
+  ```
+
+  If you run `drush @osha.staging st` you connect to staging instance (vesafe.edw.ro) via SSH and check it's status:
+
+  ```
+  cristiroma ~/Work/osha/vesafe/docroot $ drush @osha.staging st
+   Drupal version                  :  7.X
+   Site URI                        :  http://vesafe.edw.ro
+   Database driver                 :  mysql
+   Database hostname               :  localhost
+   Database port                   :  3306
+   Database username               :  osha_vesafe
+   Database name                   :  osha_vesafe
+   Drupal bootstrap                :  Successful
+   Drupal user                     :
+   Default theme                   :  vesafe_frontend
+   Administration theme            :  osha_admin
+   PHP executable                  :  /usr/bin/php
+   PHP configuration               :  /etc/php.ini
+   PHP OS                          :  Linux
+   Drush script                    :  /opt/drush/drush.php
+   Drush version                   :  8.x.x
+   Drush temp directory            :  /tmp
+   Drush configuration             :  /var/www/html/osha-vesafe/drush/drushrc.php /home/php/.drush/drushrc.php
+   Drush alias files               :  /var/www/html/osha-vesafe/drush/aliases/osha.aliases.drushrc.php /var/www/html/osha-vesafe/docroot/../drush/aliases/osha.aliases.drushrc.php 
+   Install profile                 :  vesafe_profile
+   Drupal root                     :  /var/www/html/osha-vesafe/docroot
+   Drupal Settings File            :  sites/default/settings.php
+   Site path                       :  sites/default
+   File directory path             :  sites/default/files
+   Temporary file directory path   :  /tmp
+  ```
+
 
 * Create `docroot/sites/default/settings.local.php` file, example:
 
@@ -173,7 +223,6 @@ Later, please work on your own branch! Branching and development is described in
       ),
   );
   ```
-
 
 * Run `install_from_staging.sh`
 
@@ -212,7 +261,8 @@ cristiroma ~/Work/osha/vesafe $
 
 ```
 
-
+**Note:** 
+If the script fails, you can look into the script and try to execute commands one-by-one using `drush -v -d` to debug.
 
 ##Repository Layout##
 Breakdown for what each directory/file is used for. See also readme inside directories.
