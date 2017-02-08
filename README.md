@@ -266,7 +266,23 @@ If the script fails, you can look into the script and try to execute commands on
 
 ### Solr installation
 
-[TODO]
+You need Solr for search function and possible some other pages implemented around Solr.
+Here's how you setup your Solr server:
+
+* Have installed the JDK 1.7 or 1.8.
+* Use the Solr from a specific prepared environment available at `https://github.com/EU-OSHA/drupal-solr` and checkout the 4.10 release
+* Create a new core, called ‘vesafe’ and start the Jetty container.
+
+Here’s a sample of the required commands:
+
+```
+  git clone https://github.com/EU-OSHA/drupal-solr ~/Work/drupal-solr
+  cd ~/Work/drupal-solr/cores
+  cp -r core0 vesafe
+  echo name=vesafe > ./vesafe/core.properties
+  cd ../
+  ./start
+```
 
 ##Repository Layout##
 Breakdown for what each directory/file is used for. See also readme inside directories.
