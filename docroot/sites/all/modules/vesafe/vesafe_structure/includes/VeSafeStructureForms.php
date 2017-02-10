@@ -9,6 +9,11 @@ class VeSafeStructureForms {
   public static function good_practice_node_form_alter(&$form, &$form_state) {
     self::attachCSS($form, drupal_get_path('module', 'vesafe_structure') . '/styles/good-practice.css');
     $form['body']['#access'] = false;
+    global $user;
+    if (empty($user) || $user->uid != 1) {
+      $form['field_like_count']['#access'] = FALSE;
+    }
+    $form['field_like_count'][LANGUAGE_NONE][0]['value']['#description'] = 'Visible to user/1 only';
   }
 
 
