@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function node_like_menu() {
+  return array(
+    'node/%node/like' => array(
+      'page callback' => 'node_like_like',
+      'page arguments' => array(1),
+      'access arguments' => array('access content'),
+      'type' => MENU_SUGGESTED_ITEM,
+    )
+  );
+}
+
+/**
+ * Ajax endpoint for like functionality
+ *
+ * @param object $node
+ *   Node to like
+ */
+function node_like_like($node) {
+  // @todo field must be configurable per content type ...
+  $counter = $node->field_like_count[LANGUAGE_NONE][0]['value'];
+  $sk = (object) array(
+    'nid' => $node->nid,
+    'type' => $node->type,
+    'field_like_count' => array(
+      LANGUAGE_NONE => array(
+        0 => array('value' => $counter + 1)
+      )
+    )
+  );
+  field_attach_update('node', $sk);
+  $new = $sk->field_like_count[LANGUAGE_NONE][0]['value'];
+  drupal_json_output(array(
+    'id' => $node->nid,
+    'selector' => '#node-like-' . $node->nid,
+    'success' => 1,
+    'text' => $new
+  ));
+}
+
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function node_like_field_formatter_info() {
+  return array(
+    'node_like_formatter' => array(
+      'label' => t('Like node'),
+      'field types' => array('number_integer'),
+      'settings' => array(
+      ),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function node_like_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  foreach ($items as $delta => $item) {
+    $count = $item['value'];
+  }
+  $options = array(
+    'html' => true,
+    'absolute' => true,
+    'attributes' => array(
+      'title' => t('Like this content'),
+      'class' => array('node-like-link'),
+    )
+  );
+  if(isset($count)) {
+    $url = url('/node/' . $entity->nid . '/like');
+    $text = sprintf('<span id="node-like-%s">%s</span>', $entity->nid, $count);
+    $link = l($text, $url, $options);
+    $element[0]['#markup'] = $link;
+  }
+  return $element;
+}

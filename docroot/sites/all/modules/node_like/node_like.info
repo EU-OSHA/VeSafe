@@ -1,0 +1,6 @@
+name = node_like
+description = Attach a like to a node
+core = 7.x
+package = Field
+version = 7.x-1.0
+scripts[] = js/node_like.js
