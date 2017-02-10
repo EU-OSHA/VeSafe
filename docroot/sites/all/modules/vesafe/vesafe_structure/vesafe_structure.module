@@ -5,3 +5,14 @@
  */
 
 include_once 'vesafe_structure.features.inc';
+
+function vesafe_structure_form_good_practice_node_form_alter(&$form, &$form_state) {
+  $form['body']['#access'] = false;
+  if (empty($form['#attached'])) {
+    $form['#attached'] = array();
+  }
+  if (empty($form['#attached']['css'])) {
+    $form['#attached']['css'] = array();
+  }
+  $form['#attached']['css'][] = drupal_get_path('module', 'vesafe_structure') . '/styles/good-practice.css';
+}

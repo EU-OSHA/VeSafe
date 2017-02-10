@@ -1,0 +1,22 @@
+.filter-wrapper { display: none; }
+.form-item {
+  margin-bottom: 20px;
+}
+
+#edit-field-vehicles label { float: left; margin-right: 30px; }
+#edit-field-risks label { float: left; margin-right: 50px; }
+#edit-field-vehicles select,
+#edit-field-risks select {
+  float: left;
+}
+
+#edit-field-gp-what-is-it { clear: both; }
+.form-type-link-field div.description { display: none; }
+.form-type-link-field div.form-item { margin-bottom: 10px; }
+
+#edit-field-publication-date .fieldset-wrapper {
+  padding: 0 0 0 15px;
+}
+#edit-field-publication-date .date-padding {
+  padding: 0;
+}
