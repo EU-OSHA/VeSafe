@@ -609,7 +609,11 @@ function vesafe_structure_field_default_field_instances() {
   // Exported field_instance: 'node-good_practice-field_like_count'.
   $field_instances['node-good_practice-field_like_count'] = array(
     'bundle' => 'good_practice',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(

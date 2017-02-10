@@ -82,8 +82,11 @@ function node_like_field_formatter_view($entity_type, $entity, $field, $instance
     )
   );
   if(isset($count)) {
+    if ($count === '0') {
+      $count = '';
+    }
     $url = url('/node/' . $entity->nid . '/like');
-    $text = sprintf('<span id="node-like-%s">%s</span>', $entity->nid, $count);
+    $text = sprintf('<span id="node-like-%s" class="node-like-content">%s</span>', $entity->nid, $count);
     $link = l($text, $url, $options);
     $element[0]['#markup'] = $link;
   }
