@@ -26,6 +26,14 @@ function vesafe_structure_node_info() {
       'title_label' => 'Title',
       'help' => '',
     ),
+    'good_practice' => array(
+      'name' => 'Good practice',
+      'base' => 'node_content',
+      'description' => 'Content appearing in the Good practices section of the vehicle safety portal',
+      'has_title' => '1',
+      'title_label' => 'Title',
+      'help' => '',
+    ),
   );
   drupal_alter('node_info', $items);
   return $items;
