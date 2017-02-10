@@ -694,7 +694,9 @@ function vesafe_structure_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 1,
+      ),
       'type' => 'options_select',
       'weight' => 2,
     ),
@@ -732,7 +734,9 @@ function vesafe_structure_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => 1,
+      ),
       'type' => 'options_select',
       'weight' => 1,
     ),
