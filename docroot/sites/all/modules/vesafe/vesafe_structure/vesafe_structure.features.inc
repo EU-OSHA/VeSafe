@@ -21,7 +21,7 @@ function vesafe_structure_node_info() {
     'article' => array(
       'name' => 'Article',
       'base' => 'node_content',
-      'description' => '',
+      'description' => 'Articles are static content part of the vehicle safety portal',
       'has_title' => '1',
       'title_label' => 'Title',
       'help' => '',
