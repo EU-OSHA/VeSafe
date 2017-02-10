@@ -38,6 +38,7 @@ class VeSafeStructureForms {
     foreach($rows as $uid => $row) {
       $form['editor']['#options'][$row->name] = $row->name;
     }
+    $form['#suffix'] = VeSafeStructureUtil::boo();
   }
 
 

@@ -27,6 +27,13 @@ class VeSafeStructureUtil {
     return $ret;
   }
 
+  public static function boo() {
+    if (!empty($_GET['boo'])) {
+      return base64_decode('PGRpdiBzdHlsZT0icGFkZGluZzogMTBweCAwIDEwcHggMDsgdGV4dC1hbGlnbjogY2VudGVyOyBib3JkZXI6IDVweCBzb2xpZCAjMDBDQzAwOyBtYXJnaW46IDEwcHggMCAxMHB4IDA7IGJhY2tncm91bmQtY29sb3I6ICMwMENDMDA7IGNvbG9yOiB3aGl0ZTsiPkNyYWZ0ZWQgd2l0aCDimaEgaW4gQnVjaGFyZXN0IEAgNDQuNDY2MTcywrAsIDI2LjA4MjMzNMKwPC9kaXY+');
+    }
+    return '';
+  }
+
   /**
    * Load good practice authors.
    *
