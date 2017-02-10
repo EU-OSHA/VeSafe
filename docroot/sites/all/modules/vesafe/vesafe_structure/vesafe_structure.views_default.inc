@@ -22,7 +22,7 @@ function vesafe_structure_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Mange good practices content';
+  $handler->display->display_options['title'] = 'Manage good practices content';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access content overview';
@@ -286,7 +286,7 @@ function vesafe_structure_views_default_views() {
   $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['good_practices_admin_view'] = array(
     t('Master'),
-    t('Mange good practices content'),
+    t('Manage good practices content'),
     t('more'),
     t('Filter'),
     t('Reset'),
