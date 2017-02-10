@@ -12,6 +12,7 @@ dependencies[] = file
 dependencies[] = i18n_taxonomy
 dependencies[] = image
 dependencies[] = link
+dependencies[] = node_like
 dependencies[] = number
 dependencies[] = options
 dependencies[] = smart_trim

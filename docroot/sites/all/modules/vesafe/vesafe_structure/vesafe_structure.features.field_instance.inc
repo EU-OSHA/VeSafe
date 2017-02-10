@@ -615,14 +615,9 @@ function vesafe_structure_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => '',
-        ),
-        'type' => 'number_integer',
+        'module' => 'node_like',
+        'settings' => array(),
+        'type' => 'node_like_formatter',
         'weight' => 12,
       ),
       'teaser' => array(
