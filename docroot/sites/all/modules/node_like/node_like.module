@@ -23,17 +23,23 @@ function node_like_menu() {
 function node_like_like($node) {
   // @todo field must be configurable per content type ...
   $counter = $node->field_like_count[LANGUAGE_NONE][0]['value'];
-  $sk = (object) array(
-    'nid' => $node->nid,
-    'type' => $node->type,
-    'field_like_count' => array(
-      LANGUAGE_NONE => array(
-        0 => array('value' => $counter + 1)
+  $new = (int)$counter;
+  if (!empty($_GET['vote'])) {
+    $sk = (object) array(
+      'nid' => $node->nid,
+      'type' => $node->type,
+      'field_like_count' => array(
+        LANGUAGE_NONE => array(
+          0 => array('value' => $counter + 1)
+        )
       )
-    )
-  );
-  field_attach_update('node', $sk);
-  $new = $sk->field_like_count[LANGUAGE_NONE][0]['value'];
+    );
+    field_attach_update('node', $sk);
+    $new = $sk->field_like_count[LANGUAGE_NONE][0]['value'];
+    if ($new > 100) {
+      $new = '99+';
+    }
+  }
   drupal_json_output(array(
     'id' => $node->nid,
     'selector' => '#node-like-' . $node->nid,
@@ -72,6 +78,7 @@ function node_like_field_formatter_view($entity_type, $entity, $field, $instance
     'attributes' => array(
       'title' => t('Like this content'),
       'class' => array('node-like-link'),
+      'rel' => 'nofollow',
     )
   );
   if(isset($count)) {

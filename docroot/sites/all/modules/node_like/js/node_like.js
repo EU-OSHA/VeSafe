@@ -3,7 +3,7 @@ jQuery(document).ready(function () {
     var link = this;
     jQuery.ajax({
       type: 'POST',
-      url: this.href,
+      url: this.href + '?vote=1',
       dataType: 'json',
       success: function (data) {
         if (typeof data.selector == 'string') {
