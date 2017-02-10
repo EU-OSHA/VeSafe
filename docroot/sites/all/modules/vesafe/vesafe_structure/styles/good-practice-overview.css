@@ -1,0 +1,11 @@
+#edit-field-publication-date-value-min-wrapper,
+#edit-field-publication-date-value-max-wrapper,
+#edit-field-publication-date-value-max-wrapper .container-inline-date label,
+#edit-field-publication-date-value-max-wrapper .container-inline-date #edit-field-publication-date-value-max,
+#edit-field-publication-date-value-max-wrapper .container-inline-date {
+  float: left;
+}
+
+#edit-field-publication-date-value-max-wrapper .container-inline-date label {
+  margin: 5px 15px 0 5px;
+}

@@ -6,13 +6,22 @@
 
 include_once 'vesafe_structure.features.inc';
 
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * {@inheritdoc}
+ */
 function vesafe_structure_form_good_practice_node_form_alter(&$form, &$form_state) {
-  $form['body']['#access'] = false;
-  if (empty($form['#attached'])) {
-    $form['#attached'] = array();
+  VeSafeStructureForms::good_practice_node_form_alter($form, $form_state);
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * {@inheritdoc}
+ */
+function vesafe_structure_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-good-practices-admin-view-page') {
+    VeSafeStructureForms::good_practice_admin_content_view_form_alter($form, $form_state);
   }
-  if (empty($form['#attached']['css'])) {
-    $form['#attached']['css'] = array();
-  }
-  $form['#attached']['css'][] = drupal_get_path('module', 'vesafe_structure') . '/styles/good-practice.css';
 }
