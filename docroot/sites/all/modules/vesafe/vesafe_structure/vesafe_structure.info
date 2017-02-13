@@ -128,5 +128,6 @@ features[variable][] = webform_node_good_practice
 features[variable][] = xmlsitemap_settings_node_article
 features[variable][] = xmlsitemap_settings_node_good_practice
 features[views_view][] = good_practices_admin_view
+features[views_view][] = key_article_theme_select_widget
 files[] = includes/VeSafeStructureForms.php
 files[] = includes/VeSafeStructureUtil.php
