@@ -790,6 +790,10 @@ function vesafe_structure_views_default_views() {
       'empty_column' => 0,
     ),
   );
+  /* Footer: Global: Result summary */
+  $handler->display->display_options['footer']['result']['id'] = 'result';
+  $handler->display->display_options['footer']['result']['table'] = 'views';
+  $handler->display->display_options['footer']['result']['field'] = 'result';
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
@@ -966,6 +970,7 @@ function vesafe_structure_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
+    t('Displaying @start - @end of @total'),
     t('author'),
     t('Content referencing Content from field_ka_general_safety_issues'),
     t('Content referencing Content from field_ka_general_risk_factors'),
