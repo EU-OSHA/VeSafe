@@ -16,6 +16,24 @@ function vesafe_structure_form_good_practice_node_form_alter(&$form, &$form_stat
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * {@inheritdoc}
+ */
+function vesafe_structure_form_key_article_node_form_alter(&$form, &$form_state) {
+  VeSafeStructureForms::key_article_node_form_alter($form, $form_state);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * {@inheritdoc}
+ */
+function vesafe_structure_form_key_article_theme_node_form_alter(&$form, &$form_state) {
+  VeSafeStructureForms::key_article_theme_node_form_alter($form, $form_state);
+}
+
+/**
  * Implements hook_form_alter().
  *
  * {@inheritdoc}

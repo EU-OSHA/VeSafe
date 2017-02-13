@@ -41,6 +41,22 @@ function vesafe_structure_node_info() {
       'title_label' => 'Title',
       'help' => '',
     ),
+    'key_article' => array(
+      'name' => 'Key article',
+      'base' => 'node_content',
+      'description' => 'This content appears in the Themes section of the vehicle safety portal',
+      'has_title' => '1',
+      'title_label' => 'Title',
+      'help' => '',
+    ),
+    'key_article_theme' => array(
+      'name' => 'Key article theme',
+      'base' => 'node_content',
+      'description' => 'Key article themes are linked to key articles',
+      'has_title' => '1',
+      'title_label' => 'Title',
+      'help' => '',
+    ),
   );
   drupal_alter('node_info', $items);
   return $items;
