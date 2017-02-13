@@ -175,5 +175,6 @@ features[variable][] = xmlsitemap_settings_node_key_article
 features[variable][] = xmlsitemap_settings_node_key_article_theme
 features[views_view][] = good_practices_admin_view
 features[views_view][] = key_article_theme_select_widget
+features[views_view][] = key_articles_admin_view
 files[] = includes/VeSafeStructureForms.php
 files[] = includes/VeSafeStructureUtil.php

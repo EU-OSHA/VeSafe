@@ -928,7 +928,7 @@ function vesafe_structure_field_default_field_instances() {
       'settings' => array(
         'allow_duplicates' => 0,
         'apply_chosen' => '',
-        'close_modal' => 0,
+        'close_modal' => 1,
         'pass_argument' => 0,
         'pass_arguments' => '',
         'rendered_entity' => 0,
@@ -1025,7 +1025,7 @@ function vesafe_structure_field_default_field_instances() {
       'module' => 'entityreference_view_widget',
       'settings' => array(
         'allow_duplicates' => 0,
-        'close_modal' => 0,
+        'close_modal' => 1,
         'pass_argument' => 0,
         'pass_arguments' => '',
         'rendered_entity' => 0,
@@ -1129,7 +1129,7 @@ function vesafe_structure_field_default_field_instances() {
       'module' => 'entityreference_view_widget',
       'settings' => array(
         'allow_duplicates' => 0,
-        'close_modal' => 0,
+        'close_modal' => 1,
         'pass_argument' => 0,
         'pass_arguments' => '',
         'rendered_entity' => 0,
