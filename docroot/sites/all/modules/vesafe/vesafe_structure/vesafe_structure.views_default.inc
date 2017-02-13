@@ -38,11 +38,20 @@ function vesafe_structure_views_default_views() {
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
     'field_vehicles' => 'field_vehicles',
+    'field_risks' => 'field_risks',
+    'status' => 'status',
+    'name' => 'name',
+    'field_publication_date' => 'field_publication_date',
+    'created' => 'created',
+    'name_1' => 'name_1',
+    'edit_node' => 'edit_node',
+    'delete_node' => 'delete_node',
+    'nothing' => 'nothing',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'title' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => 'views-align-left',
       'separator' => '',
@@ -50,6 +59,61 @@ function vesafe_structure_views_default_views() {
     ),
     'field_vehicles' => array(
       'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_risks' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'status' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_publication_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'created' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name_1' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'delete_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing' => array(
+      'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
