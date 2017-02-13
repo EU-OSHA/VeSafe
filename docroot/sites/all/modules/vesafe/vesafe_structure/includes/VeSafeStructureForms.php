@@ -18,6 +18,14 @@ class VeSafeStructureForms {
 
 
   /**
+   * {@inheritdoc}
+   */
+  public static function key_article_node_form_alter(&$form, &$form_state) {
+    self::attachCSS($form, drupal_get_path('module', 'vesafe_structure') . '/styles/key-article.css');
+  }
+
+
+  /**
    * Alter exposed filter for /admin/content/good-practices
    *
    * {@inheritdoc}

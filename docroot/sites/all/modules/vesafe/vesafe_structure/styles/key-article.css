@@ -1,0 +1,16 @@
+.filter-wrapper { display: none; }
+.form-item { margin-bottom: 20px; }
+.form-type-link-field div.description { display: none; }
+.form-type-link-field div.form-item { margin-bottom: 10px; }
+
+#modalContent #edit-field-vehicles-tid-wrapper .description,
+#modalContent #edit-field-risks-tid-wrapper .description {
+  display: none;
+}
+
+#edit-field-publication-date .fieldset-wrapper {
+  padding: 0 0 0 15px;
+}
+#edit-field-publication-date .date-padding {
+  padding: 0;
+}
