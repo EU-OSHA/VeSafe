@@ -1,0 +1,14 @@
+name = vesafe_search
+core = 7.x
+package = vesafe
+version = 7.x-1.0
+dependencies[] = entity
+dependencies[] = search_api
+dependencies[] = search_api_solr
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[search_api_index][] = default_solr_index
+features[search_api_server][] = default_solr_server
+features[views_view][] = search
+features_exclude[dependencies][ctools] = ctools
