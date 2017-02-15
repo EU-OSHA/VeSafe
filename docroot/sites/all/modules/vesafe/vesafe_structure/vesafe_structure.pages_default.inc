@@ -241,6 +241,29 @@ function vesafe_structure_default_page_manager_pages() {
     $display->content['new-399219a9-2191-4a83-85b2-671142134c40'] = $pane;
     $display->panels['did_you_know'][0] = 'new-399219a9-2191-4a83-85b2-671142134c40';
     $pane = new stdClass();
+    $pane->pid = 'new-ec1583a0-7db0-4071-a40a-be716535164f';
+    $pane->panel = 'key_articles_introduction';
+    $pane->type = 'block';
+    $pane->subtype = 'views-key_articles-block';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Or select the area you work in',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'ec1583a0-7db0-4071-a40a-be716535164f';
+    $display->content['new-ec1583a0-7db0-4071-a40a-be716535164f'] = $pane;
+    $display->panels['key_articles_introduction'][0] = 'new-ec1583a0-7db0-4071-a40a-be716535164f';
+    $pane = new stdClass();
     $pane->pid = 'new-430035bc-7474-4836-966d-45bae4ee307f';
     $pane->panel = 'risk_navigation';
     $pane->type = 'block';
