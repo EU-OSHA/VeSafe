@@ -182,6 +182,7 @@ features[variable][] = print_html_display_urllist_key_article
 features[variable][] = print_html_display_urllist_key_article_theme
 features[variable][] = save_continue_key_article
 features[variable][] = save_continue_key_article_theme
+features[variable][] = site_frontpage
 features[variable][] = webform_node_good_practice
 features[variable][] = webform_node_key_article
 features[variable][] = webform_node_key_article_theme
