@@ -127,7 +127,6 @@ function vesafe_frontend_preprocess_page(&$vars) {
   global $language;
   if (drupal_is_front_page()) {
     unset($vars['page']['content']['system_main']['default_message']);
-    drupal_set_title('');
   }
   $vars['logo'] = '/sites/all/themes/vesafe_frontend/images/eu-osha-logo/EU-OSHA-'.($language->language).'.png';
   $vars['eu_logo'] = '/sites/all/themes/vesafe_frontend/images/europeLogo.png';

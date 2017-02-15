@@ -144,9 +144,9 @@
       </div>
     <?php endif; ?>
     <?php print render($title_suffix); ?>
-    <?php if (!empty($page['above_title'])): ?>
-      <div class="above_title">
-        <?php print render($page['above_title']); ?>
+    <?php if (!empty($page['after_title'])): ?>
+      <div class="after_title">
+        <?php print render($page['after_title']); ?>
       </div>
     <?php endif; ?>
   </div>
@@ -155,7 +155,7 @@
 <?php if (!empty($page['highlighted'])): ?>
 <div class="jumbotron-container">
   <div class="container-fluid">
-      <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
+      <div class="highlighted"><?php print render($page['highlighted']); ?></div>
   </div>
 </div>
 <?php endif; ?>
@@ -188,13 +188,13 @@
   <?php endif; ?>
 </div>
 
-<footer class="site-footer">
-  <div class="site-footer-container container">
+<div class="site-footer-container">
+  <footer class="site-footer container">
     <div class="footer-copyright">
       <?php print t("© @yyyy EU-OSHA | an agency of the European Union", array('@yyyy' => date("Y"))); ?>
     </div>
     <div class="footer-blocks">
       <?php print render($page['footer']); ?>
     </div>
-  </div>
-</footer>
+  </footer>
+</div>
