@@ -36,9 +36,14 @@ class VeSafeStructureForms {
   }
 
   public static function did_you_know_slide_node_form_submit($form, &$form_state) {
-    // Copy the first 255 characters of body into node title
+    // Copy the first 150 characters of body into node title
     $body = $form_state['values']['body'][LANGUAGE_NONE][0]['value'];
-    $form_state['values']['title'] = substr($body, 0, 255);
+    $title = substr($body, 0, 150);
+    $title = substr($title, 0, strrpos($title, ' ') - 1);
+    if (strlen($body) > 150) {
+      $title .= '...';
+    }
+    $form_state['values']['title'] = $title;
   }
 
   /**
