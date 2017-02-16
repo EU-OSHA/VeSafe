@@ -177,6 +177,48 @@ function vesafe_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'eu_cookie_compliance_domain';
+  $strongarm->value = '';
+  $export['eu_cookie_compliance_domain'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'eu_cookie_compliance_en';
+  $strongarm->value = array(
+    'popup_enabled' => 1,
+    'popup_clicking_confirmation' => 1,
+    'popup_position' => 1,
+    'popup_agree_button_message' => 'OK, I agree',
+    'popup_disagree_button_message' => 'No, give me more info',
+    'popup_info' => array(
+      'value' => '<h2>The EU/OSHA website uses coockies to gather information necessary for browsing the website in accordance with the EU/OSHA privacy notice.</h2><p>By clicking on any link in the EU/OSHA web pagesyou are giving your consent for the use of cookies.</p>',
+      'format' => 'full_html',
+    ),
+    'popup_agreed_enabled' => 0,
+    'popup_hide_agreed' => 0,
+    'popup_find_more_button_message' => 'More info',
+    'popup_hide_button_message' => 'Hide',
+    'popup_agreed' => array(
+      'value' => '<h2>Thank you for accepting cookies</h2><p>You can now hide this message or find out more about cookies.</p>',
+      'format' => 'full_html',
+    ),
+    'popup_link' => 'http://vesafe.edw.ro/privacy-notice',
+    'popup_link_new_window' => 1,
+    'popup_height' => '',
+    'popup_width' => '100%',
+    'popup_delay' => '1',
+    'popup_bg_hex' => 'dddddd',
+    'popup_text_hex' => 'ffffff',
+    'domains_option' => '1',
+    'domains_list' => '',
+    'exclude_paths' => '',
+  );
+  $export['eu_cookie_compliance_en'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__article';
   $strongarm->value = array(
     'view_modes' => array(
