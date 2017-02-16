@@ -17,6 +17,15 @@ function vesafe_search_block_info() {
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
     ),
+    'search_vesafe_sidebar' => array(
+      'info' => t('VeSafe search box (sidebar)'),
+      'cache' => DRUPAL_NO_CACHE,
+      'weight' => 10,
+      'status' => 1,
+      'region' => 'sidebar_first',
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'pages' => 'search',
+    ),
   );
 }
 
@@ -27,6 +36,7 @@ function vesafe_search_block_view($delta = '') {
   $block = array();
   switch($delta) {
     case 'search_vesafe':
+    case 'search_vesafe_sidebar':
       $block['content'] = drupal_get_form('vesafe_search_form');
       break;
   }
@@ -50,7 +60,6 @@ function vesafe_search_form($form, $form_state) {
         '#default_value' => _vesafe_get_search_query(),
         '#size' => 25,
         '#maxlength' => 255,
-        '#attributes' => ['placeholder' => t('Explore VeSafe')],
       ],
       'submit' => [
         '#type' => 'submit',
