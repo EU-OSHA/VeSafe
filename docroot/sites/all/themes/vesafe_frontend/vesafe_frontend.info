@@ -12,7 +12,6 @@ base theme = bootstrap
 regions[header_block]   = 'Header'
 regions[menu]           = 'Menu'
 regions[after_title]    = 'Title region'
-regions[header]         = 'Header'
 regions[highlighted]    = 'Jumbotron (full-width)'
 regions[help]           = 'Help'
 regions[content]        = 'Content'

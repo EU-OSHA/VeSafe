@@ -154,9 +154,7 @@
 
 <?php if (!empty($page['highlighted'])): ?>
 <div class="jumbotron-container">
-  <div class="container-fluid">
-      <div class="highlighted"><?php print render($page['highlighted']); ?></div>
-  </div>
+    <div class="highlighted"><?php print render($page['highlighted']); ?></div>
 </div>
 <?php endif; ?>
 
