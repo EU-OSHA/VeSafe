@@ -7,39 +7,36 @@
 include_once 'vesafe_structure.features.inc';
 
 /**
- * Implements hook_form_FORM_ID_alter().
- *
- * {@inheritdoc}
- */
-function vesafe_structure_form_good_practice_node_form_alter(&$form, &$form_state) {
-  VeSafeStructureForms::good_practice_node_form_alter($form, $form_state);
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- *
- * {@inheritdoc}
- */
-function vesafe_structure_form_key_article_node_form_alter(&$form, &$form_state) {
-  VeSafeStructureForms::key_article_node_form_alter($form, $form_state);
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- *
- * {@inheritdoc}
- */
-function vesafe_structure_form_key_article_theme_node_form_alter(&$form, &$form_state) {
-  VeSafeStructureForms::key_article_theme_node_form_alter($form, $form_state);
-}
-
-/**
  * Implements hook_form_alter().
  *
  * {@inheritdoc}
  */
 function vesafe_structure_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-good-practices-admin-view-page') {
-    VeSafeStructureForms::good_practice_admin_content_view_form_alter($form, $form_state);
+  switch ($form_id) {
+    case 'did_you_know_slide_node_form':
+      // "Did you know slide" node create/edit form
+      VeSafeStructureForms::did_you_know_slide_node_form_alter($form, $form_state);
+      break;
+
+    case 'good_practice_node_form':
+      // "Good practice" node create/edit form
+      VeSafeStructureForms::good_practice_node_form_alter($form, $form_state);
+      break;
+
+    case 'key_article_node_form':
+      // "Key article" node create/edit form
+      VeSafeStructureForms::key_article_node_form_alter($form, $form_state);
+      break;
+
+    case 'key_article_theme_node_form':
+      // "Key article theme" node create/edit form
+      VeSafeStructureForms::key_article_theme_node_form_alter($form, $form_state);
+      break;
+
+    case 'views_exposed_form':
+      if ($form['#id'] == 'views-exposed-form-good-practices-admin-view-page') {
+        VeSafeStructureForms::good_practice_admin_content_view_form_alter($form, $form_state);
+      }
+      break;
   }
 }

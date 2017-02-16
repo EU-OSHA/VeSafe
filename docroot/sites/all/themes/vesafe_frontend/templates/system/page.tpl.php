@@ -116,14 +116,6 @@
                   <?php if (!empty($primary_nav)): ?>
                     <?php print render($primary_nav); ?>
                   <?php endif; ?>
-                  <?php /*
-                <?php if (!empty($secondary_nav)): ?>
-                  <?php print render($secondary_nav); ?>
-                <?php endif; ?>
-                <?php if (!empty($page['navigation'])): ?>
-                  <?php print render($page['navigation']); ?>
-                <?php endif; ?>
-                */ ?>
                 </nav>
               </div>
             </div>
@@ -133,32 +125,42 @@
     <?php endif; ?>
   </div>
 </header>
-<div class="page-content">
-  <div class="page-content-header">
-    <div class="page-content-header-container">
-      <div class="container breadcrum-container">
-        <?php if (!empty($breadcrumb)): print str_replace('h2', 'span', $breadcrumb); endif;?>
-      </div>
-      <?php if (!empty($page['highlighted'])): ?>
-        <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
-      <?php endif; ?>
-      <a id="main-content"></a>
-      <?php print render($title_prefix); ?>
-      <?php if (!empty($title)): ?>
-        <div class="page-title-wrapper">
-          <div class="container page-title-container">
-            <h1 class="page-header"><?php print $title; ?></h1>
-          </div>
-        </div>
-      <?php endif; ?>
-      <?php print render($title_suffix); ?>
-      <?php if (!empty($page['above_title'])): ?>
-        <div class="above_title">
-          <?php print render($page['above_title']); ?>
-        </div>
-      <?php endif; ?>
-    </div>
+
+<div class="breadcrumb-container">
+  <div class="container">
+    <?php if (!empty($breadcrumb)): print str_replace('h2', 'span', $breadcrumb); endif;?>
   </div>
+</div>
+
+<div class="page-title-container">
+  <div class="container">
+    <a id="main-content"></a>
+    <?php print render($title_prefix); ?>
+    <?php if (!empty($title)): ?>
+      <div class="page-title-wrapper">
+        <div class="page-title-container">
+          <h1 class="page-header"><?php print $title; ?></h1>
+        </div>
+      </div>
+    <?php endif; ?>
+    <?php print render($title_suffix); ?>
+    <?php if (!empty($page['after_title'])): ?>
+      <div class="after_title">
+        <?php print render($page['after_title']); ?>
+      </div>
+    <?php endif; ?>
+  </div>
+</div>
+
+<?php if (!empty($page['highlighted'])): ?>
+<div class="jumbotron-container">
+  <div class="container-fluid">
+      <div class="highlighted"><?php print render($page['highlighted']); ?></div>
+  </div>
+</div>
+<?php endif; ?>
+
+<div class="page-content-container container">
   <?php if (!empty($page['sidebar_first'])): ?>
     <aside class="col-sm-3" role="complementary">
       <?php print render($page['sidebar_first']); ?>
@@ -185,13 +187,14 @@
     </aside>  <!-- /#sidebar-second -->
   <?php endif; ?>
 </div>
-<footer class="site-footer">
-  <div class="site-footer-container container">
+
+<div class="site-footer-container">
+  <footer class="site-footer container">
     <div class="footer-copyright">
       <?php print t("© @yyyy EU-OSHA | an agency of the European Union", array('@yyyy' => date("Y"))); ?>
     </div>
     <div class="footer-blocks">
       <?php print render($page['footer']); ?>
     </div>
-  </div>
-</footer>
+  </footer>
+</div>

@@ -9,20 +9,16 @@ base theme = bootstrap
 ;; Regions
 ;;;;;;;;;;;;;;;;;;;;;
 
-;regions[above_header]   = 'Above header'
-regions[header_block]   = 'Header block'
-regions[above_title]    = 'Above title'
+regions[header_block]   = 'Header'
 regions[menu]           = 'Menu'
-;regions[slider]         = 'Slider'
+regions[after_title]    = 'Title region'
 regions[header]         = 'Header'
-regions[highlighted]    = 'Highlighted'
+regions[highlighted]    = 'Jumbotron (full-width)'
 regions[help]           = 'Help'
 regions[content]        = 'Content'
 regions[sidebar_first]  = 'Primary'
 regions[sidebar_second] = 'Secondary'
 regions[footer]         = 'Footer'
-;regions[page_top]       = 'Page top'
-;regions[page_bottom]    = 'Page bottom'
 regions[contact_form_widget]   = 'Contact form widget'
 
 stylesheets[all][] = css/style.css

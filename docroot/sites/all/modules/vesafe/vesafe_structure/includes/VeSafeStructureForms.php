@@ -2,21 +2,18 @@
 
 class VeSafeStructureForms {
 
-
   /**
    * {@inheritdoc}
    */
   public static function good_practice_node_form_alter(&$form, &$form_state) {
     self::attachCSS($form, drupal_get_path('module', 'vesafe_structure') . '/styles/good-practice.css');
-    // @todo uncomment this after Bilbomatica is finishing their migration
-    // $form['body']['#access'] = false;
+    $form['body']['#access'] = false;
     global $user;
     if (empty($user) || $user->uid != 1) {
       $form['field_like_count']['#access'] = FALSE;
     }
     $form['field_like_count'][LANGUAGE_NONE][0]['value']['#description'] = 'Visible to user/1 only';
   }
-
 
   /**
    * {@inheritdoc}
@@ -32,6 +29,22 @@ class VeSafeStructureForms {
     self::attachCSS($form, drupal_get_path('module', 'vesafe_structure') . '/styles/key-article-theme.css');
   }
 
+  public static function did_you_know_slide_node_form_alter(&$form, &$form_state) {
+    $form['title']['#required'] = false;
+    hide($form['title']);
+    array_unshift($form['actions']['submit']['#submit'], [self::class, 'did_you_know_slide_node_form_submit']);
+  }
+
+  public static function did_you_know_slide_node_form_submit($form, &$form_state) {
+    // Copy the first 150 characters of body into node title
+    $body = $form_state['values']['body'][LANGUAGE_NONE][0]['value'];
+    $title = substr($body, 0, 150);
+    $title = substr($title, 0, strrpos($title, ' ') - 1);
+    if (strlen($body) > 150) {
+      $title .= '...';
+    }
+    $form_state['values']['title'] = $title;
+  }
 
   /**
    * Alter exposed filter for /admin/content/good-practices
@@ -61,7 +74,6 @@ class VeSafeStructureForms {
     }
     $form['#suffix'] = VeSafeStructureUtil::boo();
   }
-
 
   /**
    * Safely attach CSS to a form.
