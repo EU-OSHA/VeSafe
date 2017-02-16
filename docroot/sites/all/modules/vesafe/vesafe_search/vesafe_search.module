@@ -1,0 +1,108 @@
+<?php
+/**
+ * @file
+ * Code for the vesafe_search feature.
+ */
+
+include_once 'vesafe_search.features.inc';
+
+function vesafe_search_block_info() {
+  return array(
+    'search_vesafe' => array(
+      'info' => t('VeSafe search box'),
+      'cache' => DRUPAL_NO_CACHE,
+      'weight' => 10,
+      'status' => 1,
+      'region' => 'header_block',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function vesafe_search_block_view($delta = '') {
+  $block = array();
+  switch($delta) {
+    case 'search_vesafe':
+      $block['content'] = drupal_get_form('vesafe_search_form');
+      break;
+  }
+  return $block;
+}
+
+function _vesafe_get_search_query($parameter = 'search_api_views_fulltext') {
+  return !empty($_GET[$parameter]) ? check_plain($_GET[$parameter]) : '';
+}
+
+function vesafe_search_form($form, $form_state) {
+  $form = [
+    '#id' => 'search-form',
+    '#action' => 'search',
+    '#method' => 'post',
+    '#attributes' => ['class' => ['navbar-form']],
+    'basic' => [
+      '#type' => 'container',
+      'keys' => [
+        '#type' => 'textfield',
+        '#default_value' => _vesafe_get_search_query(),
+        '#size' => 25,
+        '#maxlength' => 255,
+        '#attributes' => ['placeholder' => t('Explore VeSafe')],
+      ],
+      'submit' => [
+        '#type' => 'submit',
+        '#value' => '<span class="glyphicon glyphicon-search"></span>',
+        '#attributes' => ['class' => ['btn-default']],
+      ],
+    ],
+  ];
+  return $form;
+}
+
+function vesafe_search_form_submit($form, $form_state) {
+  $search_query = check_plain($form_state['values']['keys']);
+  drupal_goto($form['#action'], ['query' => ['search_api_views_fulltext' => $search_query]]);
+}
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function vesafe_search_views_pre_view(&$view, &$display_id, &$args) {
+  /** @var view $view */
+  switch ($view->name) {
+    case 'search':
+      // Header text area: "Results for ..."
+      // I don't know how to set it's weight so i will put the text on the first
+      // position using hook_views_pre_render
+      $item = array(
+        'label' => '',
+        'content' => sprintf('<div class="results-for">%s: <b>"%s"</b></div>',
+          t('Results for'),
+          _vesafe_get_search_query()
+        ),
+        'format' => 'full_html',
+        'empty' => 1,
+      );
+      $view->add_item($display_id, 'header', 'views', 'area', $item, 'results_for_text');
+      break;
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function vesafe_search_views_pre_render(&$view) {
+  switch ($view->name) {
+    case 'search':
+      // Display the "Results for ..." text at the top of the header
+      if (!empty($view->header['results_for_text'])) {
+        $resultsFor = $view->header['results_for_text'];
+        unset($view->header['results_for_text']);
+        $view->header = array_merge(['results_for_text' => $resultsFor], $view->header);
+      }
+      break;
+  }
+}
