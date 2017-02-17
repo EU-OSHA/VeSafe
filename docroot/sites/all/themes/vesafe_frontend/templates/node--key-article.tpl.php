@@ -112,7 +112,9 @@
 	</div>
 	<div class="key-article-content col-md-9">
 		<div class="key-article-text">
-			<!--texto key article-->
+			<h3 class="titulos-key-articles"><!--titulo key article--></h3>
+			<div class="body-key-article">	<!--texto key article--></div>
+			
 		</div>
 		<div class="key-article-next-prev-buttons">
 			<button  type="button" class="prev-button"><!--titulo prev button--></button>
