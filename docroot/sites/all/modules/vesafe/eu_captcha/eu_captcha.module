@@ -111,6 +111,13 @@ function eu_captcha_captcha($op, $captcha_type = '') {
 function eu_captcha_validation() {
   $captcha_path = drupal_get_path('module', 'eu_captcha');
   require_once $captcha_path . '/captchalib.php';
-  $check = captcha_check_answer();
+
+  $request = $_REQUEST;
+  foreach ($request as $key => $value) {
+    if (is_array($value)) {
+      unset($request[$key]);
+    }
+  }
+  $check = captcha_check_answer($request);
   return $check->is_valid;
 }
