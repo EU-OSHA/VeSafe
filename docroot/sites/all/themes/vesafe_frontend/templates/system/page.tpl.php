@@ -194,5 +194,6 @@
     <div class="footer-blocks">
       <?php print render($page['footer']); ?>
     </div>
+    <a href="#" id="scroll-top"></a>
   </footer>
 </div>
