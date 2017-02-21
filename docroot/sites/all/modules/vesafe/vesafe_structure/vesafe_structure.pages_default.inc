@@ -138,9 +138,20 @@ function vesafe_structure_default_page_manager_pages() {
       4 => array(
         'type' => 'row',
         'contains' => 'region',
-        'children' => array(),
+        'children' => array(
+          0 => 'key_articles_introduction',
+        ),
         'parent' => 'main',
         'class' => '',
+        'hide_empty' => 0,
+      ),
+      'key_articles_introduction' => array(
+        'type' => 'region',
+        'title' => 'Key articles',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => '4',
+        'class' => 'col-md-12',
         'hide_empty' => 0,
       ),
     ),
@@ -166,6 +177,29 @@ function vesafe_structure_default_page_manager_pages() {
   $display->uuid = 'da281de1-7b2b-4e65-afa5-f1c6cae69151';
   $display->content = array();
   $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-ec1583a0-7db0-4071-a40a-be716535164f';
+    $pane->panel = 'key_articles_introduction';
+    $pane->type = 'block';
+    $pane->subtype = 'views-key_articles-block';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Or select the area you work in',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'ec1583a0-7db0-4071-a40a-be716535164f';
+    $display->content['new-ec1583a0-7db0-4071-a40a-be716535164f'] = $pane;
+    $display->panels['key_articles_introduction'][0] = 'new-ec1583a0-7db0-4071-a40a-be716535164f';
     $pane = new stdClass();
     $pane->pid = 'new-430035bc-7474-4836-966d-45bae4ee307f';
     $pane->panel = 'risk_navigation';
