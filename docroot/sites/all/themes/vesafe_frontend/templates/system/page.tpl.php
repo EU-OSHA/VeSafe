@@ -58,6 +58,8 @@
  * - $page['help']: Dynamic help text, mostly for admin pages.
  * - $page['highlighted']: Items for the highlighted content region.
  * - $page['content']: The main content of the current page.
+ * - $page['content_full']: Content within a full-width container.
+ * - $page['content_bottom']: Content after the full-width container.
  * - $page['sidebar_first']: Items for the first sidebar.
  * - $page['sidebar_second']: Items for the second sidebar.
  * - $page['header']: Items for the header region.
@@ -185,6 +187,22 @@
     </aside>  <!-- /#sidebar-second -->
   <?php endif; ?>
 </div>
+
+<?php if (!empty($page['content_full'])): ?>
+  <div class="content-full-container">
+    <div class="container">
+      <?php print render($page['content_full']); ?>
+    </div>
+  </div>
+<?php endif; ?>
+
+<?php if (!empty($page['content_bottom'])): ?>
+  <div class="content-bottom-container">
+    <div class="container">
+      <?php print render($page['content_bottom']); ?>
+    </div>
+  </div>
+<?php endif; ?>
 
 <div class="site-footer-container">
   <footer class="site-footer container">
