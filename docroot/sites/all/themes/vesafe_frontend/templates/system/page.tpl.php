@@ -130,7 +130,9 @@
 
 <div class="breadcrumb-container">
   <div class="container">
-    <?php if (!empty($breadcrumb)): print str_replace('h2', 'span', $breadcrumb); endif;?>
+    <?php 
+     if (!empty($breadcrumb)): print str_replace('h2', 'span', $breadcrumb); endif;
+    ?>
   </div>
 </div>
 
@@ -151,8 +153,19 @@
         <?php print render($page['after_title']); ?>
       </div>
     <?php endif; ?>
+
+    <?php
+     if (isset($node->field_subtitle['und'][0]['value'])){
+      print('<div class="after_title">');
+      print($node->field_subtitle['und'][0]['value']);
+      print('</div>');
+      }
+      ?>
+
   </div>
 </div>
+
+
 
 <?php if (!empty($page['highlighted'])): ?>
 <div class="jumbotron-container">

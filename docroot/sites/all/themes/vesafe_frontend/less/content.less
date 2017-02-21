@@ -38,6 +38,7 @@ body > .page-title-container{
     background-repeat: repeat;
     background-position: center top;
     background-size: auto;
+    margin-bottom: 30px;
 	h1{
 		border-bottom: none;
 		margin: 0px;
@@ -48,6 +49,19 @@ body > .page-title-container{
 	.after_title{
 		p{
 			margin-bottom: 0px;
+			a{
+				color: @color-secondary;
+				
+			}
+			a[target*="_blank"]{
+				&:after{
+					content:"\e164";
+					font-family: "Glyphicons Halflings";
+					display: inline-block;
+					vertical-align: text-bottom;
+    				margin-left: 5px;
+				}
+			}
 		}
 	}
 }
@@ -168,6 +182,101 @@ body > .page-title-container{
 			}
 			#views_slideshow_controls_text_next_did_you_know-block{
 				right: 0px;
+			}
+		}
+	}
+}
+
+/*Contact-us
+**************************/
+.page-node-5{
+	.page-content-container.container{
+		max-width: 800px;
+		.submitted{
+			display: none;
+		}
+		form.webform-client-form{
+			.form-item{
+				margin-bottom: 15px;
+				input, textarea{
+					background-color: @color-background-grey;
+				}
+				textarea{
+					max-height: 200px;
+				}
+				#edit-submitted-email{
+					display: block;
+				    width: 100%;
+				    height: 36px;
+				    padding: 6px 12px;
+				    font-size: 16px;
+				    line-height: 1.42857143;
+				    color: #555555;
+				    background-image: none;
+				    border: 1px solid #cccccc;
+				    border-radius: 4px;
+				    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+				    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+				    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+				    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+				    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+				}
+			}
+			.captcha{
+				margin-top: 30px;
+				border: none;
+				box-shadow: none;
+				margin-bottom: 10px;
+				legend{
+					display: none;
+				}
+				.panel-body{
+					padding: 0px;
+					.help-block{
+						display: none;
+					}
+					.form-item-security-code{
+						margin-top: 15px;
+						input{
+							max-width: 258px;
+						}
+					}
+					#captcha_0_readaudio{
+					    background: url(../images/icons/audio-form.png) no-repeat;
+						background-size: cover;
+					    height: 38px;
+					    display: inline-block;
+					    margin-bottom: 4px;
+					    border: 1px solid #a9a9a9;
+					    -webkit-filter: hue-rotate(159deg) saturate(3);
+					    filter: hue-rotate(159deg) saturate(3);
+					    img{
+					    	visibility: hidden;
+					    }
+					}
+					#captcha_0_refresh{
+					    background: url(../images/icons/refresh-form.png) no-repeat;
+						background-size: cover;
+					    height: 38px;
+					    display: inline-block;
+					    margin-bottom: 4px;
+					    border: 1px solid #a9a9a9;
+					    -webkit-filter: hue-rotate(159deg) saturate(3);
+					    filter: hue-rotate(159deg) saturate(3);
+					    img{
+					    	visibility: hidden;
+					    }
+					}
+    
+				}
+			}
+			button.webform-submit{
+				background-color: @color-secondary;
+				color: white;
+				border: none;
+				margin: 0 auto;
+				display: block;
+    			width: 200px;
 			}
 		}
 	}
