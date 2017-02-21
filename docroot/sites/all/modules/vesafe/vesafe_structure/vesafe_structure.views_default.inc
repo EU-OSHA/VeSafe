@@ -831,16 +831,33 @@ function vesafe_structure_views_default_views() {
     'frontpage_key_articles' => 'frontpage_key_articles',
     'did_you_know' => 0,
   );
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   /* Field: Content: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['label'] = '';
+  $handler->display->display_options['fields']['field_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['alter']['text'] = '<div class="overlay">
+<div class="thumb-info">
+<span class="icon-link"></span>
+</div>
+</div>
+[field_image]';
+  $handler->display->display_options['fields']['field_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['alter']['path'] = '[path]';
+  $handler->display->display_options['fields']['field_image']['alter']['link_class'] = 'link-to-url';
   $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image']['settings'] = array(
     'image_style' => 'large',
-    'image_link' => 'content',
+    'image_link' => '',
   );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -897,6 +914,12 @@ function vesafe_structure_views_default_views() {
     t('Description'),
     t('The main part of this guide are good practice examples for you to learn from. To find the good practices that are applicable to you we have tagged them by vehicle and by risk.'),
     t('Content Queue'),
+    t('<div class="overlay">
+<div class="thumb-info">
+<span class="icon-link"></span>
+</div>
+</div>
+[field_image]'),
     t('Block'),
   );
   $export['key_articles'] = $view;
