@@ -30,9 +30,6 @@ if [ ${ecode} != 0 ]; then
   exit ${ecode};
 fi
 
-# Set the environment to local
-drush vset environment local
-
 if [ ! -z "$pre_update" ]; then
   echo "Run pre update"
   ../$pre_update
@@ -74,3 +71,6 @@ if [ ! -z "$post_update" ]; then
   ../$post_update
   drush cc all
 fi
+
+# Set the environment to local
+drush vset environment local
