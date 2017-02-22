@@ -1,5 +1,6 @@
 @import url('//fonts.googleapis.com/css?family=Oswald:300,400,700&subset=latin,latin-ext');
 @import url('//fonts.googleapis.com/css?family=Roboto:700,400,700italic&subset=latin,greek,cyrillic,latin-ext');
+@import url('//fonts.googleapis.com/css?family=Open+Sans:400,600,700');
 /*ENDIKA - ASIER VARIABLES
 *********************************************/
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
@@ -6721,7 +6722,6 @@ button.close {
   margin: 0px;
 }
 body {
-  font-size: 16px;
   font-family: "Open Sans";
 }
 body a:hover {
@@ -6729,7 +6729,7 @@ body a:hover {
 }
 h2 {
   font-size: 1.6em;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 22px;
 }
 /* h1 page titles
@@ -7026,6 +7026,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 .homepage #block-block-4 h3 {
   font-size: 1.2em;
+  font-weight: 600;
 }
 .homepage #block-block-4 a {
   color: #ea4a5e;
