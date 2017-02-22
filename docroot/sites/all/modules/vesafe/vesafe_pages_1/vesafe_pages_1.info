@@ -1,0 +1,13 @@
+name = Vesafe Pages
+description = Drupal Views
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = good_practices_1
+features[views_view][] = related_good_practices
+features[views_view][] = themes
+features_exclude[dependencies][ctools] = ctools
+project path = sites/all/modules/vesafe
