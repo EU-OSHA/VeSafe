@@ -1,3 +1,76 @@
 @media only screen and (max-width : 767px){
 
+/*Header
+*************************/
+.menu-header{
+	margin-bottom: 35px;
+}
+.top-header-container{
+	padding-top: 0px;
+	.header-logo{
+		width: 100%;
+		.logo{
+			img{
+				width: 200px;
+			}
+		}
+		.eu-logo{
+			right: 15px;
+			width: 50px;
+		}
+	}
+	.header-sitename{
+		display: none;
+	}
+	.header-blocks{
+		#block-block-3,
+		#block-text-resize-0,
+		#block-printfriendly-printfriendly{
+			display: none;
+		}
+		#block-vesafe-search-search-vesafe{
+			position: absolute;
+			bottom: -53px;
+    		right: 15px;
+    		background-color: white;
+    		z-index: 9999;
+			.navbar-form{
+				.form-type-textfield{
+					input{
+						border-bottom: 1px solid @color-primary;
+						background-color: white;
+						color: @color-primary;
+					}
+				}
+				button{
+					background-color: white;
+				    span{
+				    	color: @color-primary;
+				    }
+				}
+			}
+		}
+		#block-gtranslate-gtranslate{
+			position: absolute;
+		    bottom: -100px;
+		    right: 15px;
+		}
+	}
+}
+
+
+/*Footer
+***********************/
+div.site-footer-container{
+	padding-top: 40px;
+	#scroll-top{
+		right: 50%;
+    	top: -65px;
+    	transform: translate(27px);
+	}
+}
+
+
+
+
 }
