@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Vesafe Pages feature.
+ */
+
+include_once 'vesafe_pages_1.features.inc';
