@@ -77,7 +77,7 @@
 </div>
 
 <!--page title block-->
-<div class="page-title-container">
+<!-- <div class="page-title-container">
 	<div class="container">
 		<div class="page-title-wrapper">
 			<h1><?php print($node->title); ?></h1>
@@ -86,59 +86,69 @@
 			<h3><?php print($node->field_subtitle["und"][0]["value"]); ?></h3>
 		</div>
 	</div>
-</div>
+</div> -->
 <div class="back-arrow-container container">
 	<div class="back-arrow-wrapper">
-		<span class="back-arrow">Volver al listado</span>
+		<a href="#" class="back-arrow">Return to list</a>
 	</div>
 </div>
 <!--page image block-->
 <div class="jumbotron-container">
-	<div class="container-fluid">
-		<div class="page-image-wrapper">
-			<img src="<?php print file_create_url($node->field_image['und'][0]['uri']); ?>" />
-		</div>
+	<div class="page-image-wrapper">
+		<img class="img-responsive" src="<?php print file_create_url($node->field_image['und'][0]['uri']); ?>" />
 	</div>
 </div>
 <!--general content-->
-<div class="page-content-container container">
-	<div class="key-articles-menu-container col-md-3">
+<div class="page-content-container-inside container">
+	<div class="key-articles-menu-container col-md-3 col-sm-5">
 		<ul>
-			<li><a href="#introduction">Introduction</a></li>
+			<li><a href="#introduction" class="key-introduction">Introduction</a></li>
 			<li>
-				<span>General safety issues</span>
+				<span class="key-safety key-menu-arrow-open">General safety issues</span>
 				<ul><?php
 					$gsi = 	$node->field_ka_general_safety_issues["und"];
 					foreach ($gsi as $issue) {
 						$title = $issue["entity"]->title;
 						$titleLink = strtolower($issue["entity"]->title);
 						$titleLink = str_replace(' ', '-', $titleLink);
+						$titleLink = str_replace(',', '', $titleLink);
+						$titleLink = str_replace('.', '', $titleLink);
+						$titleLink = str_replace('(', '', $titleLink);
+						$titleLink = str_replace(')', '', $titleLink);
 
 						print '<li><a href="#'.$titleLink.'">'.$title.'</a></li>';
 					}
 				?></ul>
 			</li>
 			<li>
-				<span>General risk factors</span>
+				<span class="key-general-risk key-menu-arrow-open">General risk factors</span>
 				<ul><?php
 					$grf = $node->field_ka_general_risk_factors["und"];
 					foreach ($grf as $issue) {
 						$title = $issue["entity"]->title;
 						$titleLink = strtolower($issue["entity"]->title);
 						$titleLink = str_replace(' ', '-', $titleLink);
+						$titleLink = str_replace(',', '', $titleLink);
+						$titleLink = str_replace('.', '', $titleLink);
+						$titleLink = str_replace('(', '', $titleLink);
+						$titleLink = str_replace(')', '', $titleLink);
 
 						print '<li><a href="#'.$titleLink.'">'.$title.'</a></li>';
 					}
 				?></ul>
 			</li>
 			<li>
-				<span>Specific risk factors</span>
+				<span class="key-specific-risk key-menu-arrow-open">Specific risk factors</span>
 				<ul><?php
 					$srf = $node->field_ka_specific_risk_factors["und"];
 					foreach ($srf as $issue) {
 						$title = $issue["entity"]->title;
 						$titleLink = strtolower($issue["entity"]->title);
 						$titleLink = str_replace(' ', '-', $titleLink);
+						$titleLink = str_replace(',', '', $titleLink);
+						$titleLink = str_replace('.', '', $titleLink);
+						$titleLink = str_replace('(', '', $titleLink);
+						$titleLink = str_replace(')', '', $titleLink);
 
 						print '<li><a href="#'.$titleLink.'">'.$title.'</a></li>';
 					}
@@ -146,115 +156,129 @@
 			</li>
 		</ul>
 	</div>
-	<div id="introduction" class="key-article-content col-md-9">
-		<div class="key-article-text">
-			<h3 class="titulos-key-articles">Introduction</h3>
-			<div class="body-key-article">
-				<?php
-					print (render($node->body["und"]["0"]["value"]));
-				?>
+	<div class="key-article-content col-md-9 col-sm-12">
+		<div id="introduction">
+			<div class="key-article-text">
+				<h3 class="titulos-key-articles">Introduction</h3>
+				<div class="body-key-article">
+					<?php
+						print (render($node->body["und"]["0"]["value"]));
+					?>
+				</div>
 			</div>
-		</div>
-		<div class="key-article-next-prev-buttons">
+			<div class="key-article-next-prev-buttons">
 
-		<?php
-			$previousHref = '#introduction';
-			$previousTitle = 'Introduction';
-			$nextHref = '';
+			<?php
+				$previousHref = '#introduction';
+				$previousTitle = 'Introduction';
+				$nextHref = '';
 
-			// General Safety Issues
-			$gsi = $node->field_ka_general_safety_issues["und"];
-			foreach ($gsi as $issue) {			
-				// Get the title of the current Issue
-				$title = $issue["entity"]->title;
-				$titleLink = strtolower($issue["entity"]->title);
-				$titleLink = str_replace(' ', '-', $titleLink);
-				$nextHref = '#' . $titleLink;
+				// General Safety Issues
+				$gsi = $node->field_ka_general_safety_issues["und"];
+				foreach ($gsi as $issue) {			
+					// Get the title of the current Issue
+					$title = $issue["entity"]->title;
+					$titleLink = strtolower($issue["entity"]->title);
+					$titleLink = str_replace(' ', '-', $titleLink);
+					$titleLink = str_replace(',', '', $titleLink);
+					$titleLink = str_replace('.', '', $titleLink);
+					$titleLink = str_replace('(', '', $titleLink);
+					$titleLink = str_replace(')', '', $titleLink);
+					$nextHref = '#' . $titleLink;
 
-				// Print Next Button From Previous div
-						print '<button  type="button" class="next-button"><a href="'.$nextHref.'" class="next-button">'.$title.'</a></button>';
-					print '</div>'; // Next-Previous Button div closure
-				print '</div>'; // Key Article Theme div closure
+					// Print Next Button From Previous div
+							print '<button  type="button" class="next-button"><a href="'.$nextHref.'" class="nexting-button">'.$title.'</a></button>';
+						print '</div>'; // Next-Previous Button div closure
+					print '</div>'; // Key Article Theme div closure
 
 
-				print '<div id="'.$titleLink.'" class="key-article-content col-md-9">'; // Key Article Theme div open
-					print '<div  class="key-article-text">';
-						print '<h3 class="titulos-key-articles">'.$title.'</h3>';
-						print '<div class="body-key-article">';
-							print render($issue["entity"]->body["und"][0]["value"]);
+					print '<div id="'.$titleLink.'">'; // Key Article Theme div open
+						print '<div  class="key-article-text">';
+							print '<h3 class="titulos-key-articles">'.$title.'</h3>';
+							print '<div class="body-key-article">';
+								print render($issue["entity"]->body["und"][0]["value"]);
+							print '</div>';
 						print '</div>';
-					print '</div>';
-					print '<div class="key-article-next-prev-buttons">';
-						print '<button  type="button" class="prev-button"><a href="'.$previousHref.'" class="previous-button">'.$previousTitle.'</a></button>';
-				
-				// Update previousHref and previousTitle for next div
-				$previousHref = '#' . $titleLink;
-				$previousTitle = $title;
-			}
+						print '<div class="key-article-next-prev-buttons">';
+							print '<button  type="button" class="prev-button"><a href="'.$previousHref.'" class="previous-button">'.$previousTitle.'</a></button>';
+					
+					// Update previousHref and previousTitle for next div
+					$previousHref = '#' . $titleLink;
+					$previousTitle = $title;
+				}
 
-			// General Risk Factors
-			$grf = $node->field_ka_general_risk_factors["und"];
-			foreach ($grf as $issue) {
-				// Get the title of the current Issue
-				$title = $issue["entity"]->title;
-				$titleLink = strtolower($issue["entity"]->title);
-				$titleLink = str_replace(' ', '-', $titleLink);
-				$nextHref = '#' . $titleLink;
+				// General Risk Factors
+				$grf = $node->field_ka_general_risk_factors["und"];
+				foreach ($grf as $issue) {
+					// Get the title of the current Issue
+					$title = $issue["entity"]->title;
+					$titleLink = strtolower($issue["entity"]->title);
+					$titleLink = str_replace(' ', '-', $titleLink);
+					$titleLink = str_replace(',', '', $titleLink);
+					$titleLink = str_replace('.', '', $titleLink);
+					$titleLink = str_replace('(', '', $titleLink);
+					$titleLink = str_replace(')', '', $titleLink);
+					$nextHref = '#' . $titleLink;
 
-				// Print Next Button From Previous div
-						print '<button  type="button" class="next-button"><a href="'.$nextHref.'" class="next-button">'.$title.'</a></button>';
-					print '</div>'; // Next-Previous Button div closure
-				print '</div>'; // Key Article Theme div closure
+					// Print Next Button From Previous div
+							print '<button  type="button" class="next-button"><a href="'.$nextHref.'" class="nexting-button">'.$title.'</a></button>';
+						print '</div>'; // Next-Previous Button div closure
+					print '</div>'; // Key Article Theme div closure
 
 
-				print '<div id="'.$titleLink.'" class="key-article-content col-md-9">'; // Key Article Theme div open
-					print '<div  class="key-article-text">';
-						print '<h3 class="titulos-key-articles">'.$title.'</h3>';
-						print '<div class="body-key-article">';
-							print render($issue["entity"]->body["und"][0]["value"]);
+					print '<div id="'.$titleLink.'">'; // Key Article Theme div open
+						print '<div  class="key-article-text">';
+							print '<h3 class="titulos-key-articles">'.$title.'</h3>';
+							print '<div class="body-key-article">';
+								print render($issue["entity"]->body["und"][0]["value"]);
+							print '</div>';
 						print '</div>';
-					print '</div>';
-					print '<div class="key-article-next-prev-buttons">';
-						print '<button  type="button" class="prev-button"><a href="'.$previousHref.'" class="previous-button">'.$previousTitle.'</a></button>';
-				
-				// Update previousHref and previousTitle for next div
-				$previousHref = '#' . $titleLink;
-				$previousTitle = $title;
-			}
+						print '<div class="key-article-next-prev-buttons">';
+							print '<button  type="button" class="prev-button"><a href="'.$previousHref.'" class="previous-button">'.$previousTitle.'</a></button>';
+					
+					// Update previousHref and previousTitle for next div
+					$previousHref = '#' . $titleLink;
+					$previousTitle = $title;
+				}
 
-			// Specific Risk Factors
-			$srf = $node->field_ka_specific_risk_factors["und"];
-			foreach ($srf as $issue) {
-				// Get the title of the current Issue
-				$title = $issue["entity"]->title;
-				$titleLink = strtolower($issue["entity"]->title);
-				$titleLink = str_replace(' ', '-', $titleLink);
-				$nextHref = '#' . $titleLink;
+				// Specific Risk Factors
+				$srf = $node->field_ka_specific_risk_factors["und"];
+				foreach ($srf as $issue) {
+					// Get the title of the current Issue
+					$title = $issue["entity"]->title;
+					$titleLink = strtolower($issue["entity"]->title);
+					$titleLink = str_replace(' ', '-', $titleLink);
+					$titleLink = str_replace(',', '', $titleLink);
+					$titleLink = str_replace('.', '', $titleLink);
+					$titleLink = str_replace('(', '', $titleLink);
+					$titleLink = str_replace(')', '', $titleLink);
+					$nextHref = '#' . $titleLink;
 
-				// Print Next Button From Previous div
-						print '<button  type="button" class="next-button"><a href="'.$nextHref.'" class="next-button">'.$title.'</a></button>';
-					print '</div>'; // Next-Previous Button div closure
-				print '</div>'; // Key Article Theme div closure
+					// Print Next Button From Previous div
+							print '<button  type="button" class="next-button"><a href="'.$nextHref.'" class="nexting-button">'.$title.'</a></button>';
+						print '</div>'; // Next-Previous Button div closure
+					print '</div>'; // Key Article Theme div closure
 
 
-				print '<div id="'.$titleLink.'" class="key-article-content col-md-9">'; // Key Article Theme div open
-					print '<div  class="key-article-text">';
-						print '<h3 class="titulos-key-articles">'.$title.'</h3>';
-						print '<div class="body-key-article">';
-							print render($issue["entity"]->body["und"][0]["value"]);
+					print '<div id="'.$titleLink.'">'; // Key Article Theme div open
+						print '<div  class="key-article-text">';
+							print '<h3 class="titulos-key-articles">'.$title.'</h3>';
+							print '<div class="body-key-article">';
+								print render($issue["entity"]->body["und"][0]["value"]);
+							print '</div>';
 						print '</div>';
-					print '</div>';
-					print '<div class="key-article-next-prev-buttons">';
-						print '<button  type="button" class="prev-button"><a href="'.$previousHref.'" class="previous-button">'.$previousTitle.'</a></button>';
-				
-				// Update previousHref and previousTitle for next div
-				$previousHref = '#' . $titleLink;
-				$previousTitle = $title;
-			}
-		?>
+						print '<div class="key-article-next-prev-buttons">';
+							print '<button  type="button" class="prev-button"><a href="'.$previousHref.'" class="previous-button">'.$previousTitle.'</a></button>';
+					
+					// Update previousHref and previousTitle for next div
+					$previousHref = '#' . $titleLink;
+					$previousTitle = $title;
+				}
+			?>
 
-		</div> <!-- Next-Previous Button div closure -->
-	</div> <!-- Key Article Theme div closure -->
+			</div> <!-- Next-Previous Button div closure -->
+		</div> <!-- Key Article Theme div closure -->
+	</div>
 	<div class="related-good-practices col-md-12">
 		<?php 
 			$nid = $node->nid;

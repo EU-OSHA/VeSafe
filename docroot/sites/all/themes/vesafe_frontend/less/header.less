@@ -1,5 +1,37 @@
+/*cockies*/
+#sliding-popup{
+	overflow: hidden;
+	background-color: @color-background-grey-dark !important;
+	.popup-content.info{
+		#popup-text{
+			h2{
+				margin-bottom: 15px;
+			}
+		}
+		#popup-buttons{
+			button{
+				background: @color-secondary !important;
+				border: none;
+				box-shadow: none;
+				text-shadow: none;
+				color: white;
+				font-weight: normal;
+			}
+			.find-more-button{
+				opacity: 0.5;
+				&:hover{
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+
 /*Header
 *************************/
+header{
+	clear: both;
+}
 .top-header-container{
 	padding-top: 15px;
 	padding-bottom: 15px;

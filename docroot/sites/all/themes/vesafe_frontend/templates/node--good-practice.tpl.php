@@ -74,32 +74,30 @@
  */
 ?>
 <!--page title block-->
-<div class="page-title-container">
+<!-- <div class="page-title-container">
 	<div class="container">
 		<div class="page-title-wrapper">
 			<h1><?php print($node->title); ?></h1>
 		</div>
 	</div>
-</div>
+</div> -->
 <div class="back-arrow-container container">
 	<div class="good-likes-wrapper">
-		<span class="good-likes"><!--aqui la cantidad de likes--></span>
+		<span class="good-likes"><!--aqui la cantidad de likes-->8</span>
 	</div>
 	<div class="back-arrow-wrapper">
-		<span class="back-arrow">Return to list</span>
+		<a href="#" class="back-arrow">Return to list</a>
 	</div>
 </div>
 <!--page image block-->
 <div class="jumbotron-container">
-	<div class="container-fluid">
-		<div class="page-image-wrapper">
-			<img src="<?php print file_create_url($node->field_image['und'][0]['uri']); ?>" />
-		</div>
+	<div class="page-image-wrapper">
+		<img class="img-responsive" src="<?php print file_create_url($node->field_image['und'][0]['uri']); ?>" />
 	</div>
 </div>
 <!--general content-->
-<div class="page-content-container container">
-	<div class="good-practices-menu-container col-md-12">
+<div class="page-content-container-inside container">
+	<div class="good-practices-tags-container col-md-12">
 		<?php 
 			// Create variable to store the taxonomy IDs to send to the Related Good Practices Block
 			$riskFilters = [];
@@ -163,9 +161,11 @@
 		<section class="additional-resources">
 			<h6>Additional Resources</h6>
 			<?php
-				$resources = $node->field_additional_resources["und"];
-				foreach ($resources as $item) {
-					print '<a href="'.$item["url"].'">'.$item["title"].'</a>';
+				if (isset($node->field_additional_resources["und"])) {
+					$resources = $node->field_additional_resources["und"];
+					foreach ($resources as $item) {
+						print '<a href="'.$item["url"].'">'.$item["title"].'</a>';
+					}
 				}
 			?>
 		</section>
