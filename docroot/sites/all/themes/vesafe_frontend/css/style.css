@@ -316,6 +316,7 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+  min-width: 100%;
 }
 .img-rounded {
   border-radius: 6px;
@@ -6517,8 +6518,33 @@ button.close {
     display: none !important;
   }
 }
+/*cockies*/
+#sliding-popup {
+  overflow: hidden;
+  background-color: #323232 !important;
+}
+#sliding-popup .popup-content.info #popup-text h2 {
+  margin-bottom: 15px;
+}
+#sliding-popup .popup-content.info #popup-buttons button {
+  background: #ea4a5e !important;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+  color: white;
+  font-weight: normal;
+}
+#sliding-popup .popup-content.info #popup-buttons .find-more-button {
+  opacity: 0.5;
+}
+#sliding-popup .popup-content.info #popup-buttons .find-more-button:hover {
+  opacity: 1;
+}
 /*Header
 *************************/
+header {
+  clear: both;
+}
 .top-header-container {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -6731,6 +6757,16 @@ h2 {
   font-size: 1.6em;
   font-weight: 600;
   margin-bottom: 22px;
+}
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  min-width: 100%;
+}
+a {
+  text-decoration: none;
 }
 /* h1 page titles
 ****************************/
@@ -7124,6 +7160,174 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   margin: 0 auto;
   display: block;
   width: 200px;
+}
+/* Type article detail/good practice detail
+***********************************************/
+.node-type-key-article #block-system-main .back-arrow-container .good-likes-wrapper,
+.node-type-good-practice #block-system-main .back-arrow-container .good-likes-wrapper {
+  display: inline-block;
+}
+.node-type-key-article #block-system-main .back-arrow-container .good-likes-wrapper .good-likes,
+.node-type-good-practice #block-system-main .back-arrow-container .good-likes-wrapper .good-likes {
+  color: #ea4a5e;
+}
+.node-type-key-article #block-system-main .back-arrow-container .good-likes-wrapper .good-likes:before,
+.node-type-good-practice #block-system-main .back-arrow-container .good-likes-wrapper .good-likes:before {
+  content: "\e005";
+  font-family: "Glyphicons Halflings";
+  vertical-align: bottom;
+  margin-right: 5px;
+}
+.node-type-key-article #block-system-main .back-arrow-container .back-arrow-wrapper,
+.node-type-good-practice #block-system-main .back-arrow-container .back-arrow-wrapper {
+  display: inline;
+  float: right;
+}
+.node-type-key-article #block-system-main .back-arrow-container .back-arrow-wrapper a.back-arrow,
+.node-type-good-practice #block-system-main .back-arrow-container .back-arrow-wrapper a.back-arrow {
+  color: #ea4a5e;
+}
+.node-type-key-article #block-system-main .back-arrow-container .back-arrow-wrapper a.back-arrow:after,
+.node-type-good-practice #block-system-main .back-arrow-container .back-arrow-wrapper a.back-arrow:after {
+  content: "";
+  background: url(../images/icons/back-news.png) no-repeat;
+  background-size: 100%;
+  display: inline-block;
+  width: 22px;
+  height: 25px;
+  vertical-align: middle;
+  margin-left: 5px;
+  -webkit-filter: hue-rotate(159deg) saturate(3);
+  filter: hue-rotate(159deg) saturate(3);
+}
+.node-type-key-article #block-system-main .jumbotron-container,
+.node-type-good-practice #block-system-main .jumbotron-container {
+  margin-bottom: 30px;
+}
+.node-type-key-article #block-system-main .jumbotron-container .page-image-wrapper,
+.node-type-good-practice #block-system-main .jumbotron-container .page-image-wrapper {
+  max-height: 320px;
+  overflow: hidden;
+}
+.node-type-key-article #block-system-main .key-articles-menu-container ul,
+.node-type-good-practice #block-system-main .key-articles-menu-container ul {
+  list-style: none;
+  margin: 0px;
+}
+.node-type-key-article #block-system-main .key-articles-menu-container > ul > li > a,
+.node-type-good-practice #block-system-main .key-articles-menu-container > ul > li > a,
+.node-type-key-article #block-system-main .key-articles-menu-container > ul > li > span,
+.node-type-good-practice #block-system-main .key-articles-menu-container > ul > li > span {
+  background-color: #ea4a5e;
+  margin-bottom: 10px;
+  display: block;
+  padding: 7px 10px;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.node-type-key-article #block-system-main .key-articles-menu-container > ul > li .key-menu-arrow-open:after,
+.node-type-good-practice #block-system-main .key-articles-menu-container > ul > li .key-menu-arrow-open:after {
+  content: "\e252";
+  font-family: "Glyphicons Halflings";
+  float: right;
+  font-size: 0.8em;
+  line-height: 25px;
+}
+.node-type-key-article #block-system-main .key-articles-menu-container > ul > li .key-menu-arrow-close:after,
+.node-type-good-practice #block-system-main .key-articles-menu-container > ul > li .key-menu-arrow-close:after {
+  content: "\e253";
+  font-family: "Glyphicons Halflings";
+  float: right;
+  font-size: 0.8em;
+  line-height: 25px;
+}
+.node-type-key-article #block-system-main .key-articles-menu-container > ul > li > ul a,
+.node-type-good-practice #block-system-main .key-articles-menu-container > ul > li > ul a {
+  display: block;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  color: #333333;
+}
+.node-type-key-article #block-system-main .key-articles-menu-container > ul > li .key-introduction:before,
+.node-type-good-practice #block-system-main .key-articles-menu-container > ul > li .key-introduction:before {
+  content: "\e044";
+  font-family: "Glyphicons Halflings";
+  margin-right: 10px;
+}
+.node-type-key-article #block-system-main .key-articles-menu-container > ul > li .key-safety:before,
+.node-type-good-practice #block-system-main .key-articles-menu-container > ul > li .key-safety:before {
+  content: "\f0fa";
+  font-family: "FontAwesome";
+  margin-right: 10px;
+}
+.node-type-key-article #block-system-main .key-articles-menu-container > ul > li .key-general-risk:before,
+.node-type-good-practice #block-system-main .key-articles-menu-container > ul > li .key-general-risk:before {
+  content: "\f0e7";
+  font-family: "FontAwesome";
+  margin-right: 10px;
+}
+.node-type-key-article #block-system-main .key-articles-menu-container > ul > li .key-specific-risk:before,
+.node-type-good-practice #block-system-main .key-articles-menu-container > ul > li .key-specific-risk:before {
+  content: "\f071";
+  font-family: "FontAwesome";
+  margin-right: 10px;
+}
+.node-type-key-article #block-system-main .key-article-content > .active,
+.node-type-good-practice #block-system-main .key-article-content > .active {
+  display: block;
+}
+.node-type-key-article #block-system-main .key-article-content > .close,
+.node-type-good-practice #block-system-main .key-article-content > .close {
+  display: none;
+}
+.node-type-key-article #block-system-main .key-article-content .key-article-text h3,
+.node-type-good-practice #block-system-main .key-article-content .key-article-text h3 {
+  margin-top: 0px;
+}
+.node-type-key-article #block-system-main .key-article-content .key-article-next-prev-buttons,
+.node-type-good-practice #block-system-main .key-article-content .key-article-next-prev-buttons {
+  overflow: hidden;
+  margin-top: 25px;
+}
+.node-type-key-article #block-system-main .key-article-content .key-article-next-prev-buttons button,
+.node-type-good-practice #block-system-main .key-article-content .key-article-next-prev-buttons button {
+  border: none;
+  border-radius: 3px;
+  background: #ea4a5e;
+  color: white;
+  padding: 7px 10px;
+}
+.node-type-key-article #block-system-main .key-article-content .key-article-next-prev-buttons button a,
+.node-type-good-practice #block-system-main .key-article-content .key-article-next-prev-buttons button a {
+  color: white;
+}
+.node-type-key-article #block-system-main .key-article-content .key-article-next-prev-buttons .prev-button,
+.node-type-good-practice #block-system-main .key-article-content .key-article-next-prev-buttons .prev-button {
+  float: left;
+}
+.node-type-key-article #block-system-main .key-article-content .key-article-next-prev-buttons .prev-button:before,
+.node-type-good-practice #block-system-main .key-article-content .key-article-next-prev-buttons .prev-button:before {
+  content: "<";
+  font-weight: bold;
+  margin-right: 10px;
+}
+.node-type-key-article #block-system-main .key-article-content .key-article-next-prev-buttons .next-button,
+.node-type-good-practice #block-system-main .key-article-content .key-article-next-prev-buttons .next-button {
+  float: right;
+}
+.node-type-key-article #block-system-main .key-article-content .key-article-next-prev-buttons .next-button:after,
+.node-type-good-practice #block-system-main .key-article-content .key-article-next-prev-buttons .next-button:after {
+  content: ">";
+  font-weight: bold;
+  margin-left: 10px;
+}
+/*deleting container class from some page that need go to edge*/
+.node-type-key-article .page-content-container.container,
+.node-type-good-practice .page-content-container.container {
+  width: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
 }
 /*Footer
 ***********************/
