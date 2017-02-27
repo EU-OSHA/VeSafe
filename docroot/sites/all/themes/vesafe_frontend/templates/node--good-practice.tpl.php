@@ -97,93 +97,112 @@
 </div>
 <!--general content-->
 <div class="page-content-container-inside container">
-	<div class="good-practices-tags-container col-md-12">
-		<?php 
-			// Create variable to store the taxonomy IDs to send to the Related Good Practices Block
-			$riskFilters = [];
-			$vehicleFilters = [];
-			// Print risk tags
-			$risks = $node->field_risks["und"];
-			if (sizeof($risks) > 0){
-				print '<div>';
-					print '<span>Risks: </span>';
-					foreach ($risks as $item) {
-						print '<span>'.($item["taxonomy_term"]->name).'</span>';
-						$riskFilters[] = $item["taxonomy_term"]->tid;
+	<div class="good-practice-block">
+		<div class="good-practices-tags-container col-md-12">
+			<?php 
+				// Create variable to store the taxonomy IDs to send to the Related Good Practices Block
+				$riskFilters = [];
+				$vehicleFilters = [];
+				// Print risk tags
+				$risks = $node->field_risks["und"];
+				if (sizeof($risks) > 0){
+					print '<div class="tags-block">';
+						print '<span class="tags-title">Risks: </span>';
+						foreach ($risks as $item) {
+							print '<span class="taxonomy-term-tag">'.($item["taxonomy_term"]->name).'</span>';
+							$riskFilters[] = $item["taxonomy_term"]->tid;
+						}
+					print '</div>';
+				}
+				
+				// Print vehicle tags
+				$vehicles = $node->field_vehicles["und"];
+				if (sizeof($vehicles) > 0){
+					print '<div class="tags-block">';
+						print '<span class="tags-title">Vehicles: </span>';
+						foreach ($vehicles as $item) {
+							print '<span class="taxonomy-term-tag">'.($item["taxonomy_term"]->name).'</span>';
+							$vehicleFilters[] = $item["taxonomy_term"]->tid;
+						}
+					print '</div>';
+				}			
+			?>
+		</div>
+		<div class="good-practice-content col-sm-9">
+			<div class="good-practice-text">
+				<section class="what-is-it">
+					<h3>What is it?</h3>
+					<?php print(render($node->field_gp_what_is_it["und"][0]["value"])); ?>
+				</section>
+				<section class="who-is-it-for">
+					<h3>Who is it for?</h3>
+					<?php print(render($node->field_gp_who_is_for["und"][0]["value"])); ?>
+				</section>
+				<section class="what-is-the-benefit">
+					<h3>What is the benefit?</h3>
+					<?php print(render($node->field_gp_what_is_the_benefit["und"][0]["value"])); ?>
+				</section>
+				<section class="getting-started">
+					<h3>Getting started</h3>
+					<?php print(render($node->field_gp_getting_started["und"][0]["value"])); ?>
+				</section>
+			</div>
+		</div>
+		<div class="resources-container col-sm-3">
+			<section class="links">
+				<h3>Links</h3>
+				<?php
+					$links = $node->field_gp_external_links["und"];
+					foreach ($links as $item) {
+						print '<a target="_blank" href="'.$item["url"].'">'.$item["title"].'</a>';
 					}
-				print '</div>';
-			}
-			
-			// Print vehicle tags
-			$vehicles = $node->field_vehicles["und"];
-			if (sizeof($vehicles) > 0){
-				print '<div>';
-					print '<span>Vehicles: </span>';
-					foreach ($vehicles as $item) {
-						print '<span>'.($item["taxonomy_term"]->name).'</span>';
-						$vehicleFilters[] = $item["taxonomy_term"]->tid;
+					print '<a target="_blank" href="'.file_create_url($node->field_gp_factsheet["und"][0]["uri"]).'"">Download factsheet</a>';
+				?>
+			</section>
+			<section class="additional-resources">
+				<h3>Additional Resources</h3>
+				<?php
+					if (isset($node->field_additional_resources["und"])) {
+						$resources = $node->field_additional_resources["und"];
+						if (sizeof($resources) > 3){
+							print '<div>';
+							for ($i = 0; $i < 3; $i++){
+								print '<a target="_blank" href="'.$resources[$i]["url"].'">'.$resources[$i]["title"].'</a>';
+							}
+							print '</div>';
+							print '<div>';
+							for ($i = 3; $i < sizeof($resources); $i++){
+								print '<a target="_blank" href="'.$resources[$i]["url"].'">'.$resources[$i]["title"].'</a>';
+							}
+							print '</div>';
+							print '<a href="#">See more</a>';
+						}else {
+							print '<div>';
+							foreach ($resources as $item) {
+								print '<a target="_blank" href="'.$item["url"].'">'.$item["title"].'</a>';
+							}
+							print '</div>';
+						}
+						
 					}
-				print '</div>';
-			}			
-		?>
-	</div>
-	<div class="good-practice-content col-sm-9">
-		<div class="good-practice-text">
-			<section class="what-is-it">
-				<h6>What is it?</h6>
-				<?php print(render($node->field_gp_what_is_it["und"][0]["value"])); ?>
-			</section>
-			<section class="who-is-it-for">
-				<h6>Who is it for?</h6>
-				<?php print(render($node->field_gp_who_is_for["und"][0]["value"])); ?>
-			</section>
-			<section class="what-is-the-benefit">
-				<h6>What is the benefit?</h6>
-				<?php print(render($node->field_gp_what_is_the_benefit["und"][0]["value"])); ?>
-			</section>
-			<section class="what-is-the-benefit">
-				<h6>Getting started</h6>
-				<?php print(render($node->field_gp_getting_started["und"][0]["value"])); ?>
+				?>
 			</section>
 		</div>
-	</div>
-	<div class="resources-container col-sm-3">
-		<section class="links">
-			<h6>Links</h6>
+		<div class="related-good-practices col-md-12">
 			<?php
-				$links = $node->field_gp_external_links["und"];
-				foreach ($links as $item) {
-					print '<a href="'.$item["url"].'">'.$item["title"].'</a>';
+				if (sizeof($riskFilters) == 0) {
+					$riskFilters = 'all';
+				}else{
+					$riskFilters = implode('+',$riskFilters);
 				}
-				print '<a href="'.file_create_url($node->field_gp_factsheet["und"][0]["uri"]).'"">Download factsheet</a>';
-			?>
-		</section>
-		<section class="additional-resources">
-			<h6>Additional Resources</h6>
-			<?php
-				if (isset($node->field_additional_resources["und"])) {
-					$resources = $node->field_additional_resources["und"];
-					foreach ($resources as $item) {
-						print '<a href="'.$item["url"].'">'.$item["title"].'</a>';
-					}
+				if (sizeof($vehicleFilters) == 0) {
+					$vehicleFilters = 'all';
+				}else{
+					$vehicleFilters = implode('+', $vehicleFilters);	
 				}
+				
+				print views_embed_view('related_good_practices', $display_id = 'block_1',$riskFilters.'/'.$vehicleFilters);
 			?>
-		</section>
-	</div>
-	<div class="related-good-practices col-md-12">
-		<?php
-			if (sizeof($riskFilters) == 0) {
-				$riskFilters = 'all';
-			}else{
-				$riskFilters = implode('+',$riskFilters);
-			}
-			if (sizeof($vehicleFilters) == 0) {
-				$vehicleFilters = 'all';
-			}else{
-				$vehicleFilters = implode('+', $vehicleFilters);	
-			}
-			
-			print views_embed_view('related_good_practices', $display_id = 'block_1',$riskFilters.'/'.$vehicleFilters);
-		?>
+		</div>
 	</div>
 </div>

@@ -6768,6 +6768,13 @@ h2 {
 a {
   text-decoration: none;
 }
+/*deleting container class from some page that need go to edge*/
+.node-type-key-article .page-content-container.container,
+.node-type-good-practice .page-content-container.container {
+  width: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
+}
 /* h1 page titles
 ****************************/
 body > .page-title-container {
@@ -7202,7 +7209,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 .node-type-key-article #block-system-main .jumbotron-container,
 .node-type-good-practice #block-system-main .jumbotron-container {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .node-type-key-article #block-system-main .jumbotron-container .page-image-wrapper,
 .node-type-good-practice #block-system-main .jumbotron-container .page-image-wrapper {
@@ -7322,12 +7329,181 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   font-weight: bold;
   margin-left: 10px;
 }
-/*deleting container class from some page that need go to edge*/
-.node-type-key-article .page-content-container.container,
-.node-type-good-practice .page-content-container.container {
-  width: inherit;
-  padding-left: inherit;
-  padding-right: inherit;
+.node-type-key-article #block-system-main .good-practice-block .good-practices-tags-container .tags-block,
+.node-type-good-practice #block-system-main .good-practice-block .good-practices-tags-container .tags-block {
+  font-size: 0.9em;
+}
+.node-type-key-article #block-system-main .good-practice-block .good-practices-tags-container .tags-block .tags-title,
+.node-type-good-practice #block-system-main .good-practice-block .good-practices-tags-container .tags-block .tags-title {
+  font-style: italic;
+}
+.node-type-key-article #block-system-main .good-practice-block .good-practices-tags-container .tags-block .taxonomy-term-tag,
+.node-type-good-practice #block-system-main .good-practice-block .good-practices-tags-container .tags-block .taxonomy-term-tag {
+  color: #ea4a5e;
+}
+.node-type-key-article #block-system-main .good-practice-block .good-practices-tags-container .tags-block .taxonomy-term-tag:not(:last-child):after,
+.node-type-good-practice #block-system-main .good-practice-block .good-practices-tags-container .tags-block .taxonomy-term-tag:not(:last-child):after {
+  content: ", ";
+}
+.node-type-key-article #block-system-main .good-practice-block h3,
+.node-type-good-practice #block-system-main .good-practice-block h3 {
+  font-size: 1.2em;
+  font-weight: 700;
+}
+.node-type-key-article #block-system-main .good-practice-block .good-practice-content ul,
+.node-type-good-practice #block-system-main .good-practice-block .good-practice-content ul {
+  padding-left: 15px;
+}
+.node-type-key-article #block-system-main .good-practice-block .good-practice-content .what-is-it h3:before,
+.node-type-good-practice #block-system-main .good-practice-block .good-practice-content .what-is-it h3:before {
+  content: "\f128";
+  font-family: "FontAwesome";
+  font-size: 1.1em;
+  margin-right: 10px;
+  vertical-align: text-bottom;
+  font-weight: normal;
+}
+.node-type-key-article #block-system-main .good-practice-block .good-practice-content .who-is-it-for h3:before,
+.node-type-good-practice #block-system-main .good-practice-block .good-practice-content .who-is-it-for h3:before {
+  content: "\f0c0";
+  font-family: "FontAwesome";
+  font-size: 1.1em;
+  margin-right: 10px;
+  vertical-align: text-bottom;
+  font-weight: normal;
+}
+.node-type-key-article #block-system-main .good-practice-block .good-practice-content .what-is-the-benefit h3:before,
+.node-type-good-practice #block-system-main .good-practice-block .good-practice-content .what-is-the-benefit h3:before {
+  content: "\f024";
+  font-family: "FontAwesome";
+  font-size: 1.1em;
+  margin-right: 10px;
+  vertical-align: text-bottom;
+  font-weight: normal;
+}
+.node-type-key-article #block-system-main .good-practice-block .good-practice-content .getting-started h3:before,
+.node-type-good-practice #block-system-main .good-practice-block .good-practice-content .getting-started h3:before {
+  content: "\f041";
+  font-family: "FontAwesome";
+  font-size: 1.1em;
+  margin-right: 10px;
+  vertical-align: text-bottom;
+  font-weight: normal;
+}
+.node-type-key-article #block-system-main .good-practice-block .resources-container .links h3:before,
+.node-type-good-practice #block-system-main .good-practice-block .resources-container .links h3:before {
+  content: "\f0c1";
+  font-family: "FontAwesome";
+  font-size: 1.1em;
+  margin-right: 10px;
+  vertical-align: text-bottom;
+  font-weight: normal;
+}
+.node-type-key-article #block-system-main .good-practice-block .resources-container .additional-resources h3:before,
+.node-type-good-practice #block-system-main .good-practice-block .resources-container .additional-resources h3:before {
+  content: "\f055";
+  font-family: "FontAwesome";
+  font-size: 1.1em;
+  margin-right: 10px;
+  vertical-align: text-bottom;
+  font-weight: normal;
+}
+.node-type-key-article #block-system-main .good-practice-block .resources-container a,
+.node-type-good-practice #block-system-main .good-practice-block .resources-container a {
+  color: #ea4a5e;
+  display: block;
+  margin-bottom: 15px;
+}
+.node-type-key-article #block-system-main .good-practice-block .resources-container a[target*="_blank"]:after,
+.node-type-good-practice #block-system-main .good-practice-block .resources-container a[target*="_blank"]:after {
+  content: "\e164";
+  font-family: "Glyphicons Halflings";
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin-left: 5px;
+  font-size: 0.9em;
+}
+/*Roles page
+*********************************/
+.roles-block > div {
+  margin-bottom: 20px;
+}
+.roles-block > div h3 {
+  display: block;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+.roles-block > div .highlighted-text {
+  font-weight: 700;
+  font-size: 1em;
+}
+.roles-block .employer-block a[target*="_blank"] {
+  color: #ea4a5e;
+  display: block;
+  margin-top: 15px;
+}
+.roles-block .employer-block a[target*="_blank"]:after {
+  content: "\e164";
+  font-family: "Glyphicons Halflings";
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin-left: 5px;
+  font-size: 0.9em;
+}
+/*Legislation page
+*********************************/
+.legislation-block .item-block {
+  clear: both;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+.legislation-block .item-block h3 {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+.legislation-block .item-block ul {
+  padding-left: 20px;
+}
+.legislation-block .item-block a {
+  color: #ea4a5e;
+  display: inline-block;
+}
+.legislation-block .item-block a[target*="_blank"]:after {
+  content: "\e164";
+  font-family: "Glyphicons Halflings";
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin-left: 5px;
+  font-size: 0.9em;
+}
+/*Oira page
+*************************************/
+.oira-block .highlighted-text {
+  font-weight: 700;
+  font-size: 1em;
+}
+.oira-block a {
+  color: #ea4a5e;
+  display: inline-block;
+}
+.oira-block a[target*="_blank"]:after {
+  content: "\e164";
+  font-family: "Glyphicons Halflings";
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin-left: 5px;
+  font-size: 0.9em;
+}
+.oira-block h3 {
+  font-size: 1.1em;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.oira-block p {
+  margin-bottom: 20px;
 }
 /*Footer
 ***********************/
