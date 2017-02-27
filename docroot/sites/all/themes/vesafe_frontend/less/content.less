@@ -36,6 +36,16 @@ a{
 	text-decoration: none;
 }
 
+/*deleting container class from some page that need go to edge*/
+.node-type-key-article,
+.node-type-good-practice{
+	.page-content-container.container{
+		width: inherit;
+		padding-left: inherit;
+		padding-right: inherit;
+	}
+}
+
 /* h1 page titles
 ****************************/
 body > .page-title-container{
@@ -531,7 +541,7 @@ body > .page-title-container{
 			}
 		}
 		.jumbotron-container{
-			margin-bottom: 30px;
+			margin-bottom: 10px;
 			.page-image-wrapper{
 				max-height: 320px;
     			overflow: hidden;
@@ -657,23 +667,224 @@ body > .page-title-container{
 				}
 			}
 		}
+		.good-practice-block{
+			.good-practices-tags-container{
+				.tags-block{
+					font-size: 0.9em;
+					.tags-title{
+						font-style: italic;
+					}
+					.taxonomy-term-tag{
+						color: @color-secondary;
+					}
+					.taxonomy-term-tag:not(:last-child){
+						&:after{
+							content: ", ";
+						}
+					}
+				}
+			}
+			h3{
+				font-size: 1.2em;
+				font-weight: 700;
+			}
+			.good-practice-content{
+				ul{
+					padding-left: 15px;
+				}
+				.what-is-it{
+					h3{
+						&:before{
+							content:"\f128";
+							font-family: "FontAwesome";
+							font-size: 1.1em;
+			   				margin-right: 10px;
+			   				vertical-align: text-bottom;
+			   				font-weight: normal;
+						}
+					}
+				}
+				.who-is-it-for{
+					h3{
+						&:before{
+							content:"\f0c0";
+							font-family: "FontAwesome";
+							font-size: 1.1em;
+			   				margin-right: 10px;
+			   				vertical-align: text-bottom;
+			   				font-weight: normal;
+						}
+					}
+				}
+				.what-is-the-benefit{
+					h3{
+						&:before{
+							content:"\f024";
+							font-family: "FontAwesome";
+							font-size: 1.1em;
+			   				margin-right: 10px;
+			   				vertical-align: text-bottom;
+			   				font-weight: normal;
+						}
+					}
+				}
+				.getting-started{
+					h3{
+						&:before{
+							content:"\f041";
+							font-family: "FontAwesome";
+							font-size: 1.1em;
+			   				margin-right: 10px;
+			   				vertical-align: text-bottom;
+			   				font-weight: normal;
+						}
+					}
+				}
+			}
+			.resources-container{
+				.links{
+					h3{
+						&:before{
+							content:"\f0c1";
+							font-family: "FontAwesome";
+							font-size: 1.1em;
+			   				margin-right: 10px;
+			   				vertical-align: text-bottom;
+			   				font-weight: normal;
+						}
+					}
+				}
+				.additional-resources{
+					h3{
+						&:before{
+							content:"\f055";
+							font-family: "FontAwesome";
+							font-size: 1.1em;
+			   				margin-right: 10px;
+			   				vertical-align: text-bottom;
+			   				font-weight: normal;
+						}
+					}
+				}
+				a{
+					color: @color-secondary;
+					display: block;
+					margin-bottom: 15px;
+				}
+				a[target*="_blank"]{
+					&:after{
+						content:"\e164";
+						font-family: "Glyphicons Halflings";
+						display: inline-block;
+						vertical-align: text-bottom;
+	    				margin-left: 5px;
+	    				font-size: 0.9em;
+					}
+				}
+			}
+		}
+	}
+}
+
+/*Roles page
+*********************************/
+.roles-block{
+	> div{
+		margin-bottom: 20px;
+		h3{
+			display: block;
+			font-size: 1.2em;
+			font-weight: 700;
+			margin-bottom: 25px;
+		}
+		.highlighted-text{
+			font-weight: 700;
+			font-size: 1em;
+		}
+	}
+	.employer-block{
+		a[target*="_blank"]{
+			color: @color-secondary;
+			display: block;
+			margin-top: 15px;
+			&:after{
+				content:"\e164";
+				font-family: "Glyphicons Halflings";
+				display: inline-block;
+				vertical-align: text-bottom;
+				margin-left: 5px;
+				font-size: 0.9em;
+
+			}
+		}
+	}
+}
+
+/*Legislation page
+*********************************/
+.legislation-block{
+	.item-block{
+		clear: both;
+		margin-bottom: 25px;
+		overflow: hidden;
+		h3{
+			font-size: 1.4em;
+			font-weight: 600;
+			margin-bottom: 20px;
+			margin-top: 0px;
+		}
+		ul{
+			padding-left: 20px;
+		}
+		a{
+			color: @color-secondary;
+			display: inline-block;
+		}
+		a[target*="_blank"]{
+			&:after{
+				content:"\e164";
+				font-family: "Glyphicons Halflings";
+				display: inline-block;
+				vertical-align: text-bottom;
+				margin-left: 5px;
+				font-size: 0.9em;
+
+			}
+		}
+	}
+}
+
+/*Oira page
+*************************************/
+.oira-block{
+	.highlighted-text{
+		font-weight: 700;
+		font-size: 1em;
+	}
+	a{
+		color: @color-secondary;
+		display: inline-block;
+	}
+	a[target*="_blank"]{
+		&:after{
+			content:"\e164";
+			font-family: "Glyphicons Halflings";
+			display: inline-block;
+			vertical-align: text-bottom;
+			margin-left: 5px;
+			font-size: 0.9em;
+		}
+	}
+	h3{
+		font-size: 1.1em;
+		font-weight: 700;
+		margin-bottom: 20px;
+	}
+	p{
+		margin-bottom: 20px;
 	}
 }
 
 
 
 
-
-
-
-
-
-/*deleting container class from some page that need go to edge*/
-.node-type-key-article,
-.node-type-good-practice{
-	.page-content-container.container{
-		width: inherit;
-		padding-left: inherit;
-		padding-right: inherit;
-	}
-}
