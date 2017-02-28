@@ -36,6 +36,22 @@ a{
 	text-decoration: none;
 }
 
+.page-content-container{
+	a{
+		color: @color-secondary;
+	}
+	a[target*="_blank"]{
+		&:after{
+			content:"\e164";
+			font-family: "Glyphicons Halflings";
+			display: inline-block;
+			vertical-align: text-bottom;
+			margin-left: 5px;
+			font-size: 0.9em;
+		}
+	}
+}
+
 /*deleting container class from some page that need go to edge*/
 .node-type-key-article,
 .node-type-good-practice{
@@ -885,6 +901,30 @@ body > .page-title-container{
 	}
 }
 
+/*Footer static pages
+**********************************/
+#accessibility,
+#privacy-notice,
+#legal-notice{
+	max-width: 800px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+	.accesibility_table {
+	    width: 100% !important;
+	    tbody > tr:first-child {
+		    background-color: @color-secondary;
+		    color: #ffffff;
+		}
+	}
+	h3{
+	    font-size: 1.4em;
+	    font-weight: 600;
+	    margin-bottom: 15px;
+	}
+	ul{
+		padding-left: 20px;
+	}
+}
 
 
 

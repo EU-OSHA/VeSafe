@@ -6768,6 +6768,17 @@ h2 {
 a {
   text-decoration: none;
 }
+.page-content-container a {
+  color: #ea4a5e;
+}
+.page-content-container a[target*="_blank"]:after {
+  content: "\e164";
+  font-family: "Glyphicons Halflings";
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin-left: 5px;
+  font-size: 0.9em;
+}
 /*deleting container class from some page that need go to edge*/
 .node-type-key-article .page-content-container.container,
 .node-type-good-practice .page-content-container.container {
@@ -7504,6 +7515,38 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 .oira-block p {
   margin-bottom: 20px;
+}
+/*Footer static pages
+**********************************/
+#accessibility,
+#privacy-notice,
+#legal-notice {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+#accessibility .accesibility_table,
+#privacy-notice .accesibility_table,
+#legal-notice .accesibility_table {
+  width: 100% !important;
+}
+#accessibility .accesibility_table tbody > tr:first-child,
+#privacy-notice .accesibility_table tbody > tr:first-child,
+#legal-notice .accesibility_table tbody > tr:first-child {
+  background-color: #ea4a5e;
+  color: #ffffff;
+}
+#accessibility h3,
+#privacy-notice h3,
+#legal-notice h3 {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+#accessibility ul,
+#privacy-notice ul,
+#legal-notice ul {
+  padding-left: 20px;
 }
 /*Footer
 ***********************/
