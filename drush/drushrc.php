@@ -258,7 +258,7 @@ $options['structure-tables']['common'] = array(
 $json_path = dirname(__FILE__) . '/../conf/config.json';
 
 $cfg = (object) array('variables' => (object) array('environment' => 'production'));
-if(file_exists($json_path)) {
+if(is_readable($json_path)) {
   if ($cfg = json_decode(file_get_contents($json_path))) {
     $db_url = sprintf('mysql://%s:%s@%s:%s/%s', $cfg->db->username, $cfg->db->password, $cfg->db->host, $cfg->db->port, $cfg->db->database);
     $command_specific['site-install'] = array(
@@ -271,8 +271,11 @@ if(file_exists($json_path)) {
     );
   }
   else {
-    drush_set_error('Error detected in config.json, please fix them and try again');
+    drush_set_error('Error parsing config.json, please fix them and try again');
   }
+}
+else {
+  drush_log('Cannot find conf/config.json, ignored ...', 'warning');
 }
 
 $options['init-modules'] = array(
