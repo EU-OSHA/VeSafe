@@ -63,6 +63,40 @@ jQuery(document).ready(function () {
 	/*end key articles acordion*/
 
 
+	/*Show more links for good practices*/
+	jQuery(".see-more-btn").click(function(){
+		jQuery(".hidden-links").slideToggle("fast", function(){
+			if(jQuery(".hidden-links").is(":visible")){
+				jQuery(".see-more-btn").text("See less links");
+			}else{
+				jQuery(".see-more-btn").text("See more links");
+			}
+		});
+	});
+	/*end show more links for good practices*/
+
+	/*scroll upp the page on click footer button*/
+	jQuery("#scroll-top").on("click", function() {
+	    event.preventDefault();
+    	jQuery("html, body").animate({"scrollTop": "0px"}, 200);
+	});
+	/*end scroll upp the page on click footer button*/
+
+	/*fixing sticky menu*/
+	/*hight of page*/
+	var num = 150; //number of pixels before modifying styles
+	if(jQuery("body").height()>=900){
+		jQuery(window).bind('scroll', function () {
+		    if (jQuery(window).scrollTop() > num) {
+		        jQuery("header").addClass("sticky-menu");
+		    } else {
+		        jQuery('header').removeClass('sticky-menu');
+		    }
+		});
+	}
+	/*end hight of page*/
+
+
 	var windowWidth= jQuery(window).width();//window size
 
 	jQuery(window).resize(function() {
@@ -71,7 +105,6 @@ jQuery(document).ready(function () {
 	    }
 	    if(windowWidth <= 750){
 	    }
-
 	});
 
 

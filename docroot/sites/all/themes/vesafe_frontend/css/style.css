@@ -6591,7 +6591,7 @@ header {
 .top-header-container .header-blocks #block-text-resize-0 #text_resize_decrease:before {
   content: "a";
   width: 15px;
-  z-index: 9999;
+  z-index: 2;
   position: absolute;
   color: #323a93;
   height: 20px;
@@ -6612,7 +6612,7 @@ header {
 .top-header-container .header-blocks #block-text-resize-0 #text_resize_increase:before {
   content: "a";
   width: 20px;
-  z-index: 9999;
+  z-index: 2;
   position: absolute;
   color: #323a93;
   height: 20px;
@@ -6734,6 +6734,17 @@ header {
 }
 .menu-header #navbar li.first a.active {
   border-bottom: none;
+}
+/*Sticky menu
+****************************************/
+@media only screen and (min-width: 768px) {
+  .sticky-menu {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    background-color: white;
+    top: 0px;
+  }
 }
 /*!* Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome * License - http://fontawesome.io/license(Font:SIL OFL 1.1,CSS:MIT License) */
 @font-face {
@@ -7181,6 +7192,10 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 /* Type article detail/good practice detail
 ***********************************************/
+.node-type-key-article #block-system-main,
+.node-type-good-practice #block-system-main {
+  margin-bottom: 30px;
+}
 .node-type-key-article #block-system-main .back-arrow-container .good-likes-wrapper,
 .node-type-good-practice #block-system-main .back-arrow-container .good-likes-wrapper {
   display: inline-block;
@@ -7419,20 +7434,27 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   vertical-align: text-bottom;
   font-weight: normal;
 }
+.node-type-key-article #block-system-main .good-practice-block .resources-container .additional-resources .hidden-links,
+.node-type-good-practice #block-system-main .good-practice-block .resources-container .additional-resources .hidden-links {
+  display: none;
+}
+.node-type-key-article #block-system-main .good-practice-block .resources-container .additional-resources .see-more-btn,
+.node-type-good-practice #block-system-main .good-practice-block .resources-container .additional-resources .see-more-btn {
+  color: #ea4a5e;
+  font-style: italic;
+  font-weight: 700;
+  text-align: right;
+  display: block;
+  cursor: pointer;
+}
+.node-type-key-article #block-system-main .good-practice-block .resources-container .additional-resources .see-more-btn:before,
+.node-type-good-practice #block-system-main .good-practice-block .resources-container .additional-resources .see-more-btn:before {
+  content: "> ";
+}
 .node-type-key-article #block-system-main .good-practice-block .resources-container a,
 .node-type-good-practice #block-system-main .good-practice-block .resources-container a {
-  color: #ea4a5e;
   display: block;
   margin-bottom: 15px;
-}
-.node-type-key-article #block-system-main .good-practice-block .resources-container a[target*="_blank"]:after,
-.node-type-good-practice #block-system-main .good-practice-block .resources-container a[target*="_blank"]:after {
-  content: "\e164";
-  font-family: "Glyphicons Halflings";
-  display: inline-block;
-  vertical-align: text-bottom;
-  margin-left: 5px;
-  font-size: 0.9em;
 }
 /*Roles page
 *********************************/

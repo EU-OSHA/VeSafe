@@ -78,7 +78,7 @@ header{
 				&:before{
 					content: "a";
 				    width: 15px;
-				    z-index: 9999;
+				    z-index: 2;
 				    position: absolute;
 				    color: #323a93;
 				    height: 20px;
@@ -99,7 +99,7 @@ header{
 				&:before{
 					content: "a";
 				    width: 20px;
-				    z-index: 9999;
+				    z-index: 2;
 				    position: absolute;
 				    color: #323a93;
 				    height: 20px;
@@ -230,3 +230,19 @@ header{
 		}
 	}
 }
+
+
+/*Sticky menu
+****************************************/
+@media only screen and (min-width : 768px){
+	
+	.sticky-menu{
+		position: fixed;
+		z-index: 9999;
+		width: 100%;
+		background-color: white;
+		top: 0px;
+	}
+
+}
+/*end sticky menu*/

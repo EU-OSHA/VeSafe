@@ -523,6 +523,7 @@ body > .page-title-container{
 .node-type-key-article,
 .node-type-good-practice{
 	#block-system-main{
+		margin-bottom: 30px;
 		.back-arrow-container{
 			.good-likes-wrapper{
 				display: inline-block;
@@ -781,21 +782,24 @@ body > .page-title-container{
 			   				font-weight: normal;
 						}
 					}
+					.hidden-links{
+						display: none;
+					}
+					.see-more-btn{
+						color: @color-secondary;
+						font-style: italic;
+						font-weight: 700;
+						text-align: right;
+						display: block;
+						cursor: pointer;
+						&:before{
+							content: "> ";
+						}
+					}
 				}
 				a{
-					color: @color-secondary;
 					display: block;
 					margin-bottom: 15px;
-				}
-				a[target*="_blank"]{
-					&:after{
-						content:"\e164";
-						font-family: "Glyphicons Halflings";
-						display: inline-block;
-						vertical-align: text-bottom;
-	    				margin-left: 5px;
-	    				font-size: 0.9em;
-					}
 				}
 			}
 		}
