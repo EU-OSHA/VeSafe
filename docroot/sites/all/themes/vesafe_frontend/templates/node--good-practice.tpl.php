@@ -159,10 +159,10 @@
 					print '<a target="_blank" href="'.file_create_url($node->field_gp_factsheet["und"][0]["uri"]).'"">Download factsheet</a>';
 				?>
 			</section>
-			<section class="additional-resources">
-				<h3>Additional Resources</h3>
-				<?php
-					if (isset($node->field_additional_resources["und"])) {
+
+			<?php if (isset($node->field_additional_resources["und"])) {
+				print '<section class="additional-resources">';
+				print '<h3>Additional Resources</h3>';
 						$resources = $node->field_additional_resources["und"];
 						if (sizeof($resources) > 3){
 							print '<div>';
@@ -170,12 +170,12 @@
 								print '<a target="_blank" href="'.$resources[$i]["url"].'">'.$resources[$i]["title"].'</a>';
 							}
 							print '</div>';
-							print '<div>';
+							print '<div class="hidden-links">';
 							for ($i = 3; $i < sizeof($resources); $i++){
 								print '<a target="_blank" href="'.$resources[$i]["url"].'">'.$resources[$i]["title"].'</a>';
 							}
 							print '</div>';
-							print '<a href="#">See more</a>';
+							print '<span class="see-more-btn">See more links</span>';
 						}else {
 							print '<div>';
 							foreach ($resources as $item) {
@@ -185,8 +185,8 @@
 						}
 						
 					}
-				?>
-			</section>
+				print '</section>';
+			?>
 		</div>
 		<div class="related-good-practices col-md-12">
 			<?php
