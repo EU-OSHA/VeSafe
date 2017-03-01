@@ -29,7 +29,7 @@ function vesafe_search_default_search_api_index() {
     "name" : "Default SOLR index",
     "machine_name" : "default_solr_index",
     "description" : null,
-    "server" : "default_solr_server",
+    "server" : "solr_server",
     "item_type" : "node",
     "options" : {
       "datasource" : { "bundles" : [ "article", "good_practice", "key_article", "key_article_theme" ] },
@@ -137,9 +137,9 @@ function vesafe_search_default_search_api_index() {
  */
 function vesafe_search_default_search_api_server() {
   $items = array();
-  $items['default_solr_server'] = entity_import('search_api_server', '{
+  $items['solr_server'] = entity_import('search_api_server', '{
     "name" : "Default SOLR server",
-    "machine_name" : "default_solr_server",
+    "machine_name" : "solr_server",
     "description" : "",
     "class" : "search_api_solr_service",
     "options" : {

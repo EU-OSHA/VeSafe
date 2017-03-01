@@ -15,6 +15,6 @@ features[facetapi][] = search_api@default_solr_index:block:field_vehicles
 features[facetapi][] = search_api@default_solr_index:block:type
 features[features_api][] = api:2
 features[search_api_index][] = default_solr_index
-features[search_api_server][] = default_solr_server
+features[search_api_server][] = solr_server
 features[views_view][] = search
 features_exclude[dependencies][ctools] = ctools
