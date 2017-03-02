@@ -5,6 +5,15 @@
  */
 
 /**
+ * Implements hook_entityqueue_api().
+ */
+function vesafe_pages_1_entityqueue_api($module = NULL, $api = NULL) {
+  if ($module == "entityqueue" && $api == "entityqueue_default") {
+    return array("version" => "1");
+  }
+}
+
+/**
  * Implements hook_views_api().
  */
 function vesafe_pages_1_views_api($module = NULL, $api = NULL) {
