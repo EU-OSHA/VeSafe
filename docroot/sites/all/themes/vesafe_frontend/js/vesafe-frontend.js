@@ -85,7 +85,7 @@ jQuery(document).ready(function () {
 	/*fixing sticky menu*/
 	/*hight of page*/
 	var num = 150; //number of pixels before modifying styles
-	if(jQuery("body").height()>=900){
+	if(jQuery("body").height()>=1100){
 		jQuery(window).bind('scroll', function () {
 		    if (jQuery(window).scrollTop() > num) {
 		        jQuery("header").addClass("sticky-menu");

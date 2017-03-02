@@ -6745,6 +6745,41 @@ header {
     background-color: white;
     top: 0px;
   }
+  .sticky-menu .top-header-container {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .sticky-menu .header-logo {
+    margin-top: 0px;
+  }
+  .sticky-menu .header-logo .logo img {
+    width: 150px;
+  }
+  .sticky-menu .header-logo .eu-logo {
+    width: 50px;
+  }
+  .sticky-menu .header-blocks {
+    max-width: 350px;
+    min-width: 350px;
+    position: relative;
+    margin-top: 18px;
+  }
+  .sticky-menu .header-blocks #block-text-resize-0,
+  .sticky-menu .header-blocks #block-printfriendly-printfriendly,
+  .sticky-menu .header-blocks #block-gtranslate-gtranslate {
+    display: none;
+  }
+  .sticky-menu .header-blocks #block-block-3 {
+    display: inline-block;
+  }
+  .sticky-menu .header-blocks #block-vesafe-search-search-vesafe {
+    display: inline-block;
+    max-width: 225px;
+    margin-left: 10px;
+    position: absolute;
+    top: -12px;
+    right: 0px;
+  }
 }
 /*!* Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome * License - http://fontawesome.io/license(Font:SIL OFL 1.1,CSS:MIT License) */
 @font-face {
@@ -7455,6 +7490,9 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .node-type-good-practice #block-system-main .good-practice-block .resources-container a {
   display: block;
   margin-bottom: 15px;
+}
+.node-type-key-article .jumbotron-container {
+  margin-bottom: 30px !important;
 }
 /*Roles page
 *********************************/
