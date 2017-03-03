@@ -37,6 +37,10 @@ function vesafe_search_default_search_api_index() {
       "cron_limit" : "50",
       "fields" : {
         "attachments_field_gp_factsheet" : { "type" : "text" },
+        "field_gp_getting_started:value" : { "type" : "text" },
+        "field_gp_what_is_it:value" : { "type" : "text" },
+        "field_gp_what_is_the_benefit:value" : { "type" : "text" },
+        "field_gp_who_is_for:value" : { "type" : "text" },
         "field_ka_general_risk_factors" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_ka_general_safety_issues" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_ka_specific_risk_factors" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
