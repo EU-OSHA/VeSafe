@@ -7,6 +7,17 @@ function bootstrap_menu_tree__menu_footer_menu(&$variables) {
 }
 
 
+/**
+ * Implements hook_path_breadcrumbs_view_alter().
+ *
+ * {@inheritdoc}
+ */
+function vesafe_frontend_path_breadcrumbs_view_alter(&$breadcrumbs, $path_breadcrumbs, $contexts) {
+  if (drupal_is_front_page()) {
+    $breadcrumbs = null;
+  }
+}
+
 
 /**
  * Implements hook_process_html_tag().
