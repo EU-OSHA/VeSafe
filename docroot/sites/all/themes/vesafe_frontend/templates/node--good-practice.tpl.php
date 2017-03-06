@@ -104,28 +104,32 @@
 				$riskFilters = [];
 				$vehicleFilters = [];
 				// Print risk tags
-				$risks = $node->field_risks["und"];
-				if (sizeof($risks) > 0){
-					print '<div class="tags-block">';
-						print '<span class="tags-title">Risks: </span>';
-						foreach ($risks as $item) {
-							print '<span class="taxonomy-term-tag">'.($item["taxonomy_term"]->name).'</span>';
-							$riskFilters[] = $item["taxonomy_term"]->tid;
-						}
-					print '</div>';
-				}
+				if (isset($node->field_risks["und"])){
+					$risks = $node->field_risks["und"];
+					if (sizeof($risks) > 0){
+						print '<div class="tags-block">';
+							print '<span class="tags-title">Risks: </span>';
+							foreach ($risks as $item) {
+								print '<span class="taxonomy-term-tag">'.($item["taxonomy_term"]->name).'</span>';
+								$riskFilters[] = $item["taxonomy_term"]->tid;
+							}
+						print '</div>';
+					}	
+				}				
 				
 				// Print vehicle tags
-				$vehicles = $node->field_vehicles["und"];
-				if (sizeof($vehicles) > 0){
-					print '<div class="tags-block">';
-						print '<span class="tags-title">Vehicles: </span>';
-						foreach ($vehicles as $item) {
-							print '<span class="taxonomy-term-tag">'.($item["taxonomy_term"]->name).'</span>';
-							$vehicleFilters[] = $item["taxonomy_term"]->tid;
-						}
-					print '</div>';
-				}			
+				if (isset($node->field_vehicles["und"])){
+					$vehicles = $node->field_vehicles["und"];
+					if (sizeof($vehicles) > 0){
+						print '<div class="tags-block">';
+							print '<span class="tags-title">Vehicles: </span>';
+							foreach ($vehicles as $item) {
+								print '<span class="taxonomy-term-tag">'.($item["taxonomy_term"]->name).'</span>';
+								$vehicleFilters[] = $item["taxonomy_term"]->tid;
+							}
+						print '</div>';
+					}	
+				}							
 			?>
 		</div>
 		<div class="good-practice-content col-sm-9">
@@ -149,16 +153,20 @@
 			</div>
 		</div>
 		<div class="resources-container col-sm-3">
-			<section class="links">
-				<h3>Links</h3>
-				<?php
-					$links = $node->field_gp_external_links["und"];
-					foreach ($links as $item) {
-						print '<a target="_blank" href="'.$item["url"].'">'.$item["title"].'</a>';
-					}
-					print '<a target="_blank" href="'.file_create_url($node->field_gp_factsheet["und"][0]["uri"]).'"">Download factsheet</a>';
-				?>
-			</section>
+			<?php if (isset($node->field_gp_external_links['und']) || isset($node->field_gp_factsheet['und'][0]["uri"])){
+				print '<section class="links">';
+					print '<h3>Links</h3>';
+						if (isset($node->field_gp_external_links["und"])){
+							$links = $node->field_gp_external_links["und"];
+							foreach ($links as $item) {
+								print '<a target="_blank" href="'.$item["url"].'">'.$item["title"].'</a>';
+							}	
+						}
+						if (isset($node->field_gp_factsheet["und"][0]['uri'])){
+							print '<a target="_blank" href="'.file_create_url($node->field_gp_factsheet["und"][0]["uri"]).'"">Download factsheet</a>';	
+						}
+				print '</section>';
+			} ?>
 
 			<?php if (isset($node->field_additional_resources["und"])) {
 				print '<section class="additional-resources">';
