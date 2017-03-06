@@ -131,7 +131,7 @@
 <div class="breadcrumb-container">
   <div class="container">
     <?php 
-     if (!empty($breadcrumb)): print str_replace('h2', 'span', $breadcrumb); endif;
+     if (!empty($breadcrumb)): print $breadcrumb; endif;
     ?>
   </div>
 </div>

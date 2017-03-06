@@ -812,7 +812,7 @@ function vesafe_structure_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '3';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['row_class'] = 'col-md-4';
+  $handler->display->display_options['style_options']['row_class'] = 'col-sm-4';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
@@ -943,6 +943,7 @@ function vesafe_structure_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '25';
   $handler->display->display_options['style_plugin'] = 'table';
@@ -1135,22 +1136,19 @@ function vesafe_structure_views_default_views() {
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'reverse_field_ka_general_safety_issues_node';
-  $handler->display->display_options['fields']['title_1']['label'] = 'References in general safety issues';
-  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['label'] = 'General safety issues';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_2']['id'] = 'title_2';
   $handler->display->display_options['fields']['title_2']['table'] = 'node';
   $handler->display->display_options['fields']['title_2']['field'] = 'title';
   $handler->display->display_options['fields']['title_2']['relationship'] = 'reverse_field_ka_general_risk_factors_node';
-  $handler->display->display_options['fields']['title_2']['label'] = 'References in general risk factors';
-  $handler->display->display_options['fields']['title_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_2']['label'] = 'General risk factors';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_3']['id'] = 'title_3';
   $handler->display->display_options['fields']['title_3']['table'] = 'node';
   $handler->display->display_options['fields']['title_3']['field'] = 'title';
   $handler->display->display_options['fields']['title_3']['relationship'] = 'reverse_field_ka_specific_risk_factors_node';
-  $handler->display->display_options['fields']['title_3']['label'] = 'References in specific risk factors';
-  $handler->display->display_options['fields']['title_3']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_3']['label'] = 'Specific risk factors';
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
@@ -1248,9 +1246,9 @@ function vesafe_structure_views_default_views() {
     t('Publication date'),
     t('Updated date'),
     t('Author'),
-    t('References in general safety issues'),
-    t('References in general risk factors'),
-    t('References in specific risk factors'),
+    t('General safety issues'),
+    t('General risk factors'),
+    t('Specific risk factors'),
     t('Referenced by'),
     t('[title_1] [title_2] [title_3]'),
     t('Edit'),

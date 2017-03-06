@@ -40,3 +40,12 @@ function vesafe_structure_form_alter(&$form, &$form_state, $form_id) {
       break;
   }
 }
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function vesafe_structure_block_view_alter(&$data, $block) {
+  if ($block->delta == 'gtranslate') {
+    $data['content'] .= sprintf('<div class="gtranslate-machinatron">(%s)</div>', t('machine translation'));
+  }
+}

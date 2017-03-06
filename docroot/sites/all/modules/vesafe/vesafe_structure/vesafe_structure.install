@@ -1,0 +1,9 @@
+<?php
+
+function vesafe_structure_install() {
+  variable_set('bootstrap_breadcrumb_home', 1);
+}
+
+function vesafe_structure_update_7001() {
+  variable_set('bootstrap_breadcrumb_home', 1);
+}
