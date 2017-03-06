@@ -7140,9 +7140,6 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .page-node-5 .page-content-container.container {
   max-width: 800px;
 }
-.page-node-5 .page-content-container.container .submitted {
-  display: none;
-}
 .page-node-5 .page-content-container.container form.webform-client-form .form-item {
   margin-bottom: 15px;
 }
@@ -7575,6 +7572,59 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 .oira-block p {
   margin-bottom: 20px;
+}
+/*Search page
+**********************************/
+.page-search .page-content-container > aside .well {
+  margin: 0px;
+  padding: 0px;
+  background-color: inherit !important;
+  border: none;
+  box-shadow: none;
+}
+.page-search .page-content-container > aside .well .navbar-form {
+  position: relative;
+  padding: 0px;
+}
+.page-search .page-content-container > aside .well .navbar-form .form-type-textfield input {
+  border-color: #ea4a5e;
+  box-shadow: none;
+  width: 100%;
+  padding-right: 35px;
+  border-radius: 3px;
+}
+.page-search .page-content-container > aside .well .navbar-form button {
+  border: none;
+  background-color: inherit;
+  color: #ea4a5e;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+.page-search .page-content-container > aside .well h2 {
+  color: white;
+  background-color: #ea4a5e;
+  width: 100%;
+  padding: 10px 12px;
+  margin: 10px 0px;
+  font-size: 1em;
+  border-radius: 3px;
+}
+.page-search .page-content-container > aside .well h2:after {
+  content: "\e252";
+  font-family: "Glyphicons Halflings";
+  float: right;
+  font-size: 0.8em;
+  line-height: 22px;
+}
+.page-search .page-content-container > aside .well ul {
+  list-style: none;
+}
+.page-search .page-content-container > aside .well ul a {
+  color: inherit;
+}
+.page-search .page-content-container > aside .well ul a.facetapi-active {
+  font-weight: bold;
 }
 /*Footer static pages
 **********************************/
