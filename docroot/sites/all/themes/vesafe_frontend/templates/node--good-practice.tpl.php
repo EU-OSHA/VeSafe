@@ -210,6 +210,9 @@
 				}
 				
 				print views_embed_view('related_good_practices', $display_id = 'block_1',$riskFilters.'/'.$vehicleFilters);
+
+				// View for Responsive Design
+				print views_embed_view('related_good_practices', $display_id = 'block_3',$riskFilters.'/'.$vehicleFilters);
 			?>
 		</div>
 	</div>

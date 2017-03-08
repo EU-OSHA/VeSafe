@@ -283,6 +283,9 @@
 		<?php 
 			$nid = $node->nid;
 			print views_embed_view('related_good_practices', $display_id = 'block',$nid); 
+
+			// View for Responsive Design
+			print views_embed_view('related_good_practices', $display_id = 'block_2',$nid); 
 		?>
 	</div>
 </div>
