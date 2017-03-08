@@ -6867,6 +6867,25 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   vertical-align: text-bottom;
   margin-left: 5px;
 }
+/*Breadcrumb
+***************************/
+.breadcrumb-container .breadcrumb {
+  padding: 0px;
+  margin: 0px;
+  background-color: inherit;
+  margin-bottom: -12px;
+  margin-top: 3px;
+}
+.breadcrumb-container .breadcrumb span.inline {
+  font-style: italic;
+}
+.breadcrumb-container .breadcrumb span.inline a {
+  color: #ea4a5e;
+}
+.breadcrumb-container .breadcrumb span.inline.last {
+  font-weight: 600;
+}
+/*End breadcrumb*/
 /*homepage
 ***************************/
 .homepage #homepage .panels-flexible-row-new-2 h2:before {

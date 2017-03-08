@@ -18,7 +18,6 @@ function vesafe_frontend_path_breadcrumbs_view_alter(&$breadcrumbs, $path_breadc
   }
 }
 
-
 /**
  * Implements hook_process_html_tag().
  */
