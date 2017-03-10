@@ -280,12 +280,17 @@
 		</div> <!-- Key Article Theme div closure -->
 	</div>
 	<div class="related-good-practices col-md-12">
+		<h3>Related Good Practices</h3>
 		<?php 
 			$nid = $node->nid;
+			print '<div class="related-slider-big hidden-xs">';
 			print views_embed_view('related_good_practices', $display_id = 'block',$nid); 
+			print '</div>';
 
 			// View for Responsive Design
-			print views_embed_view('related_good_practices', $display_id = 'block_2',$nid); 
+			print '<div class="related-slider-small hidden-sm hidden-md hidden-lg">';
+			print views_embed_view('related_good_practices', $display_id = 'block_2',$nid);
+			print '</div>';
 		?>
 	</div>
 </div>

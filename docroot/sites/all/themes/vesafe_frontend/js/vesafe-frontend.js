@@ -7,6 +7,13 @@ jQuery(document).ready(function () {
 	// 	wrap: 'word',
 	// });
 
+	/*search filter menu open/close*/
+	jQuery(".facetapi-facetapi-links").hide();
+	jQuery(".page-search .block-facetapi h2, .page-node-241 .block-facetapi h2").click(function(){
+		jQuery(this).toggleClass("open");
+		jQuery(this).next().slideToggle();
+	});
+
 	/*key articles menu/next/prev functionality*/
 	jQuery(".key-article-content > div").addClass("close");
 	jQuery(".key-article-content > div#introduction").removeClass("close").addClass("active");

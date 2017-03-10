@@ -6825,12 +6825,19 @@ a {
   margin-left: 5px;
   font-size: 0.9em;
 }
+.page-content-container footer {
+  display: none;
+}
 /*deleting container class from some page that need go to edge*/
 .node-type-key-article .page-content-container.container,
 .node-type-good-practice .page-content-container.container {
   width: inherit;
   padding-left: inherit;
   padding-right: inherit;
+}
+.highlighted-text {
+  font-weight: 700;
+  font-size: 1em;
 }
 /* h1 page titles
 ****************************/
@@ -6875,6 +6882,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   background-color: inherit;
   margin-bottom: -12px;
   margin-top: 3px;
+  font-size: 0.95em;
 }
 .breadcrumb-container .breadcrumb span.inline {
   font-style: italic;
@@ -6882,8 +6890,11 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .breadcrumb-container .breadcrumb span.inline a {
   color: #ea4a5e;
 }
-.breadcrumb-container .breadcrumb span.inline.last {
-  font-weight: 600;
+.breadcrumb-container .breadcrumb span.inline a:hover {
+  font-weight: bold;
+}
+.breadcrumb-container .breadcrumb span.delimiter {
+  color: #ea4a5e;
 }
 /*End breadcrumb*/
 /*homepage
@@ -7065,6 +7076,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   overflow: hidden;
   position: relative;
   margin-bottom: 15px;
+  margin-top: 25px;
 }
 .homepage .content-full-container .region-content-full {
   position: relative;
@@ -7095,6 +7107,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   height: 50px;
   top: 40%;
   overflow: hidden;
+  text-decoration: none;
 }
 .homepage .content-full-container #views_slideshow_controls_text_did_you_know-block #views_slideshow_controls_text_previous_did_you_know-block a,
 .homepage .content-full-container #views_slideshow_controls_text_did_you_know-block #views_slideshow_controls_text_next_did_you_know-block a {
@@ -7290,7 +7303,6 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 .node-type-key-article #block-system-main .jumbotron-container .page-image-wrapper,
 .node-type-good-practice #block-system-main .jumbotron-container .page-image-wrapper {
-  max-height: 320px;
   overflow: hidden;
 }
 .node-type-key-article #block-system-main .key-articles-menu-container ul,
@@ -7368,6 +7380,27 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .node-type-key-article #block-system-main .key-article-content .key-article-text h3,
 .node-type-good-practice #block-system-main .key-article-content .key-article-text h3 {
   margin-top: 0px;
+}
+.node-type-key-article #block-system-main .key-article-content .key-article-text .body-key-article ul,
+.node-type-good-practice #block-system-main .key-article-content .key-article-text .body-key-article ul,
+.node-type-key-article #block-system-main .key-article-content .key-article-text .body-key-article ol,
+.node-type-good-practice #block-system-main .key-article-content .key-article-text .body-key-article ol {
+  padding-left: 30px;
+}
+.node-type-key-article #block-system-main .key-article-content .key-article-text .body-key-article .download-file,
+.node-type-good-practice #block-system-main .key-article-content .key-article-text .body-key-article .download-file {
+  color: #ea4a5e;
+  display: inline;
+  margin-top: 15px;
+}
+.node-type-key-article #block-system-main .key-article-content .key-article-text .body-key-article .download-file:after,
+.node-type-good-practice #block-system-main .key-article-content .key-article-text .body-key-article .download-file:after {
+  content: "\f1c1";
+  font-family: "FontAwesome";
+  display: inline;
+  vertical-align: inherit;
+  margin-left: 5px;
+  font-size: 1em;
 }
 .node-type-key-article #block-system-main .key-article-content .key-article-next-prev-buttons,
 .node-type-good-practice #block-system-main .key-article-content .key-article-next-prev-buttons {
@@ -7521,10 +7554,6 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   font-weight: 700;
   margin-bottom: 25px;
 }
-.roles-block > div .highlighted-text {
-  font-weight: 700;
-  font-size: 1em;
-}
 .roles-block .employer-block a[target*="_blank"] {
   color: #ea4a5e;
   display: block;
@@ -7645,6 +7674,154 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .page-search .page-content-container > aside .well ul a.facetapi-active {
   font-weight: bold;
 }
+/*Page search good practices
+**********************************/
+.page-node-241 .page-content-container > aside .well {
+  margin: 0px;
+  padding: 0px;
+  background-color: inherit !important;
+  border: none;
+  box-shadow: none;
+}
+.page-node-241 .page-content-container > aside .well #views-exposed-form-good-practices-block-1-mefibs-form-search {
+  position: relative;
+  padding: 0px;
+}
+.page-node-241 .page-content-container > aside .well #views-exposed-form-good-practices-block-1-mefibs-form-search .views-exposed-widget {
+  float: none;
+  padding: 0px;
+}
+.page-node-241 .page-content-container > aside .well #views-exposed-form-good-practices-block-1-mefibs-form-search .views-exposed-widget .form-type-textfield input {
+  border-color: #ea4a5e !important;
+  box-shadow: none;
+  width: 100%;
+  padding-right: 35px;
+  border-radius: 3px;
+}
+.page-node-241 .page-content-container > aside .well #views-exposed-form-good-practices-block-1-mefibs-form-search .views-exposed-widget button {
+  border: none;
+  background-color: inherit;
+  color: #ea4a5e;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin-top: 0px;
+  width: 40px;
+  overflow: hidden;
+}
+.page-node-241 .page-content-container > aside .well #views-exposed-form-good-practices-block-1-mefibs-form-search .views-exposed-widget button:before {
+  content: "\e003";
+  font-family: "Glyphicons Halflings";
+  padding-right: 30px;
+}
+.page-node-241 .page-content-container > aside .well h2 {
+  color: white;
+  background-color: #ea4a5e;
+  width: 100%;
+  padding: 10px 12px;
+  margin: 10px 0px;
+  font-size: 1em;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.page-node-241 .page-content-container > aside .well h2:after {
+  content: "\e252";
+  font-family: "Glyphicons Halflings";
+  float: right;
+  font-size: 0.8em;
+  line-height: 22px;
+}
+.page-node-241 .page-content-container > aside .well .open:after {
+  content: "\e253" !important;
+  font-family: "Glyphicons Halflings";
+  float: right;
+  font-size: 0.8em;
+  line-height: 25px;
+}
+.page-node-241 .page-content-container > aside .well ul {
+  list-style: none;
+}
+.page-node-241 .page-content-container > aside .well ul a {
+  color: inherit;
+}
+.page-node-241 .page-content-container > aside .well ul a.facetapi-active {
+  font-weight: bold;
+}
+.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 {
+  margin-bottom: 25px;
+}
+.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form {
+  border-bottom: 2px solid #dcdcdc;
+}
+.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group label {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 0.9em;
+}
+.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group label:after {
+  content: ": ";
+}
+.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links {
+  display: inline-block;
+}
+.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links option,
+.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links a {
+  display: inline-block;
+  margin-left: 10px;
+}
+.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links .active {
+  font-weight: 600;
+}
+.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form #edit-search-api-views-fulltext--2-wrapper,
+.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-widget-sort-order,
+.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-submit-button {
+  display: none;
+}
+.page-node-241 .page-content-container .view-id-good_practices .view-header {
+  float: right;
+  margin-top: -60px;
+  font-size: 0.9em;
+}
+.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row-odd {
+  margin-right: 30px;
+}
+.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row {
+  background-color: #f7f7f7;
+  width: 47%;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 30px;
+}
+.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image img {
+  width: 100%;
+  height: auto;
+}
+.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-title span {
+  display: block;
+  padding: 15px 20px 5px 20px;
+  min-height: 82px;
+}
+.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-title span a {
+  color: #333333;
+  font-size: 1.4em;
+}
+.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-gp-what-is-it {
+  padding: 0px 20px 50px 20px;
+  min-height: 127px;
+  position: relative;
+}
+.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-gp-what-is-it .more-link {
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+  font-weight: 700;
+  font-style: italic;
+}
+.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-gp-what-is-it .more-link:before {
+  content: "> ";
+}
 /*Footer static pages
 **********************************/
 #accessibility,
@@ -7676,6 +7853,285 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 #privacy-notice ul,
 #legal-notice ul {
   padding-left: 20px;
+}
+/*Key articles static page
+********************************/
+.page-node-242.node-type-article .view-id-themes .views-row {
+  margin-bottom: 25px;
+}
+.page-node-242.node-type-article .view-id-themes .views-row .views-field-title a {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-size: 1.2em;
+}
+.page-node-242.node-type-article .view-id-themes .views-row .views-field-field-summary {
+  text-align: center;
+}
+.page-node-242.node-type-article .view-id-themes .views-row .views-field-field-image {
+  position: relative;
+  overflow: hidden;
+}
+.page-node-242.node-type-article .view-id-themes .views-row .views-field-field-image a .overlay {
+  background-color: #ea4a5e;
+  color: white;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  z-index: 4;
+  opacity: 0;
+  -moz-opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.page-node-242.node-type-article .view-id-themes .views-row .views-field-field-image a .overlay .thumb-info {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -moz-opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -o-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-backface-visibility: hidden;
+}
+.page-node-242.node-type-article .view-id-themes .views-row .views-field-field-image a .overlay .thumb-info .icon-link {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  font-size: 44px;
+  margin-top: -15px;
+  height: 30px;
+  line-height: 33px;
+  -moz-text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  -webkit-text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.page-node-242.node-type-article .view-id-themes .views-row .views-field-field-image a .overlay .thumb-info .icon-link:before {
+  content: "\f0c1";
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  font-family: "FontAwesome";
+}
+.page-node-242.node-type-article .view-id-themes .views-row .views-field-field-image a img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 3;
+  display: block!important;
+  transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+.page-node-242.node-type-article .view-id-themes .views-row .views-field-field-image:hover a .overlay {
+  opacity: 0.9;
+  -moz-opacity: 0.9;
+  filter: alpha(opacity=90);
+  box-shadow: inset 0 0 0 500px #ea4a5e;
+}
+.page-node-242.node-type-article .view-id-themes .views-row .views-field-field-image:hover a .overlay .thumb-info {
+  opacity: 1;
+  -moz-opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+.page-node-242.node-type-article .view-id-themes .views-row .views-field-field-image:hover a img {
+  -moz-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+/*Related good practices
+******************************/
+.related-good-practices {
+  clear: both;
+  height: 250px;
+}
+.related-good-practices h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  display: inline-block;
+}
+.related-good-practices h3:before {
+  content: "\f0e8";
+  font-family: "FontAwesome";
+  font-size: 1.1em;
+  margin-right: 10px;
+  vertical-align: text-bottom;
+  font-weight: normal;
+}
+.related-good-practices .view-id-related_good_practices {
+  position: relative;
+}
+.related-good-practices .view-id-related_good_practices .views-slideshow-controls-top {
+  position: absolute;
+  display: block;
+  top: -55px;
+  right: 0px;
+}
+.related-good-practices .view-id-related_good_practices .views-slideshow-controls-top a {
+  text-decoration: none;
+  color: inherit;
+  width: 26px;
+  display: inline-block;
+  overflow: hidden;
+}
+.related-good-practices .view-id-related_good_practices .views-slideshow-controls-top a:hover {
+  color: #ea4a5e;
+}
+.related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-previous a:before {
+  content: "<";
+  font-size: 2em;
+  font-weight: bold;
+  margin-right: 18px;
+}
+.related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-next a:before {
+  content: ">";
+  font-size: 2em;
+  font-weight: bold;
+  margin-right: 18px;
+}
+.related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-pause {
+  display: none;
+}
+.related-good-practices .views-slideshow-cycle-main-frame {
+  width: 100% !important;
+}
+.related-good-practices .views-slideshow-cycle-main-frame .views-slideshow-cycle-main-frame-row {
+  width: 100% !important;
+  margin-top: 10px;
+  position: relative !important;
+  height: inherit;
+}
+.related-good-practices .views-slideshow-cycle-main-frame .views-slideshow-cycle-main-frame-row .views-slideshow-cycle-main-frame-row-item {
+  display: table-cell;
+  width: 25%;
+  padding: 0px;
+  margin: 0px;
+  vertical-align: top;
+  padding-right: 7px;
+  padding-left: 7px;
+}
+.related-good-practices .views-slideshow-cycle-main-frame .views-slideshow-cycle-main-frame-row .views-slideshow-cycle-main-frame-row-item span {
+  font-size: 0.8em;
+}
+.related-good-practices .views-slideshow-cycle-main-frame .views-slideshow-cycle-main-frame-row .views-slideshow-cycle-main-frame-row-item .views-field-field-image {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1px;
+}
+.related-good-practices .views-slideshow-cycle-main-frame .views-slideshow-cycle-main-frame-row .views-slideshow-cycle-main-frame-row-item .views-field-field-image a .overlay {
+  background-color: #ea4a5e;
+  color: white;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  z-index: 4;
+  opacity: 0;
+  -moz-opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.related-good-practices .views-slideshow-cycle-main-frame .views-slideshow-cycle-main-frame-row .views-slideshow-cycle-main-frame-row-item .views-field-field-image a .overlay .thumb-info {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -moz-opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -o-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-backface-visibility: hidden;
+}
+.related-good-practices .views-slideshow-cycle-main-frame .views-slideshow-cycle-main-frame-row .views-slideshow-cycle-main-frame-row-item .views-field-field-image a .overlay .thumb-info .icon-link {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  font-size: 44px;
+  margin-top: -15px;
+  height: 30px;
+  line-height: 33px;
+  -moz-text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  -webkit-text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.related-good-practices .views-slideshow-cycle-main-frame .views-slideshow-cycle-main-frame-row .views-slideshow-cycle-main-frame-row-item .views-field-field-image a .overlay .thumb-info .icon-link:before {
+  content: "\f016";
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  font-family: "FontAwesome";
+}
+.related-good-practices .views-slideshow-cycle-main-frame .views-slideshow-cycle-main-frame-row .views-slideshow-cycle-main-frame-row-item .views-field-field-image a img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 3;
+  display: block!important;
+  transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+.related-good-practices .views-slideshow-cycle-main-frame .views-slideshow-cycle-main-frame-row .views-slideshow-cycle-main-frame-row-item .views-field-field-image:hover a .overlay {
+  opacity: 0.9;
+  -moz-opacity: 0.9;
+  filter: alpha(opacity=90);
+  box-shadow: inset 0 0 0 500px #ea4a5e;
+}
+.related-good-practices .views-slideshow-cycle-main-frame .views-slideshow-cycle-main-frame-row .views-slideshow-cycle-main-frame-row-item .views-field-field-image:hover a .overlay .thumb-info {
+  opacity: 1;
+  -moz-opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+.related-good-practices .views-slideshow-cycle-main-frame .views-slideshow-cycle-main-frame-row .views-slideshow-cycle-main-frame-row-item .views-field-field-image:hover a img {
+  -moz-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }
 /*Footer
 ***********************/
@@ -7815,6 +8271,11 @@ footer #scroll-top:hover {
     bottom: -100px;
     right: 15px;
   }
+  /*Breadcrumb
+***************************/
+  .breadcrumb-container {
+    display: none;
+  }
   /*Footer
 ***********************/
   div.site-footer-container {
@@ -7824,5 +8285,108 @@ footer #scroll-top:hover {
     right: 50%;
     top: -65px;
     transform: translate(27px);
+  }
+  /*Related good practices
+******************************/
+  .related-good-practices {
+    min-height: 510px;
+  }
+  .related-good-practices .view-id-related_good_practices {
+    position: relative;
+  }
+  .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top {
+    position: absolute;
+    display: block;
+    top: 56px;
+    width: 100%;
+    right: 0px;
+    z-index: 9999;
+    text-decoration: none !important;
+  }
+  .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top a {
+    text-decoration: none;
+    color: white;
+    width: 40px;
+    display: inline-block;
+    overflow: hidden;
+  }
+  .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top a:hover {
+    color: #ea4a5e;
+    text-decoration: none;
+  }
+  .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-next,
+  .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-previous {
+    background-color: #ea4a5e;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 120px;
+    overflow: hidden;
+    text-decoration: none;
+  }
+  .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-next a,
+  .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-previous a {
+    text-decoration: none !important;
+    color: #333333;
+    cursor: pointer;
+    display: block;
+  }
+  .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-next a:hover,
+  .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-previous a:hover {
+    text-decoration: none;
+    color: white;
+  }
+  .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-previous {
+    left: -18px;
+  }
+  .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-previous a:before {
+    content: "\f053";
+    font-family: "FontAwesome";
+    display: block;
+    margin-bottom: 29px;
+    font-size: 1.7em;
+    line-height: 53px;
+    color: white;
+    margin-left: 13px;
+  }
+  .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-next {
+    right: -18px;
+  }
+  .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-next a:before {
+    content: "\f054";
+    font-family: "FontAwesome";
+    display: block;
+    margin-bottom: 29px;
+    font-size: 1.7em;
+    line-height: 53px;
+    color: white;
+    margin-left: 16px;
+  }
+  .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-pause {
+    display: none;
+  }
+}
+@media only screen and (max-width: 550px) {
+  /*Related good practices
+******************************/
+  .related-good-practices {
+    min-height: 390px;
+  }
+  .related-good-practices .views-slideshow-controls-top .views-slideshow-controls-text-next,
+  .related-good-practices .views-slideshow-controls-top .views-slideshow-controls-text-previous {
+    top: 60px !important;
+  }
+}
+@media only screen and (max-width: 480px) {
+  /*Related good practices
+******************************/
+  .related-good-practices {
+    min-height: 330px;
+  }
+  .related-good-practices .views-slideshow-controls-top .views-slideshow-controls-text-next,
+  .related-good-practices .views-slideshow-controls-top .views-slideshow-controls-text-previous {
+    top: 20px !important;
   }
 }

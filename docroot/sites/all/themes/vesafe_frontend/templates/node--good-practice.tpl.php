@@ -191,12 +191,12 @@
 							}
 							print '</div>';
 						}
-						
+						print '</section>';
 					}
-				print '</section>';
 			?>
 		</div>
 		<div class="related-good-practices col-md-12">
+			<h3>Related Good Practices</h3>
 			<?php
 				if (sizeof($riskFilters) == 0) {
 					$riskFilters = 'all';
@@ -208,11 +208,14 @@
 				}else{
 					$vehicleFilters = implode('+', $vehicleFilters);	
 				}
-				
+				print '<div class="related-slider-big hidden-xs">';
 				print views_embed_view('related_good_practices', $display_id = 'block_1',$riskFilters.'/'.$vehicleFilters);
+				print '</div>';
 
 				// View for Responsive Design
+				print '<div class="related-slider-small hidden-sm hidden-md hidden-lg">';
 				print views_embed_view('related_good_practices', $display_id = 'block_3',$riskFilters.'/'.$vehicleFilters);
+				print '</div>';
 			?>
 		</div>
 	</div>
