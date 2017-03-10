@@ -191,9 +191,8 @@
 							}
 							print '</div>';
 						}
-						
+						print '</section>';
 					}
-				print '</section>';
 			?>
 		</div>
 		<div class="related-good-practices col-md-12">
