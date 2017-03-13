@@ -33,8 +33,8 @@ header{
 	clear: both;
 }
 .top-header-container{
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding-top: 10px;
+	padding-bottom: 7px;
 	.header-logo{
 		margin-top: 10px;
 		.logo{
@@ -48,8 +48,8 @@ header{
 		}
 	}
 	.header-blocks{
-		max-width: 230px;
-		min-width: 230px;
+		max-width: 273px;
+		min-width: 260px;
     	float: right;
 		#block-block-3,
 		#block-text-resize-0,
@@ -60,28 +60,30 @@ header{
 			p{
 				margin: 0px;
 				border-right: 2px solid @color-primary;
-				padding-right: 12px;
+				padding-right: 7px;
 				a{
 					color: @color-primary;
 				}
 			}
 		}
 		#block-text-resize-0{
+			font{
+				display: none;
+			}
 			#text_resize_decrease{
 				display: inline-block;
 				float: inherit;
 				margin: 0px;
 				text-indent: 0px;
 				width: 15px;
-				height: 20px;
-				margin-left: 5px;
+				margin-left: 0px;
 				&:before{
 					content: "a";
 				    width: 15px;
 				    z-index: 2;
 				    position: absolute;
 				    color: #323a93;
-				    height: 20px;
+				    height: 23px;
 				    text-align: center;
 				    background-color: white;
 				    font-size: 1.1em;
@@ -94,8 +96,8 @@ header{
 				margin: 0px;
 				text-indent: 0px;
 				width: 20px;
-				height: 20px;
-				margin-right: 8px;
+				height: 16px;
+				margin-right: 0px;
 				&:before{
 					content: "a";
 				    width: 20px;
@@ -115,7 +117,7 @@ header{
 				border-left: 2px solid @color-primary;
 				padding-top: 0px;
 				padding-bottom: 0px;
-				padding-left: 14px;
+				padding-left: 8px;
 				&:before{
 					content:"\e045";
 					font-family: "Glyphicons Halflings";
@@ -130,7 +132,7 @@ header{
 			}
 		}
 		#block-vesafe-search-search-vesafe{
-			margin-top: 10px;
+			margin-top: 7px;
 			background-color: @color-primary;
 			border-radius: 13px;
 			height: 27px;
@@ -168,7 +170,7 @@ header{
 			}
 		}
 		#block-gtranslate-gtranslate{
-			margin-top: 10px;
+			margin-top: 7px;
 			&:before{
 				content: "";
 				background: url("../images/icons/google-g-logo.png");
@@ -181,7 +183,15 @@ header{
 			}
 			select{
 				border-color: @color-primary;
-				max-width: 80%;
+				min-width: 83% !important;
+				display: inline-block !important;
+			}
+			.chosen-container.chosen-container-single.chosen-processed{
+				display: none !important;
+			}
+			.gtranslate-machinatron{
+				font-size: 0.75em;
+				text-align: center;
 			}
 		}
 	}

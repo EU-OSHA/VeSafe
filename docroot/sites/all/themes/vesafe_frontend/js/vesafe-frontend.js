@@ -7,6 +7,9 @@ jQuery(document).ready(function () {
 	// 	wrap: 'word',
 	// });
 
+	jQuery("#facetapi-facet-search-apidefault-solr-index-block-field-risks").siblings("h2").addClass("risk-icon");
+	jQuery("#facetapi-facet-search-apidefault-solr-index-block-field-vehicles").siblings("h2").addClass("vehicle-icon");
+
 	/*search filter menu open/close*/
 	jQuery(".facetapi-facetapi-links").hide();
 	jQuery(".page-search .block-facetapi h2, .page-node-241 .block-facetapi h2").click(function(){
