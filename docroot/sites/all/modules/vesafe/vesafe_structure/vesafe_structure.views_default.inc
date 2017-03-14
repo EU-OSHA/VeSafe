@@ -814,13 +814,6 @@ function vesafe_structure_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['row_class'] = 'col-sm-4';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['label'] = 'Description';
-  $handler->display->display_options['header']['area']['content'] = 'The main part of this guide are good practice examples for you to learn from. To find the good practices that are applicable to you we have tagged them by vehicle and by risk.';
-  $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Relationship: Entityqueue: Content Queue */
   $handler->display->display_options['relationships']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
   $handler->display->display_options['relationships']['entityqueue_relationship']['table'] = 'node';
@@ -838,24 +831,24 @@ function vesafe_structure_views_default_views() {
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
-  /* Field: Content: Image */
-  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
-  $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
-  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
-  $handler->display->display_options['fields']['field_image']['label'] = '';
-  $handler->display->display_options['fields']['field_image']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_image']['alter']['text'] = '<div class="overlay">
+  /* Field: Content: Thumbnail */
+  $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['text'] = '<div class="overlay">
 <div class="thumb-info">
 <span class="icon-link"></span>
 </div>
 </div>
-[field_image]';
-  $handler->display->display_options['fields']['field_image']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_image']['alter']['path'] = '[path]';
-  $handler->display->display_options['fields']['field_image']['alter']['link_class'] = 'link-to-url';
-  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_image']['settings'] = array(
+[field_thumbnail]';
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['path'] = '[path]';
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['link_class'] = 'link-to-url';
+  $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
     'image_style' => 'large',
     'image_link' => '',
   );
@@ -911,15 +904,13 @@ function vesafe_structure_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('Description'),
-    t('The main part of this guide are good practice examples for you to learn from. To find the good practices that are applicable to you we have tagged them by vehicle and by risk.'),
     t('Content Queue'),
     t('<div class="overlay">
 <div class="thumb-info">
 <span class="icon-link"></span>
 </div>
 </div>
-[field_image]'),
+[field_thumbnail]'),
     t('Block'),
   );
   $export['key_articles'] = $view;
