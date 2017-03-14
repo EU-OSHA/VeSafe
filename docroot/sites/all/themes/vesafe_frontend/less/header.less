@@ -136,6 +136,7 @@ header{
 			background-color: @color-primary;
 			border-radius: 13px;
 			height: 27px;
+			visibility: hidden;
 			.navbar-form{
 				margin: 0px;
 				padding: 0px;
@@ -171,6 +172,7 @@ header{
 		}
 		#block-gtranslate-gtranslate{
 			margin-top: 7px;
+			visibility: hidden;
 			&:before{
 				content: "";
 				background: url("../images/icons/google-g-logo.png");
@@ -228,10 +230,11 @@ header{
 				max-height: 35px;
     			overflow: hidden;
 				&:before{
-					content:"\e021";
-					font-family: "Glyphicons Halflings";
-					text-align: center;
-    				display: block;
+					// content:"\e021";
+					// font-family: "Glyphicons Halflings";
+					// text-align: center;
+    				//display: block;
+    				background-image: url("../images/icons/vesafe-home.png") no-repeat 0%;
 				}
 			}
 			a.active{

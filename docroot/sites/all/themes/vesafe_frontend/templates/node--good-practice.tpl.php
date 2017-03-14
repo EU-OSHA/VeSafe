@@ -172,14 +172,14 @@
 				print '<section class="additional-resources">';
 				print '<h3>Additional Resources</h3>';
 						$resources = $node->field_additional_resources["und"];
-						if (sizeof($resources) > 3){
+						if (sizeof($resources) > 4){
 							print '<div>';
-							for ($i = 0; $i < 3; $i++){
+							for ($i = 0; $i < 4; $i++){
 								print '<a target="_blank" href="'.$resources[$i]["url"].'">'.$resources[$i]["title"].'</a>';
 							}
 							print '</div>';
 							print '<div class="hidden-links">';
-							for ($i = 3; $i < sizeof($resources); $i++){
+							for ($i = 4; $i < sizeof($resources); $i++){
 								print '<a target="_blank" href="'.$resources[$i]["url"].'">'.$resources[$i]["title"].'</a>';
 							}
 							print '</div>';

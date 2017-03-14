@@ -6645,6 +6645,7 @@ header {
   background-color: #323a93;
   border-radius: 13px;
   height: 27px;
+  visibility: hidden;
 }
 .top-header-container .header-blocks #block-vesafe-search-search-vesafe .navbar-form {
   margin: 0px;
@@ -6680,6 +6681,7 @@ header {
 }
 .top-header-container .header-blocks #block-gtranslate-gtranslate {
   margin-top: 7px;
+  visibility: hidden;
 }
 .top-header-container .header-blocks #block-gtranslate-gtranslate:before {
   content: "";
@@ -6737,10 +6739,7 @@ header {
   overflow: hidden;
 }
 .menu-header #navbar li.first a:before {
-  content: "\e021";
-  font-family: "Glyphicons Halflings";
-  text-align: center;
-  display: block;
+  background-image: url("../images/icons/vesafe-home.png") no-repeat 0%;
 }
 .menu-header #navbar li.first a.active {
   border-bottom: none;
@@ -6962,6 +6961,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 .homepage #homepage .panels-flexible-row-new-3 .views-row a:hover {
   border-radius: 0px;
+  background-color: #a02b3a;
 }
 .homepage #homepage .panels-flexible-row-new-4 .panels-flexible-region-new-key_articles_introduction h2:before {
   content: "\f084";
@@ -8376,6 +8376,42 @@ footer #scroll-top:hover {
     padding-top: 10px;
     padding-bottom: 10px;
   }
+  /*Page search good practices
+**********************************/
+  .page-node-241 .page-content-container > aside h2.filters {
+    color: white;
+    background-color: #ea4a5e;
+    width: 100%;
+    padding: 10px 12px;
+    margin: 0px;
+    font-size: 1em;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .page-node-241 .page-content-container > aside h2.filters:after {
+    content: "\e253";
+    font-family: "Glyphicons Halflings";
+    float: right;
+    font-size: 0.8em;
+    line-height: 22px;
+  }
+  .page-node-241 .page-content-container > aside h2.filters:before {
+    content: "\f0b0";
+    font-family: "FontAwesome";
+    font-size: 1em;
+    margin-right: 10px;
+  }
+  .page-node-241 .page-content-container > aside .open-filters:after {
+    content: "\e252" !important;
+    font-family: "Glyphicons Halflings";
+    float: right;
+    font-size: 0.8em;
+    line-height: 25px;
+  }
+  .page-node-241 .page-content-container > aside .well {
+    padding: 15px;
+    background-color: #f7f7f7 !important;
+  }
 }
 @media only screen and (max-width: 767px) {
   /*Header
@@ -8522,6 +8558,15 @@ footer #scroll-top:hover {
   }
   .related-good-practices .view-id-related_good_practices .views-slideshow-controls-top .views-slideshow-controls-text-pause {
     display: none;
+  }
+  /*Page search good practices
+**********************************/
+  .page-node-241 .page-content-container .view-id-good_practices .view-content .views-row-odd {
+    margin-right: 0px;
+  }
+  .page-node-241 .page-content-container .view-id-good_practices .view-content .views-row {
+    width: 100%;
+    margin-bottom: 20px;
   }
 }
 @media only screen and (max-width: 550px) {
