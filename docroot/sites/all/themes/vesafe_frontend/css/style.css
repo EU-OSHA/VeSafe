@@ -7519,6 +7519,10 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   vertical-align: text-bottom;
   font-weight: normal;
 }
+.node-type-key-article #block-system-main .good-practice-block .resources-container .additional-resources,
+.node-type-good-practice #block-system-main .good-practice-block .resources-container .additional-resources {
+  overflow: hidden;
+}
 .node-type-key-article #block-system-main .good-practice-block .resources-container .additional-resources h3:before,
 .node-type-good-practice #block-system-main .good-practice-block .resources-container .additional-resources h3:before {
   content: "\f055";
@@ -8289,6 +8293,72 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   background: url('../images/icons/pager-last.png') no-repeat 50%;
   background-size: 21px;
 }
+/*End pagination styles*/
+/*page not found
+********************************/
+.page-page-not-found #block-system-main {
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+.page-page-not-found .action-links {
+  display: none;
+}
+.page-page-not-found .panel-col-first p {
+  font-size: 1.4em;
+}
+.page-page-not-found .panel-col-last #search-form {
+  position: relative;
+  padding: 0px;
+}
+.page-page-not-found .panel-col-last #search-form .form-group {
+  display: block;
+}
+.page-page-not-found .panel-col-last #search-form .form-group #edit-search-api-views-fulltext {
+  border-color: #9c9c9c;
+  box-shadow: none;
+  width: 100%;
+  padding-right: 35px;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+}
+.page-page-not-found .panel-col-last #search-form button.form-submit {
+  border: none;
+  background-color: inherit;
+  color: #9c9c9c;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+.page-page-not-found .panel-col-last .pane-2 a {
+  background-color: #ea4a5e;
+  border-radius: 8px;
+  padding: 7px 10px;
+  color: white;
+  margin-top: 15px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  -webkit-transition: all 0.3s ease-out;
+  /* Chrome y Safari */
+  -o-transition: all 0.3s ease-out;
+  /* Opera */
+  -moz-transition: all 0.3s ease-out;
+  /* Mozilla Firefox */
+  -ms-transition: all 0.3s ease-out;
+  /* Internet Explorer */
+  transition: all 0.3s ease-out;
+  /* W3C */
+}
+.page-page-not-found .panel-col-last .pane-2 a:after {
+  content: " \f105";
+  font-family: "FontAwesome";
+  margin-left: 5px;
+  font-weight: bold;
+}
+.page-page-not-found .panel-col-last .pane-2 a:hover {
+  border-radius: 0px;
+  background-color: #a02b3a;
+}
 /*Footer
 ***********************/
 .site-footer-container {
@@ -8463,6 +8533,14 @@ footer #scroll-top:hover {
     bottom: -100px;
     right: 15px;
   }
+  /*homepage
+***************************/
+  .homepage #homepage .panels-flexible-row-new-3 .panels-flexible-region-new-vehicle_navigation {
+    width: 100%;
+  }
+  .homepage #homepage .panels-flexible-row-new-3 .panels-flexible-region-new-risk_navigation {
+    width: 100%;
+  }
   /*Breadcrumb
 ***************************/
   .breadcrumb-container {
@@ -8567,6 +8645,40 @@ footer #scroll-top:hover {
   .page-node-241 .page-content-container .view-id-good_practices .view-content .views-row {
     width: 100%;
     margin-bottom: 20px;
+  }
+  /*legislation
+*******************************/
+  .legislation-block .item-block h3 {
+    margin-top: 15px !important;
+  }
+  /*e-guide block
+*******************************/
+  .eguide-block img {
+    margin-bottom: 15px;
+  }
+  /*page not found
+********************************/
+  .page-page-not-found .panel-col-first {
+    width: 100%;
+    float: none;
+  }
+  .page-page-not-found .panel-col-first .inside {
+    margin: 0px;
+    margin-bottom: 20px;
+  }
+  .page-page-not-found .panel-col-last {
+    width: 100%;
+    float: none;
+  }
+  .page-page-not-found .panel-col-last .inside {
+    margin: 0px;
+  }
+  .page-page-not-found .panel-col-last .navbar-form {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .page-page-not-found .panel-col-last .pane-2 a {
+    margin-top: 10px;
   }
 }
 @media only screen and (max-width: 550px) {
