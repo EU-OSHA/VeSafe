@@ -17,6 +17,16 @@ jQuery(document).ready(function () {
 		jQuery(this).next().slideToggle();
 	});
 
+	/*search filter menu open/close FOR TABLET/MOBILE*/
+	if(jQuery("h2.filters").is(":visible")){
+		jQuery(".well").hide();
+	}
+	jQuery("h2.filters").click(function(){
+		jQuery(".well").slideToggle();
+		jQuery(this).toggleClass("open-filters");
+	});
+	
+
 	/*key articles menu/next/prev functionality*/
 	jQuery(".key-article-content > div").addClass("close");
 	jQuery(".key-article-content > div#introduction").removeClass("close").addClass("active");
