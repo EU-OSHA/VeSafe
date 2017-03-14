@@ -885,7 +885,7 @@ function vesafe_structure_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -937,7 +937,7 @@ function vesafe_structure_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -986,7 +986,7 @@ function vesafe_structure_field_default_field_instances() {
         'view_mode' => 'full',
       ),
       'type' => 'entityreference_view_widget',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -1035,7 +1035,7 @@ function vesafe_structure_field_default_field_instances() {
         'view_mode' => 'full',
       ),
       'type' => 'entityreference_view_widget',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -1083,7 +1083,7 @@ function vesafe_structure_field_default_field_instances() {
         'view_mode' => 'full',
       ),
       'type' => 'entityreference_view_widget',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -1139,7 +1139,7 @@ function vesafe_structure_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -1187,7 +1187,7 @@ function vesafe_structure_field_default_field_instances() {
         'view_mode' => 'full',
       ),
       'type' => 'entityreference_view_widget',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -1233,7 +1233,7 @@ function vesafe_structure_field_default_field_instances() {
         'rows' => 2,
       ),
       'type' => 'text_textarea',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -1279,7 +1279,59 @@ function vesafe_structure_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 3,
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-key_article-field_thumbnail'.
+  $field_instances['node-key_article-field_thumbnail'] = array(
+    'bundle' => 'key_article',
+    'deleted' => 0,
+    'description' => 'The image that will be used on the views were more than one Key Article is displayed',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_thumbnail',
+    'label' => 'Thumbnail',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 1,
+      'default_image' => 0,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'image_field_caption' => 0,
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 1,
     ),
   );
 
@@ -1443,6 +1495,8 @@ function vesafe_structure_field_default_field_instances() {
   t('Specific risk factors');
   t('Subtitle');
   t('Summary');
+  t('The image that will be used on the views were more than one Key Article is displayed');
+  t('Thumbnail');
   t('Vehicles');
   t('What is it?');
   t('What is the benefit?');

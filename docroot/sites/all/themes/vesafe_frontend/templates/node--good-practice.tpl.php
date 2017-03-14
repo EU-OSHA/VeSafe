@@ -194,29 +194,33 @@
 						print '</section>';
 					}
 			?>
-		</div>
-		<div class="related-good-practices col-md-12">
-			<h3>Related Good Practices</h3>
-			<?php
-				if (sizeof($riskFilters) == 0) {
-					$riskFilters = 'all';
-				}else{
-					$riskFilters = implode('+',$riskFilters);
-				}
-				if (sizeof($vehicleFilters) == 0) {
-					$vehicleFilters = 'all';
-				}else{
-					$vehicleFilters = implode('+', $vehicleFilters);	
-				}
-				print '<div class="related-slider-big hidden-xs">';
-				print views_embed_view('related_good_practices', $display_id = 'block_1',$riskFilters.'/'.$vehicleFilters);
-				print '</div>';
+		</div>			
+		<?php
+			if (sizeof($riskFilters) == 0) {
+				$riskFilters = 'all';
+			}else{
+				$riskFilters = implode('+',$riskFilters);
+			}
+			if (sizeof($vehicleFilters) == 0) {
+				$vehicleFilters = 'all';
+			}else{
+				$vehicleFilters = implode('+', $vehicleFilters);	
+			}
 
-				// View for Responsive Design
-				print '<div class="related-slider-small hidden-sm hidden-md hidden-lg">';
-				print views_embed_view('related_good_practices', $display_id = 'block_3',$riskFilters.'/'.$vehicleFilters);
+			$view = views_embed_view('related_good_practices', $display_id = 'block_1',$riskFilters.'/'.$vehicleFilters);
+			if (strpos($view, 'view-content')){
+				print '<div class="related-good-practices col-md-12">';
+					print '<h3>Related Good Practices</h3>';
+					print '<div class="related-slider-big hidden-xs">';
+						print $view;
+					print '</div>';
+
+					// View for Responsive Design
+					print '<div class="related-slider-small hidden-sm hidden-md hidden-lg">';
+						print views_embed_view('related_good_practices', $display_id = 'block_3',$riskFilters.'/'.$vehicleFilters);
+					print '</div>';
 				print '</div>';
-			?>
-		</div>
+			}			
+		?>
 	</div>
 </div>

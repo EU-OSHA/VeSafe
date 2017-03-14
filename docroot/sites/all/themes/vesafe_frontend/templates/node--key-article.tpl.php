@@ -279,18 +279,22 @@
 			</div> <!-- Next-Previous Button div closure -->
 		</div> <!-- Key Article Theme div closure -->
 	</div>
-	<div class="related-good-practices col-md-12">
-		<h3>Related Good Practices</h3>
-		<?php 
-			$nid = $node->nid;
-			print '<div class="related-slider-big hidden-xs">';
-			print views_embed_view('related_good_practices', $display_id = 'block',$nid); 
-			print '</div>';
+	<?php
+		$nid = $node->nid;
 
-			// View for Responsive Design
-			print '<div class="related-slider-small hidden-sm hidden-md hidden-lg">';
-			print views_embed_view('related_good_practices', $display_id = 'block_2',$nid);
+		$view = views_embed_view('related_good_practices', $display_id = 'block',$nid);
+		if (strpos($view, 'view-content')){
+			print '<div class="related-good-practices col-md-12">';
+				print '<h3>Related Good Practices</h3>';
+				print '<div class="related-slider-big hidden-xs">';
+					print $view;
+				print '</div>';
+
+				// View for Responsive Design
+				print '<div class="related-slider-small hidden-sm hidden-md hidden-lg">';
+					print views_embed_view('related_good_practices', $display_id = 'block_2',$nid);
+				print '</div>';
 			print '</div>';
-		?>
-	</div>
+		}			
+	?>
 </div>
