@@ -6737,9 +6737,9 @@ header {
 .menu-header #navbar li.first a {
   max-height: 35px;
   overflow: hidden;
-}
-.menu-header #navbar li.first a:before {
-  background-image: url("../images/icons/vesafe-home.png") no-repeat 0%;
+  background: url(../images/icons/vesafe-home.png) no-repeat 50% 93%;
+  text-align: center;
+  font-size: 0px;
 }
 .menu-header #navbar li.first a.active {
   border-bottom: none;
