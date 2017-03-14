@@ -89,7 +89,7 @@
 </div> -->
 <div class="back-arrow-container container">
 	<div class="back-arrow-wrapper">
-		<a href="#" class="back-arrow">Return to list</a>
+		<a href="/themes" class="back-arrow">Return to list</a>
 	</div>
 </div>
 <!--page image block-->
