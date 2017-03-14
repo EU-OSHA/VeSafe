@@ -86,7 +86,7 @@
 		<span class="good-likes"><!--aqui la cantidad de likes-->8</span>
 	</div>
 	<div class="back-arrow-wrapper">
-		<a href="#" class="back-arrow">Return to list</a>
+		<a href="/good-practices" class="back-arrow">Return to list</a>
 	</div>
 </div>
 <!--page image block-->
