@@ -12,9 +12,13 @@ jQuery(document).ready(function () {
 
 	/*search filter menu open/close*/
 	jQuery(".facetapi-facetapi-links").hide();
-	jQuery(".page-search .block-facetapi h2, .page-node-241 .block-facetapi h2").click(function(){
+	jQuery(".risk-icon").click(function(){
 		jQuery(this).toggleClass("open");
-		jQuery(this).next().slideToggle();
+		jQuery("#facetapi-facet-search-apidefault-solr-index-block-field-risks").slideToggle();
+	});
+	jQuery(".vehicle-icon").click(function(){
+		jQuery(this).toggleClass("open");
+		jQuery("#facetapi-facet-search-apidefault-solr-index-block-field-vehicles").slideToggle();
 	});
 
 	/*search filter menu open/close FOR TABLET/MOBILE*/

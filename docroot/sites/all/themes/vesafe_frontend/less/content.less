@@ -827,6 +827,7 @@ body > .page-title-container{
 					}
 				}
 				.additional-resources{
+					overflow: hidden;
 					h3{
 						&:before{
 							content:"\f055";
@@ -1706,3 +1707,74 @@ body > .page-title-container{
 	}
 }
 /*End pagination styles*/
+
+/*page not found
+********************************/
+.page-page-not-found{
+	#block-system-main{
+		margin-top: 40px;
+		margin-bottom: 50px;
+	}
+	.action-links{
+		display: none;
+	}
+	.panel-col-first{
+		p{
+			font-size: 1.4em;
+		}
+	}
+	.panel-col-last{
+		#search-form{
+			position: relative;
+    		padding: 0px;
+    		.form-group{
+    			display: block;
+				#edit-search-api-views-fulltext{
+					border-color: @color-background-grey-medium-dark;
+				    box-shadow: none;
+				    width: 100%;
+				    padding-right: 35px;
+				    border-radius: 10px;
+				    background-color: @color-background-grey;
+				}
+			}
+			button.form-submit{
+				border: none;
+			    background-color: inherit;
+			    color: @color-background-grey-medium-dark;
+			    position: absolute;
+			    right: 0px;
+			    top: 0px;
+			}
+		}
+		.pane-2{
+			a{
+				background-color: @color-secondary;
+			    border-radius: 8px;
+			    padding: 7px 10px;
+			    color: white;
+			    margin-top: 15px;
+			    text-decoration: none;
+			    display: inline-block;
+			    font-size: 1em;
+			    -webkit-transition:all 0.3s ease-out;  /* Chrome y Safari */
+			    -o-transition:all 0.3s ease-out;  /* Opera */
+			    -moz-transition:all 0.3s ease-out;  /* Mozilla Firefox */
+			    -ms-transition:all 0.3s ease-out;   /* Internet Explorer */
+			    transition:all 0.3s ease-out;  /* W3C */
+
+			    &:after{
+			    	content:" \f105";
+			    	font-family: "FontAwesome";
+			    	margin-left: 5px;
+			    	font-weight: bold;
+			    }
+			    &:hover{
+			    	border-radius: 0px;
+					background-color: @color-secondary-acent;
+			    }
+			}
+		}
+	}
+}
+/*end page not found*/
