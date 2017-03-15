@@ -1187,7 +1187,9 @@ body > .page-title-container{
 					display: inline-block;
 					vertical-align: top;
 					margin-bottom: 30px;
-					.views-field-field-image{
+					position: relative;
+					.views-field-field-image,
+					.views-field-field-thumbnail{
 		    			position: relative;
 		    			overflow: hidden;
 						a{
@@ -1314,6 +1316,27 @@ body > .page-title-container{
 								content: "> ";
 							}
 						}
+					}
+					.views-field-nothing{
+						position: absolute;
+					    bottom: 15px;
+					    left: 20px;
+					    .good-likes-wrapper{
+					    	display: inline-block;
+					    	cursor: pointer;
+							.good-likes{
+								color: @color-background-grey-medium-dark;
+								&:before{
+									content:"\e005";
+									font-family: "Glyphicons Halflings";
+									vertical-align: bottom;
+									margin-right: 5px;
+								}
+								&:hover{
+									color: @color-secondary;
+								}
+							}
+					    }
 					}
 				}
 			}
@@ -1690,7 +1713,7 @@ body > .page-title-container{
 			padding-left: 0px;
 			&:hover{
 				background-color: inherit;
-				color: green;
+				color: @color-secondary-acent;
 			}
 		}
 	}
