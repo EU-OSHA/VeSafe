@@ -8317,6 +8317,30 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   background-size: 21px;
 }
 /*End pagination styles*/
+/*site map
+********************************/
+#site-map {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+#site-map .site-map-front-page {
+  display: none;
+}
+#site-map .site-map-menus ul.site-map-menu {
+  list-style: none;
+}
+#site-map .site-map-menus ul.site-map-menu li {
+  margin-bottom: 10px;
+}
+#site-map .site-map-menus ul.site-map-menu li a {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+#site-map .site-map-menus ul.site-map-menu li a:before {
+  content: "> ";
+}
 /*page not found
 ********************************/
 .page-page-not-found #block-system-main {
