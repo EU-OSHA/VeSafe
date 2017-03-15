@@ -101,6 +101,7 @@
 <!--general content-->
 <div class="page-content-container-inside container">
 	<div class="key-articles-menu-container col-md-3 col-sm-5">
+		<h3 class="key-menu-arrow-open hidden-md hidden-lg">Index</h3>
 		<ul>
 			<li><a href="#introduction" class="key-introduction">Introduction</a></li>
 			<li>

@@ -29,6 +29,15 @@ jQuery(document).ready(function () {
 		jQuery(".well").slideToggle();
 		jQuery(this).toggleClass("open-filters");
 	});
+
+	/*key articles open/close menu for tablet/mobile*/
+	if(jQuery(".key-articles-menu-container h3").is(":visible")){
+		jQuery(".key-articles-menu-container > ul").hide();
+	}
+	jQuery(".key-articles-menu-container h3").click(function(){
+		jQuery(".key-articles-menu-container > ul").slideToggle();
+		jQuery(this).toggleClass("key-menu-arrow-close");
+	});
 	
 
 	/*key articles menu/next/prev functionality*/
