@@ -7,3 +7,10 @@ function vesafe_structure_install() {
 function vesafe_structure_update_7001() {
   variable_set('bootstrap_breadcrumb_home', 1);
 }
+
+/*
+ * Set variable text_resize_scope to body.
+ */
+function vesafe_structure_update_7002() {
+  variable_set('text_resize_scope', 'body');
+}
