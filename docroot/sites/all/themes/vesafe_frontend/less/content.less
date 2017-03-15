@@ -124,7 +124,7 @@ body > .page-title-container{
     	span.inline{
     		font-style: italic;
     		a{
-    			color: @color-secondary;
+    			color: inherit;
     			&:hover{
     				font-weight: bold;
     			}
@@ -132,9 +132,10 @@ body > .page-title-container{
     	}
     	span.inline.last{
     		//font-weight: 600;
+    		color: @color-secondary;
     	}
     	span.delimiter{
-    		color: @color-secondary;
+    		//color: @color-secondary;
     		//font-weight: bold;
     	}
 	}
@@ -227,7 +228,8 @@ body > .page-title-container{
 				}
 				.view-content{
 					.views-row{
-						.views-field-field-image{
+						.views-field-field-image,
+						.views-field-field-thumbnail{
     						position: relative;
     						overflow: hidden;
 							a{
@@ -964,6 +966,16 @@ body > .page-title-container{
 	}
 }
 
+/*e-guide page
+**********************************/
+.eguide-block{
+	.col-sm-8{
+		ul{
+			margin-left: 30px;
+		}
+	}
+}
+
 /*Search page
 **********************************/
 .page-search{
@@ -1354,7 +1366,8 @@ body > .page-title-container{
 			.views-field-field-summary{
 				text-align: center;
 			}
-			.views-field-field-image{
+			.views-field-field-image,
+			.views-field-field-thumbnail{
     			position: relative;
     			overflow: hidden;
 				a{
