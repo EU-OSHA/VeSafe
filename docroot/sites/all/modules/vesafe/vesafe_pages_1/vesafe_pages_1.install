@@ -1,0 +1,8 @@
+<?php
+
+/*
+ * Features revert: VES-47 - Fixed breadcrumbs on not found page.
+ */
+function vesafe_pages_1_update_7001() {
+  features_revert_module('vesafe_pages_1');
+}

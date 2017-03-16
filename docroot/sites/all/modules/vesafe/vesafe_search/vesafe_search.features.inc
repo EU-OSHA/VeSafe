@@ -44,6 +44,7 @@ function vesafe_search_default_search_api_index() {
         "field_ka_general_risk_factors" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_ka_general_safety_issues" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_ka_specific_risk_factors" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
+        "field_like_count" : { "type" : "integer" },
         "field_publication_date" : { "type" : "date" },
         "field_related_good_practices" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_risks" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
