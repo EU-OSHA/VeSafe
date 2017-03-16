@@ -173,4 +173,26 @@ jQuery(document).ready(function () {
 
 		}
 	}
+
+	printAppliedFacets(); 
+
+	function printAppliedFacets() {
+		var appliedFacets = jQuery('div.region-sidebar-first li.leaf a.facetapi-active');
+		if (appliedFacets.size() > 0){
+			var href = '', text = '', html = '';
+			for (var i = 0; i < appliedFacets.size(); i++) {
+				// Get the href of the link to remove the facet
+				href = jQuery(appliedFacets[i]).attr('href');
+
+				// Get the text of the element
+				text = jQuery(appliedFacets[i]).text();
+				text = jQuery(appliedFacets[i]).parent().text().replace(text, '');
+
+				// Generate the HTML code for the element
+				html += '<span><a href="' + href + '">X</a>' + text + '</span>';
+			}
+			// Apply the generated HTML to the applied filters div
+			jQuery('div#applied-filters').html(html);
+		}
+	}
 });
