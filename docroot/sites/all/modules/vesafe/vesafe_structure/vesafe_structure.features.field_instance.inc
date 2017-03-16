@@ -698,7 +698,7 @@ function vesafe_structure_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -754,7 +754,7 @@ function vesafe_structure_field_default_field_instances() {
         'year_range' => '-1:+1',
       ),
       'type' => 'date_popup',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -795,6 +795,58 @@ function vesafe_structure_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-good_practice-field_thumbnail'.
+  $field_instances['node-good_practice-field_thumbnail'] = array(
+    'bundle' => 'good_practice',
+    'deleted' => 0,
+    'description' => 'Image that will be displayed on \'Good Practices\' view. Upload an image with a 2.54:1 aspect radio.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 13,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_thumbnail',
+    'label' => 'Thumbnail',
+    'required' => 1,
+    'settings' => array(
+      'alt_field' => 1,
+      'default_image' => 0,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'image_field_caption' => 0,
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '387x152',
+      'title_field' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 8,
     ),
   );
 
@@ -1487,6 +1539,7 @@ function vesafe_structure_field_default_field_instances() {
   t('General safety issues');
   t('Getting started');
   t('Image');
+  t('Image that will be displayed on \'Good Practices\' view. Upload an image with a 2.54:1 aspect radio.');
   t('Introduction');
   t('Like count');
   t('Publication date');
