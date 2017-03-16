@@ -42,6 +42,10 @@ function vesafe_pages_1_default_page_manager_pages() {
     'contexts' => array(),
     'relationships' => array(),
     'name' => '',
+    'panels_breadcrumbs_state' => 1,
+    'panels_breadcrumbs_titles' => 'Page not found',
+    'panels_breadcrumbs_paths' => '<none>',
+    'panels_breadcrumbs_home' => 1,
   );
   $display = new panels_display();
   $display->layout = 'twocol';
