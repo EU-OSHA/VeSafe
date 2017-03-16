@@ -945,11 +945,15 @@ function vesafe_structure_views_default_views() {
     'body' => 'body',
     'field_publication_date' => 'field_publication_date',
     'changed' => 'changed',
+    'status' => 'status',
     'name' => 'name',
     'title_1' => 'title_1',
     'title_2' => 'title_2',
     'title_3' => 'title_3',
     'nothing' => 'nothing',
+    'edit_node' => 'edit_node',
+    'delete_node' => 'delete_node',
+    'nothing_1' => 'nothing_1',
   );
   $handler->display->display_options['style_options']['default'] = 'title';
   $handler->display->display_options['style_options']['info'] = array(
@@ -995,6 +999,13 @@ function vesafe_structure_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
+    'status' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'name' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
@@ -1024,6 +1035,21 @@ function vesafe_structure_views_default_views() {
       'empty_column' => 0,
     ),
     'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'delete_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing_1' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -1115,6 +1141,11 @@ function vesafe_structure_views_default_views() {
   $handler->display->display_options['fields']['changed']['field'] = 'changed';
   $handler->display->display_options['fields']['changed']['date_format'] = 'short';
   $handler->display->display_options['fields']['changed']['second_date_format'] = 'search_api_facetapi_YEAR';
+  /* Field: Content: Published */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'node';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['not'] = 0;
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
@@ -1300,6 +1331,7 @@ function vesafe_structure_views_default_views() {
     t('Body'),
     t('Publication date'),
     t('Updated date'),
+    t('Published'),
     t('Author'),
     t('General safety issues'),
     t('General risk factors'),
