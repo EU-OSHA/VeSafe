@@ -23,26 +23,33 @@ function vesafe_search_facetapi_default_facet_settings() {
     'widget' => 'facetapi_links',
     'filters' => array(),
     'active_sorts' => array(
+      'display' => 'display',
       'active' => 'active',
       'count' => 'count',
-      'display' => 'display',
+      'indexed' => 0,
     ),
     'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
+      'active' => '-49',
+      'display' => '-50',
+      'count' => '-48',
+      'indexed' => '-47',
     ),
     'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
+      'active' => '3',
+      'display' => '4',
+      'count' => '3',
+      'indexed' => '4',
     ),
     'empty_behavior' => 'none',
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
-    'soft_limit' => 20,
+    'soft_limit' => '20',
     'nofollow' => 1,
     'show_expanded' => 0,
+    'empty_text' => array(
+      'value' => '',
+      'format' => 'full_html',
+    ),
   );
   $export['search_api@default_solr_index:block:field_risks'] = $facet;
 
@@ -59,26 +66,33 @@ function vesafe_search_facetapi_default_facet_settings() {
     'widget' => 'facetapi_links',
     'filters' => array(),
     'active_sorts' => array(
+      'display' => 'display',
       'active' => 'active',
       'count' => 'count',
-      'display' => 'display',
+      'indexed' => 0,
     ),
     'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
+      'active' => '-49',
+      'display' => '-50',
+      'count' => '-48',
+      'indexed' => '-47',
     ),
     'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
+      'active' => '3',
+      'display' => '4',
+      'count' => '3',
+      'indexed' => '4',
     ),
     'empty_behavior' => 'none',
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
-    'soft_limit' => 20,
+    'soft_limit' => '20',
     'nofollow' => 1,
     'show_expanded' => 0,
+    'empty_text' => array(
+      'value' => '',
+      'format' => 'full_html',
+    ),
   );
   $export['search_api@default_solr_index:block:field_vehicles'] = $facet;
 
