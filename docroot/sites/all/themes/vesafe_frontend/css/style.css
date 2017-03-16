@@ -6579,49 +6579,29 @@ header {
 .top-header-container .header-blocks #block-block-3 p a {
   color: #323a93;
 }
-.top-header-container .header-blocks #block-text-resize-0 font {
+.top-header-container .header-blocks #block-text-resize-0 sup {
   display: none;
 }
-.top-header-container .header-blocks #block-text-resize-0 #text_resize_decrease {
-  display: inline-block;
-  float: inherit;
-  margin: 0px;
-  text-indent: 0px;
-  width: 15px;
-  margin-left: 0px;
-}
-.top-header-container .header-blocks #block-text-resize-0 #text_resize_decrease:before {
-  content: "a";
-  width: 15px;
-  z-index: 2;
-  position: absolute;
-  color: #323a93;
-  height: 23px;
-  text-align: center;
-  background-color: white;
-  font-size: 1.1em;
-  line-height: 20px;
-}
+.top-header-container .header-blocks #block-text-resize-0 #text_resize_decrease,
 .top-header-container .header-blocks #block-text-resize-0 #text_resize_increase {
   display: inline-block;
   float: inherit;
   margin: 0px;
   text-indent: 0px;
   width: 20px;
-  height: 16px;
-  margin-right: 0px;
-}
-.top-header-container .header-blocks #block-text-resize-0 #text_resize_increase:before {
-  content: "a";
-  width: 20px;
-  z-index: 2;
-  position: absolute;
+  background: inherit !important;
+  text-transform: lowercase;
+  height: 24px;
   color: #323a93;
-  height: 20px;
+  text-decoration: none;
   text-align: center;
-  background-color: white;
-  font-size: 2em;
-  line-height: 12px;
+}
+.top-header-container .header-blocks #block-text-resize-0 #text_resize_decrease {
+  font-size: 1.1em;
+}
+.top-header-container .header-blocks #block-text-resize-0 #text_resize_increase {
+  font-size: 1.7em;
+  line-height: 16px;
 }
 .top-header-container .header-blocks #block-printfriendly-printfriendly a {
   border-left: 2px solid #323a93;
@@ -6893,11 +6873,8 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   margin-top: 3px;
   font-size: 0.95em;
 }
-.breadcrumb-container .breadcrumb span.inline {
-  font-style: italic;
-}
 .breadcrumb-container .breadcrumb span.inline a {
-  color: inherit;
+  color: #333333;
 }
 .breadcrumb-container .breadcrumb span.inline a:hover {
   font-weight: bold;
