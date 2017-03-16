@@ -83,7 +83,7 @@
 </div> -->
 <div class="back-arrow-container container">
 	<div class="good-likes-wrapper">
-		<span class="good-likes"><!--aqui la cantidad de likes-->8</span>
+		<a class="node-like-link" href="/node/<?php print $node->nid; ?>/like"><span class="good-likes"><?php print $node->field_like_count['und'][0]['value']; ?></span></a>
 	</div>
 	<div class="back-arrow-wrapper">
 		<a href="/good-practices" class="back-arrow">Return to list</a>
