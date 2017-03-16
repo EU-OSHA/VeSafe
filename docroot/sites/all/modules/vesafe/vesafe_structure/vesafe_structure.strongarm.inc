@@ -192,7 +192,7 @@ function vesafe_structure_strongarm() {
     'popup_agree_button_message' => 'OK, I agree',
     'popup_disagree_button_message' => 'No, give me more info',
     'popup_info' => array(
-      'value' => '<h2>The EU/OSHA website uses coockies to gather information necessary for browsing the website in accordance with the EU/OSHA privacy notice.</h2><p>By clicking on any link in the EU/OSHA web pagesyou are giving your consent for the use of cookies.</p>',
+      'value' => '<h2>The EU-OSHA website uses cookies to gather information necessary for browsing the website in accordance with the EU-OSHA privacy notice.</h2><p>By clicking on any link in the EU/OSHA web pages you are giving your consent for the use of cookies.</p>',
       'format' => 'full_html',
     ),
     'popup_agreed_enabled' => 0,
@@ -203,7 +203,7 @@ function vesafe_structure_strongarm() {
       'value' => '<h2>Thank you for accepting cookies</h2><p>You can now hide this message or find out more about cookies.</p>',
       'format' => 'full_html',
     ),
-    'popup_link' => 'http://vesafe.edw.ro/privacy-notice',
+    'popup_link' => 'privacy-notice',
     'popup_link_new_window' => 1,
     'popup_height' => '',
     'popup_width' => '100%',
@@ -330,19 +330,19 @@ function vesafe_structure_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '17',
+          'weight' => '18',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '16',
+          'weight' => '17',
         ),
         'redirect' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
         'xmlsitemap' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
       ),
       'display' => array(),
