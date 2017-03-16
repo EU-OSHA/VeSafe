@@ -142,3 +142,17 @@ function vesafe_search_views_pre_render(&$view) {
       break;
   }
 }
+
+
+/**
+ * Implements hook_facet_items_alter():
+ */
+function vesafe_facets_facet_items_alter(&$build, &$settings) {
+    if ($settings->facet == "field_risks" || $settings->facet == "field_vehicles") {
+      foreach($build as $key => $item) {
+        if ($item['#active']) {
+          $build[$key]["#markup"] = $item["#markup"] . ' (' . $item['#count'] . ')';  
+        }         
+      }
+    }
+}

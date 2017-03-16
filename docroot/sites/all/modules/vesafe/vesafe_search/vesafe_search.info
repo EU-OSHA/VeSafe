@@ -5,6 +5,7 @@ version = 7.x-1.0
 dependencies[] = better_exposed_filters
 dependencies[] = entity
 dependencies[] = facetapi
+dependencies[] = facetapi_bonus
 dependencies[] = search_api
 dependencies[] = search_api_solr
 dependencies[] = views
