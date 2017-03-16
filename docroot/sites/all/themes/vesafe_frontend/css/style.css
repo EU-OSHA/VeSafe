@@ -7732,6 +7732,28 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   font-family: "Glyphicons Halflings";
   padding-right: 30px;
 }
+.page-node-241 .page-content-container > aside .well #applied-filters {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.page-node-241 .page-content-container > aside .well #applied-filters span {
+  display: block;
+  font-style: italic;
+}
+.page-node-241 .page-content-container > aside .well #applied-filters span a {
+  font-style: normal;
+  color: white;
+  padding: 0px;
+  line-height: 16px;
+  width: 16px;
+  height: 16px;
+  background-color: #9c9c9c;
+  display: inline-block;
+  text-align: center;
+  font-size: 0.8em;
+  margin-right: 10px;
+  font-weight: bold;
+}
 .page-node-241 .page-content-container > aside .well h2 {
   color: white;
   background-color: #ea4a5e;
@@ -7774,6 +7796,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 .page-node-241 .page-content-container > aside .well ul a.facetapi-active {
   font-weight: bold;
+  display: none;
 }
 .page-node-241 .page-content-container #block-views-exp-good-practices-block-1 {
   margin-bottom: 25px;
@@ -7790,6 +7813,9 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   content: ": ";
 }
 .page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links {
+  display: inline-block;
+}
+.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links .form-item {
   display: inline-block;
 }
 .page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links option,
@@ -7950,25 +7976,28 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-gp-what-is-it .more-link:before {
   content: "> ";
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-nothing {
+.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count {
   position: absolute;
   bottom: 15px;
   left: 20px;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-nothing .good-likes-wrapper {
+.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper {
   display: inline-block;
   cursor: pointer;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-nothing .good-likes-wrapper .good-likes {
+.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper a {
+  text-decoration: none;
+}
+.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper .good-likes {
   color: #9c9c9c;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-nothing .good-likes-wrapper .good-likes:before {
+.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper .good-likes:before {
   content: "\e005";
   font-family: "Glyphicons Halflings";
   vertical-align: bottom;
   margin-right: 5px;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-nothing .good-likes-wrapper .good-likes:hover {
+.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper .good-likes:hover {
   color: #ea4a5e;
 }
 /*Footer static pages
@@ -8516,6 +8545,10 @@ footer #scroll-top:hover {
   }
   /*Page search good practices
 **********************************/
+  .page-node-241 .page-content-container > aside #applied-filters span a {
+    color: #ea4a5e !important;
+    background-color: white !important;
+  }
   .page-node-241 .page-content-container > aside h2.filters {
     color: white;
     background-color: #ea4a5e;
@@ -8538,6 +8571,10 @@ footer #scroll-top:hover {
     font-family: "FontAwesome";
     font-size: 1em;
     margin-right: 10px;
+  }
+  .page-node-241 .page-content-container > aside ul li,
+  .page-node-241 .page-content-container > aside ul a {
+    color: #ea4a5e !important;
   }
   .page-node-241 .page-content-container > aside .open-filters:after {
     content: "\e252" !important;
