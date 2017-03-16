@@ -178,6 +178,9 @@ jQuery(document).ready(function () {
 
 	function printAppliedFacets() {
 		var appliedFacets = jQuery('div.region-sidebar-first li.leaf a.facetapi-active');
+		if (appliedFacets.size() == 0){
+			jQuery('div#applied-filters').hide();
+		}
 		if (appliedFacets.size() > 0){
 			var href = '', text = '', html = '';
 			for (var i = 0; i < appliedFacets.size(); i++) {
@@ -193,6 +196,29 @@ jQuery(document).ready(function () {
 			}
 			// Apply the generated HTML to the applied filters div
 			jQuery('div#applied-filters').html(html);
+		}
+	}
+
+	jQuery('div.region-sidebar-first li.leaf a.facetapi-active').parent().css("font-weight", "bold");
+	
+	openFacetsRisk(); 
+
+	function openFacetsRisk() {
+		var appliedFacets = jQuery('div.region-sidebar-first .facetapi-facet-field-risks li.leaf a.facetapi-active');
+		if (appliedFacets.size() > 0){
+			jQuery('div.region-sidebar-first .facetapi-facet-field-risks').show();
+			jQuery("h2.risk-icon").addClass("open");
+
+		}
+	}
+
+	openFacetsVehicle(); 
+
+	function openFacetsVehicle() {
+		var appliedFacets = jQuery('div.region-sidebar-first .facetapi-facet-field-vehicles li.leaf a.facetapi-active');
+		if (appliedFacets.size() > 0){
+			jQuery('div.region-sidebar-first .facetapi-facet-field-vehicles').show();
+			jQuery("h2.vehicle-icon").addClass("open");
 		}
 	}
 });
