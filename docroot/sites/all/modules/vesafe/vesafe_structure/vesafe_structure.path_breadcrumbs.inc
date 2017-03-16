@@ -12,6 +12,30 @@ function vesafe_structure_path_breadcrumbs_settings_info() {
 
   $path_breadcrumb = new stdClass();
   $path_breadcrumb->api_version = 1;
+  $path_breadcrumb->machine_name = 'contact_page_submitted';
+  $path_breadcrumb->name = 'Contact page submitted';
+  $path_breadcrumb->path = 'node/%node/done';
+  $path_breadcrumb->data = array(
+    'titles' => array(
+      0 => '!page_title',
+    ),
+    'paths' => array(
+      0 => '<none>',
+    ),
+    'home' => 1,
+    'translatable' => 0,
+    'arguments' => array(
+      'node' => array(
+        'position' => 1,
+      ),
+    ),
+    'access' => array(),
+  );
+  $path_breadcrumb->weight = 0;
+  $export['contact_page_submitted'] = $path_breadcrumb;
+
+  $path_breadcrumb = new stdClass();
+  $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'good_practice_node';
   $path_breadcrumb->name = 'Good practice node';
   $path_breadcrumb->path = 'node/%node';

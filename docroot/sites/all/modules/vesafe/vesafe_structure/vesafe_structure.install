@@ -14,3 +14,10 @@ function vesafe_structure_update_7001() {
 function vesafe_structure_update_7002() {
   variable_set('text_resize_scope', 'body');
 }
+
+/*
+ * Features revert: VES-59 - Fixed breadcrumbs display on contact submitted page.
+ */
+function vesafe_structure_update_7003() {
+  features_revert_module('vesafe_structure');
+}

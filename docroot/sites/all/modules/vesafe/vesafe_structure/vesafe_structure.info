@@ -99,6 +99,7 @@ features[node][] = good_practice
 features[node][] = key_article
 features[node][] = key_article_theme
 features[page_manager_pages][] = home_page
+features[path_breadcrumbs][] = contact_page_submitted
 features[path_breadcrumbs][] = good_practice_node
 features[path_breadcrumbs][] = node_page
 features[path_breadcrumbs][] = search_page
