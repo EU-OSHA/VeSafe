@@ -465,6 +465,162 @@ function vesafe_structure_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['group'] = 1;
+  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Title contains';
+  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  /* Filter criterion: Content: Vehicles (field_vehicles) */
+  $handler->display->display_options['filters']['field_vehicles_tid']['id'] = 'field_vehicles_tid';
+  $handler->display->display_options['filters']['field_vehicles_tid']['table'] = 'field_data_field_vehicles';
+  $handler->display->display_options['filters']['field_vehicles_tid']['field'] = 'field_vehicles_tid';
+  $handler->display->display_options['filters']['field_vehicles_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_vehicles_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_vehicles_tid']['expose']['operator_id'] = 'field_vehicles_tid_op';
+  $handler->display->display_options['filters']['field_vehicles_tid']['expose']['label'] = 'Vehicles';
+  $handler->display->display_options['filters']['field_vehicles_tid']['expose']['operator'] = 'field_vehicles_tid_op';
+  $handler->display->display_options['filters']['field_vehicles_tid']['expose']['identifier'] = 'field_vehicles_tid';
+  $handler->display->display_options['filters']['field_vehicles_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_vehicles_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_vehicles_tid']['vocabulary'] = 'vehicle';
+  /* Filter criterion: Content: Risks (field_risks) */
+  $handler->display->display_options['filters']['field_risks_tid']['id'] = 'field_risks_tid';
+  $handler->display->display_options['filters']['field_risks_tid']['table'] = 'field_data_field_risks';
+  $handler->display->display_options['filters']['field_risks_tid']['field'] = 'field_risks_tid';
+  $handler->display->display_options['filters']['field_risks_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_risks_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_risks_tid']['expose']['operator_id'] = 'field_risks_tid_op';
+  $handler->display->display_options['filters']['field_risks_tid']['expose']['label'] = 'Risks';
+  $handler->display->display_options['filters']['field_risks_tid']['expose']['operator'] = 'field_risks_tid_op';
+  $handler->display->display_options['filters']['field_risks_tid']['expose']['identifier'] = 'field_risks_tid';
+  $handler->display->display_options['filters']['field_risks_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_risks_tid']['group_info']['label'] = 'Risks (field_risks)';
+  $handler->display->display_options['filters']['field_risks_tid']['group_info']['identifier'] = 'field_risks_tid';
+  $handler->display->display_options['filters']['field_risks_tid']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['field_risks_tid']['group_info']['group_items'] = array(
+    1 => array(),
+    2 => array(),
+    3 => array(),
+  );
+  $handler->display->display_options['filters']['field_risks_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_risks_tid']['vocabulary'] = 'risk';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 'All';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'good_practice' => 'good_practice',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: User: Name (raw) */
+  $handler->display->display_options['filters']['name']['id'] = 'name';
+  $handler->display->display_options['filters']['name']['table'] = 'users';
+  $handler->display->display_options['filters']['name']['field'] = 'name';
+  $handler->display->display_options['filters']['name']['relationship'] = 'uid';
+  $handler->display->display_options['filters']['name']['operator'] = 'contains';
+  $handler->display->display_options['filters']['name']['group'] = 1;
+  $handler->display->display_options['filters']['name']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['name']['expose']['operator_id'] = 'name_op';
+  $handler->display->display_options['filters']['name']['expose']['label'] = 'Author';
+  $handler->display->display_options['filters']['name']['expose']['operator'] = 'name_op';
+  $handler->display->display_options['filters']['name']['expose']['identifier'] = 'author';
+  $handler->display->display_options['filters']['name']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  /* Filter criterion: User: Name (raw) */
+  $handler->display->display_options['filters']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['filters']['name_1']['table'] = 'users';
+  $handler->display->display_options['filters']['name_1']['field'] = 'name';
+  $handler->display->display_options['filters']['name_1']['relationship'] = 'uid_1';
+  $handler->display->display_options['filters']['name_1']['operator'] = 'contains';
+  $handler->display->display_options['filters']['name_1']['group'] = 1;
+  $handler->display->display_options['filters']['name_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['name_1']['expose']['operator_id'] = 'name_1_op';
+  $handler->display->display_options['filters']['name_1']['expose']['label'] = 'Modified by';
+  $handler->display->display_options['filters']['name_1']['expose']['operator'] = 'name_1_op';
+  $handler->display->display_options['filters']['name_1']['expose']['identifier'] = 'editor';
+  $handler->display->display_options['filters']['name_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  /* Filter criterion: Content: Publication date (field_publication_date) */
+  $handler->display->display_options['filters']['field_publication_date_value']['id'] = 'field_publication_date_value';
+  $handler->display->display_options['filters']['field_publication_date_value']['table'] = 'field_data_field_publication_date';
+  $handler->display->display_options['filters']['field_publication_date_value']['field'] = 'field_publication_date_value';
+  $handler->display->display_options['filters']['field_publication_date_value']['operator'] = 'between';
+  $handler->display->display_options['filters']['field_publication_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_publication_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_publication_date_value']['expose']['operator_id'] = 'field_publication_date_value_op';
+  $handler->display->display_options['filters']['field_publication_date_value']['expose']['label'] = 'Publication date between';
+  $handler->display->display_options['filters']['field_publication_date_value']['expose']['operator'] = 'field_publication_date_value_op';
+  $handler->display->display_options['filters']['field_publication_date_value']['expose']['identifier'] = 'field_publication_date_value';
+  $handler->display->display_options['filters']['field_publication_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_publication_date_value']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_publication_date_value']['year_range'] = '-5:+1';
+  /* Filter criterion: Date: Date (node) */
+  $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['table'] = 'node';
+  $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['operator'] = 'between';
+  $handler->display->display_options['filters']['date_filter']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['date_filter']['expose']['operator_id'] = 'date_filter_op';
+  $handler->display->display_options['filters']['date_filter']['expose']['label'] = 'Created between';
+  $handler->display->display_options['filters']['date_filter']['expose']['operator'] = 'date_filter_op';
+  $handler->display->display_options['filters']['date_filter']['expose']['identifier'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['date_filter']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['date_filter']['year_range'] = '-5:+0';
+  $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
+    'node.created' => 'node.created',
+  );
   $handler->display->display_options['path'] = 'admin/content/good-practices';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Good practices';
@@ -601,6 +757,7 @@ function vesafe_structure_views_default_views() {
     t('Risks (field_risks)'),
     t('Publication date between'),
     t('Page'),
+    t('Created between'),
     t('Good practices select widget'),
   );
   $export['good_practices_admin_view'] = $view;
@@ -1243,21 +1400,26 @@ function vesafe_structure_views_default_views() {
   );
   $handler->display->display_options['filters']['field_publication_date_value']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_publication_date_value']['year_range'] = '-4:+1';
-  /* Filter criterion: Content: Updated date */
-  $handler->display->display_options['filters']['changed']['id'] = 'changed';
-  $handler->display->display_options['filters']['changed']['table'] = 'node';
-  $handler->display->display_options['filters']['changed']['field'] = 'changed';
-  $handler->display->display_options['filters']['changed']['operator'] = 'between';
-  $handler->display->display_options['filters']['changed']['group'] = 1;
-  $handler->display->display_options['filters']['changed']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['changed']['expose']['operator_id'] = 'changed_op';
-  $handler->display->display_options['filters']['changed']['expose']['label'] = 'Updated between';
-  $handler->display->display_options['filters']['changed']['expose']['operator'] = 'changed_op';
-  $handler->display->display_options['filters']['changed']['expose']['identifier'] = 'changed';
-  $handler->display->display_options['filters']['changed']['expose']['remember_roles'] = array(
+  /* Filter criterion: Date: Date (node) */
+  $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['table'] = 'node';
+  $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['operator'] = 'between';
+  $handler->display->display_options['filters']['date_filter']['group'] = 1;
+  $handler->display->display_options['filters']['date_filter']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['date_filter']['expose']['operator_id'] = 'date_filter_op';
+  $handler->display->display_options['filters']['date_filter']['expose']['label'] = 'Updated between';
+  $handler->display->display_options['filters']['date_filter']['expose']['operator'] = 'date_filter_op';
+  $handler->display->display_options['filters']['date_filter']['expose']['identifier'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
+  );
+  $handler->display->display_options['filters']['date_filter']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['date_filter']['year_range'] = '-5:+0';
+  $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
+    'node.changed' => 'node.changed',
   );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
