@@ -143,23 +143,20 @@ function vesafe_search_default_search_api_index() {
 function vesafe_search_default_search_api_server() {
   $items = array();
   $items['solr_server'] = entity_import('search_api_server', '{
-    "name" : "Default SOLR server",
+    "name" : "Apache Solr server",
     "machine_name" : "solr_server",
     "description" : "",
     "class" : "search_api_solr_service",
     "options" : {
-      "clean_ids" : true,
-      "site_hash" : true,
       "scheme" : "http",
-      "host" : "localhost",
-      "port" : "8983",
+      "host" : "46.105.212.7",
+      "port" : 8983,
       "path" : "\\/solr\\/vesafe",
-      "http_user" : "",
-      "http_pass" : "",
+      "http" : { "http_user" : "", "http_pass" : null },
       "excerpt" : 1,
       "retrieve_data" : 1,
-      "highlight_data" : 0,
-      "skip_schema_check" : 0,
+      "highlight_data" : 1,
+      "skip_schema_check" : null,
       "solr_version" : "",
       "http_method" : "AUTO"
     },
