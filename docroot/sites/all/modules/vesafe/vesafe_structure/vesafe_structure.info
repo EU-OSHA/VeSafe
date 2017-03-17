@@ -91,6 +91,7 @@ features[field_instance][] = node-key_article-field_subtitle
 features[field_instance][] = node-key_article-field_summary
 features[field_instance][] = node-key_article-field_thumbnail
 features[field_instance][] = node-key_article_theme-body
+features[field_instance][] = node-key_article_theme-field_publication_date
 features[field_instance][] = node-key_article_theme-field_subtitle
 features[field_instance][] = node-key_article_theme-field_summary
 features[node][] = article
