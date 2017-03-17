@@ -190,13 +190,22 @@ function vesafe_pages_1_views_default_views() {
     'trim_length' => '120',
     'trim_type' => 'chars',
     'trim_suffix' => '...',
-    'more_link' => '1',
+    'more_link' => '0',
     'more_text' => 'Read more',
     'trim_options' => array(
       'text' => 0,
     ),
     'trim_preserve_tags' => '',
   );
+  /* Field: Indexed Content: Node ID */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_default_solr_index';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['separator'] = '';
+  $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
   /* Field: Indexed Content: Like count */
   $handler->display->display_options['fields']['field_like_count']['id'] = 'field_like_count';
   $handler->display->display_options['fields']['field_like_count']['table'] = 'search_api_index_default_solr_index';
@@ -204,7 +213,7 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['field_like_count']['label'] = '';
   $handler->display->display_options['fields']['field_like_count']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_like_count']['alter']['text'] = '<div class="good-likes-wrapper">
-	<a href="[url]/like?vote=1"><span class="good-likes">[field_like_count]</span></a>
+	<a  class="node-like-link" href="/node/[nid]/like"><span class="good-likes">[field_like_count]</span></a>
 </div>';
   $handler->display->display_options['fields']['field_like_count']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_like_count']['settings'] = array(
@@ -318,8 +327,9 @@ function vesafe_pages_1_views_default_views() {
 </div>
 </div>
 [field_thumbnail]'),
+    t('.'),
     t('<div class="good-likes-wrapper">
-	<a href="[url]/like?vote=1"><span class="good-likes">[field_like_count]</span></a>
+	<a  class="node-like-link" href="/node/[nid]/like"><span class="good-likes">[field_like_count]</span></a>
 </div>'),
     t('Newest'),
     t('Popularity'),
