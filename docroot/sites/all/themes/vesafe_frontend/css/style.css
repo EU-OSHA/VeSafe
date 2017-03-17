@@ -7273,6 +7273,10 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .node-type-good-practice #block-system-main .back-arrow-container .good-likes-wrapper {
   display: inline-block;
 }
+.node-type-key-article #block-system-main .back-arrow-container .good-likes-wrapper a,
+.node-type-good-practice #block-system-main .back-arrow-container .good-likes-wrapper a {
+  text-decoration: none;
+}
 .node-type-key-article #block-system-main .back-arrow-container .good-likes-wrapper .good-likes,
 .node-type-good-practice #block-system-main .back-arrow-container .good-likes-wrapper .good-likes {
   color: #ea4a5e;
@@ -7822,9 +7826,12 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links a {
   display: inline-block;
   margin-left: 10px;
+  color: #333333;
+  text-decoration: none;
 }
 .page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links .active {
   font-weight: 600;
+  color: #ea4a5e;
 }
 .page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form #edit-search-api-views-fulltext--2-wrapper,
 .page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-widget-sort-order,
