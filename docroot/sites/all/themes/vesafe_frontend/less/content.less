@@ -564,6 +564,9 @@ body > .page-title-container{
 		.back-arrow-container{
 			.good-likes-wrapper{
 				display: inline-block;
+				a{
+					text-decoration: none;
+				}
 				.good-likes{
 					color: @color-secondary;
 					&:before{
@@ -1181,9 +1184,12 @@ body > .page-title-container{
 								option, a{
 									display: inline-block;
 									margin-left: 10px;
+									color: @color-text-primary;
+									text-decoration: none;
 								}
 								.active{
 									font-weight: 600;
+									color: @color-secondary;
 								}
 							}
 						}

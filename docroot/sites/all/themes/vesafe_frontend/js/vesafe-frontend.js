@@ -118,7 +118,7 @@ jQuery(document).ready(function () {
 	/*fixing sticky menu*/
 	/*hight of page*/
 	var num = 150; //number of pixels before modifying styles
-	if(jQuery("body").height()>=1100){
+	if(jQuery("body").height()>=1200){
 		jQuery(window).bind('scroll', function () {
 		    if (jQuery(window).scrollTop() > num) {
 		        jQuery("header").addClass("sticky-menu");
@@ -129,6 +129,9 @@ jQuery(document).ready(function () {
 	}
 	/*end hight of page*/
 
+	/*adding border to third level links menu*/
+	jQuery(".node-type-good-practice #navbar ul.menu li:nth-child(2) a").css("border-bottom", "2px solid white");
+	jQuery(".node-type-key-article #navbar ul.menu li:nth-child(3) a").css("border-bottom", "2px solid white");
 
 	var windowWidth= jQuery(window).width();//window size
 
