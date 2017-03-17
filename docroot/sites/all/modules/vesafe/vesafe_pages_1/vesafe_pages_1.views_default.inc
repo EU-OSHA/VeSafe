@@ -33,17 +33,6 @@ function vesafe_pages_1_views_default_views() {
     'general' => array(
       'allow_secondary' => 0,
       'secondary_label' => 'Advanced options',
-      'secondary_form_block' => array(
-        'search' => 'search',
-        'default' => 0,
-        'secondary_label' => NULL,
-        'collapsible_label' => NULL,
-        'combine_rewrite' => NULL,
-        'reset_label' => NULL,
-        'bef_filter_description' => NULL,
-        'any_label' => NULL,
-        'filter_rewrite_values' => NULL,
-      ),
       'collapsible_label' => NULL,
       'combine_rewrite' => NULL,
       'reset_label' => NULL,
@@ -63,17 +52,6 @@ function vesafe_pages_1_views_default_views() {
         'reset_label' => '',
         'is_secondary' => 0,
         'secondary_label' => NULL,
-        'bef_filter_description' => NULL,
-        'any_label' => NULL,
-        'filter_rewrite_values' => NULL,
-      ),
-      'mefibs_block_sort_bef' => array(
-        'default' => 'default',
-        'search' => 0,
-        'secondary_label' => NULL,
-        'collapsible_label' => NULL,
-        'combine_rewrite' => NULL,
-        'reset_label' => NULL,
         'bef_filter_description' => NULL,
         'any_label' => NULL,
         'filter_rewrite_values' => NULL,
@@ -153,25 +131,52 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
   $handler->display->display_options['header']['result']['content'] = 'Showing @start - @end of @total';
-  /* Field: Indexed Content: Image */
-  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
-  $handler->display->display_options['fields']['field_image']['table'] = 'search_api_index_default_solr_index';
-  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
-  $handler->display->display_options['fields']['field_image']['label'] = '';
-  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_image']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_image']['settings'] = array(
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No results found to match your search.';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
+  /* Field: Indexed Content: URL */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'search_api_index_default_solr_index';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['label'] = '';
+  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
+  /* Field: Indexed Content: Thumbnail */
+  $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['table'] = 'search_api_index_default_solr_index';
+  $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['text'] = '<div class="overlay">
+<div class="thumb-info">
+<span class="icon-link"></span>
+</div>
+</div>
+[field_thumbnail]';
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['path'] = '[url]';
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['link_class'] = 'link-to-url';
+  $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
     'image_style' => '',
-    'image_link' => 'content',
+    'image_link' => '',
   );
   /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_default_solr_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '150';
+  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['html'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
   /* Field: Indexed Content: What is it? */
   $handler->display->display_options['fields']['field_gp_what_is_it']['id'] = 'field_gp_what_is_it';
@@ -179,7 +184,6 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['field_gp_what_is_it']['field'] = 'field_gp_what_is_it';
   $handler->display->display_options['fields']['field_gp_what_is_it']['label'] = '';
   $handler->display->display_options['fields']['field_gp_what_is_it']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_gp_what_is_it']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_gp_what_is_it']['type'] = 'smart_trim_format';
   $handler->display->display_options['fields']['field_gp_what_is_it']['settings'] = array(
     'trim_link' => '0',
@@ -193,6 +197,20 @@ function vesafe_pages_1_views_default_views() {
     ),
     'trim_preserve_tags' => '',
   );
+  /* Field: Indexed Content: Like count */
+  $handler->display->display_options['fields']['field_like_count']['id'] = 'field_like_count';
+  $handler->display->display_options['fields']['field_like_count']['table'] = 'search_api_index_default_solr_index';
+  $handler->display->display_options['fields']['field_like_count']['field'] = 'field_like_count';
+  $handler->display->display_options['fields']['field_like_count']['label'] = '';
+  $handler->display->display_options['fields']['field_like_count']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_like_count']['alter']['text'] = '<div class="good-likes-wrapper">
+	<a href="[url]/like?vote=1"><span class="good-likes">[field_like_count]</span></a>
+</div>';
+  $handler->display->display_options['fields']['field_like_count']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_like_count']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
   /* Sort criterion: Indexed Content: Publication date */
   $handler->display->display_options['sorts']['field_publication_date']['id'] = 'field_publication_date';
   $handler->display->display_options['sorts']['field_publication_date']['table'] = 'search_api_index_default_solr_index';
@@ -200,6 +218,13 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['sorts']['field_publication_date']['order'] = 'DESC';
   $handler->display->display_options['sorts']['field_publication_date']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['field_publication_date']['expose']['label'] = 'Newest';
+  /* Sort criterion: Indexed Content: Like count */
+  $handler->display->display_options['sorts']['field_like_count']['id'] = 'field_like_count';
+  $handler->display->display_options['sorts']['field_like_count']['table'] = 'search_api_index_default_solr_index';
+  $handler->display->display_options['sorts']['field_like_count']['field'] = 'field_like_count';
+  $handler->display->display_options['sorts']['field_like_count']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['field_like_count']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_like_count']['expose']['label'] = 'Popularity';
   /* Filter criterion: Indexed Content: Content type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_default_solr_index';
@@ -286,7 +311,18 @@ function vesafe_pages_1_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Showing @start - @end of @total'),
+    t('No results found to match your search.'),
+    t('<div class="overlay">
+<div class="thumb-info">
+<span class="icon-link"></span>
+</div>
+</div>
+[field_thumbnail]'),
+    t('<div class="good-likes-wrapper">
+	<a href="[url]/like?vote=1"><span class="good-likes">[field_like_count]</span></a>
+</div>'),
     t('Newest'),
+    t('Popularity'),
     t('Block'),
   );
   $export['good_practices'] = $view;
@@ -373,6 +409,7 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['relationship'] = 'field_related_good_practices_target_id';
   $handler->display->display_options['fields']['field_image']['label'] = '';
   $handler->display->display_options['fields']['field_image']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_image']['alter']['text'] = '<div class="overlay">
@@ -387,15 +424,17 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image']['settings'] = array(
-    'image_style' => 'good_practice_thumbnail',
+    'image_style' => 'related_good_practice',
     'image_link' => '',
   );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['relationship'] = 'field_related_good_practices_target_id';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '60';
+  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['html'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
@@ -673,7 +712,6 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['row_class'] = 'col-sm-4';
   $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Relationship: Entityqueue: Content Queue */
   $handler->display->display_options['relationships']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
   $handler->display->display_options['relationships']['entityqueue_relationship']['table'] = 'node';
@@ -692,24 +730,24 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
-  /* Field: Content: Image */
-  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
-  $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
-  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
-  $handler->display->display_options['fields']['field_image']['label'] = '';
-  $handler->display->display_options['fields']['field_image']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_image']['alter']['text'] = '<div class="overlay">
+  /* Field: Content: Thumbnail */
+  $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['text'] = '<div class="overlay">
 <div class="thumb-info">
 <span class="icon-link"></span>
 </div>
 </div>
-[field_image]';
-  $handler->display->display_options['fields']['field_image']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_image']['alter']['path'] = '[path]';
-  $handler->display->display_options['fields']['field_image']['alter']['link_class'] = 'link-to-url';
-  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_image']['settings'] = array(
+[field_thumbnail]';
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['path'] = '[path]';
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['link_class'] = 'link-to-url';
+  $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
     'image_style' => 'large',
     'image_link' => '',
   );
@@ -768,7 +806,7 @@ function vesafe_pages_1_views_default_views() {
 <span class="icon-link"></span>
 </div>
 </div>
-[field_image]'),
+[field_thumbnail]'),
     t('Block'),
   );
   $export['themes'] = $view;
