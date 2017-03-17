@@ -209,7 +209,7 @@ function vesafe_structure_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 1,
-      'override_title_text' => 'Sort by risk',
+      'override_title_text' => 'Filter by risk',
       'override_title_heading' => 'h2',
     );
     $pane->cache = array();
@@ -258,7 +258,7 @@ function vesafe_structure_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 1,
-      'override_title_text' => 'Sort by vehicle',
+      'override_title_text' => 'Filter by vehicle',
       'override_title_heading' => 'h2',
     );
     $pane->cache = array();
