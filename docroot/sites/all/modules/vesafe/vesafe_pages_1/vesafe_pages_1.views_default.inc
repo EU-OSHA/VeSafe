@@ -173,11 +173,15 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_default_solr_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['max_length'] = '150';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = '[url]';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '60';
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['html'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['title']['link_to_entity'] = 0;
   /* Field: Indexed Content: What is it? */
   $handler->display->display_options['fields']['field_gp_what_is_it']['id'] = 'field_gp_what_is_it';
   $handler->display->display_options['fields']['field_gp_what_is_it']['table'] = 'search_api_index_default_solr_index';
@@ -191,7 +195,7 @@ function vesafe_pages_1_views_default_views() {
     'trim_length' => '120',
     'trim_type' => 'chars',
     'trim_suffix' => '...',
-    'more_link' => '0',
+    'more_link' => '1',
     'more_text' => 'Read more',
     'trim_options' => array(
       'text' => 'text',
