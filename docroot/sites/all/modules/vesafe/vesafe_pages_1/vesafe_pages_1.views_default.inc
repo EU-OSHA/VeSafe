@@ -183,6 +183,7 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['field_gp_what_is_it']['table'] = 'search_api_index_default_solr_index';
   $handler->display->display_options['fields']['field_gp_what_is_it']['field'] = 'field_gp_what_is_it';
   $handler->display->display_options['fields']['field_gp_what_is_it']['label'] = '';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_gp_what_is_it']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_gp_what_is_it']['type'] = 'smart_trim_format';
   $handler->display->display_options['fields']['field_gp_what_is_it']['settings'] = array(
@@ -193,7 +194,7 @@ function vesafe_pages_1_views_default_views() {
     'more_link' => '0',
     'more_text' => 'Read more',
     'trim_options' => array(
-      'text' => 0,
+      'text' => 'text',
     ),
     'trim_preserve_tags' => '',
   );
