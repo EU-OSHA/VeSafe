@@ -100,6 +100,26 @@ function vesafe_structure_path_breadcrumbs_settings_info() {
 
   $path_breadcrumb = new stdClass();
   $path_breadcrumb->api_version = 1;
+  $path_breadcrumb->machine_name = 'sitemap';
+  $path_breadcrumb->name = 'Sitemap';
+  $path_breadcrumb->path = 'sitemap';
+  $path_breadcrumb->data = array(
+    'titles' => array(
+      0 => '!page_title',
+    ),
+    'paths' => array(
+      0 => '<none>',
+    ),
+    'home' => 1,
+    'translatable' => 0,
+    'arguments' => array(),
+    'access' => array(),
+  );
+  $path_breadcrumb->weight = 0;
+  $export['sitemap'] = $path_breadcrumb;
+
+  $path_breadcrumb = new stdClass();
+  $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'themes_node';
   $path_breadcrumb->name = 'Themes node';
   $path_breadcrumb->path = 'node/%node';

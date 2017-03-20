@@ -104,6 +104,7 @@ features[path_breadcrumbs][] = contact_page_submitted
 features[path_breadcrumbs][] = good_practices
 features[path_breadcrumbs][] = node_page
 features[path_breadcrumbs][] = search_page
+features[path_breadcrumbs][] = sitemap
 features[path_breadcrumbs][] = themes_node
 features[taxonomy][] = risk
 features[taxonomy][] = vehicle

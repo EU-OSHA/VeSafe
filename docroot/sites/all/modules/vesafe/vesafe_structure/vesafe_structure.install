@@ -35,3 +35,10 @@ function vesafe_structure_update_7004() {
 function vesafe_structure_update_7005() {
   features_revert_module('vesafe_structure');
 }
+
+/*
+ * Features revert: VES-72 - Site map: Missing breadcrumb.
+ */
+function vesafe_structure_update_7006() {
+  features_revert_module('vesafe_structure');
+}
