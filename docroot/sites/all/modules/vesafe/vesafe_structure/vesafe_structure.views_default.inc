@@ -1583,10 +1583,16 @@ function vesafe_structure_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Taxonomy term: Content using Vehicles */
+  $handler->display->display_options['relationships']['reverse_field_vehicles_node']['id'] = 'reverse_field_vehicles_node';
+  $handler->display->display_options['relationships']['reverse_field_vehicles_node']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['relationships']['reverse_field_vehicles_node']['field'] = 'reverse_field_vehicles_node';
+  $handler->display->display_options['relationships']['reverse_field_vehicles_node']['required'] = TRUE;
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
@@ -1637,6 +1643,7 @@ function vesafe_structure_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('field_vehicles'),
     t('Term ID'),
     t('.'),
     t(','),
