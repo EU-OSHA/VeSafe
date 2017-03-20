@@ -157,8 +157,10 @@
     <?php
      if (isset($node->field_subtitle['und'][0]['value'])){
       print('<div class="after_title">');
-      print($node->field_subtitle['und'][0]['value']);
+        print($node->field_subtitle['und'][0]['value']);
       print('</div>');
+      }else if ($_SERVER['REQUEST_URI'] == '/good-practices') {
+        print '<p>Browse or sort good practice examples</p>';
       }
       ?>
 

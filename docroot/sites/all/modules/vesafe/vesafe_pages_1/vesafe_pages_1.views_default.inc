@@ -22,13 +22,15 @@ function vesafe_pages_1_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Good Practice';
+  $handler->display->display_options['title'] = 'Good Practices';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['bef'] = array(
     'general' => array(
       'allow_secondary' => 0,
@@ -270,44 +272,176 @@ function vesafe_pages_1_views_default_views() {
     'title' => 'title',
   );
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block_1');
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
-  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'sort' => array(
+      'bef_format' => 'bef_links',
+      'advanced' => array(
+        'collapsible' => 0,
+        'collapsible_label' => 'Sort options',
+        'combine' => 0,
+        'combine_param' => 'sort_bef_combine',
+        'combine_rewrite' => '',
+        'reset' => 0,
+        'reset_label' => '',
+        'is_secondary' => 0,
+        'secondary_label' => NULL,
+        'bef_filter_description' => NULL,
+        'any_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'search_api_views_fulltext' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'secondary_label' => NULL,
+    'collapsible_label' => NULL,
+    'combine_rewrite' => NULL,
+    'reset_label' => NULL,
+    'bef_filter_description' => NULL,
+    'any_label' => NULL,
+    'filter_rewrite_values' => NULL,
+  );
+  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'full_html';
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Indexed Content: Content type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_default_solr_index';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'good_practice' => 'good_practice',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Search: Fulltext search */
+  $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_default_solr_index';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['operator'] = 'OR';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['group'] = 1;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['search_api_views_fulltext']['fields'] = array(
+    'field_gp_getting_started:value' => 'field_gp_getting_started:value',
+    'field_gp_what_is_it:value' => 'field_gp_what_is_it:value',
+    'field_gp_what_is_the_benefit:value' => 'field_gp_what_is_the_benefit:value',
+    'field_gp_who_is_for:value' => 'field_gp_who_is_for:value',
+    'title' => 'title',
+  );
   $handler->display->display_options['mefibs'] = array(
     'blocks' => array(
       0 => array(
         'name' => 'Search',
         'machine_name' => 'search',
         'submit_button' => 'Submit',
-        'reset_button' => NULL,
+        'reset_button' => FALSE,
         'reset_button_label' => 'Reset',
-        'autosubmit' => NULL,
-        'autosubmit_hide' => '1',
+        'autosubmit' => FALSE,
+        'autosubmit_hide' => FALSE,
       ),
     ),
     'extras' => array(
       'sort' => -1,
       'items_per_page' => -1,
     ),
-    'block_1' => array(
-      'sort_block' => array(
-        0 => 'default',
-      ),
-      'secondary_form_block' => array(
-        0 => 'search',
-      ),
+    'page_1' => array(
       'filter' => array(
         'search_api_views_fulltext' => array(
           0 => 'search',
         ),
       ),
+      'sort_block' => array(
+        0 => 'default',
+      ),
     ),
   );
+  $handler->display->display_options['path'] = 'good-practices';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Good Practices';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['good_practices'] = array(
     t('Master'),
-    t('Good Practice'),
+    t('Good Practices'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -338,7 +472,7 @@ function vesafe_pages_1_views_default_views() {
 </div>'),
     t('Popularity'),
     t('Newest'),
-    t('Block'),
+    t('Page'),
   );
   $export['good_practices'] = $view;
 
