@@ -420,6 +420,27 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  /* Field: Content: What is it? */
+  $handler->display->display_options['fields']['field_gp_what_is_it']['id'] = 'field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['table'] = 'field_data_field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['field'] = 'field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['relationship'] = 'field_related_good_practices_target_id';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['label'] = '';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_gp_what_is_it']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_gp_what_is_it']['type'] = 'smart_trim_format';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['settings'] = array(
+    'trim_link' => '0',
+    'trim_length' => '75',
+    'trim_type' => 'chars',
+    'trim_suffix' => '...',
+    'more_link' => '0',
+    'more_text' => 'Read more',
+    'trim_options' => array(
+      'text' => 'text',
+    ),
+    'trim_preserve_tags' => '',
+  );
   /* Field: Content: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
@@ -429,10 +450,11 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['field_image']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_image']['alter']['text'] = '<div class="overlay">
 <div class="thumb-info">
-<span class="icon-link"></span>
+<p class="thumb-info-text">[field_gp_what_is_it]</p>
 </div>
 </div>
-[field_image]';
+[field_image]
+';
   $handler->display->display_options['fields']['field_image']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_image']['alter']['path'] = '[path]';
   $handler->display->display_options['fields']['field_image']['alter']['link_class'] = 'link-to-url';
@@ -690,10 +712,11 @@ function vesafe_pages_1_views_default_views() {
     t('Content entity referenced from field_related_good_practices'),
     t('<div class="overlay">
 <div class="thumb-info">
-<span class="icon-link"></span>
+<p class="thumb-info-text">[field_gp_what_is_it]</p>
 </div>
 </div>
-[field_image]'),
+[field_image]
+'),
     t('All'),
     t('Block'),
     t('Related Good Practices - Key Articles'),

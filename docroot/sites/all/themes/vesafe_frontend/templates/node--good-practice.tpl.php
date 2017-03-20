@@ -110,8 +110,14 @@
 						print '<div class="tags-block">';
 							print '<span class="tags-title">Risks: </span>';
 							foreach ($risks as $item) {
-								print '<span class="taxonomy-term-tag">'.($item["taxonomy_term"]->name).'</span>';
-								$riskFilters[] = $item["taxonomy_term"]->tid;
+								if (isset($item["taxonomy_term"])) {
+									print '<span class="taxonomy-term-tag">'.($item["taxonomy_term"]->name).'</span>';
+									$riskFilters[] = $item["taxonomy_term"]->tid;	
+								}else if (isset($item["tid"])) {
+									$taxonomy = taxonomy_term_load($item["tid"]);
+									print '<span class="taxonomy-term-tag">'.($taxonomy->name).'</span>';
+									$vehicleFilters[] = $item["tid"];	
+								}
 							}
 						print '</div>';
 					}	
@@ -124,8 +130,15 @@
 						print '<div class="tags-block">';
 							print '<span class="tags-title">Vehicles: </span>';
 							foreach ($vehicles as $item) {
-								print '<span class="taxonomy-term-tag">'.($item["taxonomy_term"]->name).'</span>';
-								$vehicleFilters[] = $item["taxonomy_term"]->tid;
+								if (isset($item["taxonomy_term"])){
+									print '<span class="taxonomy-term-tag">'.($item["taxonomy_term"]->name).'</span>';
+									$vehicleFilters[] = $item["taxonomy_term"]->tid;	
+								} else if (isset($item["tid"])) {
+									$taxonomy = taxonomy_term_load($item["tid"]);
+									print '<span class="taxonomy-term-tag">'.($taxonomy->name).'</span>';
+									$vehicleFilters[] = $item["tid"];	
+								}
+								
 							}
 						print '</div>';
 					}	

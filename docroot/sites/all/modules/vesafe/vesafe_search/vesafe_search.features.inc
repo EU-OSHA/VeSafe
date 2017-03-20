@@ -149,7 +149,7 @@ function vesafe_search_default_search_api_server() {
     "class" : "search_api_solr_service",
     "options" : {
       "scheme" : "http",
-      "host" : "46.105.212.7",
+      "host" : "localhost",
       "port" : 8983,
       "path" : "\\/solr\\/vesafe",
       "http" : { "http_user" : "", "http_pass" : null },
