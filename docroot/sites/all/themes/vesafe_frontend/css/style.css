@@ -7699,29 +7699,29 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 /*Page search good practices
 **********************************/
-.page-node-241 .page-content-container > aside .well {
+.page-good-practices .page-content-container > aside .well {
   margin: 0px;
   padding: 0px;
   background-color: inherit !important;
   border: none;
   box-shadow: none;
 }
-.page-node-241 .page-content-container > aside .well #views-exposed-form-good-practices-block-1-mefibs-form-search {
+.page-good-practices .page-content-container > aside .well #views-exposed-form-good-practices-page-1-mefibs-form-search {
   position: relative;
   padding: 0px;
 }
-.page-node-241 .page-content-container > aside .well #views-exposed-form-good-practices-block-1-mefibs-form-search .views-exposed-widget {
+.page-good-practices .page-content-container > aside .well #views-exposed-form-good-practices-page-1-mefibs-form-search .views-exposed-widget {
   float: none;
   padding: 0px;
 }
-.page-node-241 .page-content-container > aside .well #views-exposed-form-good-practices-block-1-mefibs-form-search .views-exposed-widget .form-type-textfield input {
+.page-good-practices .page-content-container > aside .well #views-exposed-form-good-practices-page-1-mefibs-form-search .views-exposed-widget .form-type-textfield input {
   border-color: #ea4a5e !important;
   box-shadow: none;
   width: 100%;
   padding-right: 35px;
   border-radius: 3px;
 }
-.page-node-241 .page-content-container > aside .well #views-exposed-form-good-practices-block-1-mefibs-form-search .views-exposed-widget button {
+.page-good-practices .page-content-container > aside .well #views-exposed-form-good-practices-page-1-mefibs-form-search .views-exposed-widget button {
   border: none;
   background-color: inherit;
   color: #ea4a5e;
@@ -7732,20 +7732,20 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   width: 40px;
   overflow: hidden;
 }
-.page-node-241 .page-content-container > aside .well #views-exposed-form-good-practices-block-1-mefibs-form-search .views-exposed-widget button:before {
+.page-good-practices .page-content-container > aside .well #views-exposed-form-good-practices-page-1-mefibs-form-search .views-exposed-widget button:before {
   content: "\e003";
   font-family: "Glyphicons Halflings";
   padding-right: 30px;
 }
-.page-node-241 .page-content-container > aside .well #applied-filters {
+.page-good-practices .page-content-container > aside .well #applied-filters {
   margin-top: 5px;
   margin-bottom: 10px;
 }
-.page-node-241 .page-content-container > aside .well #applied-filters span {
+.page-good-practices .page-content-container > aside .well #applied-filters span {
   display: block;
   font-style: italic;
 }
-.page-node-241 .page-content-container > aside .well #applied-filters span a {
+.page-good-practices .page-content-container > aside .well #applied-filters span a {
   font-style: normal;
   color: white;
   padding: 0px;
@@ -7759,7 +7759,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   margin-right: 10px;
   font-weight: bold;
 }
-.page-node-241 .page-content-container > aside .well h2 {
+.page-good-practices .page-content-container > aside .well h2 {
   color: white;
   background-color: #ea4a5e;
   width: 100%;
@@ -7769,85 +7769,85 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   border-radius: 3px;
   cursor: pointer;
 }
-.page-node-241 .page-content-container > aside .well h2:after {
+.page-good-practices .page-content-container > aside .well h2:after {
   content: "\e252";
   font-family: "Glyphicons Halflings";
   float: right;
   font-size: 0.8em;
   line-height: 22px;
 }
-.page-node-241 .page-content-container > aside .well .risk-icon:before {
+.page-good-practices .page-content-container > aside .well .risk-icon:before {
   content: "\f005";
   font-family: "FontAwesome";
   margin-right: 10px;
 }
-.page-node-241 .page-content-container > aside .well .vehicle-icon:before {
+.page-good-practices .page-content-container > aside .well .vehicle-icon:before {
   content: "\f1b9";
   font-family: "FontAwesome";
   margin-right: 10px;
 }
-.page-node-241 .page-content-container > aside .well .open:after {
+.page-good-practices .page-content-container > aside .well .open:after {
   content: "\e253" !important;
   font-family: "Glyphicons Halflings";
   float: right;
   font-size: 0.8em;
   line-height: 25px;
 }
-.page-node-241 .page-content-container > aside .well ul {
+.page-good-practices .page-content-container > aside .well ul {
   list-style: none;
 }
-.page-node-241 .page-content-container > aside .well ul a {
+.page-good-practices .page-content-container > aside .well ul a {
   color: inherit;
 }
-.page-node-241 .page-content-container > aside .well ul a.facetapi-active {
+.page-good-practices .page-content-container > aside .well ul a.facetapi-active {
   font-weight: bold;
   display: none;
 }
-.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 {
+.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 {
   margin-bottom: 25px;
 }
-.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form {
+.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form {
   border-bottom: 2px solid #dcdcdc;
 }
-.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group label {
+.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group label {
   font-style: italic;
   font-weight: normal;
   font-size: 0.9em;
 }
-.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group label:after {
+.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group label:after {
   content: ": ";
 }
-.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links {
+.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links {
   display: inline-block;
 }
-.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links .form-item {
+.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links .form-item {
   display: inline-block;
 }
-.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links option,
-.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links a {
+.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links option,
+.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links a {
   display: inline-block;
   margin-left: 10px;
   color: #333333;
   text-decoration: none;
 }
-.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links .active {
+.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links .active {
   font-weight: 600;
   color: #ea4a5e;
 }
-.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form #edit-search-api-views-fulltext--2-wrapper,
-.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-widget-sort-order,
-.page-node-241 .page-content-container #block-views-exp-good-practices-block-1 form .views-exposed-form .views-submit-button {
+.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form #edit-search-api-views-fulltext--2-wrapper,
+.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-widget-sort-order,
+.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-submit-button {
   display: none;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-header {
+.page-good-practices .page-content-container .view-id-good_practices .view-header {
   float: right;
   margin-top: -60px;
   font-size: 0.9em;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row-odd {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row-odd {
   margin-right: 30px;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row {
   background-color: #f7f7f7;
   width: 47%;
   display: inline-block;
@@ -7855,13 +7855,13 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   margin-bottom: 30px;
   position: relative;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image,
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image,
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail {
   position: relative;
   overflow: hidden;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image a .overlay,
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail a .overlay {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image a .overlay,
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail a .overlay {
   background-color: #ea4a5e;
   color: white;
   width: 100%;
@@ -7878,8 +7878,8 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image a .overlay .thumb-info,
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail a .overlay .thumb-info {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image a .overlay .thumb-info,
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail a .overlay .thumb-info {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -7898,8 +7898,8 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   transform: scale(0);
   -webkit-backface-visibility: hidden;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image a .overlay .thumb-info .icon-link,
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail a .overlay .thumb-info .icon-link {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image a .overlay .thumb-info .icon-link,
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail a .overlay .thumb-info .icon-link {
   width: 100%;
   position: absolute;
   top: 50%;
@@ -7912,16 +7912,16 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image a .overlay .thumb-info .icon-link:before,
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail a .overlay .thumb-info .icon-link:before {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image a .overlay .thumb-info .icon-link:before,
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail a .overlay .thumb-info .icon-link:before {
   content: "\f0c1";
   text-decoration: inherit;
   display: inline-block;
   speak: none;
   font-family: "FontAwesome";
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image a img,
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail a img {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image a img,
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail a img {
   width: 100%;
   height: auto;
   position: relative;
@@ -7932,15 +7932,15 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image:hover a .overlay,
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail:hover a .overlay {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image:hover a .overlay,
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail:hover a .overlay {
   opacity: 0.9;
   -moz-opacity: 0.9;
   filter: alpha(opacity=90);
   box-shadow: inset 0 0 0 500px #ea4a5e;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image:hover a .overlay .thumb-info,
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail:hover a .overlay .thumb-info {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image:hover a .overlay .thumb-info,
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail:hover a .overlay .thumb-info {
   opacity: 1;
   -moz-opacity: 1;
   filter: alpha(opacity=100);
@@ -7950,29 +7950,29 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   -ms-transform: scale(1);
   transform: scale(1);
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image:hover a img,
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail:hover a img {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-image:hover a img,
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-thumbnail:hover a img {
   -moz-transform: scale(1.2);
   -webkit-transform: scale(1.2);
   -o-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-title span {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-title span {
   display: block;
   padding: 15px 20px 5px 20px;
   min-height: 82px;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-title span a {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-title span a {
   color: #333333;
   font-size: 1.4em;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-gp-what-is-it {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-gp-what-is-it {
   padding: 0px 20px 50px 20px;
   min-height: 127px;
   position: relative;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-gp-what-is-it .more-link {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-gp-what-is-it .more-link {
   position: absolute;
   bottom: 0px;
   right: 20px;
@@ -7981,32 +7981,32 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   font-weight: 700;
   font-style: italic;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-gp-what-is-it .more-link:before {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-gp-what-is-it .more-link:before {
   content: "> ";
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count {
   position: absolute;
   bottom: 15px;
   left: 20px;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper {
   display: inline-block;
   cursor: pointer;
   visibility: hidden;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper a {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper a {
   text-decoration: none;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper .good-likes {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper .good-likes {
   color: #9c9c9c;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper .good-likes:before {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper .good-likes:before {
   content: "\e005";
   font-family: "Glyphicons Halflings";
   vertical-align: bottom;
   margin-right: 5px;
 }
-.page-node-241 .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper .good-likes:hover {
+.page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper .good-likes:hover {
   color: #ea4a5e;
 }
 /*Footer static pages
@@ -8559,11 +8559,11 @@ footer #scroll-top:hover {
   }
   /*Page search good practices
 **********************************/
-  .page-node-241 .page-content-container > aside #applied-filters span a {
+  .page-good-practices .page-content-container > aside #applied-filters span a {
     color: #ea4a5e !important;
     background-color: white !important;
   }
-  .page-node-241 .page-content-container > aside h2.filters {
+  .page-good-practices .page-content-container > aside h2.filters {
     color: white;
     background-color: #ea4a5e;
     width: 100%;
@@ -8573,31 +8573,31 @@ footer #scroll-top:hover {
     border-radius: 3px;
     cursor: pointer;
   }
-  .page-node-241 .page-content-container > aside h2.filters:after {
+  .page-good-practices .page-content-container > aside h2.filters:after {
     content: "\e253";
     font-family: "Glyphicons Halflings";
     float: right;
     font-size: 0.8em;
     line-height: 22px;
   }
-  .page-node-241 .page-content-container > aside h2.filters:before {
+  .page-good-practices .page-content-container > aside h2.filters:before {
     content: "\f0b0";
     font-family: "FontAwesome";
     font-size: 1em;
     margin-right: 10px;
   }
-  .page-node-241 .page-content-container > aside ul li,
-  .page-node-241 .page-content-container > aside ul a {
+  .page-good-practices .page-content-container > aside ul li,
+  .page-good-practices .page-content-container > aside ul a {
     color: #ea4a5e !important;
   }
-  .page-node-241 .page-content-container > aside .open-filters:after {
+  .page-good-practices .page-content-container > aside .open-filters:after {
     content: "\e252" !important;
     font-family: "Glyphicons Halflings";
     float: right;
     font-size: 0.8em;
     line-height: 25px;
   }
-  .page-node-241 .page-content-container > aside .well {
+  .page-good-practices .page-content-container > aside .well {
     padding: 15px;
     background-color: #f7f7f7 !important;
   }
@@ -8801,10 +8801,10 @@ footer #scroll-top:hover {
   }
   /*Page search good practices
 **********************************/
-  .page-node-241 .page-content-container .view-id-good_practices .view-content .views-row-odd {
+  .page-good-practices .page-content-container .view-id-good_practices .view-content .views-row-odd {
     margin-right: 0px;
   }
-  .page-node-241 .page-content-container .view-id-good_practices .view-content .views-row {
+  .page-good-practices .page-content-container .view-id-good_practices .view-content .views-row {
     width: 100%;
     margin-bottom: 20px;
   }
