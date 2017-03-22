@@ -6636,7 +6636,6 @@ header {
   background-color: #323a93;
   border-radius: 13px;
   height: 27px;
-  visibility: hidden;
 }
 .top-header-container .header-blocks #block-vesafe-search-search-vesafe .navbar-form {
   margin: 0px;
@@ -6782,6 +6781,69 @@ header {
     top: -12px;
     right: 0px;
   }
+}
+/*end sticky menu*/
+/*search autocomplete*/
+.ui-autocomplete-input {
+  background-image: none !important;
+}
+#ui-theme-basic-blue {
+  padding-bottom: 1em !important;
+}
+#ui-theme-basic-blue .ui-autocomplete-field-group.banner {
+  background: none !important;
+}
+#ui-theme-basic-blue .ui-autocomplete-field-group {
+  border-top: 1px dashed #9c9c9c;
+  color: #ea4a5e;
+  float: left;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 1.15em;
+  font-weight: lighter;
+  margin: 0.5em 0 0 1em;
+  padding: 1em 0 0.5em;
+  width: 90%;
+}
+#ui-theme-basic-blue .ui-autocomplete-field-group:first-child {
+  border: none !important;
+}
+#ui-theme-basic-blue .ui-menu-item-first {
+  border: 0px;
+}
+#ui-theme-basic-blue.ui-menu {
+  /*Search box*/
+  width: 350px !important;
+  left: 0% !important;
+}
+#ui-theme-basic-blue.ui-menu .ui-menu-item a {
+  color: #323a93;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding-left: 2.5em;
+  text-decoration: none;
+}
+#ui-theme-basic-blue.ui-menu .ui-menu-item a .ui-autocomplete-field-type {
+  display: none;
+}
+#ui-theme-basic-blue.ui-menu .ui-menu-item a .ui-autocomplete-fields {
+  padding-left: 12px;
+}
+#ui-theme-basic-blue.ui-menu .ui-menu-item a:before {
+  position: absolute;
+  display: inline-block;
+  margin-top: 4px;
+  content: ">";
+}
+#ui-theme-basic-blue.ui-menu .ui-menu-item .ui-state-hover,
+#ui-theme-basic-blue.ui-menu .ui-menu-item .ui-widget-content .ui-state-hover,
+#ui-theme-basic-blue.ui-menu .ui-menu-item .ui-widget-header .ui-state-hover,
+#ui-theme-basic-blue.ui-menu .ui-menu-item .ui-state-focus,
+#ui-theme-basic-blue.ui-menu .ui-menu-item .ui-widget-content .ui-state-focus,
+#ui-theme-basic-blue.ui-menu .ui-menu-item .ui-widget-header .ui-state-focus {
+  outline: inherit !important;
+  border: 0px !important;
+  background: none !important;
+  background-color: transparent !important;
 }
 /*!* Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome * License - http://fontawesome.io/license(Font:SIL OFL 1.1,CSS:MIT License) */
 @font-face {
