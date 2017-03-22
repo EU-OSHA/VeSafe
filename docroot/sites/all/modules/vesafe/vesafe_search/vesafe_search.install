@@ -1,0 +1,62 @@
+<?php
+
+/**
+* VES-1: Install and configure search autocomplete module.
+*/
+function vesafe_search_update_7001() {
+
+  // Enable search_autocomplete module.
+  if(module_enable(array('search_autocomplete'))){
+    // Grant use search autocomplete for Anonymous users.
+    user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('use Search Autocomplete'));
+
+    // Grant use search autocomplete for Authentificated users.
+    user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('use Search Autocomplete'));
+
+    // Node types to search trough.
+    variable_set('vesafe_search_bundles', array(
+      'article' => 'article',
+      'good_practice' => 'good_practice',
+      'key_article' => 'key_article',
+      'key_article_theme' => 'key_article_theme',
+    )
+    );
+
+    // Search AC index.
+    $index_id = variable_get('vesafe_search_ac_index', 'default_solr_index');
+    $index = search_api_index_load($index_id);
+    $search_fields = $index->getFulltextFields();
+    variable_set('vesafe_search_ac_fields', drupal_map_assoc($search_fields));
+
+    // Configure the search form.
+    db_update('search_autocomplete_forms')
+      ->fields(array(
+        'enabled' => 0,
+      ))
+      ->execute();
+
+    $fid = db_select('search_autocomplete_forms', 'f')
+      ->fields('f', array('fid'))
+      ->condition('selector', '#edit-search-block-form--2')
+      ->execute()->fetchField(0);
+    if ($fid) {
+      db_update('search_autocomplete_forms')
+        ->fields(array(
+          'theme' => 'basic-blue.css',
+          'data_callback' => 'search-autocomplete/',
+          'data_source' => 'callback',
+          'max_sug' => 25,
+          'selector' => '#edit-search-api-views-fulltext',
+          'enabled' => 1,
+        ))
+        ->condition('selector', '#edit-search-block-form--2')
+        ->execute();
+    }
+    else {
+      drupal_set_message('Failed to configure search_autocomplete form', 'error');
+    }
+  }
+  else {
+    drupal_set_message('Failed to enable search_autocomplete module', 'error');
+  }
+}

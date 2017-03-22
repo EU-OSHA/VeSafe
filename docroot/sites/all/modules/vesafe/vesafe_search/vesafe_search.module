@@ -5,6 +5,188 @@
  */
 
 include_once 'vesafe_search.features.inc';
+module_load_include('inc', 'vesafe_search', 'vesafe_search.admin');
+
+/**
+ * Implements hook_menu().
+ */
+function vesafe_search_menu() {
+  $items = array();
+  $items['search-autocomplete/%'] = array(
+    'page callback' => 'vesafe_search_autocomplete_callback',
+    'access callback' => TRUE,
+    'page arguments' => array(1),
+  );
+  $items['admin/config/search/vesafe_search'] = array(
+    'title' => 'Vesafe Search',
+    'description' => 'Config information for vesafe search',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('vesafe_search_admin_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+  return $items;
+}
+
+/**
+ * Callback for search autocomplete ajax call. CW-220.
+ *
+ * When using search_autocomplete module.
+ */
+function vesafe_search_autocomplete_callback($search = '*') {
+  $search = check_plain($search);
+
+  $allowed_bundles = variable_get('vesafe_search_bundles', array());
+  $bundles = node_type_get_types();
+
+  $index = search_api_index_load('default_solr_index');
+  $server = search_api_server_load('solr_server');
+  $connection = new SearchApiSolrConnection($server->options);
+
+  // Build params - group by bundle, 3 rows each.
+  $params = array(
+    'group' => 'true',
+    'group.field' => 'ss_type',
+    'group.limit' => variable_get('vesafe_search_ac_items_limit', 3),
+  );
+
+  $params['fq'][] = 'is_status:"1"';
+
+  // Add condition for excluded bundles.
+  foreach ($bundles as $key => $bundle) {
+    if (empty($allowed_bundles[$key])) {
+      $params['fq'][] = '{!tag=ss_type}*:* AND -(ss_type:"' . $key . '")';
+    }
+  }
+  // Add publication date.
+  $now = new DateTime('now');
+  $now = $now->format('Y-m-d\TH:m:i\Z');
+  $params['fq'][] = '((ds_field_publication_date:[* TO "' . $now . '"]) OR (*:* AND -ds_field_publication_date:[* TO *]))';
+  // Add searchable fields.
+  $fields = $index->getFields();
+  $search_fields = variable_get('vesafe_search_ac_fields', array());
+  foreach ($search_fields as $field) {
+    $params['qf'][] = 'tm_' . $field . '^' . $fields[$field]['boost'];
+    $params['qf'][] = 'tm_und' . $field . '^' . $fields[$field]['boost'];
+
+  }
+
+  // Make the search.
+  $request = $connection->search($search, $params);
+
+  $data = json_decode($request->data);
+  $total_groups = count($data->grouped->ss_type->groups);
+  $total_items = $data->grouped->ss_type->matches;
+  $return = array();
+
+
+
+  $showing_categ = variable_get('vesafe_search_ac_categ_limit', 3);
+  $showing_items = variable_get('vesafe_search_ac_items_limit', 3);
+  $count_categ = 0;
+  $showed_items = 0;
+  $showed_categ = 0;
+  $total_on_showed_categ = 0;
+
+  foreach ($data->grouped->ss_type->groups as &$group) {
+    $ret = vesafe_search_autocomplete_add_group($group, $showing_items, $search);
+    $showed_items += $ret['count'];
+    $showed_categ += ($ret['count']) ? 1 : 0;
+    $total_on_showed_categ += $group->doclist->numFound;
+    $return = array_merge($return, $ret['results']);
+  }
+
+  //var_dump($total_on_showed_categ);
+
+
+  // Add extra link with search summery (see CW-220).
+  if (!empty($total_items) && $total_items > $showed_items) {
+    $text = t('@search_result more in @categories categories', array(
+      '@search_result' => $total_items - $total_on_showed_categ,
+      '@categories' => $total_groups - $showed_categ,
+    ));
+    $ac_item = array(
+      "link" => url('search', array(
+        'query' => array(
+          'search_block_form' => $search,
+        ),
+      )),
+      "value" => $text,
+      "fields" => array(
+        "search_link" => $text,
+      ),
+    );
+    $ac_item["group"] = array(
+      "group_id" => 'more_results',
+      "group_name" => t('More results'),
+    );
+    $return[] = $ac_item;
+  }
+
+  print_r(json_encode($return));
+  exit;
+}
+
+/**
+ * Format a group of results for search autocomplete response.
+ */
+function vesafe_search_autocomplete_add_group($group,  $showing_items, $search, $see_all_path = 'search') {
+  $return = array();
+  $count_items = 0;
+  $bundles = node_type_get_types();
+  $in_this_categ = $group->doclist->numFound;
+  foreach ($group->doclist->docs as &$item) {
+    $count_items++;
+    $ac_item = array(
+      "link" => url('node/' . $item->is_nid),
+      "value" => current($item->{'tm_title'}),
+      "fields" => array(
+        "title_field" => current($item->{'tm_title'}),
+      ),
+    );
+    if (!empty($item->{'ss_field_wiki_page_url:url'})) {
+      $ac_item["link"] = $item->{'ss_field_wiki_page_url:url'};
+    }
+    // For publications the default link opens the file | /view opens node.
+    if ($item->ss_type == 'publication') {
+      $ac_item["link"] .= '/view';
+    }
+    if ($count_items == 1) {
+      $ac_item["group"] = array(
+        "group_id" => $item->ss_type,
+        "group_name" => t('@bundle', array(
+            '@bundle' => $bundles[$item->ss_type]->name,
+          )
+        ),
+      );
+    }
+    $return[] = $ac_item;
+    if ($count_items == $showing_items && $in_this_categ > $showing_items) {
+      $text = t('@search_result more in @bundle', array(
+        '@search_result' => $in_this_categ - $showing_items,
+        '@bundle' => $bundles[$group->groupValue]->name,
+      ));
+      $ac_item = array(
+        "link" => url($see_all_path,
+          array(
+            'query' => array(
+              'f' => array('type:' . $group->groupValue),
+              'search_api_views_fulltext' => $search,
+            ),
+          )
+        ),
+        "value" => $text,
+        "fields" => array(
+          "search_type_link" => $text,
+        ),
+      );
+      $return[] = $ac_item;
+    }
+  }
+  return array(
+    'results' => $return,
+    'count' => $count_items,
+  );
+}
 
 function vesafe_search_block_info() {
   return array(
@@ -148,7 +330,7 @@ function vesafe_search_views_pre_render(&$view) {
  * Implements hook_facet_items_alter():
  */
 function vesafe_search_facet_items_alter(&$build, &$settings) {
-    if ($settings->facet == "field_risks" || $settings->facet == "field_vehicles") {
+    if ($settings->facet == "field_risks" || $settings->facet == "field_vehicles" || $settings->facet == "type") {
       foreach($build as $key => $item) {
         if ($item['#active']) {
           $build[$key]["#markup"] = $item["#markup"] . ' (' . $item['#count'] . ')';  

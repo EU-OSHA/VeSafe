@@ -7,11 +7,16 @@ jQuery(document).ready(function () {
 	// 	wrap: 'word',
 	// });
 
+	jQuery("#facetapi-facet-search-apidefault-solr-index-block-type").siblings("h2").addClass("type-icon");
 	jQuery("#facetapi-facet-search-apidefault-solr-index-block-field-risks").siblings("h2").addClass("risk-icon");
 	jQuery("#facetapi-facet-search-apidefault-solr-index-block-field-vehicles").siblings("h2").addClass("vehicle-icon");
 
 	/*search filter menu open/close*/
 	jQuery(".facetapi-facetapi-links").hide();
+    jQuery(".type-icon").click(function(){
+        jQuery(this).toggleClass("open");
+        jQuery("#facetapi-facet-search-apidefault-solr-index-block-type").slideToggle();
+    });
 	jQuery(".risk-icon").click(function(){
 		jQuery(this).toggleClass("open");
 		jQuery("#facetapi-facet-search-apidefault-solr-index-block-field-risks").slideToggle();
@@ -203,6 +208,18 @@ jQuery(document).ready(function () {
 	}
 
 	jQuery('div.region-sidebar-first li.leaf a.facetapi-active').parent().css("font-weight", "bold");
+
+
+    openFacetsType();
+
+    function openFacetsType() {
+        var appliedFacets = jQuery('div.region-sidebar-first .facetapi-facet-type li.leaf a.facetapi-active');
+        if (appliedFacets.size() > 0){
+            jQuery('div.region-sidebar-first .facetapi-facet-type').show();
+            jQuery("h2.type-icon").addClass("open");
+
+        }
+    }
 	
 	openFacetsRisk(); 
 

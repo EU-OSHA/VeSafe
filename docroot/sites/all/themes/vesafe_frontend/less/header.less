@@ -125,7 +125,6 @@ header{
 			background-color: @color-primary;
 			border-radius: 13px;
 			height: 27px;
-			visibility: hidden;
 			.navbar-form{
 				margin: 0px;
 				padding: 0px;
@@ -283,3 +282,71 @@ header{
 
 }
 /*end sticky menu*/
+/*search autocomplete*/
+.ui-autocomplete-input{
+	background-image: none !important;
+}
+#ui-theme-basic-blue{
+	padding-bottom:1em !important;
+	.ui-autocomplete-field-group.banner{
+		background: none !important;
+
+	}
+	.ui-autocomplete-field-group{
+		border-top:1px dashed @color-background-grey-medium-dark;
+		color: @color-secondary;
+		float: left;
+		font-family: "Open Sans Condensed",sans-serif;
+		font-size: 1.15em;
+		font-weight: lighter;
+		margin: 0.5em 0 0 1em;
+		padding: 1em 0 0.5em;
+		width: 90%;
+	}
+	.ui-autocomplete-field-group:first-child{
+		border:none !important;
+	}
+	.ui-menu-item-first{
+		border:0px;
+		}
+}
+#ui-theme-basic-blue.ui-menu{
+	/*Search box*/
+	width:350px !important;
+	left:0% !important;
+	.ui-menu-item{
+		a{
+			color: @color-primary;
+			font-size: 0.8em;
+			font-weight: bold;
+			padding-left: 2.5em;
+			text-decoration: none;
+			.ui-autocomplete-field-type{
+				display:none;
+			}
+			.ui-autocomplete-fields{
+				padding-left:12px;
+			}
+			&:before{
+				position: absolute;
+				display: inline-block;
+				margin-top:4px;
+				content: ">";
+			}
+		}
+		.ui-state-hover,
+		.ui-widget-content .ui-state-hover,
+		.ui-widget-header .ui-state-hover,
+		.ui-state-focus,
+		.ui-widget-content
+		.ui-state-focus,
+		.ui-widget-header .ui-state-focus{
+			outline:inherit !important;
+			border:0px !important;
+			background:none !important;
+			background-color: transparent !important;
+		}
+	}
+}
+
+/*end search autocomplete*/
