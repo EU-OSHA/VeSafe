@@ -208,6 +208,15 @@ function vesafe_search_block_info() {
       'visibility' => BLOCK_VISIBILITY_LISTED,
       'pages' => 'search',
     ),
+    'search_vesafe_sidebar_gp' => array(
+      'info' => t('VeSafe search box (sidebar good-practices)'),
+      'cache' => DRUPAL_NO_CACHE,
+      'weight' => 10,
+      'status' => 1,
+      'region' => 'sidebar_first',
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'pages' => 'good-practices',
+    ),
   );
 }
 
@@ -224,7 +233,14 @@ function vesafe_search_block_view($delta = '') {
       unset($form['form_build_id']);
       $block['content'] = $form;
       break;
+    case 'search_vesafe_sidebar_gp':
+      $form = drupal_get_form('vesafe_search_form_gp');
+      unset($form['form_id']);
+      unset($form['form_build_id']);
+      $block['content'] = $form;
+      break;
   }
+
   return $block;
 }
 
@@ -232,10 +248,53 @@ function _vesafe_get_search_query($parameter = 'search_api_views_fulltext') {
   return !empty($_GET[$parameter]) ? check_plain($_GET[$parameter]) : '';
 }
 
+function vesafe_search_form_gp($form, $form_state) {
+  $form = [
+    '#id' => 'search-form',
+    '#action' => '/good-practices',
+    '#method' => 'get',
+    '#always_process' => true,
+    '#token' => false,
+    '#attributes' => ['class' => ['navbar-form']],
+    'search_api_views_fulltext' => [
+      '#type' => 'textfield',
+      '#default_value' => _vesafe_get_search_query(),
+      '#size' => 25,
+      '#maxlength' => 255,
+    ],
+    'actions' => [
+      'submit' => [
+        '#type' => 'submit',
+        '#name' => '',
+        '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
+        '#attributes' => ['class' => ['btn-default']],
+      ],
+    ],
+  ];
+  if (!empty($_GET['f'])) {
+    // Preserve facet values
+    if (is_array($_GET['f'])) {
+      foreach ($_GET['f'] as $key => $value) {
+        $form["f[{$key}]"] = [
+          '#type' => 'hidden',
+          '#value' => $value,
+        ];
+      }
+    }
+    else {
+      $form['f'] = [
+        '#type' => 'hidden',
+        '#value' => $_GET['f'],
+      ];
+    }
+  }
+  return $form;
+}
+
 function vesafe_search_form($form, $form_state) {
   $form = [
     '#id' => 'search-form',
-    '#action' => 'search',
+    '#action' => '/search',
     '#method' => 'get',
     '#always_process' => true,
     '#token' => false,

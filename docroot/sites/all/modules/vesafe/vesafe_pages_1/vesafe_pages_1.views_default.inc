@@ -406,30 +406,16 @@ function vesafe_pages_1_views_default_views() {
     'title' => 'title',
   );
   $handler->display->display_options['mefibs'] = array(
-    'blocks' => array(
-      0 => array(
-        'name' => 'Search',
-        'machine_name' => 'search',
-        'submit_button' => 'Submit',
-        'reset_button' => FALSE,
-        'reset_button_label' => 'Reset',
-        'autosubmit' => FALSE,
-        'autosubmit_hide' => FALSE,
-      ),
-    ),
+    'blocks' => array(),
     'extras' => array(
       'sort' => -1,
       'items_per_page' => -1,
     ),
     'page_1' => array(
       'filter' => array(
-        'search_api_views_fulltext' => array(
-          0 => 'search',
-        ),
+        'search_api_views_fulltext' => array(),
       ),
-      'sort_block' => array(
-        0 => 'default',
-      ),
+      'sort_block' => array(),
     ),
   );
   $handler->display->display_options['path'] = 'good-practices';
