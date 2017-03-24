@@ -7374,7 +7374,6 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .node-type-key-article #block-system-main .back-arrow-container .good-likes-wrapper,
 .node-type-good-practice #block-system-main .back-arrow-container .good-likes-wrapper {
   display: inline-block;
-  visibility: hidden;
 }
 .node-type-key-article #block-system-main .back-arrow-container .good-likes-wrapper a,
 .node-type-good-practice #block-system-main .back-arrow-container .good-likes-wrapper a {
@@ -8094,7 +8093,6 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper {
   display: inline-block;
   cursor: pointer;
-  visibility: hidden;
 }
 .page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper a {
   text-decoration: none;
