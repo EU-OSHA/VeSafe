@@ -46,6 +46,7 @@ function node_like_like($node) {
     'success' => 1,
     'text' => $new
   ));
+  search_api_track_item_change('node', array($node->nid));
 }
 
 
