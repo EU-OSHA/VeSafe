@@ -1,0 +1,10 @@
+name = ncw_migration
+description = Import data periodically from the NCW
+core = 7.x
+package = NCW
+version = 7.x-0.1
+project = ncw_migration
+dependencies[] = migrate
+configure = admin/config/system/ncw_migration
+files[] = ncw_migration.migrate.inc
+files[] = ncw_migration.migrate.taxonomies.inc

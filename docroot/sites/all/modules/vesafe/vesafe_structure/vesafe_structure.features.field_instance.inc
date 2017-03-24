@@ -798,6 +798,44 @@ function vesafe_structure_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-good_practice-field_thesaurus'.
+  $field_instances['node-good_practice-field_thesaurus'] = array(
+    'bundle' => 'good_practice',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 14,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_thesaurus',
+    'label' => 'Thesaurus',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'multiple_selects',
+      'settings' => array(),
+      'type' => 'multiple_selects',
+      'weight' => 19,
+    ),
+  );
+
   // Exported field_instance: 'node-good_practice-field_thumbnail'.
   $field_instances['node-good_practice-field_thumbnail'] = array(
     'bundle' => 'good_practice',
@@ -1585,10 +1623,160 @@ function vesafe_structure_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-key_article_theme-field_thesaurus'.
+  $field_instances['node-key_article_theme-field_thesaurus'] = array(
+    'bundle' => 'key_article_theme',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_thesaurus',
+    'label' => 'Thesaurus',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'multiple_selects',
+      'settings' => array(),
+      'type' => 'multiple_selects',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-thesaurus-description_field'.
+  $field_instances['taxonomy_term-thesaurus-description_field'] = array(
+    'bundle' => 'thesaurus',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'description_field',
+    'label' => 'Description',
+    'required' => FALSE,
+    'settings' => array(
+      'display_summary' => 0,
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => FALSE,
+        'page' => FALSE,
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 20,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => -5,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-thesaurus-field_thesaurus_code'.
+  $field_instances['taxonomy_term-thesaurus-field_thesaurus_code'] = array(
+    'bundle' => 'thesaurus',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_thesaurus_code',
+    'label' => 'code',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 31,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-thesaurus-name_field'.
+  $field_instances['taxonomy_term-thesaurus-name_field'] = array(
+    'bundle' => 'thesaurus',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'name_field',
+    'label' => 'Name',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => FALSE,
+        'page' => FALSE,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Additional resources');
   t('Body');
+  t('Description');
   t('External links');
   t('Factsheet');
   t('General risk factors');
@@ -1598,6 +1786,7 @@ function vesafe_structure_field_default_field_instances() {
   t('Image that will be displayed on \'Good Practices\' view. Upload an image with a 2.54:1 aspect radio.');
   t('Introduction');
   t('Like count');
+  t('Name');
   t('Publication date');
   t('Related good practices');
   t('Risks');
@@ -1605,11 +1794,13 @@ function vesafe_structure_field_default_field_instances() {
   t('Subtitle');
   t('Summary');
   t('The image that will be used on the views were more than one Key Article is displayed');
+  t('Thesaurus');
   t('Thumbnail');
   t('Vehicles');
   t('What is it?');
   t('What is the benefit?');
   t('Who is for?');
+  t('code');
 
   return $field_instances;
 }

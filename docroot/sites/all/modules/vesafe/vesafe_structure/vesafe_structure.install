@@ -42,3 +42,13 @@ function vesafe_structure_update_7005() {
 function vesafe_structure_update_7006() {
   features_revert_module('vesafe_structure');
 }
+
+/*
+ * Features revert: VES-15 - Thesaurus field in the backend.
+ */
+function vesafe_structure_update_7007() {
+  module_enable(array('ncw_migration', 'multiple_selects'));
+  variable_set('ncw_migration_tax_thesaurus_url', '/export/taxonomy/thesaurus');
+  variable_set('ncw_migration_root_url', 'https://osha.europa.eu');
+  features_revert_module('vesafe_structure');
+}
