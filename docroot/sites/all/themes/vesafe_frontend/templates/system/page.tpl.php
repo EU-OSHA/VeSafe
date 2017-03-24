@@ -80,7 +80,7 @@
     <div class="top-header">
       <div class="top-header-container container">
         <div class="top-header-content row">
-          <div class="header-logo col-xs-8 col-sm-5 col-md-4">
+          <div class="header-logo col-xs-6 col-sm-5 col-md-4">
             <?php if ($logo): ?>
               <a class="logo navbar-btn pull-left" href="https://osha.europa.eu/" target="_blank" title="<?php print t('EU-OSHA corporate website'); ?>">
                 <img src="<?php print $logo; ?>" alt="<?php print t('EU-OSHA logo'); ?>" />
@@ -90,12 +90,13 @@
               <img class="eu-logo" src="<?php print $eu_logo; ?>" alt="<?php print t('European Union'); ?>" />
             <?php endif; ?>
           </div>
-          <div class="header-sitename col-xs-4 col-sm-4">
+          <div class="header-sitename col-xs-6 col-sm-4">
             <?php if (!empty($site_name)): ?>
-              <a class="sitename" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_slogan; ?></a>
+              <a class="sitename" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_slogan; ?>
+              <img class="img-responsive" src="/sites/all/themes/vesafe_frontend/images/icons/logo-vesafe.png" alt="Vesafe"/></a>
             <?php endif; ?>
           </div>
-          <div class="header-blocks col-xs-10 col-sm-3 col-md-4">
+          <div class="header-blocks col-xs-12 col-sm-3 col-md-4">
             <?php print render($page['header_block']); ?>
           </div>
         </div>

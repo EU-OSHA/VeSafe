@@ -56,6 +56,15 @@ header{
 		    margin-left: 15px;
 		}
 	}
+	.header-sitename{
+		border-left: 2px solid @color-primary;
+		img{
+			min-width: auto;
+		    height: 95px;
+		    margin: 0 auto;
+		    margin-top: 5px;
+		}
+	}
 	.header-blocks{
 		max-width: 273px;
 		min-width: 260px;
@@ -101,12 +110,18 @@ header{
 				line-height: 16px;
 			}
 		}
-		#block-printfriendly-printfriendly{
+		#block-vesafe-structure-print-page{
+			display: inline-block;
+			vertical-align: text-bottom;
 			a{
 				border-left: 2px solid @color-primary;
 				padding-top: 0px;
 				padding-bottom: 0px;
 				padding-left: 8px;
+				width: 30px;
+			    overflow: hidden;
+			    display: block;
+			    height: 22px;
 				&:before{
 					content:"\e045";
 					font-family: "Glyphicons Halflings";
@@ -114,6 +129,7 @@ header{
     				vertical-align: bottom;
     				display: inline-block;
     				color: @color-primary;
+    				line-height: 22px;
 				}
 				img{
 					display: none;
@@ -128,6 +144,7 @@ header{
 			.navbar-form{
 				margin: 0px;
 				padding: 0px;
+				box-shadow: none;
 				.form-type-textfield{
 					width: 78%;
 					display: inline-block;
@@ -160,7 +177,6 @@ header{
 		}
 		#block-gtranslate-gtranslate{
 			margin-top: 7px;
-			visibility: hidden;
 			&:before{
 				content: "";
 				background: url("../images/icons/google-g-logo.png");
@@ -230,6 +246,33 @@ header{
 	}
 }
 
+@media only screen and (max-width : 1199px){
+	.top-header-container{
+		.header-logo{
+			.logo{
+				img{
+					max-width: 215px;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width : 991px){
+	.top-header-container{
+		.header-logo{
+			.logo{
+				img{
+					max-width: 200px;
+				}
+			}
+		}
+		.header-sitename{
+			max-width: 170px;
+		}
+	}
+}
+
 
 /*Sticky menu
 ****************************************/
@@ -247,6 +290,7 @@ header{
 		}
 		.header-logo{
 			margin-top: 0px;
+			max-width: 250px;
 			.logo{
 				img{
 					width: 150px;
@@ -256,13 +300,21 @@ header{
 				width: 50px;
 			}
 		}
+		.header-sitename{
+			max-width: 80px;
+			img{
+			    height: 51px;
+			    margin-top: 0px;
+			    margin: 0px;
+			}
+		}
 		.header-blocks{
 			max-width: 350px;
 			min-width: 350px;
 			position: relative;
 			margin-top: 18px;
 			#block-text-resize-0,
-			#block-printfriendly-printfriendly,
+			#block-vesafe-structure-print-page,
 			#block-gtranslate-gtranslate{
 				display: none;
 			}

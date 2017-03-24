@@ -8,29 +8,39 @@
 .top-header-container{
 	padding-top: 0px;
 	.header-logo{
-		width: 100%;
+		//width: 100%;
 		.logo{
 			img{
-				width: 200px;
+				width: 160px;
 			}
 		}
 		.eu-logo{
-			right: 15px;
-			width: 50px;
+			//right: 15px;
+			width: 40px;
 		}
 	}
 	.header-sitename{
-		display: none;
+		//display: none;
+		max-width: inherit;
+		border: none;
+		img{
+			height: 66px;
+			margin-right: 0px;
+
+		}
 	}
 	.header-blocks{
+		min-width: inherit;
+		max-width: inherit;
+		width: 100%;
 		#block-block-3,
 		#block-text-resize-0,
-		#block-printfriendly-printfriendly{
+		#block-vesafe-structure-print-page{
 			display: none;
 		}
 		#block-vesafe-search-search-vesafe{
 			position: absolute;
-			bottom: -53px;
+			bottom: -46px;
     		right: 15px;
     		background-color: white;
     		z-index: 9999;
@@ -52,8 +62,24 @@
 		}
 		#block-gtranslate-gtranslate{
 			position: absolute;
-		    bottom: -100px;
-		    right: 15px;
+		    bottom: -88px;
+		    z-index: 1;
+		    width: 304px;
+    		&:before{
+    			margin-right: 0px;
+    		}
+    		select{
+    			border-color: #323a93;
+			    min-width: auto !important;
+			    display: inline-block !important;
+			    width: 145px;
+    		}
+    		.gtranslate-machinatron{
+    			font-size: 0.8em;
+			    text-align: left;
+			    display: inline-block;
+			    padding-left: 3px;
+    		}
 		}
 	}
 }
