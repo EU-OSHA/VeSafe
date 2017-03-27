@@ -11,8 +11,11 @@ jQuery(document).ready(function () {
 	jQuery("#facetapi-facet-search-apidefault-solr-index-block-field-risks").siblings("h2").addClass("risk-icon");
 	jQuery("#facetapi-facet-search-apidefault-solr-index-block-field-vehicles").siblings("h2").addClass("vehicle-icon");
 
-	/*google translator hide on mobile when click nav toogle*/
-	
+	if(jQuery("#edit-sort-by-field-like-count a").hasClass("active") || jQuery("#edit-sort-by-field-publication-date a").hasClass("active")){
+
+	}else{
+		jQuery("#edit-sort-by-field-like-count a").addClass("active");
+	}
 	
 
 	/*search filter menu open/close*/
@@ -182,6 +185,7 @@ jQuery(document).ready(function () {
 
 	function funcionesMovil () {
 		if(windowWidth <= 750){//<-----functions for mobile
+			/*google translator hide on mobile when click nav toogle*/
 			jQuery(".navbar-toggle").click(function(){
 		        jQuery("#block-gtranslate-gtranslate").stop().slideToggle();
 		    });
