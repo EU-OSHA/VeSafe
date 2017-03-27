@@ -78,8 +78,6 @@ function vesafe_search_autocomplete_callback($search = '*') {
   $total_items = $data->grouped->ss_type->matches;
   $return = array();
 
-
-
   $showing_categ = variable_get('vesafe_search_ac_categ_limit', 3);
   $showing_items = variable_get('vesafe_search_ac_items_limit', 3);
   $count_categ = 0;
@@ -94,9 +92,6 @@ function vesafe_search_autocomplete_callback($search = '*') {
     $total_on_showed_categ += $group->doclist->numFound;
     $return = array_merge($return, $ret['results']);
   }
-
-  //var_dump($total_on_showed_categ);
-
 
   // Add extra link with search summery (see CW-220).
   if (!empty($total_items) && $total_items > $showed_items) {
@@ -154,9 +149,8 @@ function vesafe_search_autocomplete_add_group($group,  $showing_items, $search, 
       $ac_item["group"] = array(
         "group_id" => $item->ss_type,
         "group_name" => t('@bundle', array(
-            '@bundle' => $bundles[$item->ss_type]->name,
-          )
-        ),
+          '@bundle' => $bundles[$item->ss_type]->name,
+        )),
       );
     }
     $return[] = $ac_item;
@@ -188,6 +182,9 @@ function vesafe_search_autocomplete_add_group($group,  $showing_items, $search, 
   );
 }
 
+/**
+ * Implements hook_block_info().
+ */
 function vesafe_search_block_info() {
   return array(
     'search_vesafe' => array(
@@ -225,7 +222,7 @@ function vesafe_search_block_info() {
  */
 function vesafe_search_block_view($delta = '') {
   $block = array();
-  switch($delta) {
+  switch ($delta) {
     case 'search_vesafe':
     case 'search_vesafe_sidebar':
       $form = drupal_get_form('vesafe_search_form');
@@ -233,6 +230,7 @@ function vesafe_search_block_view($delta = '') {
       unset($form['form_build_id']);
       $block['content'] = $form;
       break;
+
     case 'search_vesafe_sidebar_gp':
       $form = drupal_get_form('vesafe_search_form_gp');
       unset($form['form_id']);
@@ -244,17 +242,29 @@ function vesafe_search_block_view($delta = '') {
   return $block;
 }
 
+/**
+ * Get search query.
+ *
+ * @param string $parameter
+ *    Query parameter.
+ *
+ * @return string
+ *    Query parameter.
+ */
 function _vesafe_get_search_query($parameter = 'search_api_views_fulltext') {
   return !empty($_GET[$parameter]) ? check_plain($_GET[$parameter]) : '';
 }
 
+/**
+ * Vesafe search form for good practices page.
+ */
 function vesafe_search_form_gp($form, $form_state) {
   $form = [
     '#id' => 'search-form',
     '#action' => '/good-practices',
     '#method' => 'get',
-    '#always_process' => true,
-    '#token' => false,
+    '#always_process' => TRUE,
+    '#token' => FALSE,
     '#attributes' => ['class' => ['navbar-form']],
     'search_api_views_fulltext' => [
       '#type' => 'textfield',
@@ -272,7 +282,7 @@ function vesafe_search_form_gp($form, $form_state) {
     ],
   ];
   if (!empty($_GET['f'])) {
-    // Preserve facet values
+    // Preserve facet values.
     if (is_array($_GET['f'])) {
       foreach ($_GET['f'] as $key => $value) {
         $form["f[{$key}]"] = [
@@ -291,13 +301,16 @@ function vesafe_search_form_gp($form, $form_state) {
   return $form;
 }
 
+/**
+ * Vesafe search form.
+ */
 function vesafe_search_form($form, $form_state) {
   $form = [
     '#id' => 'search-form',
     '#action' => '/search',
     '#method' => 'get',
-    '#always_process' => true,
-    '#token' => false,
+    '#always_process' => TRUE,
+    '#token' => FALSE,
     '#attributes' => ['class' => ['navbar-form']],
     'search_api_views_fulltext' => [
       '#type' => 'textfield',
@@ -315,7 +328,7 @@ function vesafe_search_form($form, $form_state) {
     ],
   ];
   if (!empty($_GET['f'])) {
-    // Preserve facet values
+    // Preserve facet values.
     if (is_array($_GET['f'])) {
       foreach ($_GET['f'] as $key => $value) {
         $form["f[{$key}]"] = [
@@ -353,7 +366,7 @@ function vesafe_search_views_pre_view(&$view, &$display_id, &$args) {
     case 'search':
       // Header text area: "Results for ..."
       // I don't know how to set it's weight so i will put the text on the first
-      // position using hook_views_pre_render
+      // position using hook_views_pre_render.
       $item = array(
         'label' => '',
         'content' => sprintf('<div class="results-for">%s: <b>"%s"</b></div>',
@@ -374,7 +387,7 @@ function vesafe_search_views_pre_view(&$view, &$display_id, &$args) {
 function vesafe_search_views_pre_render(&$view) {
   switch ($view->name) {
     case 'search':
-      // Display the "Results for ..." text at the top of the header
+      // Display the "Results for ..." text at the top of the header.
       if (!empty($view->header['results_for_text'])) {
         $resultsFor = $view->header['results_for_text'];
         unset($view->header['results_for_text']);
@@ -386,14 +399,14 @@ function vesafe_search_views_pre_render(&$view) {
 
 
 /**
- * Implements hook_facet_items_alter():
+ * Implements hook_facet_items_alter().
  */
 function vesafe_search_facet_items_alter(&$build, &$settings) {
-    if ($settings->facet == "field_risks" || $settings->facet == "field_vehicles" || $settings->facet == "type") {
-      foreach($build as $key => $item) {
-        if ($item['#active']) {
-          $build[$key]["#markup"] = $item["#markup"] . ' (' . $item['#count'] . ')';  
-        }         
+  if ($settings->facet == "field_risks" || $settings->facet == "field_vehicles" || $settings->facet == "type") {
+    foreach ($build as $key => $item) {
+      if ($item['#active']) {
+        $build[$key]["#markup"] = $item["#markup"] . ' (' . $item['#count'] . ')';
       }
     }
+  }
 }
