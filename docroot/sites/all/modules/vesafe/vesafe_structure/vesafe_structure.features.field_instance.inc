@@ -247,7 +247,7 @@ function vesafe_structure_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -274,7 +274,7 @@ function vesafe_structure_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_additional_resources',
-    'label' => 'Additional resources',
+    'label' => 'Related resources',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -373,7 +373,7 @@ function vesafe_structure_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -416,7 +416,7 @@ function vesafe_structure_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -1774,7 +1774,6 @@ function vesafe_structure_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Additional resources');
   t('Body');
   t('Description');
   t('External links');
@@ -1789,6 +1788,7 @@ function vesafe_structure_field_default_field_instances() {
   t('Name');
   t('Publication date');
   t('Related good practices');
+  t('Related resources');
   t('Risks');
   t('Specific risk factors');
   t('Subtitle');
