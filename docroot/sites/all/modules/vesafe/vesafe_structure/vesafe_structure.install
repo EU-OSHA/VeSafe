@@ -57,5 +57,8 @@ function vesafe_structure_update_7007() {
  * Features revert: VES-88 - Changed Additional resources to Related Resources.
  */
 function vesafe_structure_update_7008() {
+  db_delete('field_config_instance')
+    ->condition('id', array(18, 20, 22, 24, 26, 28))
+    ->execute();
   features_revert_module('vesafe_structure');
 }
