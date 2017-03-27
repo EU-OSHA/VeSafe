@@ -13,3 +13,11 @@ function vesafe_pages_1_update_7001() {
 function vesafe_pages_1_update_7002() {
   features_revert_module('vesafe_pages_1');
 }
+
+/*
+ * Features revert: VES-76,VES-77 - SEO metatags.
+ */
+function vesafe_pages_1_update_7003() {
+  variable_set('site_slogan', 'One stop shop for vehicle safety');
+  features_revert_module('vesafe_pages_1');
+}
