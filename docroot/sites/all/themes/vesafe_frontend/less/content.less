@@ -993,6 +993,7 @@ body > .page-title-container{
 				.navbar-form{
 					position: relative;
 					padding: 0px;
+					margin-top: 0px;
 					.form-type-textfield{
 						input{
 							border-color: @color-secondary;
@@ -1011,6 +1012,28 @@ body > .page-title-container{
 						top: 0px;
 					}
 				}
+				#applied-filters{
+					margin-top: 5px;
+					margin-bottom: 10px;
+					span{
+						display: block;
+						font-style: italic;
+						a{
+							font-style: normal;
+							color: white;
+							padding: 0px;
+							line-height: 16px;
+						    width: 16px;
+						    height: 16px;
+							background-color: @color-background-grey-medium-dark;
+							display: inline-block;
+							text-align: center;
+							font-size: 0.8em;
+							margin-right: 10px;
+							font-weight: bold;
+						}
+					}
+				}
 				h2{
 					color: white;
 					background-color: @color-secondary;
@@ -1019,12 +1042,43 @@ body > .page-title-container{
 					margin: 5px 0px;
 					font-size: 1em;
 					border-radius: 3px;
+					cursor: pointer;
 					&:after{
 						content: "\e252";
 					    font-family: "Glyphicons Halflings";
 					    float: right;
 					    font-size: 0.8em;
 					    line-height: 22px;
+					}
+				}
+				.type-icon{
+					&:before{
+						content: "\f187";
+					    font-family: "FontAwesome";
+					    margin-right: 10px;
+					}
+				}
+				.risk-icon{
+					&:before{
+						content: "\f005";
+					    font-family: "FontAwesome";
+					    margin-right: 10px;
+					}
+				}
+				.vehicle-icon{
+					&:before{
+						content: "\f1b9";
+					    font-family: "FontAwesome";
+					    margin-right: 10px;
+					}
+				}
+				.open{
+					&:after{
+						content: "\e253" !important;
+					    font-family: "Glyphicons Halflings";
+					    float: right;
+					    font-size: 0.8em;
+					    line-height: 25px;
 					}
 				}
 				ul{
@@ -1034,12 +1088,93 @@ body > .page-title-container{
 					}
 					a.facetapi-active{
 						font-weight: bold;
+						display: none;
 					}
 				}
 			}
 		}
 		> section{
-
+			#edit-search-api-views-fulltext-wrapper{
+				display: none;
+			}
+			.view-filters{
+				margin-top: 40px;
+			}
+			form{
+				.views-exposed-form{
+					border-bottom: 2px solid @color-background-grey-medium;
+					border-top: 2px solid @color-background-grey-medium;
+					.views-exposed-widget{
+						.form-group{
+							label{
+								font-style: italic;
+								font-weight: normal;
+								font-size: 0.9em;
+								&:after{
+									content: ": ";
+								}
+							}
+							.bef-select-as-links{
+								display: inline-block;
+								.form-item{
+									display: inline-block;
+								}
+								option, a{
+									display: inline-block;
+									margin-left: 10px;
+									color: @color-text-primary;
+									text-decoration: none;
+								}
+								.active{
+									font-weight: 600;
+									color: @color-secondary;
+								}
+							}
+						}
+					}
+					#edit-search-api-views-fulltext--2-wrapper,
+					.views-widget-sort-order,
+					.views-submit-button{
+						display: none;
+					}
+				}
+			}
+			.view-header{
+				float: right;
+    			margin-top: 10px;
+    			.results-for{
+    				position: absolute;
+				    top: -5px;
+				    left: 15px;
+				    font-size: 0.9em;
+				    font-style: italic;
+				    b{
+				    	font-size: 1.7em;
+				    	font-style: normal;
+				    }
+    			}
+			}
+			.view-content{
+				.views-row{
+					border-bottom: 2px solid @color-background-grey-medium;
+					padding-bottom: 25px;
+					strong{
+						background-color: yellow;
+					}
+					h3{
+						font-size: 1.6em;
+						a{
+							color: @color-text-primary;
+						}
+					}
+					.views-field-type{
+						margin-bottom: 10px;
+						.views-label-type{
+							font-weight: bold;
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -1055,12 +1190,13 @@ body > .page-title-container{
 				background-color: inherit !important;
 				border: none;
 				box-shadow: none;
-				#views-exposed-form-good-practices-page-1-mefibs-form-search{
+				#block-vesafe-search-search-vesafe-sidebar-gp{
 					position: relative;
 					padding: 0px;
-					.views-exposed-widget{
+					.navbar-form{
 						float: none;
 						padding: 0px;
+						margin-top: 0px;
 						.form-type-textfield{
 							input{
 								border-color: @color-secondary !important;
