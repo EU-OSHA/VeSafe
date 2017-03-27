@@ -387,14 +387,68 @@ function vesafe_search_views_pre_view(&$view, &$display_id, &$args) {
 function vesafe_search_views_pre_render(&$view) {
   switch ($view->name) {
     case 'search':
+      if ($view->result) {
+        foreach ($view->result as $key => $res) {
+          if (empty($res->_entity_properties['search_api_excerpt'])) {
+            $view->result[$key]->_entity_properties['search_api_excerpt'] = vesafe_search_create_excerpt($res);
+          }
+        }
+      }
       // Display the "Results for ..." text at the top of the header.
       if (!empty($view->header['results_for_text'])) {
         $resultsFor = $view->header['results_for_text'];
         unset($view->header['results_for_text']);
-        $view->header = array_merge(['results_for_text' => $resultsFor], $view->header);
+        if (!empty(_vesafe_get_search_query())) {
+          $view->header = array_merge(['results_for_text' => $resultsFor], $view->header);
+        }
       }
       break;
   }
+}
+
+/**
+ * Create excerpt for search results.
+ *
+ * @param $result
+ *    Result object.
+ * @return string
+ *    Excerpt.
+ */
+function vesafe_search_create_excerpt($result){
+  $excerpt = '';
+  $res = isset($result->_entity_properties) ? $result->_entity_properties : NULL;
+  if (!$res) {
+    return $excerpt;
+  }
+  foreach (search_api_index_load_multiple(['default_solr_index']) as $index) {
+    $fulltext_fields = $index->getFulltextFields();
+    if (isset($index->options['processors']['search_api_highlighting']['settings']['exclude_fields'])) {
+      $excluded_fulltext_fields = $index->options['processors']['search_api_highlighting']['settings']['exclude_fields'];
+    }
+    $fulltext_fields = (array_diff($fulltext_fields, $excluded_fulltext_fields));
+    foreach ($fulltext_fields as $fulltext_field) {
+      if (array_key_exists($fulltext_field, $res) && is_array($res[$fulltext_field])) {
+        $text = preg_replace('/\s+/', ' ', trim($res[$fulltext_field][0]));
+        $text = strip_tags($text);
+        $text = decode_entities($text);
+        $excerpt .= $text;
+      }
+    }
+  }
+  if (!$excerpt) {
+    if (isset($result->entity->body[LANGUAGE_NONE][0]['value'])
+      && !empty($result->entity->body[LANGUAGE_NONE][0]['value'])) {
+      $excerpt = $result->entity->body[LANGUAGE_NONE][0]['value'];
+    }
+    elseif (!is_array($result->entity)) {
+      $node = node_load($result->entity);
+      if (isset($node->body[LANGUAGE_NONE][0]['value'])
+         && !empty($node->body[LANGUAGE_NONE][0]['value'])) {
+        $excerpt = $node->body[LANGUAGE_NONE][0]['value'];
+      }
+    }
+  }
+  return search_excerpt(_vesafe_get_search_query(), $excerpt);
 }
 
 
