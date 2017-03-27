@@ -10,7 +10,7 @@ jQuery(document).ready(function () {
       href = href.replace('/like', '');
 
       if (likedNodes.indexOf(href) > -1) {
-        jQuery(links[i]).attr('title', 'You have already liked this node');
+        jQuery(links[i]).attr('title', 'You have already liked this Good Practice');
         jQuery(links[i]).attr('onclick', 'return false');
         jQuery(links[i]).attr('href', '#');
         jQuery(links[i]).addClass('node-liked-link');
@@ -34,9 +34,9 @@ jQuery(document).ready(function () {
           var text = data.selector;
           text = text.replace('#node-like-','');
           if (jQuery.cookie('liked-nodes') != null) {
-            jQuery.cookie('liked-nodes', jQuery.cookie('liked-nodes') + ',' + text);
+            jQuery.cookie('liked-nodes', jQuery.cookie('liked-nodes') + ',' + text, { expires: 7300 });
           }else{
-            jQuery.cookie('liked-nodes', text);
+            jQuery.cookie('liked-nodes', text, { expires: 7300 });
           }
         }
       },
