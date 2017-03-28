@@ -62,3 +62,10 @@ function vesafe_structure_update_7008() {
     ->execute();
   features_revert_module('vesafe_structure');
 }
+
+/*
+ * Features revert: VES-30 - Hidden 'Printer friendly version' link.
+ */
+function vesafe_structure_update_7009() {
+  features_revert_module('vesafe_structure');
+}
