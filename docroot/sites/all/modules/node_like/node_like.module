@@ -34,6 +34,7 @@ function node_like_like($node) {
         )
       )
     );
+    field_attach_presave('node', $node);
     field_attach_update('node', $sk);
     entity_get_controller('node')->resetCache(array($node->nid));
     $new = $sk->field_like_count[LANGUAGE_NONE][0]['value'];
@@ -47,6 +48,7 @@ function node_like_like($node) {
     'success' => 1,
     'text' => $new
   ));
+  search_api_track_item_change('node', array($node->nid));
 }
 
 
