@@ -146,7 +146,7 @@ body > .page-title-container{
 .homepage{
 	#homepage{
 		//select vehicle or risk section
-		.panels-flexible-row-new-2{
+		.home-page-info-text{
 			h2{
 				&:before{
 					content:"\e024";
@@ -156,64 +156,63 @@ body > .page-title-container{
 				}
 			}
 		}
-		.panels-flexible-row-new-3{
+		.home-page-filter-by-vehicles,
+		.home-page-filter-by-risks{
 			h2{
 				font-size: @h2-subtitles;
-			}
-			.panels-flexible-region-new-vehicle_navigation{
-				h2{
-					&:before{
-						content:"\f1b9";
-						font-family: "FontAwesome";
-						font-size: 1em;
-		   				margin-right: 5px;
-					}
+				&:before{
+					content:"\f1b9";
+					font-family: "FontAwesome";
+					font-size: 1em;
+					margin-right: 5px;
 				}
 			}
-			.panels-flexible-region-new-risk_navigation{
-				h2{
-					&:before{
-						content:"\f005";
-						font-family: "FontAwesome";
-						font-size: 1em;
-		   				margin-right: 5px;
-					}
-				}
-			}
-			.views-row{
+			ul{
 				display: inline-block;
-				a{
-					background-color: @color-secondary;
-				    border-radius: 8px;
-				    padding: 6px 10px;
-				    display: block;
-				    color: white;
-				    margin-bottom: 15px;
-				    margin-right: 15px;
-				    text-decoration: none;
-				    font-size: @tags-font-size;
-				    -webkit-transition:all 0.3s ease-out;  /* Chrome y Safari */
-				    -o-transition:all 0.3s ease-out;  /* Opera */
-				    -moz-transition:all 0.3s ease-out;  /* Mozilla Firefox */
-				    -ms-transition:all 0.3s ease-out;   /* Internet Explorer */
-				    transition:all 0.3s ease-out;  /* W3C */
+				list-style-type:none;
+				li{
+					display: inline-block;
+					list-style-type:none;
+					a{
+						background-color: @color-secondary;
+						border-radius: 8px;
+						padding: 6px 10px;
+						display: block;
+						color: white;
+						margin-bottom: 15px;
+						margin-right: 15px;
+						text-decoration: none;
+						font-size: @tags-font-size;
+						-webkit-transition:all 0.3s ease-out;  /* Chrome y Safari */
+						-o-transition:all 0.3s ease-out;  /* Opera */
+						-moz-transition:all 0.3s ease-out;  /* Mozilla Firefox */
+						-ms-transition:all 0.3s ease-out;   /* Internet Explorer */
+						transition:all 0.3s ease-out;  /* W3C */
 
-				    &:after{
-				    	content:" \f105";
-				    	font-family: "FontAwesome";
-				    	margin-left: 5px;
-				    	font-weight: bold;
-				    }
-				    &:hover{
-				    	border-radius: 0px;
-						background-color: @color-secondary-acent;
-				    }
+						&:after{
+							content:" \f105";
+							font-family: "FontAwesome";
+							margin-left: 5px;
+							font-weight: bold;
+						}
+						&:hover{
+							border-radius: 0px;
+							background-color: @color-secondary-acent;
+						}
+					}
+				}
+			}
+		}
+		.home-page-filter-by-risks{
+			h2{
+				font-size: @h2-subtitles;
+				&:before{
+					content:"\f005" !important;
 				}
 			}
 		}
 		//select area section
-		.panels-flexible-row-new-4{
-			.panels-flexible-region-new-key_articles_introduction{
+		.home-page-key-articles{
 				h2{
 					&:before{
 						content:"\f084";
@@ -344,7 +343,6 @@ body > .page-title-container{
 						}
 					}
 				}
-			}
 		}
 		
 	}

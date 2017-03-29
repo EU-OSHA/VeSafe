@@ -83,6 +83,14 @@ function vesafe_structure_node_info() {
       'title_label' => 'Title',
       'help' => '',
     ),
+    'webform' => array(
+      'name' => 'Webform',
+      'base' => 'node_content',
+      'description' => 'Create a new form or questionnaire accessible to users. Submission results and statistics are recorded and accessible to privileged users.',
+      'has_title' => '1',
+      'title_label' => 'Title',
+      'help' => '',
+    ),
   );
   drupal_alter('node_info', $items);
   return $items;

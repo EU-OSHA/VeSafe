@@ -60,3 +60,10 @@ function vesafe_search_update_7001() {
     drupal_set_message('Failed to enable search_autocomplete module', 'error');
   }
 }
+
+/**
+ * VES-74: Search - show excerpt when Solr does not return it.
+ */
+function vesafe_search_update_7002() {
+  features_revert_module('vesafe_search');
+}

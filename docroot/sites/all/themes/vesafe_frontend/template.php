@@ -534,3 +534,26 @@ function vesafe_frontend_form_element_label(&$variables) {
   // The leading whitespace helps visually separate fields from inline labels.
   return ' <label' . drupal_attributes($attributes) . '>' . $output . "</label>\n";
 }
+
+/**
+ * Implements hook_block_view_alter.
+ */
+function vesafe_frontend_block_view_alter(&$data, $block){
+  switch ($block->title){
+    case 'Vehicles Facet':
+    case 'Risks Facet':
+      $items = array();
+      foreach ($data['content']['facets']['#items'] as $item) {
+        $text =  preg_replace('/<a href=\"(.*)\">(.*)\<span class=\"(.*)\">(.*)\<\/span\><\/a>/iU','$2',$item['data']);
+        list($name,$count) = explode('(',$text);
+        $items[(trim($name))] = preg_replace('/<a href=\"(.*)\">(.*)\<span class=\"(.*)\">(.*)\<\/span\><\/a>/iU','<a href="$1">' . $name . '</a>',$item['data']);;
+      }
+      ksort($items);
+      $new_data = array();
+      foreach($items as $i){
+        $new_data[] = $i;
+      }
+      $data['content']['facets']['#items'] = $new_data;
+      break;
+  }
+}
