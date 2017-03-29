@@ -43,6 +43,8 @@ jQuery(document).ready(function () {
       data: 'js=1'
     });
     jQuery(this).addClass('node-liked-link');
+    jQuery(this).attr('onclick', 'return false');
+    jQuery(this).attr('href', '#');
     jQuery(this).removeClass('node-like-link');
 
     return false;
