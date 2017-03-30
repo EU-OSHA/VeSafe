@@ -35,18 +35,23 @@ jQuery(document).ready(function () {
           text = text.replace('#node-like-','');
           if (jQuery.cookie('liked-nodes') != null) {
             jQuery.cookie('liked-nodes', jQuery.cookie('liked-nodes') + ',' + text, { expires: 7300 });
+            jQuery('.good-likes', link).text(Number(jQuery('.good-likes', link).text())+1);
           }else{
             jQuery.cookie('liked-nodes', text, { expires: 7300 });
           }
+
         }
       },
       data: 'js=1'
     });
+    
     jQuery(this).addClass('node-liked-link');
-    jQuery(this).attr('onclick', 'return false');
+    //jQuery(this).attr('onclick', 'return false');
     jQuery(this).attr('href', '#');
     jQuery(this).removeClass('node-like-link');
 
     return false;
   });
+
+  
 });
