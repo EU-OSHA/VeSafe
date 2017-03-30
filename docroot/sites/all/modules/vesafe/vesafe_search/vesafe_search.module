@@ -464,3 +464,16 @@ function vesafe_search_facet_items_alter(&$build, &$settings) {
     }
   }
 }
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function vesafe_search_menu_local_tasks_alter(&$data) {
+  if(isset($data['tabs'][0]['output'])){
+    foreach ($data['tabs'][0]['output'] as $key => $value) {
+      if ($value['#link']['path'] == 'search/node' || $value['#link']['path'] == 'search/user') {
+        unset($data['tabs'][0]['output'][$key]);
+      }
+    }
+  }
+}
