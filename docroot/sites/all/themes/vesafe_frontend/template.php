@@ -27,6 +27,10 @@ function vesafe_frontend_process_html_tag(&$variables) {
   if ($tag['#tag'] == 'script') {
     $tag['#attributes']['type'] = 'text/javascript';
   }
+
+  if ($tag['#tag'] == 'style') {
+    $tag['#attributes']['type'] = "text/css";
+  }
 }
 
 function vesafe_frontend_preprocess_page(&$vars) {
