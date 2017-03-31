@@ -92,7 +92,7 @@
 <!--page image block-->
 <div class="jumbotron-container">
 	<div class="page-image-wrapper">
-		<img class="img-responsive" src="<?php print file_create_url($node->field_image['und'][0]['uri']); ?>" />
+		<img class="img-responsive" alt="<?php print $node->field_image['und'][0]['alt']?>" title="<?php print $node->field_image['und'][0]['title']?>"  src="<?php print file_create_url($node->field_image['und'][0]['uri']); ?>" />
 	</div>
 </div>
 <!--general content-->
@@ -176,7 +176,7 @@
 							}	
 						}
 						if (isset($node->field_gp_factsheet["und"][0]['uri'])){
-							print '<a target="_blank" href="'.file_create_url($node->field_gp_factsheet["und"][0]["uri"]).'"">Download factsheet</a>';	
+							print '<a target="_blank" href="'.file_create_url($node->field_gp_factsheet["und"][0]["uri"]).'">Download factsheet</a>';	
 						}
 				print '</section>';
 			} ?>
