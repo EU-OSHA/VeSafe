@@ -46,7 +46,6 @@
 <html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>">
 
 <head>
-  <?php dpm($head); ?>
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
