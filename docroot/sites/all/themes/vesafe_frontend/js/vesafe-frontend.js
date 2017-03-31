@@ -252,3 +252,13 @@ jQuery(document).ready(function () {
 		}
 	}
 });
+
+function vesafeBackURL(referrer){
+	referrer_found = document.referrer.indexOf(referrer);
+    if(referrer_found!=-1){
+    	document.location.href = document.referrer;
+	}else{
+        document.location.href = referrer;
+	}
+	return FALSE;
+}

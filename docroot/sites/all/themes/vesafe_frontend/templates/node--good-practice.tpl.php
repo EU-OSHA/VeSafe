@@ -86,7 +86,7 @@
 		<a class="node-like-link" href="/node/<?php print $node->nid; ?>/like"><span class="good-likes"><?php print $node->field_like_count['und'][0]['value']; ?></span></a>
 	</div>
 	<div class="back-arrow-wrapper">
-		<a href="/good-practices" class="back-arrow">Return to list</a>
+        <a href="#" onclick="vesafeBackURL('/good-practices');" class="back-arrow">Return to list</a>
 	</div>
 </div>
 <!--page image block-->
