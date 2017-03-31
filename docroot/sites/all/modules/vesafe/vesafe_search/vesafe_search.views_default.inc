@@ -135,6 +135,13 @@ function vesafe_search_views_default_views() {
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
   $handler->display->display_options['header']['result']['content'] = 'Showing @start - @end of @total';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No results found to match your search.';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_default_solr_index';
@@ -208,6 +215,7 @@ function vesafe_search_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Showing @start - @end of @total'),
+    t('No results found to match your search.'),
     t('Type'),
     t('Relevance'),
     t('Newest'),

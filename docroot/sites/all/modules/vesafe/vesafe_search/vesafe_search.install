@@ -74,3 +74,10 @@ function vesafe_search_update_7002() {
 function vesafe_search_update_7003() {
   features_revert_module('vesafe_search');
 }
+
+/**
+ * Features revert: VES-103: Search View no results behavior.
+ */
+function vesafe_search_update_7005() {
+  features_revert_module('vesafe_search');
+}
