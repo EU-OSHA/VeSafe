@@ -155,11 +155,11 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
   $handler->display->display_options['fields']['field_thumbnail']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_thumbnail']['alter']['text'] = '<div class="overlay">
-<div class="thumb-info">
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['text'] = '<span class="overlay">
+<span class="thumb-info">
 <span class="icon-link"></span>
-</div>
-</div>
+</span>
+</span>
 [field_thumbnail]';
   $handler->display->display_options['fields']['field_thumbnail']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_thumbnail']['alter']['path'] = '[url]';
@@ -219,9 +219,9 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['field_like_count']['field'] = 'field_like_count';
   $handler->display->display_options['fields']['field_like_count']['label'] = '';
   $handler->display->display_options['fields']['field_like_count']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_like_count']['alter']['text'] = '<div class="good-likes-wrapper">
+  $handler->display->display_options['fields']['field_like_count']['alter']['text'] = '<span class="good-likes-wrapper">
 	<a  class="node-like-link" href="/node/[nid]/like"><span class="good-likes">[field_like_count]</span></a>
-</div>';
+</span>';
   $handler->display->display_options['fields']['field_like_count']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_like_count']['settings'] = array(
     'thousand_separator' => '',
@@ -446,16 +446,16 @@ function vesafe_pages_1_views_default_views() {
     t('last »'),
     t('Showing @start - @end of @total'),
     t('No results found to match your search.'),
-    t('<div class="overlay">
-<div class="thumb-info">
+    t('<span class="overlay">
+<span class="thumb-info">
 <span class="icon-link"></span>
-</div>
-</div>
+</span>
+</span>
 [field_thumbnail]'),
     t('.'),
-    t('<div class="good-likes-wrapper">
+    t('<span class="good-likes-wrapper">
 	<a  class="node-like-link" href="/node/[nid]/like"><span class="good-likes">[field_like_count]</span></a>
-</div>'),
+</span>'),
     t('Popularity'),
     t('Newest'),
     t('Page'),
@@ -568,11 +568,11 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['field_image']['relationship'] = 'field_related_good_practices_target_id';
   $handler->display->display_options['fields']['field_image']['label'] = '';
   $handler->display->display_options['fields']['field_image']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_image']['alter']['text'] = '<div class="overlay">
-<div class="thumb-info">
+  $handler->display->display_options['fields']['field_image']['alter']['text'] = '<span class="overlay">
+<span class="thumb-info">
 <p class="thumb-info-text">[field_gp_what_is_it]</p>
-</div>
-</div>
+</span>
+</span>
 [field_image]
 ';
   $handler->display->display_options['fields']['field_image']['alter']['make_link'] = TRUE;
@@ -830,11 +830,11 @@ function vesafe_pages_1_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('Content entity referenced from field_related_good_practices'),
-    t('<div class="overlay">
-<div class="thumb-info">
+    t('<span class="overlay">
+<span class="thumb-info">
 <p class="thumb-info-text">[field_gp_what_is_it]</p>
-</div>
-</div>
+</span>
+</span>
 [field_image]
 '),
     t('All'),
@@ -894,11 +894,11 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
   $handler->display->display_options['fields']['field_thumbnail']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_thumbnail']['alter']['text'] = '<div class="overlay">
-<div class="thumb-info">
+  $handler->display->display_options['fields']['field_thumbnail']['alter']['text'] = '<span class="overlay">
+<span class="thumb-info">
 <span class="icon-link"></span>
-</div>
-</div>
+</span>
+</span>
 [field_thumbnail]';
   $handler->display->display_options['fields']['field_thumbnail']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_thumbnail']['alter']['path'] = '[path]';
@@ -959,11 +959,11 @@ function vesafe_pages_1_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('Content Queue'),
-    t('<div class="overlay">
-<div class="thumb-info">
+    t('<span class="overlay">
+<span class="thumb-info">
 <span class="icon-link"></span>
-</div>
-</div>
+</span>
+</span>
 [field_thumbnail]'),
     t('Block'),
   );

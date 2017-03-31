@@ -10,7 +10,9 @@ jQuery(document).ready(function () {
       href = href.replace('/like', '');
 
       if (likedNodes.indexOf(href) > -1) {
-        jQuery(links[i]).attr('title', 'You have already liked this Good Practice');
+        jQuery(links[i]).attr('title', 'Already liked');
+        jQuery(links[i]).attr('data-toggle', 'tooltip');
+        jQuery(links[i]).hover(function(){jQuery(this).tooltip('show');});
         jQuery(links[i]).attr('onclick', 'return false');
         jQuery(links[i]).attr('href', '#');
         jQuery(links[i]).addClass('node-liked-link');
