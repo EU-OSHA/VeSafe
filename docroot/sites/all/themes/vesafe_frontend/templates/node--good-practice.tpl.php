@@ -176,7 +176,7 @@
 							}	
 						}
 						if (isset($node->field_gp_factsheet["und"][0]['uri'])){
-							print '<a target="_blank" href="'.file_create_url($node->field_gp_factsheet["und"][0]["uri"]).'"">Download factsheet</a>';	
+							print '<a target="_blank" href="'.file_create_url($node->field_gp_factsheet["und"][0]["uri"]).'">Download factsheet</a>';	
 						}
 				print '</section>';
 			} ?>
