@@ -95,26 +95,28 @@ function vesafe_search_autocomplete_callback($search = '*') {
 
   // Add extra link with search summery (see CW-220).
   if (!empty($total_items) && $total_items > $showed_items) {
-    $text = t('@search_result more in @categories categories', array(
-      '@search_result' => $total_items - $total_on_showed_categ,
-      '@categories' => $total_groups - $showed_categ,
-    ));
-    $ac_item = array(
-      "link" => url('search', array(
-        'query' => array(
-          'search_block_form' => $search,
+    if ($total_items - $total_on_showed_categ > 0 && $total_groups - $showed_categ > 0) {
+      $text = t('@search_result more in @categories categories', array(
+        '@search_result' => $total_items - $total_on_showed_categ,
+        '@categories' => $total_groups - $showed_categ,
+      ));
+      $ac_item = array(
+        "link" => url('search', array(
+          'query' => array(
+            'search_block_form' => $search,
+          ),
+        )),
+        "value" => $text,
+        "fields" => array(
+          "search_link" => $text,
         ),
-      )),
-      "value" => $text,
-      "fields" => array(
-        "search_link" => $text,
-      ),
-    );
-    $ac_item["group"] = array(
-      "group_id" => 'more_results',
-      "group_name" => t('More results'),
-    );
-    $return[] = $ac_item;
+      );
+      $ac_item["group"] = array(
+        "group_id" => 'more_results',
+        "group_name" => t('More results'),
+      );
+      $return[] = $ac_item;
+    }
   }
 
   print_r(json_encode($return));
