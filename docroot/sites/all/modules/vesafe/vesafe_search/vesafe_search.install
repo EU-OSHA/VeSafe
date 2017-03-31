@@ -67,3 +67,10 @@ function vesafe_search_update_7001() {
 function vesafe_search_update_7002() {
   features_revert_module('vesafe_search');
 }
+
+/**
+ * Features revert: VES-104: Search / Filter by Type: Facet display alphabetically ordered.
+ */
+function vesafe_search_update_7003() {
+  features_revert_module('vesafe_search');
+}
