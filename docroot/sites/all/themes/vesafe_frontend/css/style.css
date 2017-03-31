@@ -8740,6 +8740,7 @@ footer #scroll-top {
   right: 15px;
   background-color: #ea4a5e;
   border-radius: 50%;
+  text-decoration: none;
 }
 footer #scroll-top:before {
   content: "\f106";
@@ -8754,6 +8755,9 @@ footer #scroll-top:before {
 }
 footer #scroll-top:hover {
   color: #ea4a5e;
+}
+footer #scroll-top span {
+  display: none;
 }
 @media only screen and (max-width: 991px) {
   .menu-header .navbar-header {
