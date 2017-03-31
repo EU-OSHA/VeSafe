@@ -31,7 +31,7 @@ function vesafe_structure_path_breadcrumbs_settings_info() {
     ),
     'access' => array(),
   );
-  $path_breadcrumb->weight = 0;
+  $path_breadcrumb->weight = -94;
   $export['contact_page_submitted'] = $path_breadcrumb;
 
   $path_breadcrumb = new stdClass();
@@ -51,8 +51,52 @@ function vesafe_structure_path_breadcrumbs_settings_info() {
     'arguments' => array(),
     'access' => array(),
   );
-  $path_breadcrumb->weight = 0;
+  $path_breadcrumb->weight = -96;
   $export['good_practices'] = $path_breadcrumb;
+
+  $path_breadcrumb = new stdClass();
+  $path_breadcrumb->api_version = 1;
+  $path_breadcrumb->machine_name = 'good_practices_node';
+  $path_breadcrumb->name = 'Good practices node';
+  $path_breadcrumb->path = 'node/%node';
+  $path_breadcrumb->data = array(
+    'titles' => array(
+      0 => 'Good Practices',
+      1 => '!page_title',
+    ),
+    'paths' => array(
+      0 => '/good-practices',
+      1 => '<none>',
+    ),
+    'home' => 1,
+    'translatable' => 0,
+    'arguments' => array(
+      'node' => array(
+        'position' => 1,
+        'argument' => 'entity_id:node',
+        'settings' => array(
+          'identifier' => 'Content: ID',
+        ),
+      ),
+    ),
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'entity_bundle:node',
+          'settings' => array(
+            'type' => array(
+              'good_practice' => 'good_practice',
+            ),
+          ),
+          'context' => 'node',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $path_breadcrumb->weight = -98;
+  $export['good_practices_node'] = $path_breadcrumb;
 
   $path_breadcrumb = new stdClass();
   $path_breadcrumb->api_version = 1;
@@ -115,7 +159,7 @@ function vesafe_structure_path_breadcrumbs_settings_info() {
     'arguments' => array(),
     'access' => array(),
   );
-  $path_breadcrumb->weight = 0;
+  $path_breadcrumb->weight = -95;
   $export['sitemap'] = $path_breadcrumb;
 
   $path_breadcrumb = new stdClass();

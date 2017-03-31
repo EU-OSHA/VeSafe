@@ -76,3 +76,10 @@ function vesafe_structure_update_7009() {
 function vesafe_structure_update_7010() {
   features_revert_module('vesafe_structure');
 }
+
+/*
+ * Features revert: VES-105 - Updated Good Practices node page breadcrumb.
+ */
+function vesafe_structure_update_7011() {
+  features_revert_module('vesafe_structure');
+}
