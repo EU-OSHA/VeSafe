@@ -13,6 +13,7 @@ function vesafe_pages_1_metatag_export_default() {
   // Exported Metatag config instance: global.
   $config['global'] = array(
     'instance' => 'global',
+    'disabled' => FALSE,
     'config' => array(
       'title' => array(
         'value' => '[current-page:title] - [current-page:pager] - [site:name]',
@@ -204,6 +205,7 @@ function vesafe_pages_1_metatag_export_default() {
   // Exported Metatag config instance: global:frontpage.
   $config['global:frontpage'] = array(
     'instance' => 'global:frontpage',
+    'disabled' => FALSE,
     'config' => array(
       'title' => array(
         'value' => '[site:name] - [current-page:pager] - [site:slogan]',
@@ -229,6 +231,7 @@ function vesafe_pages_1_metatag_export_default() {
   // Exported Metatag config instance: node.
   $config['node'] = array(
     'instance' => 'node',
+    'disabled' => FALSE,
     'config' => array(
       'title' => array(
         'value' => '[node:title] - [current-page:pager] - [site:name]',
@@ -257,6 +260,7 @@ function vesafe_pages_1_metatag_export_default() {
   // Exported Metatag config instance: node:good_practice.
   $config['node:good_practice'] = array(
     'instance' => 'node:good_practice',
+    'disabled' => FALSE,
     'config' => array(
       'description' => array(
         'value' => '[node:field-gp-what-is-it:value]',
@@ -270,6 +274,7 @@ function vesafe_pages_1_metatag_export_default() {
   // Exported Metatag config instance: taxonomy_term.
   $config['taxonomy_term'] = array(
     'instance' => 'taxonomy_term',
+    'disabled' => FALSE,
     'config' => array(
       'title' => array(
         'value' => '[term:name] - [current-page:pager] - [site:name]',
@@ -289,6 +294,7 @@ function vesafe_pages_1_metatag_export_default() {
   // Exported Metatag config instance: user.
   $config['user'] = array(
     'instance' => 'user',
+    'disabled' => FALSE,
     'config' => array(
       'title' => array(
         'value' => '[user:name] - [site:name]',
