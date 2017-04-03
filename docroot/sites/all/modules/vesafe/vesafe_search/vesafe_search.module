@@ -95,26 +95,28 @@ function vesafe_search_autocomplete_callback($search = '*') {
 
   // Add extra link with search summery (see CW-220).
   if (!empty($total_items) && $total_items > $showed_items) {
-    $text = t('@search_result more in @categories categories', array(
-      '@search_result' => $total_items - $total_on_showed_categ,
-      '@categories' => $total_groups - $showed_categ,
-    ));
-    $ac_item = array(
-      "link" => url('search', array(
-        'query' => array(
-          'search_block_form' => $search,
+    if ($total_items - $total_on_showed_categ > 0 && $total_groups - $showed_categ > 0) {
+      $text = t('@search_result more in @categories categories', array(
+        '@search_result' => $total_items - $total_on_showed_categ,
+        '@categories' => $total_groups - $showed_categ,
+      ));
+      $ac_item = array(
+        "link" => url('search', array(
+          'query' => array(
+            'search_block_form' => $search,
+          ),
+        )),
+        "value" => $text,
+        "fields" => array(
+          "search_link" => $text,
         ),
-      )),
-      "value" => $text,
-      "fields" => array(
-        "search_link" => $text,
-      ),
-    );
-    $ac_item["group"] = array(
-      "group_id" => 'more_results',
-      "group_name" => t('More results'),
-    );
-    $return[] = $ac_item;
+      );
+      $ac_item["group"] = array(
+        "group_id" => 'more_results',
+        "group_name" => t('More results'),
+      );
+      $return[] = $ac_item;
+    }
   }
 
   print_r(json_encode($return));
@@ -260,7 +262,7 @@ function _vesafe_get_search_query($parameter = 'search_api_views_fulltext') {
  */
 function vesafe_search_form_gp($form, $form_state) {
   $form = [
-    '#id' => 'search-form',
+    '#id' => 'search-form-1',
     '#action' => '/good-practices',
     '#method' => 'get',
     '#always_process' => TRUE,
@@ -306,7 +308,7 @@ function vesafe_search_form_gp($form, $form_state) {
  */
 function vesafe_search_form($form, $form_state) {
   $form = [
-    '#id' => 'search-form',
+    '#id' => 'search-form-2',
     '#action' => '/search',
     '#method' => 'get',
     '#always_process' => TRUE,
