@@ -76,6 +76,18 @@ class VeSafeStructureForms {
   }
 
   /**
+   * Alter form for Contact Us Webform
+   *
+   * {@inheritdoc}
+   */
+  public static function contact_us_form_alter(&$form, &$form_state) {
+    $form['submitted']['disclaimer']['#weight'] = '7';
+    $form['disclaimer'] = $form['submitted']['disclaimer'];
+    $form['captcha']['#weight'] = '6';
+    $form['submitted']['disclaimer']['#access'] = FALSE;
+  }
+
+  /**
    * Safely attach CSS to a form.
    *
    * @param array $form
