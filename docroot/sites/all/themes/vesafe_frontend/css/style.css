@@ -6664,6 +6664,9 @@ header {
   width: 78%;
   display: inline-block;
 }
+.top-header-container .header-blocks #block-vesafe-search-search-vesafe .navbar-form .form-type-textfield label {
+  display: none;
+}
 .top-header-container .header-blocks #block-vesafe-search-search-vesafe .navbar-form .form-type-textfield input {
   width: 100%;
   height: 21px;
@@ -6700,6 +6703,9 @@ header {
   margin-right: 8px;
   vertical-align: bottom;
   background-size: cover;
+}
+.top-header-container .header-blocks #block-gtranslate-gtranslate label {
+  display: none;
 }
 .top-header-container .header-blocks #block-gtranslate-gtranslate select {
   border-color: #323a93;
@@ -7779,6 +7785,9 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   padding: 0px;
   margin-top: 0px;
 }
+.page-search .page-content-container > aside .well .navbar-form .form-type-textfield label {
+  display: none;
+}
 .page-search .page-content-container > aside .well .navbar-form .form-type-textfield input {
   border-color: #ea4a5e;
   box-shadow: none;
@@ -7956,6 +7965,9 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   float: none;
   padding: 0px;
   margin-top: 0px;
+}
+.page-good-practices .page-content-container > aside .well #block-vesafe-search-search-vesafe-sidebar-gp .navbar-form .form-type-textfield label {
+  display: none;
 }
 .page-good-practices .page-content-container > aside .well #block-vesafe-search-search-vesafe-sidebar-gp .navbar-form .form-type-textfield input {
   border-color: #ea4a5e !important;
