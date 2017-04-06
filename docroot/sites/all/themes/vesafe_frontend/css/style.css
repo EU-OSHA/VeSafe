@@ -7147,7 +7147,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   height: auto;
   position: relative;
   z-index: 3;
-  display: block!important;
+  display: block;
   transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -7427,10 +7427,18 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .node-type-key-article #block-system-main .jumbotron-container,
 .node-type-good-practice #block-system-main .jumbotron-container {
   margin-bottom: 10px;
+  min-height: 375px;
+  overflow: hidden;
+  position: relative;
 }
 .node-type-key-article #block-system-main .jumbotron-container .page-image-wrapper,
 .node-type-good-practice #block-system-main .jumbotron-container .page-image-wrapper {
   overflow: hidden;
+}
+.node-type-key-article #block-system-main .jumbotron-container .page-image-wrapper img,
+.node-type-good-practice #block-system-main .jumbotron-container .page-image-wrapper img {
+  position: absolute;
+  top: 0%;
 }
 .node-type-key-article #block-system-main .key-articles-menu-container ul,
 .node-type-good-practice #block-system-main .key-articles-menu-container ul {
@@ -8362,7 +8370,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   height: auto;
   position: relative;
   z-index: 3;
-  display: block!important;
+  display: block;
   transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -8907,6 +8915,24 @@ footer #scroll-top span {
   }
   .node-type-key-article .key-articles-menu-container > ul > li > ul {
     padding-left: 30px;
+  }
+  /* Type article detail/good practice detail
+***********************************************/
+  .node-type-key-article #block-system-main .jumbotron-container,
+  .node-type-good-practice #block-system-main .jumbotron-container {
+    margin-bottom: 10px;
+    min-height: inherit;
+    overflow: inherit;
+    position: relative;
+  }
+  .node-type-key-article #block-system-main .jumbotron-container .page-image-wrapper,
+  .node-type-good-practice #block-system-main .jumbotron-container .page-image-wrapper {
+    overflow: hidden;
+  }
+  .node-type-key-article #block-system-main .jumbotron-container .page-image-wrapper img,
+  .node-type-good-practice #block-system-main .jumbotron-container .page-image-wrapper img {
+    position: relative;
+    top: 0%;
   }
 }
 @media only screen and (max-width: 767px) {

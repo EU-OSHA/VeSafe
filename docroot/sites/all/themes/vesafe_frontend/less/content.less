@@ -292,7 +292,7 @@ body > .page-title-container{
 								    height: auto;
 								    position: relative;
 								    z-index: 3;
-								    display: block!important;
+								    display: block;
 								    transition: all 0.3s ease-in-out;
 								    -moz-transition: all 0.3s ease-in-out;
 								    -webkit-transition: all 0.3s ease-in-out;
@@ -598,11 +598,15 @@ body > .page-title-container{
 		}
 		.jumbotron-container{
 			margin-bottom: 10px;
+			min-height: 375px;
+		    overflow: hidden;
+		    position: relative;
 			.page-image-wrapper{
 				//max-height: 320px;
     			overflow: hidden;
     			img{
-    				//to put after reciving images
+    				position: absolute;
+    				top: 0%;
     			}
 			}
 		}
@@ -1631,7 +1635,7 @@ body > .page-title-container{
 					    height: auto;
 					    position: relative;
 					    z-index: 3;
-					    display: block!important;
+					    display: block;
 					    transition: all 0.3s ease-in-out;
 					    -moz-transition: all 0.3s ease-in-out;
 					    -webkit-transition: all 0.3s ease-in-out;
