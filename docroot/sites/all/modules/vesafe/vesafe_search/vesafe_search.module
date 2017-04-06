@@ -316,6 +316,7 @@ function vesafe_search_form($form, $form_state) {
     '#attributes' => ['class' => ['navbar-form']],
     'search_api_views_fulltext' => [
       '#type' => 'textfield',
+      '#title' => t('Search'),
       '#default_value' => _vesafe_get_search_query(),
       '#size' => 25,
       '#maxlength' => 255,
