@@ -38,6 +38,8 @@ function vesafe_structure_form_alter(&$form, &$form_state, $form_id) {
         VeSafeStructureForms::good_practice_admin_content_view_form_alter($form, $form_state);
       }
       break;
+    case 'webform_client_form_5':
+      VeSafeStructureForms::contact_us_form_alter($form, $form_state);
   }
 }
 
