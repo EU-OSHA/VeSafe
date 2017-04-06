@@ -229,6 +229,6 @@
     <div class="footer-blocks">
       <?php print render($page['footer']); ?>
     </div>
-    <a href="#" id="scroll-top"><span>Go to Top</span></a>
+    <a href="#" id="scroll-top" title="<?php print t('Go to Top')?>"><span>Go to Top</span></a>
   </footer>
 </div>
