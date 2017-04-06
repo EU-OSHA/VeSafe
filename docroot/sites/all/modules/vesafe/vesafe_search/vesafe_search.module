@@ -270,6 +270,8 @@ function vesafe_search_form_gp($form, $form_state) {
     '#attributes' => ['class' => ['navbar-form']],
     'search_api_views_fulltext' => [
       '#type' => 'textfield',
+      '#title' => t('Search'),
+      '#id' => 'edit-search-api-views-fulltext-gp',
       '#default_value' => _vesafe_get_search_query(),
       '#size' => 25,
       '#maxlength' => 255,
