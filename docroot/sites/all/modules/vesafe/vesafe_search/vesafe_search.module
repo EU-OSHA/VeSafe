@@ -280,6 +280,7 @@ function vesafe_search_form_gp($form, $form_state) {
       'submit' => [
         '#type' => 'submit',
         '#name' => '',
+        '#id' => 'edit-submit-gp',
         '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
         '#attributes' => ['class' => ['btn-default']],
       ],
