@@ -75,17 +75,23 @@
 ?>
 <div class="back-arrow-container container">
     <div class="good-likes-wrapper">
-        <a class="node-like-link" href="/node/<?php print $node->nid; ?>/like"><span class="good-likes"><?php print $node->field_like_count['und'][0]['value']; ?></span></a>
+        <a class="node-like-link"
+           href="/node/<?php print $node->nid; ?>/like"><span
+                    class="good-likes"><?php print $node->field_like_count[LANGUAGE_NONE][0]['value']; ?></span></a>
     </div>
     <div class="back-arrow-wrapper">
-        <a href="#" onclick="vesafeBackURL('/good-practices');" class="back-arrow">Return to list</a>
+        <a href="#" onclick="vesafeBackURL('/good-practices');"
+           class="back-arrow">Return to list</a>
     </div>
 </div>
 
 <!--page image block-->
 <div class="jumbotron-container">
     <div class="page-image-wrapper">
-        <img class="img-responsive" alt="<?php print $node->field_image['und'][0]['alt']?>" title="<?php print $node->field_image['und'][0]['title']?>"  src="<?php print file_create_url($node->field_image['und'][0]['uri']); ?>" />
+        <img class="img-responsive"
+             alt="<?php print $node->field_image[LANGUAGE_NONE][0]['alt'] ?>"
+             title="<?php print $node->field_image[LANGUAGE_NONE][0]['title'] ?>"
+             src="<?php print file_create_url($node->field_image[LANGUAGE_NONE][0]['uri']); ?>"/>
     </div>
 </div>
 
@@ -94,143 +100,145 @@
     <div class="good-practice-block">
         <div class="good-practices-tags-container col-md-12">
           <?php
-            // Create variable to store the taxonomy IDs
-            // to send to the Related Good Practices Block.
-            $riskFilters = [];
-            $vehicleFilters = [];
-            // Print risk tags.
-            if (isset($node->field_risks[LANGUAGE_NONE])) {
-                $risks = $node->field_risks[LANGUAGE_NONE];
-                if (count($risks) > 0) {
-                    print '<div class="tags-block">';
-                    print '<span class="tags-title">' . t('Risks:') . ' </span>';
-                    foreach ($risks as $item) {
-                        if (isset($item["taxonomy_term"])) {
-                            print '<span class="taxonomy-term-tag"><a href="/good-practices?f[0]=field_risks%3A' . $item["taxonomy_term"]->tid . '">' . ($item["taxonomy_term"]->name) . '</a></span>';
-                            $riskFilters[] = $item["taxonomy_term"]->tid;
-                        }
-                        elseif (isset($item["tid"])) {
-                            $taxonomy = taxonomy_term_load($item["tid"]);
-                            print '<span class="taxonomy-term-tag"><a href="/good-practices?f[0]=field_risks%3A' . $item["tid"] . '">' . ($taxonomy->name) . '</a></span>';
-                            $vehicleFilters[] = $item["tid"];
-                        }
-                    }
-                print '</div>';
+          // Create variable to store the taxonomy IDs
+          // to send to the Related Good Practices Block.
+          $riskFilters = [];
+          $vehicleFilters = [];
+          // Print risk tags.
+          if (isset($node->field_risks[LANGUAGE_NONE])) {
+            $risks = $node->field_risks[LANGUAGE_NONE];
+            if (count($risks) > 0) {
+              print '<div class="tags-block">';
+              print '<span class="tags-title">' . t('Risks:') . ' </span>';
+              foreach ($risks as $item) {
+                if (isset($item["taxonomy_term"])) {
+                  print '<span class="taxonomy-term-tag"><a href="/good-practices?f[0]=field_risks%3A' . $item["taxonomy_term"]->tid . '">' . ($item["taxonomy_term"]->name) . '</a></span>';
+                  $riskFilters[] = $item["taxonomy_term"]->tid;
                 }
+                elseif (isset($item["tid"])) {
+                  $taxonomy = taxonomy_term_load($item["tid"]);
+                  print '<span class="taxonomy-term-tag"><a href="/good-practices?f[0]=field_risks%3A' . $item["tid"] . '">' . ($taxonomy->name) . '</a></span>';
+                  $vehicleFilters[] = $item["tid"];
+                }
+              }
+              print '</div>';
             }
-            // Print vehicle tags.
-            if (isset($node->field_vehicles[LANGUAGE_NONE])) {
-                $vehicles = $node->field_vehicles[LANGUAGE_NONE];
-                    if (count($vehicles) > 0) {
-                        print '<div class="tags-block">';
-                        print '<span class="tags-title">' . t('Vehicles:') . ' </span>';
-                        foreach ($vehicles as $item) {
-                            if (isset($item["taxonomy_term"])) {
-                                print '<span class="taxonomy-term-tag"><a href="/good-practices?f[0]=field_vehicles%3A' . $item["taxonomy_term"]->tid . '">' . ($item["taxonomy_term"]->name) . '</a></span>';
-                                $vehicleFilters[] = $item["taxonomy_term"]->tid;
-                            }
-                            elseif (isset($item["tid"])) {
-                                $taxonomy = taxonomy_term_load($item["tid"]);
-                                print '<span class="taxonomy-term-tag"><a href="/good-practices?f[0]=field_vehicles%3A' . $item["tid"] . '">' . ($taxonomy->name) . '</a></span>';
-                                $vehicleFilters[] = $item["tid"];
-                            }
-                        }
-                        print '</div>';
-                    }
+          }
+          // Print vehicle tags.
+          if (isset($node->field_vehicles[LANGUAGE_NONE])) {
+            $vehicles = $node->field_vehicles[LANGUAGE_NONE];
+            if (count($vehicles) > 0) {
+              print '<div class="tags-block">';
+              print '<span class="tags-title">' . t('Vehicles:') . ' </span>';
+              foreach ($vehicles as $item) {
+                if (isset($item["taxonomy_term"])) {
+                  print '<span class="taxonomy-term-tag"><a href="/good-practices?f[0]=field_vehicles%3A' . $item["taxonomy_term"]->tid . '">' . ($item["taxonomy_term"]->name) . '</a></span>';
+                  $vehicleFilters[] = $item["taxonomy_term"]->tid;
+                }
+                elseif (isset($item["tid"])) {
+                  $taxonomy = taxonomy_term_load($item["tid"]);
+                  print '<span class="taxonomy-term-tag"><a href="/good-practices?f[0]=field_vehicles%3A' . $item["tid"] . '">' . ($taxonomy->name) . '</a></span>';
+                  $vehicleFilters[] = $item["tid"];
+                }
+              }
+              print '</div>';
             }
-            ?>
+          }
+          ?>
         </div>
         <div class="good-practice-content col-sm-9">
             <div class="good-practice-text">
                 <section class="what-is-it">
-                    <h2><?php print t('What is it?');?></h2>
-                    <?php print(render($node->field_gp_what_is_it[LANGUAGE_NONE][0]["value"])); ?>
+                    <h2><?php print t('What is it?'); ?></h2>
+                  <?php print(render($node->field_gp_what_is_it[LANGUAGE_NONE][0]["value"])); ?>
                 </section>
                 <section class="who-is-it-for">
-                    <h2><?php print t('Who is it for?');?></h2>
+                    <h2><?php print t('Who is it for?'); ?></h2>
                   <?php print(render($node->field_gp_who_is_for[LANGUAGE_NONE][0]["value"])); ?>
                 </section>
                 <section class="what-is-the-benefit">
-                    <h2><?php print t('What is the benefit?');?></h2>
-                    <?php print(render($node->field_gp_what_is_the_benefit[LANGUAGE_NONE][0]["value"])); ?>
+                    <h2><?php print t('What is the benefit?'); ?></h2>
+                  <?php print(render($node->field_gp_what_is_the_benefit[LANGUAGE_NONE][0]["value"])); ?>
                 </section>
                 <section class="getting-started">
-                    <h2><?php print t('Getting started');?></h2>
-                    <?php print(render($node->field_gp_getting_started[LANGUAGE_NONE][0]["value"])); ?>
+                    <h2><?php print t('Getting started'); ?></h2>
+                  <?php print(render($node->field_gp_getting_started[LANGUAGE_NONE][0]["value"])); ?>
                 </section>
             </div>
         </div>
         <div class="resources-container col-sm-3">
-          <?php if (isset($node->field_gp_external_links['und']) || isset($node->field_gp_factsheet['und'][0]["uri"])) {
-              print '<section class="links">';
-              print '<h3>' . t('Links') . '</h3>';
-              if (isset($node->field_gp_external_links[LANGUAGE_NONE])) {
-                  $links = $node->field_gp_external_links[LANGUAGE_NONE];
-                  foreach ($links as $item) {
-                      print '<a target="_blank" href="' . $item["url"] . '">' . $item["title"] . '</a>';
-                  }
+          <?php if (isset($node->field_gp_external_links[LANGUAGE_NONE]) || isset($node->field_gp_factsheet[LANGUAGE_NONE][0]["uri"])) {
+            print '<section class="links">';
+            print '<h3>' . t('Links') . '</h3>';
+            if (isset($node->field_gp_external_links[LANGUAGE_NONE])) {
+              $links = $node->field_gp_external_links[LANGUAGE_NONE];
+              foreach ($links as $item) {
+                print '<a target="_blank" href="' . $item["url"] . '">' . $item["title"] . '</a>';
               }
-              if (isset($node->field_gp_factsheet[LANGUAGE_NONE][0]['uri'])) {
-                  print '<a target="_blank" href="' . file_create_url($node->field_gp_factsheet[LANGUAGE_NONE][0]["uri"]) . '">' . t('Download factsheet') . '</a>';
-              }
-              print '</section>';
-          }?>
+            }
+            if (isset($node->field_gp_factsheet[LANGUAGE_NONE][0]['uri'])) {
+              print '<a target="_blank" href="' . file_create_url($node->field_gp_factsheet[LANGUAGE_NONE][0]["uri"]) . '">' . t('Download factsheet') . '</a>';
+            }
+            print '</section>';
+          } ?>
 
           <?php
-              if (isset($node->field_additional_resources[LANGUAGE_NONE])) {
-                print '<section class="additional-resources">';
-                print '<h3>' . t('Additional Resources') . '</h3>';
-                $resources = $node->field_additional_resources[LANGUAGE_NONE];
-                if (count($resources) > 4) {
-                    print '<div>';
-                    for ($i = 0; $i < 4; $i++) {
-                        print '<a target="_blank" href="' . $resources[$i]["url"] . '">' . $resources[$i]["title"] . '</a>';
-                    }
-                    print '</div>';
-                    print '<div class="hidden-links">';
-                    for ($i = 4; $i < count($resources); $i++) {
-                        print '<a target="_blank" href="' . $resources[$i]["url"] . '">' . $resources[$i]["title"] . '</a>';
-                    }
-                    print '</div>';
-                    print '<span class="see-more-btn">' . t('See more links') . '</span>';
-                }
-                else {
-                    print '<div>';
-                    foreach ($resources as $item) {
-                        print '<a target="_blank" href="' . $item["url"] . '">' . $item["title"] . '</a>';
-                    }
-                    print '</div>';
-                }
-                print '</section>';
+          if (isset($node->field_additional_resources[LANGUAGE_NONE])) {
+            print '<section class="additional-resources">';
+            print '<h3>' . t('Additional Resources') . '</h3>';
+            $resources = $node->field_additional_resources[LANGUAGE_NONE];
+            if (count($resources) > 4) {
+              print '<div>';
+              for ($i = 0; $i < 4; $i++) {
+                print '<a target="_blank" href="' . $resources[$i]["url"] . '">' . $resources[$i]["title"] . '</a>';
               }
-              ?>
+              print '</div>';
+              print '<div class="hidden-links">';
+              for ($i = 4; $i < count($resources); $i++) {
+                print '<a target="_blank" href="' . $resources[$i]["url"] . '">' . $resources[$i]["title"] . '</a>';
+              }
+              print '</div>';
+              print '<span class="see-more-btn">' . t('See more links') . '</span>';
+            }
+            else {
+              print '<div>';
+              foreach ($resources as $item) {
+                print '<a target="_blank" href="' . $item["url"] . '">' . $item["title"] . '</a>';
+              }
+              print '</div>';
+            }
+            print '</section>';
+          }
+          ?>
         </div>
       <?php
-        if (count($riskFilters) == 0) {
-            $riskFilters = 'all';
-        }else{
-            $riskFilters = implode('+', $riskFilters);
-        }
-        if (count($vehicleFilters) == 0) {
-            $vehicleFilters = 'all';
-        }else{
-            $vehicleFilters = implode('+', $vehicleFilters);
-        }
+      if (count($riskFilters) == 0) {
+        $riskFilters = 'all';
+      }
+      else {
+        $riskFilters = implode('+', $riskFilters);
+      }
+      if (count($vehicleFilters) == 0) {
+        $vehicleFilters = 'all';
+      }
+      else {
+        $vehicleFilters = implode('+', $vehicleFilters);
+      }
 
-        $view = views_embed_view('related_good_practices', $display_id = 'block_1', $riskFilters . '/' . $vehicleFilters);
+      $view = views_embed_view('related_good_practices', $display_id = 'block_1', $riskFilters . '/' . $vehicleFilters);
 
-        if (strpos($view, 'view-content')) {
-            print '<div class="related-good-practices col-md-12">';
-            print '<h3>' . t('Related Good Practices') . '</h3>';
-            print '<div class="related-slider-big hidden-xs">';
-            print $view;
-            print '</div>';
-            // View for Responsive Design.
-            print '<div class="related-slider-small hidden-sm hidden-md hidden-lg">';
-            print views_embed_view('related_good_practices', $display_id = 'block_3', $riskFilters . '/' . $vehicleFilters);
-            print '</div>';
-            print '</div>';
-        }
-        ?>
+      if (strpos($view, 'view-content')) {
+        print '<div class="related-good-practices col-md-12">';
+        print '<h3>' . t('Related Good Practices') . '</h3>';
+        print '<div class="related-slider-big hidden-xs">';
+        print $view;
+        print '</div>';
+        // View for Responsive Design.
+        print '<div class="related-slider-small hidden-sm hidden-md hidden-lg">';
+        print views_embed_view('related_good_practices', $display_id = 'block_3', $riskFilters . '/' . $vehicleFilters);
+        print '</div>';
+        print '</div>';
+      }
+      ?>
     </div>
 </div>
