@@ -21,3 +21,10 @@ function vesafe_pages_1_update_7003() {
   variable_set('site_slogan', 'One stop shop for vehicle safety');
   features_revert_module('vesafe_pages_1');
 }
+
+/*
+ * Features revert: VES-99, VES-100.
+ */
+function vesafe_pages_1_update_7004() {
+  features_revert_module('vesafe_pages_1');
+}

@@ -383,6 +383,29 @@ function vesafe_pages_1_views_default_views() {
     'good_practice' => 'good_practice',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Search: Fulltext search */
+  $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_default_solr_index';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['operator'] = 'OR';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['group'] = 1;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['search_api_views_fulltext']['fields'] = array(
+    'field_gp_getting_started:value' => 'field_gp_getting_started:value',
+    'field_gp_what_is_it:value' => 'field_gp_what_is_it:value',
+    'field_gp_what_is_the_benefit:value' => 'field_gp_what_is_the_benefit:value',
+    'field_gp_who_is_for:value' => 'field_gp_who_is_for:value',
+    'title' => 'title',
+  );
+
   $handler->display->display_options['mefibs'] = array(
     'blocks' => array(),
     'extras' => array(
