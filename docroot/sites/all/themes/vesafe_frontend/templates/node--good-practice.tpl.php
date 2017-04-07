@@ -99,8 +99,8 @@
             $riskFilters = [];
             $vehicleFilters = [];
             // Print risk tags.
-            if (isset($node->field_risks["und"])) {
-                $risks = $node->field_risks["und"];
+            if (isset($node->field_risks[LANGUAGE_NONE])) {
+                $risks = $node->field_risks[LANGUAGE_NONE];
                 if (count($risks) > 0) {
                     print '<div class="tags-block">';
                     print '<span class="tags-title">' . t('Risks:') . ' </span>';
@@ -119,8 +119,8 @@
                 }
             }
             // Print vehicle tags.
-            if (isset($node->field_vehicles["und"])) {
-                $vehicles = $node->field_vehicles["und"];
+            if (isset($node->field_vehicles[LANGUAGE_NONE])) {
+                $vehicles = $node->field_vehicles[LANGUAGE_NONE];
                     if (count($vehicles) > 0) {
                         print '<div class="tags-block">';
                         print '<span class="tags-title">' . t('Vehicles:') . ' </span>';
@@ -144,19 +144,19 @@
             <div class="good-practice-text">
                 <section class="what-is-it">
                     <h2><?php print t('What is it?');?></h2>
-                    <?php print(render($node->field_gp_what_is_it["und"][0]["value"])); ?>
+                    <?php print(render($node->field_gp_what_is_it[LANGUAGE_NONE][0]["value"])); ?>
                 </section>
                 <section class="who-is-it-for">
                     <h2><?php print t('Who is it for?');?></h2>
-                  <?php print(render($node->field_gp_who_is_for["und"][0]["value"])); ?>
+                  <?php print(render($node->field_gp_who_is_for[LANGUAGE_NONE][0]["value"])); ?>
                 </section>
                 <section class="what-is-the-benefit">
                     <h2><?php print t('What is the benefit?');?></h2>
-                    <?php print(render($node->field_gp_what_is_the_benefit["und"][0]["value"])); ?>
+                    <?php print(render($node->field_gp_what_is_the_benefit[LANGUAGE_NONE][0]["value"])); ?>
                 </section>
                 <section class="getting-started">
                     <h2><?php print t('Getting started');?></h2>
-                    <?php print(render($node->field_gp_getting_started["und"][0]["value"])); ?>
+                    <?php print(render($node->field_gp_getting_started[LANGUAGE_NONE][0]["value"])); ?>
                 </section>
             </div>
         </div>
@@ -164,23 +164,23 @@
           <?php if (isset($node->field_gp_external_links['und']) || isset($node->field_gp_factsheet['und'][0]["uri"])) {
               print '<section class="links">';
               print '<h3>' . t('Links') . '</h3>';
-              if (isset($node->field_gp_external_links["und"])) {
-                  $links = $node->field_gp_external_links["und"];
+              if (isset($node->field_gp_external_links[LANGUAGE_NONE])) {
+                  $links = $node->field_gp_external_links[LANGUAGE_NONE];
                   foreach ($links as $item) {
                       print '<a target="_blank" href="' . $item["url"] . '">' . $item["title"] . '</a>';
                   }
               }
-              if (isset($node->field_gp_factsheet["und"][0]['uri'])) {
-                  print '<a target="_blank" href="' . file_create_url($node->field_gp_factsheet["und"][0]["uri"]) . '">Download factsheet</a>';
+              if (isset($node->field_gp_factsheet[LANGUAGE_NONE][0]['uri'])) {
+                  print '<a target="_blank" href="' . file_create_url($node->field_gp_factsheet[LANGUAGE_NONE][0]["uri"]) . '">' . t('Download factsheet') . '</a>';
               }
               print '</section>';
           }?>
 
           <?php
-              if (isset($node->field_additional_resources["und"])) {
+              if (isset($node->field_additional_resources[LANGUAGE_NONE])) {
                 print '<section class="additional-resources">';
                 print '<h3>' . t('Additional Resources') . '</h3>';
-                $resources = $node->field_additional_resources["und"];
+                $resources = $node->field_additional_resources[LANGUAGE_NONE];
                 if (count($resources) > 4) {
                     print '<div>';
                     for ($i = 0; $i < 4; $i++) {
