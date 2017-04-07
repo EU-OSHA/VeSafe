@@ -196,7 +196,7 @@
                   print '<div id="' . $titleLink . '">';
                   // Key Article Theme div open.
                   print '<div  class="key-article-text">';
-                  print '<h3 class="titulos-key-articles">' . $title . '</h3>';
+                  print '<h4 class="titulos-key-articles">' . $title . '</h4>';
                   print '<div class="body-key-article">';
                   print render($issue["entity"]->body[LANGUAGE_NONE][0]["value"]);
                   print '</div>';
@@ -233,7 +233,7 @@
                   print '<div id="' . $titleLink . '">';
                   // Key Article Theme div open.
                   print '<div  class="key-article-text">';
-                  print '<h3 class="titulos-key-articles">' . $title . '</h3>';
+                  print '<h4 class="titulos-key-articles">' . $title . '</h4>';
                   print '<div class="body-key-article">';
                   print render($issue["entity"]->body[LANGUAGE_NONE][0]["value"]);
                   print '</div>';
@@ -269,7 +269,7 @@
                   print '<div id="' . $titleLink . '">';
                   // Key Article Theme div open.
                   print '<div  class="key-article-text">';
-                  print '<h3 class="titulos-key-articles">' . $title . '</h3>';
+                  print '<h4 class="titulos-key-articles">' . $title . '</h4>';
                   print '<div class="body-key-article">';
                   print render($issue["entity"]->body[LANGUAGE_NONE][0]["value"]);
                   print '</div>';
