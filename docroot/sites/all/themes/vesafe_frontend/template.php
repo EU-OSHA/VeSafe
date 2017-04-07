@@ -205,7 +205,7 @@ function vesafe_frontend_pager($variables) {
         'data' => $li_last,
       );
     }
-    return '<h4 class="element-invisible">' . t('Pages') . '</h4>' . theme('item_list', array(
+    return theme('item_list', array(
       'items' => $items,
       'attributes' => array('class' => array('pager')),
     ));
@@ -561,3 +561,4 @@ function vesafe_frontend_block_view_alter(&$data, $block){
       break;
   }
 }
+
