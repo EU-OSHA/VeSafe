@@ -7375,6 +7375,9 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .page-node-5 .page-content-container.container form.webform-client-form .captcha .panel-body #captcha_0_refresh img {
   visibility: hidden;
 }
+.page-node-5 .page-content-container.container form.webform-client-form .webform-component--disclaimer {
+  text-align: center;
+}
 .page-node-5 .page-content-container.container form.webform-client-form button.webform-submit {
   background-color: #ea4a5e;
   color: white;
