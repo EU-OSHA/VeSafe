@@ -7599,6 +7599,8 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .node-type-good-practice #block-system-main .good-practice-block .good-practices-tags-container .tags-block .taxonomy-term-tag:not(:last-child):after {
   content: ", ";
 }
+.node-type-key-article #block-system-main .good-practice-block h2,
+.node-type-good-practice #block-system-main .good-practice-block h2,
 .node-type-key-article #block-system-main .good-practice-block h3,
 .node-type-good-practice #block-system-main .good-practice-block h3 {
   font-size: 1.2em;
@@ -7608,8 +7610,8 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .node-type-good-practice #block-system-main .good-practice-block .good-practice-content ul {
   padding-left: 15px;
 }
-.node-type-key-article #block-system-main .good-practice-block .good-practice-content .what-is-it h3:before,
-.node-type-good-practice #block-system-main .good-practice-block .good-practice-content .what-is-it h3:before {
+.node-type-key-article #block-system-main .good-practice-block .good-practice-content .what-is-it h2:before,
+.node-type-good-practice #block-system-main .good-practice-block .good-practice-content .what-is-it h2:before {
   content: "\f128";
   font-family: "FontAwesome";
   font-size: 1.1em;
@@ -7617,8 +7619,8 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   vertical-align: text-bottom;
   font-weight: normal;
 }
-.node-type-key-article #block-system-main .good-practice-block .good-practice-content .who-is-it-for h3:before,
-.node-type-good-practice #block-system-main .good-practice-block .good-practice-content .who-is-it-for h3:before {
+.node-type-key-article #block-system-main .good-practice-block .good-practice-content .who-is-it-for h2:before,
+.node-type-good-practice #block-system-main .good-practice-block .good-practice-content .who-is-it-for h2:before {
   content: "\f0c0";
   font-family: "FontAwesome";
   font-size: 1.1em;
@@ -7626,8 +7628,8 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   vertical-align: text-bottom;
   font-weight: normal;
 }
-.node-type-key-article #block-system-main .good-practice-block .good-practice-content .what-is-the-benefit h3:before,
-.node-type-good-practice #block-system-main .good-practice-block .good-practice-content .what-is-the-benefit h3:before {
+.node-type-key-article #block-system-main .good-practice-block .good-practice-content .what-is-the-benefit h2:before,
+.node-type-good-practice #block-system-main .good-practice-block .good-practice-content .what-is-the-benefit h2:before {
   content: "\f024";
   font-family: "FontAwesome";
   font-size: 1.1em;
@@ -7635,8 +7637,8 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   vertical-align: text-bottom;
   font-weight: normal;
 }
-.node-type-key-article #block-system-main .good-practice-block .good-practice-content .getting-started h3:before,
-.node-type-good-practice #block-system-main .good-practice-block .good-practice-content .getting-started h3:before {
+.node-type-key-article #block-system-main .good-practice-block .good-practice-content .getting-started h2:before,
+.node-type-good-practice #block-system-main .good-practice-block .good-practice-content .getting-started h2:before {
   content: "\f041";
   font-family: "FontAwesome";
   font-size: 1.1em;
