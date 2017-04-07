@@ -81,3 +81,10 @@ function vesafe_search_update_7003() {
 function vesafe_search_update_7005() {
   features_revert_module('vesafe_search');
 }
+
+/**
+ * Features revert: VES-99 - Search form exposed in block.
+ */
+function vesafe_search_update_7006() {
+  features_revert_module('vesafe_search');
+}
