@@ -159,7 +159,7 @@
     <div class="key-article-content col-md-9 col-sm-12">
         <div id="introduction">
             <div class="key-article-text">
-                <h3 class="titulos-key-articles"><?php print t('Introduction');?></h3>
+                <h2 class="titulos-key-articles"><?php print t('Introduction');?></h2>
                 <div class="body-key-article">
                   <?php
                   print (render($node->body[LANGUAGE_NONE]["0"]["value"]));
@@ -196,7 +196,7 @@
                   print '<div id="' . $titleLink . '">';
                   // Key Article Theme div open.
                   print '<div  class="key-article-text">';
-                  print '<h4 class="titulos-key-articles">' . $title . '</h4>';
+                  print '<h2 class="titulos-key-articles">' . $title . '</h2>';
                   print '<div class="body-key-article">';
                   print render($issue["entity"]->body[LANGUAGE_NONE][0]["value"]);
                   print '</div>';
@@ -233,7 +233,7 @@
                   print '<div id="' . $titleLink . '">';
                   // Key Article Theme div open.
                   print '<div  class="key-article-text">';
-                  print '<h4 class="titulos-key-articles">' . $title . '</h4>';
+                  print '<h2 class="titulos-key-articles">' . $title . '</h2>';
                   print '<div class="body-key-article">';
                   print render($issue["entity"]->body[LANGUAGE_NONE][0]["value"]);
                   print '</div>';
@@ -269,7 +269,7 @@
                   print '<div id="' . $titleLink . '">';
                   // Key Article Theme div open.
                   print '<div  class="key-article-text">';
-                  print '<h4 class="titulos-key-articles">' . $title . '</h4>';
+                  print '<h2 class="titulos-key-articles">' . $title . '</h2>';
                   print '<div class="body-key-article">';
                   print render($issue["entity"]->body[LANGUAGE_NONE][0]["value"]);
                   print '</div>';
