@@ -178,11 +178,11 @@
 
 <div class="page-content-container container">
   <?php if (!empty($page['sidebar_first'])): ?>
-    <aside class="col-md-3" role="complementary">
+    <aside class="col-md-3">
       <?php print render($page['sidebar_first']); ?>
     </aside>  <!-- /#sidebar-first -->
   <?php endif; ?>
-  <section<?php print $content_column_class; ?>>
+  <div<?php print $content_column_class; ?>>
     <?php print $messages; ?>
     <?php if (!empty($tabs)): ?>
       <?php print render($tabs); ?>
@@ -195,10 +195,10 @@
     <?php endif; ?>
     <div id="skip-to-content" style="visibility: hidden; height: 0px"><a href="#skip-to-content" rel="nofollow" accesskey="S" style="visibility: hidden;"><?php print t('Skip to content'); ?></a></div>
     <?php print render($page['content']); ?>
-  </section>
+  </div>
 
   <?php if (!empty($page['sidebar_second'])): ?>
-    <aside class="col-sm-3" role="complementary">
+    <aside class="col-sm-3">
       <?php print render($page['sidebar_second']); ?>
     </aside>  <!-- /#sidebar-second -->
   <?php endif; ?>

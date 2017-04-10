@@ -112,12 +112,12 @@
               print '<span class="tags-title">' . t('Risks:') . ' </span>';
               foreach ($risks as $item) {
                 if (isset($item["taxonomy_term"])) {
-                  print '<span class="taxonomy-term-tag"><a href="/good-practices?f[0]=field_risks%3A' . $item["taxonomy_term"]->tid . '">' . ($item["taxonomy_term"]->name) . '</a></span>';
+                  print '<span class="taxonomy-term-tag"><a href="/good-practices?f%5B0%5D=field_risks%3A' . $item["taxonomy_term"]->tid . '">' . ($item["taxonomy_term"]->name) . '</a></span>';
                   $riskFilters[] = $item["taxonomy_term"]->tid;
                 }
                 elseif (isset($item["tid"])) {
                   $taxonomy = taxonomy_term_load($item["tid"]);
-                  print '<span class="taxonomy-term-tag"><a href="/good-practices?f[0]=field_risks%3A' . $item["tid"] . '">' . ($taxonomy->name) . '</a></span>';
+                  print '<span class="taxonomy-term-tag"><a href="/good-practices?f%5B0%5D=field_risks%3A' . $item["tid"] . '">' . ($taxonomy->name) . '</a></span>';
                   $vehicleFilters[] = $item["tid"];
                 }
               }
@@ -132,12 +132,12 @@
               print '<span class="tags-title">' . t('Vehicles:') . ' </span>';
               foreach ($vehicles as $item) {
                 if (isset($item["taxonomy_term"])) {
-                  print '<span class="taxonomy-term-tag"><a href="/good-practices?f[0]=field_vehicles%3A' . $item["taxonomy_term"]->tid . '">' . ($item["taxonomy_term"]->name) . '</a></span>';
+                  print '<span class="taxonomy-term-tag"><a href="/good-practices?f%5B0%5D=field_vehicles%3A' . $item["taxonomy_term"]->tid . '">' . ($item["taxonomy_term"]->name) . '</a></span>';
                   $vehicleFilters[] = $item["taxonomy_term"]->tid;
                 }
                 elseif (isset($item["tid"])) {
                   $taxonomy = taxonomy_term_load($item["tid"]);
-                  print '<span class="taxonomy-term-tag"><a href="/good-practices?f[0]=field_vehicles%3A' . $item["tid"] . '">' . ($taxonomy->name) . '</a></span>';
+                  print '<span class="taxonomy-term-tag"><a href="/good-practices?f%5B0%5D=field_vehicles%3A' . $item["tid"] . '">' . ($taxonomy->name) . '</a></span>';
                   $vehicleFilters[] = $item["tid"];
                 }
               }

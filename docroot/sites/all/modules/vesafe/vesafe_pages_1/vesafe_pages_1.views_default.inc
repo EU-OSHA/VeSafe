@@ -405,7 +405,6 @@ function vesafe_pages_1_views_default_views() {
     'field_gp_who_is_for:value' => 'field_gp_who_is_for:value',
     'title' => 'title',
   );
-
   $handler->display->display_options['mefibs'] = array(
     'blocks' => array(),
     'extras' => array(
@@ -628,6 +627,70 @@ function vesafe_pages_1_views_default_views() {
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Related Good Practices - Key Articles';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['relationship'] = 'field_related_good_practices_target_id';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  /* Field: Content: What is it? */
+  $handler->display->display_options['fields']['field_gp_what_is_it']['id'] = 'field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['table'] = 'field_data_field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['field'] = 'field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['relationship'] = 'field_related_good_practices_target_id';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['label'] = '';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_gp_what_is_it']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_gp_what_is_it']['type'] = 'smart_trim_format';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['settings'] = array(
+    'trim_link' => '0',
+    'trim_length' => '75',
+    'trim_type' => 'chars',
+    'trim_suffix' => '...',
+    'more_link' => '0',
+    'more_text' => 'Read more',
+    'trim_options' => array(
+      'text' => 'text',
+    ),
+    'trim_preserve_tags' => '',
+  );
+  /* Field: Content: Image */
+  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
+  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['relationship'] = 'field_related_good_practices_target_id';
+  $handler->display->display_options['fields']['field_image']['label'] = '';
+  $handler->display->display_options['fields']['field_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['alter']['text'] = '<span class="overlay">
+<span class="thumb-info">
+<span class="thumb-info-text">[field_gp_what_is_it]</span>
+</span>
+</span>
+[field_image]
+';
+  $handler->display->display_options['fields']['field_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['alter']['path'] = '[path]';
+  $handler->display->display_options['fields']['field_image']['alter']['link_class'] = 'link-to-url';
+  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image']['settings'] = array(
+    'image_style' => 'related_good_practice',
+    'image_link' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '60';
+  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['html'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
@@ -638,6 +701,69 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '12';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['relationship'] = 'field_related_good_practices_target_id';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  /* Field: Content: What is it? */
+  $handler->display->display_options['fields']['field_gp_what_is_it']['id'] = 'field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['table'] = 'field_data_field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['field'] = 'field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['relationship'] = 'field_related_good_practices_target_id';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['label'] = '';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_gp_what_is_it']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_gp_what_is_it']['type'] = 'smart_trim_format';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['settings'] = array(
+    'trim_link' => '0',
+    'trim_length' => '75',
+    'trim_type' => 'chars',
+    'trim_suffix' => '...',
+    'more_link' => '0',
+    'more_text' => 'Read more',
+    'trim_options' => array(
+      'text' => 'text',
+    ),
+    'trim_preserve_tags' => '',
+  );
+  /* Field: Content: Image */
+  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
+  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['label'] = '';
+  $handler->display->display_options['fields']['field_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['alter']['text'] = '<span class="overlay">
+<span class="thumb-info">
+<span class="thumb-info-text">[field_gp_what_is_it]</span>
+</span>
+</span>
+[field_image]
+';
+  $handler->display->display_options['fields']['field_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['alter']['path'] = '[path]';
+  $handler->display->display_options['fields']['field_image']['alter']['link_class'] = 'link-to-url';
+  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image']['settings'] = array(
+    'image_style' => 'related_good_practice',
+    'image_link' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '60';
+  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['html'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Risks (field_risks) */
   $handler->display->display_options['arguments']['field_risks_tid']['id'] = 'field_risks_tid';
@@ -727,6 +853,70 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['relationship'] = 'field_related_good_practices_target_id';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  /* Field: Content: What is it? */
+  $handler->display->display_options['fields']['field_gp_what_is_it']['id'] = 'field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['table'] = 'field_data_field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['field'] = 'field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['relationship'] = 'field_related_good_practices_target_id';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['label'] = '';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_gp_what_is_it']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_gp_what_is_it']['type'] = 'smart_trim_format';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['settings'] = array(
+    'trim_link' => '0',
+    'trim_length' => '75',
+    'trim_type' => 'chars',
+    'trim_suffix' => '...',
+    'more_link' => '0',
+    'more_text' => 'Read more',
+    'trim_options' => array(
+      'text' => 'text',
+    ),
+    'trim_preserve_tags' => '',
+  );
+  /* Field: Content: Image */
+  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
+  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['relationship'] = 'field_related_good_practices_target_id';
+  $handler->display->display_options['fields']['field_image']['label'] = '';
+  $handler->display->display_options['fields']['field_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['alter']['text'] = '<span class="overlay">
+<span class="thumb-info">
+<span class="thumb-info-text">[field_gp_what_is_it]</span>
+</span>
+</span>
+[field_image]
+';
+  $handler->display->display_options['fields']['field_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['alter']['path'] = '[path]';
+  $handler->display->display_options['fields']['field_image']['alter']['link_class'] = 'link-to-url';
+  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image']['settings'] = array(
+    'image_style' => 'related_good_practice',
+    'image_link' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '60';
+  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['html'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_3');
@@ -786,6 +976,69 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['relationship'] = 'field_related_good_practices_target_id';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  /* Field: Content: What is it? */
+  $handler->display->display_options['fields']['field_gp_what_is_it']['id'] = 'field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['table'] = 'field_data_field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['field'] = 'field_gp_what_is_it';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['relationship'] = 'field_related_good_practices_target_id';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['label'] = '';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_gp_what_is_it']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_gp_what_is_it']['type'] = 'smart_trim_format';
+  $handler->display->display_options['fields']['field_gp_what_is_it']['settings'] = array(
+    'trim_link' => '0',
+    'trim_length' => '75',
+    'trim_type' => 'chars',
+    'trim_suffix' => '...',
+    'more_link' => '0',
+    'more_text' => 'Read more',
+    'trim_options' => array(
+      'text' => 'text',
+    ),
+    'trim_preserve_tags' => '',
+  );
+  /* Field: Content: Image */
+  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
+  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['label'] = '';
+  $handler->display->display_options['fields']['field_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['alter']['text'] = '<span class="overlay">
+<span class="thumb-info">
+<span class="thumb-info-text">[field_gp_what_is_it]</span>
+</span>
+</span>
+[field_image]
+';
+  $handler->display->display_options['fields']['field_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['alter']['path'] = '[path]';
+  $handler->display->display_options['fields']['field_image']['alter']['link_class'] = 'link-to-url';
+  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image']['settings'] = array(
+    'image_style' => 'related_good_practice',
+    'image_link' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '60';
+  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['html'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Risks (field_risks) */
   $handler->display->display_options['arguments']['field_risks_tid']['id'] = 'field_risks_tid';
@@ -841,6 +1094,13 @@ function vesafe_pages_1_views_default_views() {
     t('All'),
     t('Block'),
     t('Related Good Practices - Key Articles'),
+    t('<span class="overlay">
+<span class="thumb-info">
+<span class="thumb-info-text">[field_gp_what_is_it]</span>
+</span>
+</span>
+[field_image]
+'),
     t('Related Good Practices - Good Practices'),
     t('Related Good Practices - Key Articles - Responsive'),
     t('Related Good Practices - Good Practices - Responsive'),

@@ -13,6 +13,11 @@ class VeSafeStructureForms {
       $form['field_like_count']['#access'] = FALSE;
     }
     $form['field_like_count'][LANGUAGE_NONE][0]['value']['#description'] = 'Visible to user/1 only';
+    
+    $form['#validate'][] = "good_practice_node_form_validate";
+    $form['field_creation_date'] = $form['field_publication_date'];
+    $form['field_creation_date']['und'][0]['#title'] = 'Creation date';
+    $form['field_creation_date']['und'][0]['#default_value']['value'] = $form['author']['date']['#default_value'];
   }
 
   /**
@@ -20,6 +25,11 @@ class VeSafeStructureForms {
    */
   public static function key_article_node_form_alter(&$form, &$form_state) {
     self::attachCSS($form, drupal_get_path('module', 'vesafe_structure') . '/styles/key-article.css');
+
+    $form['#validate'][] = "key_article_node_form_validate";
+    $form['field_creation_date'] = $form['field_publication_date'];
+    $form['field_creation_date']['und'][0]['#title'] = 'Creation date';
+    $form['field_creation_date']['und'][0]['#default_value']['value'] = $form['author']['date']['#default_value'];
   }
 
   /**
