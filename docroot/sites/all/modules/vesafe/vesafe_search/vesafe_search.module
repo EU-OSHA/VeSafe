@@ -283,7 +283,7 @@ function vesafe_search_form_gp($form, $form_state) {
     'actions' => [
       'submit' => [
         '#type' => 'submit',
-        '#name' => '',
+        '#name' => t('Search'),
         '#id' => 'edit-submit-gp',
         '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
         '#attributes' => ['class' => ['btn-default']],
@@ -331,7 +331,7 @@ function vesafe_search_form($form, $form_state) {
     'actions' => [
       'submit' => [
         '#type' => 'submit',
-        '#name' => '',
+        '#name' => t('Search'),
         '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
         '#attributes' => ['class' => ['btn-default']],
       ],
@@ -379,7 +379,7 @@ function vesafe_search_form_sidebar($form, $form_state) {
       'submit' => [
         '#type' => 'submit',
         '#id' => 'edit-submit-sidebar',
-        '#name' => '',
+        '#name' => t('Search'),
         '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
         '#attributes' => ['class' => ['btn-default']],
       ],
