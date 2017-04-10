@@ -28,3 +28,10 @@ function vesafe_pages_1_update_7003() {
 function vesafe_pages_1_update_7004() {
   features_revert_module('vesafe_pages_1');
 }
+
+/*
+ * Features revert: VES-100 - HTML Validation.
+ */
+function vesafe_pages_1_update_7005() {
+  features_revert_module('vesafe_pages_1');
+}
