@@ -550,7 +550,12 @@ function vesafe_frontend_block_view_alter(&$data, $block){
       foreach ($data['content']['facets']['#items'] as $item) {
         $text =  preg_replace('/<a href=\"(.*)\">(.*)\<span class=\"(.*)\">(.*)\<\/span\><\/a>/iU','$2',$item['data']);
         list($name,$count) = explode('(',$text);
-        $items[(trim($name))] = preg_replace('/<a href=\"(.*)\">(.*)\<span class=\"(.*)\">(.*)\<\/span\><\/a>/iU','<a href="$1">' . $name . '</a>',$item['data']);;
+        $items[(trim($name))] = preg_replace_callback('/<a href=\"(.*)\">(.*)\<span class=\"(.*)\">(.*)\<\/span\><\/a>/iU',
+          function($m) {
+            list($name,$count) = explode('(',$m[2]);
+            return '<a href="' . str_replace(['[',']'],['%5B','%5D'],$m[1]) . '">' . $name . '</a>';
+          },
+          $item['data']);
       }
       ksort($items);
       $new_data = array();
