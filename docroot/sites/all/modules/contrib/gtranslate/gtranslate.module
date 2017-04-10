@@ -87,15 +87,13 @@ eval(unescape("eval%28function%28p%2Ca%2Cc%2Ck%2Ce%2Cr%29%7Be%3Dfunction%28c%29%
 /* ]]> */
 </script>
 EOT;
-        $block_content .= '<style type="text/css">' . "\n";
-        $block_content .= "<!--\n";
-        $block_content .="#goog-gt-tt {display:none !important;}\n
+
+      $block_css = "#goog-gt-tt {display:none !important;}\n
 .goog-te-banner-frame {display:none !important;}\n
 .goog-te-menu-value:hover {text-decoration:none !important;}\n
 body {top:0 !important;}\n
 #google_translate_element2 {display:none!important;}\n";
-        $block_content .= "-->\n";
-        $block_content .= '</style>';
+      drupal_add_css($block_css, array('type' => 'inline'));
 
         $default_language = variable_get('gtranslate_main_lang', 'en');
         $block_content .= <<<EOT
@@ -107,12 +105,9 @@ EOT;
         switch(variable_get('gtranslate_look', 'flags_dropdown')) {
             case 'flags_dropdown':
             case 'both': {
-                $block_content .= '<style type="text/css">'."\n";
-                $block_content .= "<!--\n";
-                $block_content .= "a.gtflag {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16')."a.png');}\n";
-                $block_content .= "a.gtflag:hover {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16').".png');}\n";
-                $block_content .= "-->\n";
-                $block_content .= '</style>';
+                $block_css = "a.gtflag {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16')."a.png');}\n";
+                $block_css .= "a.gtflag:hover {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16').".png');}\n";
+                drupal_add_css($block_css, array('type' => 'inline'));
 
                 $i = $j = 0;
                 foreach($languages as $lang => $lang_name) {
@@ -148,14 +143,11 @@ EOT;
             }; break;
 
             case 'flags': {
-                $block_content .= '<style type="text/css">'."\n";
-                $block_content .= "<!--\n";
-                $block_content .= "a.gtflag {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16')."a.png');}\n";
-                $block_content .= "a.gtflag:hover {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16').".png');}\n";
-                $block_content .= "-->\n";
-                $block_content .= '</style>';
+              $block_css = "a.gtflag {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16')."a.png');}\n";
+              $block_css .= "a.gtflag:hover {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16').".png');}\n";
+              drupal_add_css($block_css, array('type' => 'inline'));
 
-                $i = $j = 0;
+              $i = $j = 0;
                 foreach($languages as $lang => $lang_name) {
                     if(variable_get("gtranslate_$lang", 0)) {
                         list($flag_x, $flag_y) = $flag_map[$lang];
@@ -296,12 +288,10 @@ EOT;
         switch(variable_get('gtranslate_look', 'flags_dropdown')) {
             case 'flags_dropdown':
             case 'both': {
-                $block_content .= '<style type="text/css">'."\n";
-                $block_content .= "<!--\n";
-                $block_content .= "a.gtflag {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16')."a.png');}\n";
-                $block_content .= "a.gtflag:hover {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16').".png');}\n";
-                $block_content .= "-->\n";
-                $block_content .= '</style>';
+
+                $block_css = "a.gtflag {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16')."a.png');}\n";
+                $block_css .= "a.gtflag:hover {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16').".png');}\n";
+                drupal_add_css($block_css, array('type' => 'inline'));
 
                 $i = $j = 0;
                 foreach($languages as $lang => $lang_name) {
@@ -337,12 +327,9 @@ EOT;
             }; break;
 
             case 'flags': {
-                $block_content .= '<style type="text/css">'."\n";
-                $block_content .= "<!--\n";
-                $block_content .= "a.gtflag {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16')."a.png');}\n";
-                $block_content .= "a.gtflag:hover {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16').".png');}\n";
-                $block_content .= "-->\n";
-                $block_content .= '</style>';
+                $block_css  =  "a.gtflag {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16')."a.png');}\n";
+                $block_css .=  "a.gtflag:hover {background-image:url('".base_path().drupal_get_path('module', 'gtranslate')."/gtranslate-files/".variable_get('gtranslate_flag_size', '16').".png');}\n";
+                drupal_add_css($block_css, array('type' => 'inline'));
 
                 $i = $j = 0;
                 foreach($languages as $lang => $lang_name) {
