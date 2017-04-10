@@ -88,3 +88,10 @@ function vesafe_search_update_7005() {
 function vesafe_search_update_7006() {
   features_revert_module('vesafe_search');
 }
+
+/**
+ * Features revert: VES-113 - Search facet display.
+ */
+function vesafe_search_update_7007() {
+  features_revert_module('vesafe_search');
+}
