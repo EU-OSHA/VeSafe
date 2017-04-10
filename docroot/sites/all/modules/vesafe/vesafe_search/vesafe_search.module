@@ -378,6 +378,7 @@ function vesafe_search_form_sidebar($form, $form_state) {
     'actions' => [
       'submit' => [
         '#type' => 'submit',
+        '#id' => 'edit-submit-sidebar',
         '#name' => '',
         '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
         '#attributes' => ['class' => ['btn-default']],
