@@ -4,4 +4,5 @@ description = VeSafe workflow integration
 core = 7.x
 package = VeSafe
 version = 7.x-1.0
+dependencies[] = osha_authentication
 files[] = include/VeSafeWorkflow.inc
