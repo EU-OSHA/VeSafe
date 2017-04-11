@@ -188,7 +188,7 @@
                   $nextHref = '#' . $titleLink;
 
                   // Print Next Button From Previous div.
-                  print '<button  type="button" class="next-button"><a href="' . $nextHref . '" class="nexting-button">' . $title . '</a></button>';
+                  print '<span class="next-button"><a href="' . $nextHref . '" class="nexting-button">' . $title . '</a></span>';
                   print '</div>';
                   // Next-Previous Button div closure.
                   print '</div>';
@@ -202,7 +202,7 @@
                   print '</div>';
                   print '</div>';
                   print '<div class="key-article-next-prev-buttons">';
-                  print '<button  type="button" class="prev-button"><a href="' . $previousHref . '" class="previous-button">' . $previousTitle . '</a></button>';
+                  print '<span class="prev-button"><a href="' . $previousHref . '" class="previous-button">' . $previousTitle . '</a></span>';
 
                   // Update previousHref and previousTitle for next div.
                   $previousHref = '#' . $titleLink;
@@ -225,7 +225,7 @@
                   $nextHref = '#' . $titleLink;
 
                   // Print Next Button From Previous div.
-                  print '<button  type="button" class="next-button"><a href="' . $nextHref . '" class="nexting-button">' . $title . '</a></button>';
+                  print '<span class="next-button"><a href="' . $nextHref . '" class="nexting-button">' . $title . '</a></span>';
                   print '</div>';
                   // Next-Previous Button div closure.
                   print '</div>';
@@ -239,7 +239,7 @@
                   print '</div>';
                   print '</div>';
                   print '<div class="key-article-next-prev-buttons">';
-                  print '<button  type="button" class="prev-button"><a href="' . $previousHref . '" class="previous-button">' . $previousTitle . '</a></button>';
+                  print '<span class="prev-button"><a href="' . $previousHref . '" class="previous-button">' . $previousTitle . '</a></span>';
 
                   // Update previousHref and previousTitle for next div.
                   $previousHref = '#' . $titleLink;
@@ -261,7 +261,7 @@
                   $nextHref = '#' . $titleLink;
 
                   // Print Next Button From Previous div.
-                  print '<button  type="button" class="next-button"><a href="' . $nextHref . '" class="nexting-button">' . $title . '</a></button>';
+                  print '<span class="next-button"><a href="' . $nextHref . '" class="nexting-button">' . $title . '</a></span>';
                   print '</div>';
                   // Next-Previous Button div closure.
                   print '</div>';
@@ -275,7 +275,7 @@
                   print '</div>';
                   print '</div>';
                   print '<div class="key-article-next-prev-buttons">';
-                  print '<button  type="button" class="prev-button"><a href="' . $previousHref . '" class="previous-button">' . $previousTitle . '</a></button>';
+                  print '<span type="button" class="prev-button"><a href="' . $previousHref . '" class="previous-button">' . $previousTitle . '</a></span>';
 
                   // Update previousHref and previousTitle for next div.
                   $previousHref = '#' . $titleLink;
@@ -292,7 +292,7 @@
   $view = views_embed_view('related_good_practices', $display_id = 'block', $nid);
   if (strpos($view, 'view-content')) {
     print '<div class="related-good-practices col-md-12">';
-    print '<h3>Related Good Practices</h3>';
+    print '<h3>' . t('Related Good Practices') . '</h3>';
     print '<div class="related-slider-big hidden-xs">';
     print $view;
     print '</div>';
