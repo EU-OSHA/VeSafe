@@ -283,7 +283,8 @@ function vesafe_search_form_gp($form, $form_state) {
     'actions' => [
       'submit' => [
         '#type' => 'submit',
-        '#name' => t('Search'),
+        '#name' => '',
+        '#label' => t('Search'),
         '#id' => 'edit-submit-gp',
         '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
         '#attributes' => ['class' => ['btn-default']],
@@ -331,7 +332,8 @@ function vesafe_search_form($form, $form_state) {
     'actions' => [
       'submit' => [
         '#type' => 'submit',
-        '#name' => t('Search'),
+        '#name' => '',
+        '#label' => t('Search'),
         '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
         '#attributes' => ['class' => ['btn-default']],
       ],
@@ -379,7 +381,8 @@ function vesafe_search_form_sidebar($form, $form_state) {
       'submit' => [
         '#type' => 'submit',
         '#id' => 'edit-submit-sidebar',
-        '#name' => t('Search'),
+        '#name' => '',
+        '#label' => t('Search'),
         '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
         '#attributes' => ['class' => ['btn-default']],
       ],
@@ -409,7 +412,7 @@ function vesafe_search_form_sidebar($form, $form_state) {
  * Implements hook_form_alter().
  */
 function vesafe_search_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-search-page') {
+  if ($form_id == 'views_exposed_form' && ($form['#id'] == 'views-exposed-form-search-page' || $form['#id'] == 'views-exposed-form-good-practices-page-1')) {
     hide($form['search_api_views_fulltext']);
     hide($form['submit']);
   }
