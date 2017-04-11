@@ -17,7 +17,10 @@ class VeSafeStructureForms {
     $form['#validate'][] = "good_practice_node_form_validate";
     $form['field_creation_date'] = $form['field_publication_date'];
     $form['field_creation_date']['und'][0]['#title'] = 'Creation date';
-    $form['field_creation_date']['und'][0]['#default_value']['value'] = $form['author']['date']['#default_value'];
+    if ($form['author']['date']['#default_value']) {
+      $form['field_creation_date']['und'][0]['#default_value']['value'] = $form['author']['date']['#default_value'];  
+    }    
+    $form['field_creation_date']['#disabled'] = TRUE;
   }
 
   /**
@@ -29,7 +32,10 @@ class VeSafeStructureForms {
     $form['#validate'][] = "key_article_node_form_validate";
     $form['field_creation_date'] = $form['field_publication_date'];
     $form['field_creation_date']['und'][0]['#title'] = 'Creation date';
-    $form['field_creation_date']['und'][0]['#default_value']['value'] = $form['author']['date']['#default_value'];
+    if ($form['author']['date']['#default_value']) {
+      $form['field_creation_date']['und'][0]['#default_value']['value'] = $form['author']['date']['#default_value'];  
+    }    
+    $form['field_creation_date']['#disabled'] = TRUE;
   }
 
   /**
