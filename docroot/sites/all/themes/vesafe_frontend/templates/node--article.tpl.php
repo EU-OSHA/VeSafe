@@ -93,6 +93,14 @@
       <?php print $user_picture; ?>
       <?php print $submitted; ?>
     </span>
+    <?php else: ?>
+    <?php if (isset($node->title) && !empty($node->title)) {
+      $title = $node->title;
+    }
+    else{
+      $title = t('Article');
+    }?>
+        <h2 class="element-hidden"><?php print $title;?></h2>
     <?php endif; ?>
   </header>
   <?php endif; ?>
