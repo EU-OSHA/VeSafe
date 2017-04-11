@@ -275,7 +275,7 @@
                   print '</div>';
                   print '</div>';
                   print '<div class="key-article-next-prev-buttons">';
-                  print '<span type="button" class="prev-button"><a href="' . $previousHref . '" class="previous-button">' . $previousTitle . '</a></span>';
+                  print '<span class="prev-button"><a href="' . $previousHref . '" class="previous-button">' . $previousTitle . '</a></span>';
 
                   // Update previousHref and previousTitle for next div.
                   $previousHref = '#' . $titleLink;
