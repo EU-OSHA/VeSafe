@@ -7,7 +7,7 @@ jQuery(document).ready(function () {
 	// 	wrap: 'word',
 	// });
 
-	jQuery("[for='edit-captcha-response']").attr("for","security_code");
+	jQuery("[for=edit-captcha-response]").attr("for","security_code");
 
     jQuery(".changer").addClass("notranslate");
 
