@@ -7,10 +7,7 @@ jQuery(document).ready(function () {
 	// 	wrap: 'word',
 	// });
 
-	jQuery("[for=security_code]").remove();
-	jQuery("[for=edit-captcha-response]").attr("for","security_code");
-
-    jQuery(".changer").addClass("notranslate");
+	jQuery(".changer").addClass("notranslate");
 
 	jQuery("#facetapi-facet-search-apidefault-solr-index-block-type").siblings("h2").addClass("type-icon");
 	jQuery("#facetapi-facet-search-apidefault-solr-index-block-field-risks").siblings("h2").addClass("risk-icon");

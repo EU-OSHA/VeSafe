@@ -569,6 +569,10 @@ function vesafe_frontend_block_view_alter(&$data, $block){
 
 function vesafe_frontend_captcha($variables) {
   $element = $variables['element'];
+
+  $element['captcha_widgets']['captcha_response']['#prefix'] = '<label for="security_code" class="security-code-captcha">' . $element['captcha_widgets']['captcha_response']['#title'] . '</label>';
+  unset($element['captcha_widgets']['captcha_response']['#title']);
+
   if (!empty($element['#description']) && isset($element['captcha_widgets'])) {
     $captcha_holder = array(
       '#type' => 'container',
