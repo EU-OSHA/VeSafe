@@ -283,7 +283,7 @@ function vesafe_search_form_gp($form, $form_state) {
     'actions' => [
       'submit' => [
         '#type' => 'submit',
-        '#name' => ' ',
+        '#name' => t('Search'),
         '#label' => t('Search'),
         '#id' => 'edit-submit-gp',
         '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
@@ -332,7 +332,7 @@ function vesafe_search_form($form, $form_state) {
     'actions' => [
       'submit' => [
         '#type' => 'submit',
-        '#name' => ' ',
+        '#name' => t('Search'),
         '#label' => t('Search'),
         '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
         '#attributes' => ['class' => ['btn-default']],
@@ -381,7 +381,7 @@ function vesafe_search_form_sidebar($form, $form_state) {
       'submit' => [
         '#type' => 'submit',
         '#id' => 'edit-submit-sidebar',
-        '#name' => ' ',
+        '#name' => t('Search'),
         '#label' => t('Search'),
         '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
         '#attributes' => ['class' => ['btn-default']],
@@ -389,6 +389,7 @@ function vesafe_search_form_sidebar($form, $form_state) {
     ],
   ];
   if (!empty($_GET['f'])) {
+    unset($_GET[t('Search')]);
     // Preserve facet values.
     if (is_array($_GET['f'])) {
       foreach ($_GET['f'] as $key => $value) {

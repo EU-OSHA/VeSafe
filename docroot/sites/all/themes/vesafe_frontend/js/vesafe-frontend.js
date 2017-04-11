@@ -1,11 +1,16 @@
 jQuery(document).ready(function () {
 
-	// jQuery('.trim-title').dotdotdot({
-	// 	ellipsis: '...',
-	// 	height: 45,
-	// 	watch: true,
-	// 	wrap: 'word',
-	// });
+    jQuery('#vesafe-search-form-sidebar').submit(function() {
+    	jQuery('#edit-submit-sidebar').attr('name','');
+	});
+
+    jQuery('#vesafe-search-form').submit(function() {
+        jQuery('#edit-submit').attr('name','');
+    });
+
+    jQuery('#vesafe-search-form-gp').submit(function() {
+        jQuery('#edit-submit-gp').attr('name','');
+    });
 
 	jQuery(".changer").addClass("notranslate");
 
