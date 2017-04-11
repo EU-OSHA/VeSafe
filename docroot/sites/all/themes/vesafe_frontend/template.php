@@ -567,3 +567,23 @@ function vesafe_frontend_block_view_alter(&$data, $block){
   }
 }
 
+function vesafe_frontend_captcha($variables) {
+  $element = $variables['element'];
+  $element['captcha_widgets']['captcha_response']['#id'] = 'security_code';
+  if (!empty($element['#description']) && isset($element['captcha_widgets'])) {
+    $captcha_holder = array(
+      '#type' => 'container',
+      '#title' => t('CAPTCHA'),
+      '#description' => $element['#description'],
+      '#children' => drupal_render_children($element),
+      '#attributes' => array('class' => array('captcha')),
+    );
+   /* echo '<pre>';
+    print_r($element['captcha_widgets']['captcha_response']);
+    echo '</pre>';*/
+    return drupal_render($captcha_holder);
+  }
+  else {
+    return '<div class="captcha">' . drupal_render_children($element) . '</div>';
+  }
+}
