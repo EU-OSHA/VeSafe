@@ -1,0 +1,7 @@
+name = VeSafe Workflow
+project = vesafe_workflow
+description = VeSafe workflow integration
+core = 7.x
+package = VeSafe
+version = 7.x-1.0
+files[] = include/VeSafeWorkflow.inc
