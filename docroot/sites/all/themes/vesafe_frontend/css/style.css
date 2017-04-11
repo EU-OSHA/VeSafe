@@ -7333,6 +7333,10 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   border: none;
   box-shadow: none;
   margin-bottom: 10px;
+  display: inline-block;
+}
+.page-node-5 .page-content-container.container form.webform-client-form .captcha > .captcha {
+  margin-top: 0px;
 }
 .page-node-5 .page-content-container.container form.webform-client-form .captcha legend {
   display: none;
