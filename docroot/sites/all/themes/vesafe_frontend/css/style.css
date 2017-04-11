@@ -7337,19 +7337,16 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .page-node-5 .page-content-container.container form.webform-client-form .captcha legend {
   display: none;
 }
-.page-node-5 .page-content-container.container form.webform-client-form .captcha .panel-body {
-  padding: 0px;
-}
-.page-node-5 .page-content-container.container form.webform-client-form .captcha .panel-body .help-block {
+.page-node-5 .page-content-container.container form.webform-client-form .captcha .help-block {
   display: none;
 }
-.page-node-5 .page-content-container.container form.webform-client-form .captcha .panel-body .form-item-security-code {
+.page-node-5 .page-content-container.container form.webform-client-form .captcha .form-item-security-code {
   margin-top: 15px;
 }
-.page-node-5 .page-content-container.container form.webform-client-form .captcha .panel-body .form-item-security-code input {
+.page-node-5 .page-content-container.container form.webform-client-form .captcha .form-item-security-code input {
   max-width: 258px;
 }
-.page-node-5 .page-content-container.container form.webform-client-form .captcha .panel-body #captcha_0_readaudio {
+.page-node-5 .page-content-container.container form.webform-client-form .captcha #captcha_0_readaudio {
   background: url(../images/icons/audio-form.png) no-repeat;
   background-size: cover;
   height: 38px;
@@ -7359,10 +7356,10 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   -webkit-filter: hue-rotate(159deg) saturate(3);
   filter: hue-rotate(159deg) saturate(3);
 }
-.page-node-5 .page-content-container.container form.webform-client-form .captcha .panel-body #captcha_0_readaudio img {
+.page-node-5 .page-content-container.container form.webform-client-form .captcha #captcha_0_readaudio img {
   visibility: hidden;
 }
-.page-node-5 .page-content-container.container form.webform-client-form .captcha .panel-body #captcha_0_refresh {
+.page-node-5 .page-content-container.container form.webform-client-form .captcha #captcha_0_refresh {
   background: url(../images/icons/refresh-form.png) no-repeat;
   background-size: cover;
   height: 38px;
@@ -7372,7 +7369,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   -webkit-filter: hue-rotate(159deg) saturate(3);
   filter: hue-rotate(159deg) saturate(3);
 }
-.page-node-5 .page-content-container.container form.webform-client-form .captcha .panel-body #captcha_0_refresh img {
+.page-node-5 .page-content-container.container form.webform-client-form .captcha #captcha_0_refresh img {
   visibility: hidden;
 }
 .page-node-5 .page-content-container.container form.webform-client-form .webform-component--disclaimer {
