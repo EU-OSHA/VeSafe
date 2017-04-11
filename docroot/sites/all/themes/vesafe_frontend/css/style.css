@@ -7337,6 +7337,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 .page-node-5 .page-content-container.container form.webform-client-form .captcha > .captcha {
   margin-top: 0px;
+  display: block;
 }
 .page-node-5 .page-content-container.container form.webform-client-form .captcha legend {
   display: none;
