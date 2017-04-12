@@ -42,3 +42,12 @@ function vesafe_pages_1_update_7005() {
 function vesafe_pages_1_update_7006() {
   features_revert_module('vesafe_pages_1');
 }
+
+/*
+ * Features revert: Install views_block_area module, update views headers.
+ */
+function vesafe_pages_1_update_7007() {
+  module_enable(array('views_block_area'));
+  features_revert_module('vesafe_pages_1');
+  features_revert_module('search');
+}

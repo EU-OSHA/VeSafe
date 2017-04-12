@@ -195,6 +195,19 @@ function vesafe_search_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['content'] = '<div class="search-results-info">Showing @start - @end of @total</div>';
+  /* Header: Global: Block area */
+  $handler->display->display_options['header']['block']['id'] = 'block';
+  $handler->display->display_options['header']['block']['table'] = 'views';
+  $handler->display->display_options['header']['block']['field'] = 'block';
+  $handler->display->display_options['header']['block']['label'] = '<none>';
+  $handler->display->display_options['header']['block']['block_to_insert'] = 'views:-exp-search-page';
+  $handler->display->display_options['header']['block']['title'] = '<none>';
   $handler->display->display_options['path'] = 'search';
   $translatables['search'] = array(
     t('Master'),
@@ -221,6 +234,8 @@ function vesafe_search_views_default_views() {
     t('Relevance'),
     t('Newest'),
     t('Page'),
+    t('<div class="search-results-info">Showing @start - @end of @total</div>'),
+    t('<none>'),
   );
   $export['search'] = $view;
 

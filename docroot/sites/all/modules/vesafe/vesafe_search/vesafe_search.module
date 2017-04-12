@@ -426,6 +426,7 @@ function vesafe_search_views_pre_view(&$view, &$display_id, &$args) {
   /** @var view $view */
   switch ($view->name) {
     case 'search':
+    case 'good_practices':
       // Header text area: "Results for ..."
       // I don't know how to set it's weight so i will put the text on the first
       // position using hook_views_pre_render.
@@ -449,6 +450,7 @@ function vesafe_search_views_pre_view(&$view, &$display_id, &$args) {
 function vesafe_search_views_pre_render(&$view) {
   switch ($view->name) {
     case 'search':
+    case 'good_practices':
       if ($view->result) {
         foreach ($view->result as $key => $res) {
           if (empty($res->_entity_properties['search_api_excerpt'])) {
