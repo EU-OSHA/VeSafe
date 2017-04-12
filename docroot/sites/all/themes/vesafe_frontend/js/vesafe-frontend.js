@@ -23,6 +23,12 @@ jQuery(document).ready(function () {
 	}else{
 		jQuery("#edit-sort-by-field-like-count a").addClass("active");
 	}
+
+	if(jQuery("#edit-sort-by-search-api-relevance a").hasClass("active") || jQuery("#edit-sort-by-field-publication-date a").hasClass("active")){
+
+	}else{
+		jQuery("#edit-sort-by-search-api-relevance a").addClass("active");
+	}
 	
 
 	/*search filter menu open/close*/

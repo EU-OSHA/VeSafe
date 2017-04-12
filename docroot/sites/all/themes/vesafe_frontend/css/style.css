@@ -7884,6 +7884,9 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   font-weight: bold;
   display: none;
 }
+.page-search .page-content-container .region-content > #block-views-exp-search-page {
+  display: none !important;
+}
 .page-search .page-content-container > div {
   position: relative;
 }
@@ -7895,7 +7898,6 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 .page-search .page-content-container > div form .views-exposed-form {
   border-bottom: 2px solid #dcdcdc;
-  border-top: 2px solid #dcdcdc;
 }
 .page-search .page-content-container > div form .views-exposed-form .views-exposed-widget .form-group label {
   font-style: italic;
@@ -7926,21 +7928,6 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .page-search .page-content-container > div form .views-exposed-form .views-widget-sort-order,
 .page-search .page-content-container > div form .views-exposed-form .views-submit-button {
   display: none;
-}
-.page-search .page-content-container > div .view-header {
-  float: right;
-  margin-top: 10px;
-}
-.page-search .page-content-container > div .view-header .results-for {
-  position: absolute;
-  top: -5px;
-  left: 15px;
-  font-size: 0.9em;
-  font-style: italic;
-}
-.page-search .page-content-container > div .view-header .results-for b {
-  font-size: 1.7em;
-  font-style: normal;
 }
 .page-search .page-content-container > div .view-content .views-row {
   border-bottom: 2px solid #dcdcdc;
@@ -8071,46 +8058,8 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   font-weight: bold;
   display: none;
 }
-.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 {
-  margin-bottom: 25px;
-}
-.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form {
-  border-bottom: 2px solid #dcdcdc;
-}
-.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group label {
-  font-style: italic;
-  font-weight: normal;
-  font-size: 0.9em;
-}
-.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group label:after {
-  content: ": ";
-}
-.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links {
-  display: inline-block;
-}
-.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links .form-item {
-  display: inline-block;
-}
-.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links option,
-.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links a {
-  display: inline-block;
-  margin-left: 10px;
-  color: #333333;
-  text-decoration: none;
-}
-.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links .active {
-  font-weight: 600;
-  color: #ea4a5e;
-}
-.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form #edit-search-api-views-fulltext--2-wrapper,
-.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-widget-sort-order,
-.page-good-practices .page-content-container #block-views-exp-good-practices-page-1 form .views-exposed-form .views-submit-button {
-  display: none;
-}
-.page-good-practices .page-content-container .view-id-good_practices .view-header {
-  float: right;
-  margin-top: -60px;
-  font-size: 0.9em;
+.page-good-practices .page-content-container .region-content > #block-views-exp-good-practices-page-1 {
+  display: none !important;
 }
 .page-good-practices .page-content-container .view-id-good_practices .view-content .views-row-odd {
   margin-right: 30px;
@@ -8275,6 +8224,88 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 .page-good-practices .page-content-container .view-id-good_practices .view-content .views-row .views-field-field-like-count .good-likes-wrapper .good-likes:hover {
   color: #ea4a5e;
+}
+/*result googd practices and search*/
+.page-good-practices .page-content-container .view-empty,
+.page-search .page-content-container .view-empty {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.page-good-practices .page-content-container .view-header,
+.page-search .page-content-container .view-header {
+  font-size: 1em;
+  position: relative;
+}
+.page-good-practices .page-content-container .view-header .results-for,
+.page-search .page-content-container .view-header .results-for {
+  display: block;
+  font-size: 0.9em;
+  font-style: italic;
+  border-bottom: 2px solid #dcdcdc;
+}
+.page-good-practices .page-content-container .view-header .results-for b,
+.page-search .page-content-container .view-header .results-for b {
+  font-size: 1.7em;
+  font-style: normal;
+}
+.page-good-practices .page-content-container .view-header .search-results-info,
+.page-search .page-content-container .view-header .search-results-info {
+  position: absolute;
+  bottom: 15px;
+  right: 0px;
+  font-size: 0.9em;
+}
+.page-good-practices .page-content-container .view-header #block-views-exp-good-practices-page-1,
+.page-search .page-content-container .view-header #block-views-exp-good-practices-page-1 {
+  margin-bottom: 25px;
+}
+.page-good-practices .page-content-container .view-header #block-views-exp-good-practices-page-1 form #edit-search-api-views-fulltext-wrapper,
+.page-search .page-content-container .view-header #block-views-exp-good-practices-page-1 form #edit-search-api-views-fulltext-wrapper {
+  display: none;
+}
+.page-good-practices .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form,
+.page-search .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form {
+  border-bottom: 2px solid #dcdcdc;
+}
+.page-good-practices .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group label,
+.page-search .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group label {
+  font-style: italic;
+  font-weight: normal;
+  font-size: .9em;
+}
+.page-good-practices .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group label:after,
+.page-search .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group label:after {
+  content: ": ";
+}
+.page-good-practices .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links,
+.page-search .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links {
+  display: inline-block;
+}
+.page-good-practices .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links .form-item,
+.page-search .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links .form-item {
+  display: inline-block;
+}
+.page-good-practices .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links option,
+.page-search .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links option,
+.page-good-practices .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links a,
+.page-search .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links a {
+  display: inline-block;
+  margin-left: 10px;
+  color: #333333;
+  text-decoration: none;
+}
+.page-good-practices .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links .active,
+.page-search .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-exposed-widget .form-group .bef-select-as-links .active {
+  font-weight: 600;
+  color: #ea4a5e;
+}
+.page-good-practices .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form #edit-search-api-views-fulltext--2-wrapper,
+.page-search .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form #edit-search-api-views-fulltext--2-wrapper,
+.page-good-practices .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-widget-sort-order,
+.page-search .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-widget-sort-order,
+.page-good-practices .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-submit-button,
+.page-search .page-content-container .view-header #block-views-exp-good-practices-page-1 form .views-exposed-form .views-submit-button {
+  display: none;
 }
 /*Footer static pages
 **********************************/
@@ -8802,6 +8833,7 @@ footer #scroll-top span {
     display: block;
     float: left;
     border: none;
+    padding-left: 0px !important;
   }
   .menu-header .navbar-toggle:hover,
   .menu-header .navbar-toggle:focus {
@@ -9202,5 +9234,14 @@ footer #scroll-top span {
   .related-good-practices .views-slideshow-controls-top .views-slideshow-controls-text-next,
   .related-good-practices .views-slideshow-controls-top .views-slideshow-controls-text-previous {
     top: 20px !important;
+  }
+  /*result googd practices and search*/
+  .page-good-practices .page-content-container .view-header,
+  .page-search .page-content-container .view-header {
+    margin-top: 20px;
+  }
+  .page-good-practices .page-content-container .view-header .search-results-info,
+  .page-search .page-content-container .view-header .search-results-info {
+    bottom: 50px;
   }
 }

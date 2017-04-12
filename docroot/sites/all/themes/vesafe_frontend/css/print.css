@@ -311,4 +311,8 @@
     border-bottom: none !important;
   }
   /*End search page*/
+  .page-good-practices .page-content-container .view-header,
+  .page-search .page-content-container .view-header {
+    display: none !important;
+  }
 }
