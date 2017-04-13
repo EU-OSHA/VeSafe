@@ -13,6 +13,7 @@ phpunit.xml
 results/*
 tmp
 docroot/sites/all/themes/vesafe_frontend/node_modules/
+private
 
 
 # User Generated Content #

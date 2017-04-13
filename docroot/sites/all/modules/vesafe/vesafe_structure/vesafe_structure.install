@@ -83,3 +83,7 @@ function vesafe_structure_update_7010() {
 function vesafe_structure_update_7011() {
   features_revert_module('vesafe_structure');
 }
+
+function vesafe_structure_update_7012() {
+  module_enable(['elysia_cron', 'osha_authentication', 'vesafe_workflow']);
+}
