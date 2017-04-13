@@ -210,7 +210,7 @@
 		}
 		.key-article-content{
 			margin-top: 25px !important;
-			h2.titulos-key-articles{
+			h2.titulos-key-articles,
 			h3.titulos-key-articles{
 				font-size: 1.4em;
 				font-weight: bold;
@@ -250,7 +250,7 @@
 			aside.col-md-3{
 				display: none;
 			}
-			section.col-md-9{
+			div.col-md-9{
 				width: 100% !important;
 				.views-exposed-form{
 					border: none !important;
@@ -264,7 +264,7 @@
 				.view-good-practices{
 					
 					.view-header{
-						//display: none;
+						display: none;
 						text-align: right;
 						margin-bottom: 20px;
 					}
@@ -373,5 +373,14 @@
 		}
 	}
 	/*End search page*/
+
+	.page-good-practices,
+	.page-search{
+		.page-content-container{
+			.view-header{
+				display: none !important;
+			}
+		}
+	}
 
 }

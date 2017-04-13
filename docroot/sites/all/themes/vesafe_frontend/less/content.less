@@ -1107,7 +1107,13 @@ body > .page-title-container{
 				}
 			}
 		}
-		> section{
+		.region-content{
+			> #block-views-exp-search-page{
+				display: none !important;
+			}
+		}
+		> div{
+			position: relative;
 			#edit-search-api-views-fulltext-wrapper{
 				display: none;
 			}
@@ -1117,7 +1123,6 @@ body > .page-title-container{
 			form{
 				.views-exposed-form{
 					border-bottom: 2px solid @color-background-grey-medium;
-					border-top: 2px solid @color-background-grey-medium;
 					.views-exposed-widget{
 						.form-group{
 							label{
@@ -1152,21 +1157,6 @@ body > .page-title-container{
 						display: none;
 					}
 				}
-			}
-			.view-header{
-				float: right;
-    			margin-top: 10px;
-    			.results-for{
-    				position: absolute;
-				    top: -5px;
-				    left: 15px;
-				    font-size: 0.9em;
-				    font-style: italic;
-				    b{
-				    	font-size: 1.7em;
-				    	font-style: normal;
-				    }
-    			}
 			}
 			.view-content{
 				.views-row{
@@ -1315,53 +1305,12 @@ body > .page-title-container{
 				}
 			}
 		}
-		#block-views-exp-good-practices-page-1{
-			margin-bottom: 25px;
-			form{
-				.views-exposed-form{
-					border-bottom: 2px solid @color-background-grey-medium;
-					.views-exposed-widget{
-						.form-group{
-							label{
-								font-style: italic;
-								font-weight: normal;
-								font-size: 0.9em;
-								&:after{
-									content: ": ";
-								}
-							}
-							.bef-select-as-links{
-								display: inline-block;
-								.form-item{
-									display: inline-block;
-								}
-								option, a{
-									display: inline-block;
-									margin-left: 10px;
-									color: @color-text-primary;
-									text-decoration: none;
-								}
-								.active{
-									font-weight: 600;
-									color: @color-secondary;
-								}
-							}
-						}
-					}
-					#edit-search-api-views-fulltext--2-wrapper,
-					.views-widget-sort-order,
-					.views-submit-button{
-						display: none;
-					}
-				}
+		.region-content{
+			> #block-views-exp-good-practices-page-1{
+				display: none !important;
 			}
 		}
 		.view-id-good_practices{
-			.view-header{
-				float: right;
-				margin-top: -60px;
-				font-size: 0.9em;
-			}
 			.view-content{
 				.views-row-odd{
 					margin-right: 30px;
@@ -1533,6 +1482,81 @@ body > .page-title-container{
 	}
 }
 
+/*result googd practices and search*/
+.page-good-practices,
+.page-search{
+	.page-content-container{
+		.view-empty{
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+		.view-header{
+			//float: right;
+			font-size: 1em;
+			position: relative;
+			.results-for{
+				display: block;
+			    font-size: 0.9em;
+			    font-style: italic;
+			    border-bottom: 2px solid @color-background-grey-medium;
+			    b{
+			    	font-size: 1.7em;
+			    	font-style: normal;
+			    }
+			}
+			.search-results-info{
+				position: absolute;
+				bottom: 15px;
+				right: 0px;
+				font-size: 0.9em;
+			}
+			#block-views-exp-good-practices-page-1{
+				margin-bottom: 25px;
+				form{
+					#edit-search-api-views-fulltext-wrapper{
+						display: none;
+					}
+					.views-exposed-form{
+						border-bottom: 2px solid @color-background-grey-medium;
+						.views-exposed-widget{
+							.form-group{
+								label{
+									font-style: italic;
+									font-weight: normal;
+									font-size: .9em;
+									&:after{
+										content: ": ";
+									}
+								}
+								.bef-select-as-links{
+									display: inline-block;
+									.form-item{
+										display: inline-block;
+									}
+									option, a{
+										display: inline-block;
+										margin-left: 10px;
+										color: @color-text-primary;
+										text-decoration: none;
+									}
+									.active{
+										font-weight: 600;
+										color: @color-secondary;
+									}
+								}
+							}
+						}
+						#edit-search-api-views-fulltext--2-wrapper,
+						.views-widget-sort-order,
+						.views-submit-button{
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 
 /*Footer static pages
 **********************************/
@@ -1682,6 +1706,7 @@ body > .page-title-container{
 		}
 	}
 }
+
 
 /*Related good practices
 ******************************/

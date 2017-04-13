@@ -23,6 +23,12 @@ jQuery(document).ready(function () {
 	}else{
 		jQuery("#edit-sort-by-field-like-count a").addClass("active");
 	}
+
+	if(jQuery("#edit-sort-by-search-api-relevance a").hasClass("active") || jQuery("#edit-sort-by-field-publication-date a").hasClass("active")){
+
+	}else{
+		jQuery("#edit-sort-by-search-api-relevance a").addClass("active");
+	}
 	
 
 	/*search filter menu open/close*/
@@ -73,7 +79,7 @@ jQuery(document).ready(function () {
 		jQuery(this).css({ "font-weight": "bold", "text-decoration": "none" });
 	});
 
-	jQuery(".key-article-next-prev-buttons button a").click(function(){
+	jQuery(".key-article-next-prev-buttons span a").click(function(){
 		var href=jQuery(this).attr("href");
 		jQuery(".key-article-content > div").addClass("close");
 		jQuery(href).removeClass("close");
@@ -95,7 +101,7 @@ jQuery(document).ready(function () {
 
 	/*key article clicking next/prev button change the acordion*/
 	
-	jQuery(".key-article-next-prev-buttons button a").click(function(){
+	jQuery(".key-article-next-prev-buttons span a").click(function(){
 		jQuery(".key-articles-menu-container > ul > li > ul").hide();
 		jQuery(".key-articles-menu-container > ul > li > a, .key-articles-menu-container > ul > li > span").removeClass("key-menu-arrow-close");
 		var href=jQuery(this).attr("href");
@@ -109,7 +115,7 @@ jQuery(document).ready(function () {
 		//jQuery(".key-articles-menu-container > ul > li > ul").hide();
 		//jQuery("ul" ,this).show();
 	});
-	jQuery(".key-article-next-prev-buttons button a[href*='#introduction']").click(function(){
+	jQuery(".key-article-next-prev-buttons span a[href*='#introduction']").click(function(){
 		jQuery(".key-articles-menu-container > ul > li > ul").hide();
 	});
 	/*end key articles acordion*/

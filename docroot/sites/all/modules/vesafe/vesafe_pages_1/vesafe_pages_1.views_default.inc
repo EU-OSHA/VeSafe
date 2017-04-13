@@ -372,6 +372,19 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
   $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'full_html';
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['content'] = '<div class="search-results-info">Showing @start - @end of @total</div>';
+  /* Header: Global: Block area */
+  $handler->display->display_options['header']['block']['id'] = 'block';
+  $handler->display->display_options['header']['block']['table'] = 'views';
+  $handler->display->display_options['header']['block']['field'] = 'block';
+  $handler->display->display_options['header']['block']['label'] = '<none>';
+  $handler->display->display_options['header']['block']['block_to_insert'] = 'views:-exp-good_practices-page_1';
+  $handler->display->display_options['header']['block']['title'] = '<none>';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Indexed Content: Content type */
@@ -458,6 +471,8 @@ function vesafe_pages_1_views_default_views() {
     t('Popularity'),
     t('Newest'),
     t('Page'),
+    t('<div class="search-results-info">Showing @start - @end of @total</div>'),
+    t('<none>'),
   );
   $export['good_practices'] = $view;
 
