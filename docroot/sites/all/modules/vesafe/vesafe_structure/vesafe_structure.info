@@ -69,6 +69,7 @@ features[field_base][] = field_thumbnail
 features[field_base][] = field_vehicles
 features[field_base][] = name_field
 features[field_instance][] = node-article-body
+features[field_instance][] = node-article-field_publication_date
 features[field_instance][] = node-article-field_subtitle
 features[field_instance][] = node-article-field_summary
 features[field_instance][] = node-did_you_know_slide-body

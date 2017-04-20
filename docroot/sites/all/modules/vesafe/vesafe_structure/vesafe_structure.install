@@ -87,3 +87,10 @@ function vesafe_structure_update_7011() {
 function vesafe_structure_update_7012() {
   module_enable(['elysia_cron', 'osha_authentication', 'vesafe_workflow']);
 }
+
+/*
+ * Features revert: VES-121 - Field publication date for article content type.
+ */
+function vesafe_structure_update_7013() {
+  features_revert_module('vesafe_structure');
+}
