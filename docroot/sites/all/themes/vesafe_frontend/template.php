@@ -574,6 +574,7 @@ function vesafe_frontend_captcha($variables) {
   unset($element['captcha_widgets']['captcha_response']['#title']);
 
   if (!empty($element['#description']) && isset($element['captcha_widgets'])) {
+    $element['captcha_widgets']['captcha_response']['#prefix'] .= ' <strong>*</strong>';
     $captcha_holder = array(
       '#type' => 'container',
       '#title' => t('CAPTCHA'),
