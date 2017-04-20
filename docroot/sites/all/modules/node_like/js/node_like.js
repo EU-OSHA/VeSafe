@@ -1,7 +1,10 @@
 jQuery(document).ready(function () {
-  var likedNodes = jQuery.cookie('liked-nodes');
-  if (likedNodes != null && likedNodes != ''){
-    likedNodes = likedNodes.split(',');
+  var likedNodes, cookie;
+  if (document.cookie.includes('liked-nodes')) {
+    var cookie = document.cookie.substring(document.cookie.indexOf('liked-nodes'));
+    cookie = cookie.substring(0, cookie.indexOf(';'));
+    cookie = cookie.replace('liked-nodes=','');
+    likedNodes = cookie.split('%2C');
     var links = jQuery('a.node-like-link');
     var href = '';
     for (var i = 0; i < links.size(); i++) {
@@ -35,13 +38,13 @@ jQuery(document).ready(function () {
           jQuery(data.selector).text(data.text);
           var text = data.selector;
           text = text.replace('#node-like-','');
-          if (jQuery.cookie('liked-nodes') != null) {
-            jQuery.cookie('liked-nodes', jQuery.cookie('liked-nodes') + ',' + text, { expires: 7300 });
-            jQuery('.good-likes', link).text(Number(jQuery('.good-likes', link).text())+1);
+          if (cookie != null) {
+            cookie += '%2C' + text;
+            document.cookie = 'liked-nodes='+cookie;
           }else{
-            jQuery.cookie('liked-nodes', text, { expires: 7300 });
+            document.cookie = 'liked-nodes='+text;
           }
-
+          jQuery('.good-likes', link).text(Number(jQuery('.good-likes', link).text())+1);
         }
       },
       data: 'js=1'
