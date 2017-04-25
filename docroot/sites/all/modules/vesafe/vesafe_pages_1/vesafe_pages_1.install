@@ -51,3 +51,11 @@ function vesafe_pages_1_update_7007() {
   features_revert_module('vesafe_pages_1');
   features_revert_module('search');
 }
+
+/**
+ * Install and configure no_autocomplete module: MDR-1001 - Password type input with auto-complete enabled.
+ */
+function vesafe_pages_1_update_7008() {
+  module_enable(['no_autocomplete']);
+  variable_set('no_autocomplete_login_form', 1);
+}

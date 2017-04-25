@@ -227,13 +227,6 @@ function vesafe_pages_1_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Sort criterion: Indexed Content: Like count */
-  $handler->display->display_options['sorts']['field_like_count']['id'] = 'field_like_count';
-  $handler->display->display_options['sorts']['field_like_count']['table'] = 'search_api_index_default_solr_index';
-  $handler->display->display_options['sorts']['field_like_count']['field'] = 'field_like_count';
-  $handler->display->display_options['sorts']['field_like_count']['order'] = 'DESC';
-  $handler->display->display_options['sorts']['field_like_count']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['field_like_count']['expose']['label'] = 'Popularity';
   /* Sort criterion: Indexed Content: Publication date */
   $handler->display->display_options['sorts']['field_publication_date']['id'] = 'field_publication_date';
   $handler->display->display_options['sorts']['field_publication_date']['table'] = 'search_api_index_default_solr_index';
@@ -241,6 +234,13 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['sorts']['field_publication_date']['order'] = 'DESC';
   $handler->display->display_options['sorts']['field_publication_date']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['field_publication_date']['expose']['label'] = 'Newest';
+  /* Sort criterion: Indexed Content: Like count */
+  $handler->display->display_options['sorts']['field_like_count']['id'] = 'field_like_count';
+  $handler->display->display_options['sorts']['field_like_count']['table'] = 'search_api_index_default_solr_index';
+  $handler->display->display_options['sorts']['field_like_count']['field'] = 'field_like_count';
+  $handler->display->display_options['sorts']['field_like_count']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['field_like_count']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_like_count']['expose']['label'] = 'Popularity';
   /* Filter criterion: Indexed Content: Content type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_default_solr_index';
@@ -395,6 +395,10 @@ function vesafe_pages_1_views_default_views() {
     'good_practice' => 'good_practice',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Content type';
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_default_solr_index';
@@ -468,11 +472,12 @@ function vesafe_pages_1_views_default_views() {
     t('<span class="good-likes-wrapper">
 	<a  class="node-like-link" href="/node/[nid]/like"><span class="good-likes">[field_like_count]</span></a>
 </span>'),
-    t('Popularity'),
     t('Newest'),
+    t('Popularity'),
     t('Page'),
     t('<div class="search-results-info">Showing @start - @end of @total</div>'),
     t('<none>'),
+    t('Content type'),
   );
   $export['good_practices'] = $view;
 
@@ -637,8 +642,8 @@ function vesafe_pages_1_views_default_views() {
     'key_article' => 'key_article',
   );
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: RGP - Key Article */
+  $handler = $view->new_display('block', 'RGP - Key Article', 'block');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Related Good Practices - Key Articles';
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -698,6 +703,7 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_related_good_practices_target_id';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['max_length'] = '60';
   $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
@@ -706,8 +712,8 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block_1');
+  /* Display: RGP - Good Practices */
+  $handler = $view->new_display('block', 'RGP - Good Practices', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Related Good Practices - Good Practices';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -814,8 +820,8 @@ function vesafe_pages_1_views_default_views() {
     'good_practice' => 'good_practice',
   );
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block_2');
+  /* Display: RGP - Key Article - Responsive */
+  $handler = $view->new_display('block', 'RGP - Key Article - Responsive', 'block_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Related Good Practices - Key Articles - Responsive';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -924,6 +930,7 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_related_good_practices_target_id';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['max_length'] = '60';
   $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
@@ -932,8 +939,8 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block_3');
+  /* Display: RGP - Good Practices - Responsive */
+  $handler = $view->new_display('block', 'RGP - Good Practices - Responsive', 'block_3');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Related Good Practices - Good Practices - Responsive';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -1106,7 +1113,7 @@ function vesafe_pages_1_views_default_views() {
 [field_image]
 '),
     t('All'),
-    t('Block'),
+    t('RGP - Key Article'),
     t('Related Good Practices - Key Articles'),
     t('<span class="overlay">
 <span class="thumb-info">
@@ -1115,8 +1122,11 @@ function vesafe_pages_1_views_default_views() {
 </span>
 [field_image]
 '),
+    t('RGP - Good Practices'),
     t('Related Good Practices - Good Practices'),
+    t('RGP - Key Article - Responsive'),
     t('Related Good Practices - Key Articles - Responsive'),
+    t('RGP - Good Practices - Responsive'),
     t('Related Good Practices - Good Practices - Responsive'),
   );
   $export['related_good_practices'] = $view;
