@@ -18,16 +18,16 @@ jQuery(document).ready(function () {
 	jQuery("#facetapi-facet-search-apidefault-solr-index-block-field-risks").siblings("h2").addClass("risk-icon");
 	jQuery("#facetapi-facet-search-apidefault-solr-index-block-field-vehicles").siblings("h2").addClass("vehicle-icon");
 
-	if(jQuery("#edit-sort-by-field-like-count a").hasClass("active") || jQuery("#edit-sort-by-field-publication-date a").hasClass("active")){
+	if(jQuery(".page-good-practices #edit-sort-by-field-like-count a").hasClass("active") || jQuery(".page-good-practices #edit-sort-by-field-publication-date a").hasClass("active")){
 
 	}else{
-		jQuery("#edit-sort-by-field-publication-date a").addClass("active");
+		jQuery(".page-good-practices #edit-sort-by-field-publication-date a").addClass("active");
 	}
 
-	if(jQuery("#edit-sort-by-search-api-relevance a").hasClass("active") || jQuery("#edit-sort-by-field-publication-date a").hasClass("active")){
+	if(jQuery(".page-search #edit-sort-by-search-api-relevance a").hasClass("active") || jQuery(".page-search #edit-sort-by-field-publication-date a").hasClass("active")){
 
 	}else{
-		jQuery("#edit-sort-by-search-api-relevance a").addClass("active");
+		jQuery(".page-search #edit-sort-by-search-api-relevance a").addClass("active");
 	}
 	
 
