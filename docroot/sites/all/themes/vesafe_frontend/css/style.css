@@ -6576,7 +6576,8 @@ header {
   border-left: 2px solid #323a93;
 }
 .top-header-container .header-sitename img {
-  min-width: auto;
+  min-width: inherit;
+  width: inherit;
   height: 95px;
   margin: 0 auto;
   margin-top: 5px;
