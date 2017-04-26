@@ -21,7 +21,7 @@ jQuery(document).ready(function () {
 	if(jQuery("#edit-sort-by-field-like-count a").hasClass("active") || jQuery("#edit-sort-by-field-publication-date a").hasClass("active")){
 
 	}else{
-		jQuery("#edit-sort-by-field-like-count a").addClass("active");
+		jQuery("#edit-sort-by-field-publication-date a").addClass("active");
 	}
 
 	if(jQuery("#edit-sort-by-search-api-relevance a").hasClass("active") || jQuery("#edit-sort-by-field-publication-date a").hasClass("active")){
@@ -56,10 +56,10 @@ jQuery(document).ready(function () {
 	});
 
 	/*key articles open/close menu for tablet/mobile*/
-	if(jQuery(".key-articles-menu-container h3").is(":visible")){
+	if(jQuery(".key-articles-menu-container h2").is(":visible")){
 		jQuery(".key-articles-menu-container > ul").hide();
 	}
-	jQuery(".key-articles-menu-container h3").click(function(){
+	jQuery(".key-articles-menu-container h2").click(function(){
 		jQuery(".key-articles-menu-container > ul").slideToggle();
 		jQuery(this).toggleClass("key-menu-arrow-close");
 	});
