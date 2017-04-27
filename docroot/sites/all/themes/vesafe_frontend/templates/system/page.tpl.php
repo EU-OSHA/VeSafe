@@ -179,6 +179,7 @@
 <div class="page-content-container container">
   <?php if (!empty($page['sidebar_first'])): ?>
     <aside class="col-md-3">
+        <h2 class="filters open-filters hidden-md hidden-lg">Search filters</h2>
       <?php print render($page['sidebar_first']); ?>
     </aside>  <!-- /#sidebar-first -->
   <?php endif; ?>
