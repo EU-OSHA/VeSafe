@@ -133,6 +133,12 @@ jQuery(document).ready(function () {
 	});
 	/*end show more links for good practices*/
 
+	/*contact form submit scrolltop*/
+	jQuery(".node-type-webform .page-content-container .webform-submit").click(function(){
+		jQuery("html, body").animate({"scrollTop": "120px"}, 200);
+	});
+	/*end contact form submit scrolltop*/
+
 	/*scroll upp the page on click footer button*/
 	jQuery("#scroll-top").on("click", function() {
 	    event.preventDefault();
