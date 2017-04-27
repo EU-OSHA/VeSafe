@@ -1,6 +1,6 @@
 jQuery(document).ready(function () {
   var likedNodes, cookie;
-  if (document.cookie.includes('liked-nodes')) {
+  if (document.cookie.indexOf('liked-nodes') != -1) {
     var cookie = document.cookie.substring(document.cookie.indexOf('liked-nodes'));
     cookie = cookie.substring(0, cookie.indexOf(';'));
     cookie = cookie.replace('liked-nodes=','');
