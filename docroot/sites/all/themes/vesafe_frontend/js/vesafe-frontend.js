@@ -77,6 +77,10 @@ jQuery(document).ready(function () {
 		jQuery(href).addClass("active");
 		jQuery(".key-articles-menu-container a").css("font-weight", "normal");
 		jQuery(this).css({ "font-weight": "bold", "text-decoration": "none" });
+		//jQuery('html, body').animate({
+        //	scrollTop: jQuery(".jumbotron-container").offset().top
+    	//}, 400).stop();
+    	//jQuery("header").removeClass("sticky-menu");
 	});
 
 	jQuery(".key-article-next-prev-buttons span a").click(function(){
