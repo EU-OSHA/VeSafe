@@ -88,10 +88,10 @@ function vesafe_frontend_preprocess_field(&$variables) {
   }
 }
 
+/**
+ * Implements template_preprocess_node.
+ */
 function vesafe_frontend_preprocess_node(&$vars) {
-  if (isset($vars['content']['links']['node']['#links']['node-readmore'])) {
-//    $vars['content']['links']['node']['#links']['node-readmore']['title'] = t('See more');
-  }
   $view_mode = $vars['view_mode'];
   $vars['theme_hook_suggestions'][] = 'node__' . $view_mode;
   $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__' . $view_mode;
@@ -99,7 +99,9 @@ function vesafe_frontend_preprocess_node(&$vars) {
   if (context_isset('context', 'segmentation_page')) {
     $vars['theme_hook_suggestions'][] = 'node__article_segment';
   }
-//  vesafe_frontend_top_anchor($vars);
+  if (isset($vars['content']['links']['print_html'])) {
+    unset($vars['content']['links']['print_html']);
+  }
 }
 
 function vesafe_frontend_preprocess_image_style(&$variables) {

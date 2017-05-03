@@ -1,10 +1,8 @@
 jQuery(document).ready(function () {
   var likedNodes, cookie;
-  if (document.cookie.includes('liked-nodes')) {
-    var cookie = document.cookie.substring(document.cookie.indexOf('liked-nodes'));
-    cookie = cookie.substring(0, cookie.indexOf(';'));
-    cookie = cookie.replace('liked-nodes=','');
-    likedNodes = cookie.split('%2C');
+  if (document.cookie.indexOf('liked-nodes') != -1) {
+
+    getLikedNodes();
     var links = jQuery('a.node-like-link');
     var href = '';
     for (var i = 0; i < links.size(); i++) {
@@ -58,5 +56,22 @@ jQuery(document).ready(function () {
     return false;
   });
 
+  function getLikedNodes () {
+    cookie = document.cookie.substring (document.cookie.indexOf('liked-nodes'));
+    cookie = cookie.substring(0, cookie.indexOf(';'));
+    cookie = cookie.replace('liked-nodes=','');
+
+    if (document.cookie.match(/liked-nodes/g).length > 1) {
+      var cookie2 = document.cookie;
+      cookie2 = cookie2.replace('liked-nodes','');
+      cookie2 = cookie2.substring(cookie2.indexOf('liked-nodes'));
+      cookie2 = cookie2.substring(0,cookie2.indexOf(';'));
+      cookie2 = cookie2.replace('liked-nodes=','');
+
+      cookie = cookie + '%2C' + cookie2;
+    }
+
+    likedNodes = cookie.split('%2C');
+  }
   
 });

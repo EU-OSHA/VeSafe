@@ -77,6 +77,10 @@ jQuery(document).ready(function () {
 		jQuery(href).addClass("active");
 		jQuery(".key-articles-menu-container a").css("font-weight", "normal");
 		jQuery(this).css({ "font-weight": "bold", "text-decoration": "none" });
+		//jQuery('html, body').animate({
+        //	scrollTop: jQuery(".jumbotron-container").offset().top
+    	//}, 400).stop();
+    	//jQuery("header").removeClass("sticky-menu");
 	});
 
 	jQuery(".key-article-next-prev-buttons span a").click(function(){
@@ -132,6 +136,12 @@ jQuery(document).ready(function () {
 		});
 	});
 	/*end show more links for good practices*/
+
+	/*contact form submit scrolltop*/
+	jQuery(".node-type-webform .page-content-container .webform-submit").click(function(){
+		jQuery("html, body").animate({"scrollTop": "120px"}, 200);
+	});
+	/*end contact form submit scrolltop*/
 
 	/*scroll upp the page on click footer button*/
 	jQuery("#scroll-top").on("click", function() {

@@ -7459,6 +7459,14 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   position: absolute;
   top: 0%;
 }
+.node-type-key-article #block-system-main .page-content-container-inside,
+.node-type-good-practice #block-system-main .page-content-container-inside {
+  margin-top: -100px;
+}
+.node-type-key-article #block-system-main .key-articles-menu-container,
+.node-type-good-practice #block-system-main .key-articles-menu-container {
+  padding-top: 115px;
+}
 .node-type-key-article #block-system-main .key-articles-menu-container ul,
 .node-type-good-practice #block-system-main .key-articles-menu-container ul {
   list-style: none;
@@ -7526,13 +7534,14 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 .node-type-key-article #block-system-main .key-article-content > .active,
 .node-type-good-practice #block-system-main .key-article-content > .active {
   display: block;
+  padding-top: 115px;
 }
 .node-type-key-article #block-system-main .key-article-content > .close,
 .node-type-good-practice #block-system-main .key-article-content > .close {
   display: none;
 }
-.node-type-key-article #block-system-main .key-article-content .key-article-text h3,
-.node-type-good-practice #block-system-main .key-article-content .key-article-text h3 {
+.node-type-key-article #block-system-main .key-article-content .key-article-text h2,
+.node-type-good-practice #block-system-main .key-article-content .key-article-text h2 {
   margin-top: 0px;
 }
 .node-type-key-article #block-system-main .key-article-content .key-article-text .body-key-article ul,
@@ -7702,6 +7711,9 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 .node-type-key-article .jumbotron-container {
   margin-bottom: 30px !important;
+}
+.node-type-good-practice #block-system-main .page-content-container-inside {
+  margin-top: 0px;
 }
 /*Roles page
 *********************************/
@@ -8891,6 +8903,10 @@ footer #scroll-top span {
   .page-search .page-content-container > aside .navbar-form .form-group {
     display: block;
   }
+  .page-good-practices .page-content-container > aside #applied-filters span,
+  .page-search .page-content-container > aside #applied-filters span {
+    color: #ea4a5e !important;
+  }
   .page-good-practices .page-content-container > aside #applied-filters span a,
   .page-search .page-content-container > aside #applied-filters span a {
     color: #ea4a5e !important;
@@ -9001,6 +9017,15 @@ footer #scroll-top span {
   .node-type-good-practice #block-system-main .jumbotron-container .page-image-wrapper img {
     position: relative;
     top: 0%;
+  }
+  .node-type-key-article #block-system-main .page-content-container-inside {
+    margin-top: 0px;
+  }
+  .node-type-key-article #block-system-main .key-articles-menu-container {
+    padding-top: 0px;
+  }
+  .node-type-key-article #block-system-main .key-article-content > .active {
+    padding-top: 0px;
   }
 }
 @media only screen and (max-width: 767px) {
