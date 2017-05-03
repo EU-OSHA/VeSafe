@@ -8903,6 +8903,10 @@ footer #scroll-top span {
   .page-search .page-content-container > aside .navbar-form .form-group {
     display: block;
   }
+  .page-good-practices .page-content-container > aside #applied-filters span,
+  .page-search .page-content-container > aside #applied-filters span {
+    color: #ea4a5e !important;
+  }
   .page-good-practices .page-content-container > aside #applied-filters span a,
   .page-search .page-content-container > aside #applied-filters span a {
     color: #ea4a5e !important;
