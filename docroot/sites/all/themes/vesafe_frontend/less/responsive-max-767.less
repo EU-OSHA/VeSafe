@@ -1,3 +1,270 @@
 @media only screen and (max-width : 767px){
 
+/*Header
+*************************/
+.menu-header{
+	margin-bottom: 35px;
+}
+.top-header-container{
+	padding-top: 0px;
+	.header-logo{
+		//width: 100%;
+		.logo{
+			img{
+				width: 160px;
+			}
+		}
+		.eu-logo{
+			//right: 15px;
+			width: 40px;
+		}
+	}
+	.header-sitename{
+		//display: none;
+		max-width: inherit;
+		border: none;
+		img{
+			height: 66px;
+			margin-right: 0px;
+
+		}
+	}
+	.header-blocks{
+		min-width: inherit;
+		max-width: inherit;
+		width: 100%;
+		#block-block-3,
+		#block-text-resize-0,
+		#block-vesafe-structure-print-page{
+			display: none;
+		}
+		#block-vesafe-search-search-vesafe{
+			position: absolute;
+			bottom: -46px;
+    		right: 15px;
+    		background-color: white;
+    		z-index: 9999;
+			.navbar-form{
+				.form-type-textfield{
+					input{
+						border-bottom: 1px solid @color-primary;
+						background-color: white;
+						color: @color-primary;
+					}
+				}
+				button{
+					background-color: white;
+				    span{
+				    	color: @color-primary;
+				    }
+				}
+			}
+		}
+		#block-gtranslate-gtranslate{
+			position: absolute;
+		    bottom: -88px;
+		    z-index: 1;
+		    width: 304px;
+    		&:before{
+    			margin-right: 0px;
+    		}
+    		select{
+    			border-color: #323a93;
+			    min-width: auto !important;
+			    display: inline-block !important;
+			    width: 145px;
+    		}
+    		.gtranslate-machinatron{
+    			font-size: 0.8em;
+			    text-align: left;
+			    display: inline-block;
+			    padding-left: 3px;
+    		}
+		}
+	}
+}
+
+/*homepage
+***************************/
+.homepage{
+	#homepage{
+		.panels-flexible-row-new-3{
+			.panels-flexible-region-new-vehicle_navigation{
+				width: 100%;
+			}
+			.panels-flexible-region-new-risk_navigation{
+				width: 100%;
+			}
+		}
+	}
+}
+
+/*Breadcrumb
+***************************/
+.breadcrumb-container{
+	display: none;
+}
+
+/*Footer
+***********************/
+div.site-footer-container{
+	padding-top: 40px;
+	#scroll-top{
+		right: 50%;
+    	top: -65px;
+    	transform: translate(27px);
+	}
+}
+
+/*Related good practices
+******************************/
+.related-good-practices{
+	min-height: 510px;
+	.view-id-related_good_practices{
+		position: relative;
+		.views-slideshow-controls-top{
+			position: absolute;
+			display: block;
+			top: 56px;
+		    width: 100%;
+		    right: 0px;
+		    z-index: 9999;
+		    text-decoration: none !important;
+			a{
+				text-decoration: none;
+				color: white;
+				width: 40px;
+    			display: inline-block;
+    			overflow: hidden;
+    			&:hover{
+					color: @color-secondary;
+					text-decoration: none;
+				}
+			}
+			.views-slideshow-controls-text-next,
+			.views-slideshow-controls-text-previous{
+				background-color: @color-secondary;
+				border-radius: 50%;
+				display: block;
+				position: absolute;
+				//z-index: 9999;
+				width: 50px;
+				height: 50px;
+				top: 120px;
+				overflow: hidden;
+				text-decoration: none;
+				a{
+					text-decoration: none !important;
+					color: @color-text-primary;
+					cursor: pointer;
+					display: block;
+					&:hover{
+					    text-decoration: none;
+					    color: white;
+					}
+				}
+			}
+			.views-slideshow-controls-text-previous{
+				left: -18px;
+				a{
+					&:before{
+						content: "\f053";
+						font-family: "FontAwesome";
+						display: block;
+						margin-bottom: 29px;
+					    font-size: 1.7em;
+					    line-height: 53px;
+					    color: white;
+					    margin-left: 13px;
+					}
+					
+				}
+			}
+			.views-slideshow-controls-text-next{
+				right: -18px;
+				a{
+					&:before{
+						content: "\f054";
+						font-family: "FontAwesome";
+						display: block;
+						margin-bottom: 29px;
+					    font-size: 1.7em;
+					    line-height: 53px;
+					    color: white;
+					    margin-left: 16px;
+					}
+				}
+			}
+			.views-slideshow-controls-text-pause{
+				display: none;
+			}
+		}
+	}
+}
+
+/*Page search good practices
+**********************************/
+.page-good-practices{
+    .page-content-container{
+        .view-id-good_practices{
+            .view-content{
+                .views-row-odd{
+                    margin-right: 0px;
+                }
+                .views-row{
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}
+
+/*legislation
+*******************************/
+.legislation-block{
+	.item-block{
+		h3{
+			margin-top: 15px !important;
+		}
+	}
+}
+
+/*e-guide block
+*******************************/
+.eguide-block{
+	img{
+		margin-bottom: 15px;
+	}
+}
+
+/*page not found
+********************************/
+.page-page-not-found{
+	.panel-col-first{
+		width: 100%;
+		float: none;
+		.inside{
+			margin: 0px;
+			margin-bottom: 20px;
+		}
+	}
+	.panel-col-last{
+		width: 100%;
+		float: none;
+		.inside{
+			margin: 0px;
+		}
+		.navbar-form{
+			margin-left: 0px;
+			margin-right: 0px;
+		}
+		.pane-2{
+			a{
+				margin-top: 10px;
+			}
+		}
+	}
+}
+
 }

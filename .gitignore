@@ -1,6 +1,7 @@
 # Sensitive information #
 #########################
 # Ignore configuration files that may contain sensitive information.
+robots.txt
 docroot/sites/*/settings*.php
 *.local.php
 drush/aliases/aliases.drushrc.php
@@ -12,6 +13,7 @@ phpunit.xml
 results/*
 tmp
 docroot/sites/all/themes/vesafe_frontend/node_modules/
+private
 
 
 # User Generated Content #

@@ -5,111 +5,17 @@
 function bootstrap_menu_tree__menu_footer_menu(&$variables) {
   return '<ul class="menu nav nav-pills">' . $variables['tree'] . '</ul>';
 }
-/**
- * Implements theme_menu_link__menu_block().
- */
-function vesafe_frontend_menu_link__menu_block($variables) {
-  $element = &$variables['element'];
-  $delta = $element['#bid']['delta'];
-  // Add homepage Icon.
-  /*$attr = drupal_attributes($element['#attributes']);
-  if (isset($variables['element']['#href']) &&
-    $variables['element']['#href'] == '<front>' &&
-    isset($element['#localized_options']['content']['image'])
-  ) {
-    $path = file_create_url($element['#localized_options']['content']['image']);
-    $link = l('<img src="' . $path . '" />', $element['#href'],
-      array('html' => TRUE, 'attributes' => $element['#localized_options']['attributes'])
-    );
-    return sprintf("\n<li %s>%s</li>", $attr, $link);
-  }*/
-  // Render or not the Menu Image.
-  // Get the variable provided by osha_menu module.
-  $render_img = variable_get('menu_block_' . $delta . '_' . OSHA_MENU_RENDER_IMG_VAR_NAME, 0);
-  if (!$render_img) {
-    return theme_menu_link($variables);
-  }
-  // $element['#attributes']['data-image-url'] = $image_url;
-  $output_link = l($element['#title'], $element['#href'], $element['#localized_options']);
-  $output_image = "";
-  if (!empty($element['#localized_options']['content']['image'])
-    && $image_url = file_create_url($element['#localized_options']['content']['image'])) {
-    $image = '<img alt="' . $element['#title'] . '" src="' . $image_url . '"/>';
-    $options = array_merge($element['#localized_options'], array('html' => TRUE));
-    $output_image = l($image, $element['#href'], $options);
-  }
-  return '<li' . drupal_attributes($element['#attributes']) . '>
-    <div class="introduction-image">' . $output_image . '</div>
-    <div class="introduction-title">' . $output_link . '</div>
-    </li>';
-}
-/**
- * Overrides theme_menu_link().
- */
-function vesafe_frontend_menu_link(array $variables) {
-  $element = $variables['element'];
-  $sub_menu = '';
-  if ($element['#below']) {
-    // Prevent dropdown functions from being added to management menu so it
-    // does not affect the navbar module.
-    if (($element['#original_link']['menu_name'] == 'management') && (module_exists('navbar'))) {
-      $sub_menu = drupal_render($element['#below']);
-    }
-    elseif ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
-      // Add our own wrapper.
-      unset($element['#below']['#theme_wrappers']);
-      $sub_menu = '<ul class="dropdown-menu">' . drupal_render($element['#below']) . '</ul>';
-      // Generate as standard dropdown.
-      $element['#title'] .= ' <span class="caret"></span>';
-      $element['#attributes']['class'][] = 'dropdown';
-      $element['#localized_options']['html'] = TRUE;
-      // Set dropdown trigger element to # to prevent inadvertant page loading
-      // when a submenu link is clicked.
-//      $element['#localized_options']['attributes']['data-target'] = '#';
-      $element['#localized_options']['attributes']['class'][] = 'dropdown-toggle';
-//      $element['#localized_options']['attributes']['data-toggle'] = 'dropdown';
-      $element['#localized_options']['attributes']['role'] = 'button';
-      $element['#localized_options']['attributes']['aria-haspopup'] = 'true';
-      $element['#localized_options']['attributes']['aria-expanded'] = 'false';
-    }
-  }
-  // On primary navigation menu, class 'active' is not set on active menu item.
-  // @see https://drupal.org/node/1896674
-  if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
-    $element['#attributes']['class'][] = 'active';
-  }
-  // Add image to Home menu item.
-  if (isset($variables['element']['#href']) && $variables['element']['#href'] == '<front>' && isset($element['#localized_options']['content']['image'])) {
-    $path = file_create_url($element['#localized_options']['content']['image']);
-    $link = l('<img alt="' . $element['#title'] . '" src="' . $path . '" />', $element['#href'],
-      array('html' => TRUE, 'attributes' => $element['#localized_options']['attributes'])
-    );
-    return '<li' . drupal_attributes($element['#attributes']) . '>' . $link . "</li>\n";
-  }
-  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
-}
 
 
 /**
- * Theme flexible layout of panels.
- * Copied the panels function and removed the css files.
+ * Implements hook_path_breadcrumbs_view_alter().
+ *
+ * {@inheritdoc}
  */
-function vesafe_frontend_panels_flexible($vars) {
-  $css_id = $vars['css_id'];
-  $content = $vars['content'];
-  $settings = $vars['settings'];
-  $display = $vars['display'];
-  $layout = $vars['layout'];
-  $handler = $vars['renderer'];
-  panels_flexible_convert_settings($settings, $layout);
-  $renderer = panels_flexible_create_renderer(FALSE, $css_id, $content, $settings, $display, $layout, $handler);
-  $output = "<div class=\"panel-flexible " . $renderer->base['canvas'] . " clearfix\" $renderer->id_str>\n";
-  $output .= "<div class=\"panel-flexible-inside " . $renderer->base['canvas'] . "-inside\">\n";
-  $output .= panels_flexible_render_items($renderer, $settings['items']['canvas']['children'], $renderer->base['canvas']);
-  // Wrap the whole thing up nice and snug
-  $output .= "</div>\n</div>\n";
-  return $output;
+function vesafe_frontend_path_breadcrumbs_view_alter(&$breadcrumbs, $path_breadcrumbs, $contexts) {
+  if (drupal_is_front_page()) {
+    $breadcrumbs = null;
+  }
 }
 
 /**
@@ -120,6 +26,10 @@ function vesafe_frontend_process_html_tag(&$variables) {
 
   if ($tag['#tag'] == 'script') {
     $tag['#attributes']['type'] = 'text/javascript';
+  }
+
+  if ($tag['#tag'] == 'style') {
+    $tag['#attributes']['type'] = "text/css";
   }
 }
 
@@ -151,7 +61,7 @@ function vesafe_frontend_preprocess_page(&$vars) {
     $vars['content_column_class'] = ' class="col-sm-6"';
   }
   elseif (!empty($vars['page']['sidebar_first']) || !empty($vars['page']['sidebar_second'])) {
-    $vars['content_column_class'] = ' class="col-sm-9"';
+    $vars['content_column_class'] = ' class="col-md-9"';
   }
   else {
     $vars['content_column_class'] = '';
@@ -178,10 +88,10 @@ function vesafe_frontend_preprocess_field(&$variables) {
   }
 }
 
+/**
+ * Implements template_preprocess_node.
+ */
 function vesafe_frontend_preprocess_node(&$vars) {
-  if (isset($vars['content']['links']['node']['#links']['node-readmore'])) {
-//    $vars['content']['links']['node']['#links']['node-readmore']['title'] = t('See more');
-  }
   $view_mode = $vars['view_mode'];
   $vars['theme_hook_suggestions'][] = 'node__' . $view_mode;
   $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__' . $view_mode;
@@ -189,7 +99,9 @@ function vesafe_frontend_preprocess_node(&$vars) {
   if (context_isset('context', 'segmentation_page')) {
     $vars['theme_hook_suggestions'][] = 'node__article_segment';
   }
-//  vesafe_frontend_top_anchor($vars);
+  if (isset($vars['content']['links']['print_html'])) {
+    unset($vars['content']['links']['print_html']);
+  }
 }
 
 function vesafe_frontend_preprocess_image_style(&$variables) {
@@ -295,7 +207,7 @@ function vesafe_frontend_pager($variables) {
         'data' => $li_last,
       );
     }
-    return '<h4 class="element-invisible">' . t('Pages') . '</h4>' . theme('item_list', array(
+    return theme('item_list', array(
       'items' => $items,
       'attributes' => array('class' => array('pager')),
     ));
@@ -627,4 +539,54 @@ function vesafe_frontend_form_element_label(&$variables) {
 
   // The leading whitespace helps visually separate fields from inline labels.
   return ' <label' . drupal_attributes($attributes) . '>' . $output . "</label>\n";
+}
+
+/**
+ * Implements hook_block_view_alter.
+ */
+function vesafe_frontend_block_view_alter(&$data, $block){
+  switch ($block->title){
+    case 'Vehicles Facet':
+    case 'Risks Facet':
+      $items = array();
+      foreach ($data['content']['facets']['#items'] as $item) {
+        $text =  preg_replace('/<a href=\"(.*)\">(.*)\<span class=\"(.*)\">(.*)\<\/span\><\/a>/iU','$2',$item['data']);
+        list($name,$count) = explode('(',$text);
+        $items[(trim($name))] = preg_replace_callback('/<a href=\"(.*)\">(.*)\<span class=\"(.*)\">(.*)\<\/span\><\/a>/iU',
+          function($m) {
+            list($name,$count) = explode('(',$m[2]);
+            return '<a href="' . str_replace(['[',']'],['%5B','%5D'],$m[1]) . '">' . $name . '</a>';
+          },
+          $item['data']);
+      }
+      ksort($items);
+      $new_data = array();
+      foreach($items as $i){
+        $new_data[] = $i;
+      }
+      $data['content']['facets']['#items'] = $new_data;
+      break;
+  }
+}
+
+function vesafe_frontend_captcha($variables) {
+  $element = $variables['element'];
+
+  $element['captcha_widgets']['captcha_response']['#prefix'] = '<label for="security_code" class="security-code-captcha">' . $element['captcha_widgets']['captcha_response']['#title'] . '</label>';
+  unset($element['captcha_widgets']['captcha_response']['#title']);
+
+  if (!empty($element['#description']) && isset($element['captcha_widgets'])) {
+    $element['captcha_widgets']['captcha_response']['#prefix'] .= ' <strong>*</strong>';
+    $captcha_holder = array(
+      '#type' => 'container',
+      '#title' => t('CAPTCHA'),
+      '#description' => $element['#description'],
+      '#children' => drupal_render_children($element),
+      '#attributes' => array('class' => array('captcha')),
+    );
+    return drupal_render($captcha_holder);
+  }
+  else {
+    return '<div class="captcha">' . drupal_render_children($element) . '</div>';
+  }
 }

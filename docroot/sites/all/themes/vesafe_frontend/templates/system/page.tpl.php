@@ -80,7 +80,7 @@
     <div class="top-header">
       <div class="top-header-container container">
         <div class="top-header-content row">
-          <div class="header-logo col-xs-8 col-sm-5 col-md-4">
+          <div class="header-logo col-xs-6 col-sm-5 col-md-4">
             <?php if ($logo): ?>
               <a class="logo navbar-btn pull-left" href="https://osha.europa.eu/" target="_blank" title="<?php print t('EU-OSHA corporate website'); ?>">
                 <img src="<?php print $logo; ?>" alt="<?php print t('EU-OSHA logo'); ?>" />
@@ -90,12 +90,13 @@
               <img class="eu-logo" src="<?php print $eu_logo; ?>" alt="<?php print t('European Union'); ?>" />
             <?php endif; ?>
           </div>
-          <div class="header-sitename col-xs-4 col-sm-4">
+          <div class="header-sitename col-xs-6 col-sm-4">
             <?php if (!empty($site_name)): ?>
-              <a class="sitename" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_slogan; ?></a>
+              <a class="sitename" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
+              <img class="img-responsive" src="/sites/all/themes/vesafe_frontend/images/icons/logo-vesafe.png" alt="Vesafe"/></a>
             <?php endif; ?>
           </div>
-          <div class="header-blocks col-xs-10 col-sm-3 col-md-4">
+          <div class="header-blocks col-xs-12 col-sm-3 col-md-4">
             <?php print render($page['header_block']); ?>
           </div>
         </div>
@@ -130,7 +131,9 @@
 
 <div class="breadcrumb-container">
   <div class="container">
-    <?php if (!empty($breadcrumb)): print str_replace('h2', 'span', $breadcrumb); endif;?>
+    <?php 
+     if (!empty($breadcrumb)): print $breadcrumb; endif;
+    ?>
   </div>
 </div>
 
@@ -151,8 +154,21 @@
         <?php print render($page['after_title']); ?>
       </div>
     <?php endif; ?>
+
+    <?php
+     if (isset($node->field_subtitle['und'][0]['value'])){
+      print('<div class="after_title">');
+        print($node->field_subtitle['und'][0]['value']);
+      print('</div>');
+      }else if ($_SERVER['REQUEST_URI'] == '/good-practices') {
+        print '<p>Browse or sort good practice examples</p>';
+      }
+      ?>
+
   </div>
 </div>
+
+
 
 <?php if (!empty($page['highlighted'])): ?>
 <div class="jumbotron-container">
@@ -162,11 +178,12 @@
 
 <div class="page-content-container container">
   <?php if (!empty($page['sidebar_first'])): ?>
-    <aside class="col-sm-3" role="complementary">
+    <aside class="col-md-3">
+        <h2 class="filters open-filters hidden-md hidden-lg"><?php print t('Search filters');?></h2>
       <?php print render($page['sidebar_first']); ?>
     </aside>  <!-- /#sidebar-first -->
   <?php endif; ?>
-  <section<?php print $content_column_class; ?>>
+  <div<?php print $content_column_class; ?>>
     <?php print $messages; ?>
     <?php if (!empty($tabs)): ?>
       <?php print render($tabs); ?>
@@ -179,10 +196,10 @@
     <?php endif; ?>
     <div id="skip-to-content" style="visibility: hidden; height: 0px"><a href="#skip-to-content" rel="nofollow" accesskey="S" style="visibility: hidden;"><?php print t('Skip to content'); ?></a></div>
     <?php print render($page['content']); ?>
-  </section>
+  </div>
 
   <?php if (!empty($page['sidebar_second'])): ?>
-    <aside class="col-sm-3" role="complementary">
+    <aside class="col-sm-3">
       <?php print render($page['sidebar_second']); ?>
     </aside>  <!-- /#sidebar-second -->
   <?php endif; ?>
@@ -212,6 +229,6 @@
     <div class="footer-blocks">
       <?php print render($page['footer']); ?>
     </div>
-    <a href="#" id="scroll-top"></a>
+    <a href="#" id="scroll-top" title="<?php print t('Go to Top')?>"><span>Go to Top</span></a>
   </footer>
 </div>

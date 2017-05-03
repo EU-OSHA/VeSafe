@@ -13,6 +13,14 @@ class VeSafeStructureForms {
       $form['field_like_count']['#access'] = FALSE;
     }
     $form['field_like_count'][LANGUAGE_NONE][0]['value']['#description'] = 'Visible to user/1 only';
+    
+    $form['#validate'][] = "good_practice_node_form_validate";
+    $form['field_creation_date'] = $form['field_publication_date'];
+    $form['field_creation_date']['und'][0]['#title'] = 'Creation date';
+    if ($form['author']['date']['#default_value']) {
+      $form['field_creation_date']['und'][0]['#default_value']['value'] = $form['author']['date']['#default_value'];  
+    }    
+    $form['field_creation_date']['#disabled'] = TRUE;
   }
 
   /**
@@ -20,6 +28,14 @@ class VeSafeStructureForms {
    */
   public static function key_article_node_form_alter(&$form, &$form_state) {
     self::attachCSS($form, drupal_get_path('module', 'vesafe_structure') . '/styles/key-article.css');
+
+    $form['#validate'][] = "key_article_node_form_validate";
+    $form['field_creation_date'] = $form['field_publication_date'];
+    $form['field_creation_date']['und'][0]['#title'] = 'Creation date';
+    if ($form['author']['date']['#default_value']) {
+      $form['field_creation_date']['und'][0]['#default_value']['value'] = $form['author']['date']['#default_value'];  
+    }    
+    $form['field_creation_date']['#disabled'] = TRUE;
   }
 
   /**
@@ -73,6 +89,18 @@ class VeSafeStructureForms {
       $form['editor']['#options'][$row->name] = $row->name;
     }
     $form['#suffix'] = VeSafeStructureUtil::boo();
+  }
+
+  /**
+   * Alter form for Contact Us Webform
+   *
+   * {@inheritdoc}
+   */
+  public static function contact_us_form_alter(&$form, &$form_state) {
+    $form['submitted']['disclaimer']['#weight'] = '7';
+    $form['disclaimer'] = $form['submitted']['disclaimer'];
+    $form['captcha']['#weight'] = '6';
+    $form['submitted']['disclaimer']['#access'] = FALSE;
   }
 
   /**

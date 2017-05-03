@@ -193,7 +193,10 @@ function vesafe_structure_default_page_manager_pages() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'home-page-key-articles',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
@@ -201,28 +204,31 @@ function vesafe_structure_default_page_manager_pages() {
     $display->content['new-ec1583a0-7db0-4071-a40a-be716535164f'] = $pane;
     $display->panels['key_articles_introduction'][0] = 'new-ec1583a0-7db0-4071-a40a-be716535164f';
     $pane = new stdClass();
-    $pane->pid = 'new-430035bc-7474-4836-966d-45bae4ee307f';
+    $pane->pid = 'new-ce811c93-c80e-43dd-8688-c5480ee59d43';
     $pane->panel = 'risk_navigation';
     $pane->type = 'block';
-    $pane->subtype = 'views-risks-block';
+    $pane->subtype = 'views-73c61686ce77eb3ce2754154d95eefe8';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 1,
-      'override_title_text' => 'Sort by risk',
+      'override_title_text' => 'Filter by risk',
       'override_title_heading' => 'h2',
     );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'home-page-filter-by-risks',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '430035bc-7474-4836-966d-45bae4ee307f';
-    $display->content['new-430035bc-7474-4836-966d-45bae4ee307f'] = $pane;
-    $display->panels['risk_navigation'][0] = 'new-430035bc-7474-4836-966d-45bae4ee307f';
+    $pane->uuid = 'ce811c93-c80e-43dd-8688-c5480ee59d43';
+    $display->content['new-ce811c93-c80e-43dd-8688-c5480ee59d43'] = $pane;
+    $display->panels['risk_navigation'][0] = 'new-ce811c93-c80e-43dd-8688-c5480ee59d43';
     $pane = new stdClass();
     $pane->pid = 'new-4577aab5-5111-40f0-8696-fa2e82d9f45c';
     $pane->panel = 'taxonomy_navigation';
@@ -242,7 +248,10 @@ function vesafe_structure_default_page_manager_pages() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'home-page-info-text',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
@@ -250,28 +259,31 @@ function vesafe_structure_default_page_manager_pages() {
     $display->content['new-4577aab5-5111-40f0-8696-fa2e82d9f45c'] = $pane;
     $display->panels['taxonomy_navigation'][0] = 'new-4577aab5-5111-40f0-8696-fa2e82d9f45c';
     $pane = new stdClass();
-    $pane->pid = 'new-3fd7c380-f032-47f5-b9c6-db1e32d89873';
+    $pane->pid = 'new-57d30643-bad1-413d-a0c7-1db596de50fd';
     $pane->panel = 'vehicle_navigation';
     $pane->type = 'block';
-    $pane->subtype = 'views-vehicles-block';
+    $pane->subtype = 'views-28ca29e17ce0087cce32fc0494eb8500';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 1,
-      'override_title_text' => 'Sort by vehicle',
+      'override_title_text' => 'Filter by vehicle ',
       'override_title_heading' => 'h2',
     );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'home-page-filter-by-vehicles',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '3fd7c380-f032-47f5-b9c6-db1e32d89873';
-    $display->content['new-3fd7c380-f032-47f5-b9c6-db1e32d89873'] = $pane;
-    $display->panels['vehicle_navigation'][0] = 'new-3fd7c380-f032-47f5-b9c6-db1e32d89873';
+    $pane->uuid = '57d30643-bad1-413d-a0c7-1db596de50fd';
+    $display->content['new-57d30643-bad1-413d-a0c7-1db596de50fd'] = $pane;
+    $display->panels['vehicle_navigation'][0] = 'new-57d30643-bad1-413d-a0c7-1db596de50fd';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

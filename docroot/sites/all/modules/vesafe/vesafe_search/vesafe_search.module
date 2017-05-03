@@ -5,7 +5,188 @@
  */
 
 include_once 'vesafe_search.features.inc';
+module_load_include('inc', 'vesafe_search', 'vesafe_search.admin');
 
+/**
+ * Implements hook_menu().
+ */
+function vesafe_search_menu() {
+  $items = array();
+  $items['search-autocomplete/%'] = array(
+    'page callback' => 'vesafe_search_autocomplete_callback',
+    'access callback' => TRUE,
+    'page arguments' => array(1),
+  );
+  $items['admin/config/search/vesafe_search'] = array(
+    'title' => 'Vesafe Search',
+    'description' => 'Config information for vesafe search',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('vesafe_search_admin_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+  return $items;
+}
+
+/**
+ * Callback for search autocomplete ajax call. CW-220.
+ *
+ * When using search_autocomplete module.
+ */
+function vesafe_search_autocomplete_callback($search = '*') {
+  $search = check_plain($search);
+
+  $allowed_bundles = variable_get('vesafe_search_bundles', array());
+  $bundles = node_type_get_types();
+
+  $index = search_api_index_load('default_solr_index');
+  $server = search_api_server_load('solr_server');
+  $connection = new SearchApiSolrConnection($server->options);
+
+  // Build params - group by bundle, 3 rows each.
+  $params = array(
+    'group' => 'true',
+    'group.field' => 'ss_type',
+    'group.limit' => variable_get('vesafe_search_ac_items_limit', 3),
+  );
+
+  $params['fq'][] = 'is_status:"1"';
+
+  // Add condition for excluded bundles.
+  foreach ($bundles as $key => $bundle) {
+    if (empty($allowed_bundles[$key])) {
+      $params['fq'][] = '{!tag=ss_type}*:* AND -(ss_type:"' . $key . '")';
+    }
+  }
+  // Add publication date.
+  $now = new DateTime('now');
+  $now = $now->format('Y-m-d\TH:m:i\Z');
+  $params['fq'][] = '((ds_field_publication_date:[* TO "' . $now . '"]) OR (*:* AND -ds_field_publication_date:[* TO *]))';
+  // Add searchable fields.
+  $fields = $index->getFields();
+  $search_fields = variable_get('vesafe_search_ac_fields', array());
+  foreach ($search_fields as $field) {
+    $params['qf'][] = 'tm_' . $field . '^' . $fields[$field]['boost'];
+    $params['qf'][] = 'tm_und' . $field . '^' . $fields[$field]['boost'];
+
+  }
+
+  // Make the search.
+  $request = $connection->search($search, $params);
+
+  $data = json_decode($request->data);
+  $total_groups = count($data->grouped->ss_type->groups);
+  $total_items = $data->grouped->ss_type->matches;
+  $return = array();
+
+  $showing_categ = variable_get('vesafe_search_ac_categ_limit', 3);
+  $showing_items = variable_get('vesafe_search_ac_items_limit', 3);
+  $count_categ = 0;
+  $showed_items = 0;
+  $showed_categ = 0;
+  $total_on_showed_categ = 0;
+
+  foreach ($data->grouped->ss_type->groups as &$group) {
+    $ret = vesafe_search_autocomplete_add_group($group, $showing_items, $search);
+    $showed_items += $ret['count'];
+    $showed_categ += ($ret['count']) ? 1 : 0;
+    $total_on_showed_categ += $group->doclist->numFound;
+    $return = array_merge($return, $ret['results']);
+  }
+
+  // Add extra link with search summery (see CW-220).
+  if (!empty($total_items) && $total_items > $showed_items) {
+    if ($total_items - $total_on_showed_categ > 0 && $total_groups - $showed_categ > 0) {
+      $text = t('@search_result more in @categories categories', array(
+        '@search_result' => $total_items - $total_on_showed_categ,
+        '@categories' => $total_groups - $showed_categ,
+      ));
+      $ac_item = array(
+        "link" => url('search', array(
+          'query' => array(
+            'search_block_form' => $search,
+          ),
+        )),
+        "value" => $text,
+        "fields" => array(
+          "search_link" => $text,
+        ),
+      );
+      $ac_item["group"] = array(
+        "group_id" => 'more_results',
+        "group_name" => t('More results'),
+      );
+      $return[] = $ac_item;
+    }
+  }
+
+  print_r(json_encode($return));
+  exit;
+}
+
+/**
+ * Format a group of results for search autocomplete response.
+ */
+function vesafe_search_autocomplete_add_group($group,  $showing_items, $search, $see_all_path = 'search') {
+  $return = array();
+  $count_items = 0;
+  $bundles = node_type_get_types();
+  $in_this_categ = $group->doclist->numFound;
+  foreach ($group->doclist->docs as &$item) {
+    $count_items++;
+    $ac_item = array(
+      "link" => url('node/' . $item->is_nid),
+      "value" => current($item->{'tm_title'}),
+      "fields" => array(
+        "title_field" => current($item->{'tm_title'}),
+      ),
+    );
+    if (!empty($item->{'ss_field_wiki_page_url:url'})) {
+      $ac_item["link"] = $item->{'ss_field_wiki_page_url:url'};
+    }
+    // For publications the default link opens the file | /view opens node.
+    if ($item->ss_type == 'publication') {
+      $ac_item["link"] .= '/view';
+    }
+    if ($count_items == 1) {
+      $ac_item["group"] = array(
+        "group_id" => $item->ss_type,
+        "group_name" => t('@bundle', array(
+          '@bundle' => $bundles[$item->ss_type]->name,
+        )),
+      );
+    }
+    $return[] = $ac_item;
+    if ($count_items == $showing_items && $in_this_categ > $showing_items) {
+      $text = t('@search_result more in @bundle', array(
+        '@search_result' => $in_this_categ - $showing_items,
+        '@bundle' => $bundles[$group->groupValue]->name,
+      ));
+      $ac_item = array(
+        "link" => url($see_all_path,
+          array(
+            'query' => array(
+              'f' => array('type:' . $group->groupValue),
+              'search_api_views_fulltext' => $search,
+            ),
+          )
+        ),
+        "value" => $text,
+        "fields" => array(
+          "search_type_link" => $text,
+        ),
+      );
+      $return[] = $ac_item;
+    }
+  }
+  return array(
+    'results' => $return,
+    'count' => $count_items,
+  );
+}
+
+/**
+ * Implements hook_block_info().
+ */
 function vesafe_search_block_info() {
   return array(
     'search_vesafe' => array(
@@ -26,6 +207,15 @@ function vesafe_search_block_info() {
       'visibility' => BLOCK_VISIBILITY_LISTED,
       'pages' => 'search',
     ),
+    'search_vesafe_sidebar_gp' => array(
+      'info' => t('VeSafe search box (sidebar good-practices)'),
+      'cache' => DRUPAL_NO_CACHE,
+      'weight' => 10,
+      'status' => 1,
+      'region' => 'sidebar_first',
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'pages' => 'good-practices',
+    ),
   );
 }
 
@@ -34,32 +224,58 @@ function vesafe_search_block_info() {
  */
 function vesafe_search_block_view($delta = '') {
   $block = array();
-  switch($delta) {
+  switch ($delta) {
     case 'search_vesafe':
-    case 'search_vesafe_sidebar':
       $form = drupal_get_form('vesafe_search_form');
       unset($form['form_id']);
       unset($form['form_build_id']);
       $block['content'] = $form;
       break;
+    case 'search_vesafe_sidebar':
+      $form = drupal_get_form('vesafe_search_form_sidebar');
+      unset($form['form_id']);
+      unset($form['form_build_id']);
+      $block['content'] = $form;
+      break;
+
+    case 'search_vesafe_sidebar_gp':
+      $form = drupal_get_form('vesafe_search_form_gp');
+      unset($form['form_id']);
+      unset($form['form_build_id']);
+      $block['content'] = $form;
+      break;
   }
+
   return $block;
 }
 
+/**
+ * Get search query.
+ *
+ * @param string $parameter
+ *    Query parameter.
+ *
+ * @return string
+ *    Query parameter.
+ */
 function _vesafe_get_search_query($parameter = 'search_api_views_fulltext') {
   return !empty($_GET[$parameter]) ? check_plain($_GET[$parameter]) : '';
 }
 
-function vesafe_search_form($form, $form_state) {
+/**
+ * Vesafe search form for good practices page.
+ */
+function vesafe_search_form_gp($form, $form_state) {
   $form = [
-    '#id' => 'search-form',
-    '#action' => 'search',
+    '#action' => '/good-practices',
     '#method' => 'get',
-    '#always_process' => true,
-    '#token' => false,
+    '#always_process' => TRUE,
+    '#token' => FALSE,
     '#attributes' => ['class' => ['navbar-form']],
     'search_api_views_fulltext' => [
       '#type' => 'textfield',
+      '#title' => t('Search'),
+      '#id' => 'edit-search-api-views-fulltext-gp',
       '#default_value' => _vesafe_get_search_query(),
       '#size' => 25,
       '#maxlength' => 255,
@@ -67,14 +283,114 @@ function vesafe_search_form($form, $form_state) {
     'actions' => [
       'submit' => [
         '#type' => 'submit',
-        '#name' => '',
+        '#name' => t('Search'),
+        '#label' => t('Search'),
+        '#id' => 'edit-submit-gp',
         '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
         '#attributes' => ['class' => ['btn-default']],
       ],
     ],
   ];
   if (!empty($_GET['f'])) {
-    // Preserve facet values
+    // Preserve facet values.
+    if (is_array($_GET['f'])) {
+      foreach ($_GET['f'] as $key => $value) {
+        $form["f[{$key}]"] = [
+          '#type' => 'hidden',
+          '#value' => $value,
+        ];
+      }
+    }
+    else {
+      $form['f'] = [
+        '#type' => 'hidden',
+        '#value' => $_GET['f'],
+      ];
+    }
+  }
+  return $form;
+}
+
+/**
+ * Vesafe search form.
+ */
+function vesafe_search_form($form, $form_state) {
+  $form = [
+    '#action' => '/search',
+    '#method' => 'get',
+    '#always_process' => TRUE,
+    '#token' => FALSE,
+    '#attributes' => ['class' => ['navbar-form']],
+    'search_api_views_fulltext' => [
+      '#type' => 'textfield',
+      '#title' => t('Search'),
+      '#id' => 'edit-search-api-views-fulltext',
+      '#default_value' => _vesafe_get_search_query(),
+      '#size' => 25,
+      '#maxlength' => 255,
+    ],
+    'actions' => [
+      'submit' => [
+        '#type' => 'submit',
+        '#name' => t('Search'),
+        '#label' => t('Search'),
+        '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
+        '#attributes' => ['class' => ['btn-default']],
+      ],
+    ],
+  ];
+  if (!empty($_GET['f'])) {
+    // Preserve facet values.
+    if (is_array($_GET['f'])) {
+      foreach ($_GET['f'] as $key => $value) {
+        $form["f[{$key}]"] = [
+          '#type' => 'hidden',
+          '#value' => $value,
+        ];
+      }
+    }
+    else {
+      $form['f'] = [
+        '#type' => 'hidden',
+        '#value' => $_GET['f'],
+      ];
+    }
+  }
+  return $form;
+}
+
+/**
+ * Vesafe search form sidebar.
+ */
+function vesafe_search_form_sidebar($form, $form_state) {
+  $form = [
+    '#action' => '/search',
+    '#method' => 'get',
+    '#always_process' => TRUE,
+    '#token' => FALSE,
+    '#attributes' => ['class' => ['navbar-form']],
+    'search_api_views_fulltext' => [
+      '#type' => 'textfield',
+      '#title' => t('Search'),
+      '#id' => 'edit-search-api-views-fulltext-sidebar',
+      '#default_value' => _vesafe_get_search_query(),
+      '#size' => 25,
+      '#maxlength' => 255,
+    ],
+    'actions' => [
+      'submit' => [
+        '#type' => 'submit',
+        '#id' => 'edit-submit-sidebar',
+        '#name' => t('Search'),
+        '#label' => t('Search'),
+        '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
+        '#attributes' => ['class' => ['btn-default']],
+      ],
+    ],
+  ];
+  if (!empty($_GET['f'])) {
+    unset($_GET[t('Search')]);
+    // Preserve facet values.
     if (is_array($_GET['f'])) {
       foreach ($_GET['f'] as $key => $value) {
         $form["f[{$key}]"] = [
@@ -97,7 +413,7 @@ function vesafe_search_form($form, $form_state) {
  * Implements hook_form_alter().
  */
 function vesafe_search_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-search-page') {
+  if ($form_id == 'views_exposed_form' && ($form['#id'] == 'views-exposed-form-search-page' || $form['#id'] == 'views-exposed-form-good-practices-page-1')) {
     hide($form['search_api_views_fulltext']);
     hide($form['submit']);
   }
@@ -110,9 +426,10 @@ function vesafe_search_views_pre_view(&$view, &$display_id, &$args) {
   /** @var view $view */
   switch ($view->name) {
     case 'search':
+    case 'good_practices':
       // Header text area: "Results for ..."
       // I don't know how to set it's weight so i will put the text on the first
-      // position using hook_views_pre_render
+      // position using hook_views_pre_render.
       $item = array(
         'label' => '',
         'content' => sprintf('<div class="results-for">%s: <b>"%s"</b></div>',
@@ -133,12 +450,94 @@ function vesafe_search_views_pre_view(&$view, &$display_id, &$args) {
 function vesafe_search_views_pre_render(&$view) {
   switch ($view->name) {
     case 'search':
-      // Display the "Results for ..." text at the top of the header
+    case 'good_practices':
+      if ($view->result) {
+        foreach ($view->result as $key => $res) {
+          if (empty($res->_entity_properties['search_api_excerpt'])) {
+            $view->result[$key]->_entity_properties['search_api_excerpt'] = vesafe_search_create_excerpt($res);
+          }
+        }
+      }
+      // Display the "Results for ..." text at the top of the header.
       if (!empty($view->header['results_for_text'])) {
         $resultsFor = $view->header['results_for_text'];
         unset($view->header['results_for_text']);
-        $view->header = array_merge(['results_for_text' => $resultsFor], $view->header);
+        if (!empty(_vesafe_get_search_query())) {
+          $view->header = array_merge(['results_for_text' => $resultsFor], $view->header);
+        }
       }
       break;
+  }
+}
+
+/**
+ * Create excerpt for search results.
+ *
+ * @param $result
+ *    Result object.
+ * @return string
+ *    Excerpt.
+ */
+function vesafe_search_create_excerpt($result){
+  $excerpt = '';
+  $res = isset($result->_entity_properties) ? $result->_entity_properties : NULL;
+  if (!$res) {
+    return $excerpt;
+  }
+  foreach (search_api_index_load_multiple(['default_solr_index']) as $index) {
+    $fulltext_fields = $index->getFulltextFields();
+    if (isset($index->options['processors']['search_api_highlighting']['settings']['exclude_fields'])) {
+      $excluded_fulltext_fields = $index->options['processors']['search_api_highlighting']['settings']['exclude_fields'];
+    }
+    $fulltext_fields = (array_diff($fulltext_fields, $excluded_fulltext_fields));
+    foreach ($fulltext_fields as $fulltext_field) {
+      if (array_key_exists($fulltext_field, $res) && is_array($res[$fulltext_field])) {
+        $text = preg_replace('/\s+/', ' ', trim($res[$fulltext_field][0]));
+        $text = strip_tags($text);
+        $text = decode_entities($text);
+        $excerpt .= $text;
+      }
+    }
+  }
+  if (!$excerpt) {
+    if (isset($result->entity->body[LANGUAGE_NONE][0]['value'])
+      && !empty($result->entity->body[LANGUAGE_NONE][0]['value'])) {
+      $excerpt = $result->entity->body[LANGUAGE_NONE][0]['value'];
+    }
+    elseif (!is_array($result->entity)) {
+      $node = node_load($result->entity);
+      if (isset($node->body[LANGUAGE_NONE][0]['value'])
+         && !empty($node->body[LANGUAGE_NONE][0]['value'])) {
+        $excerpt = $node->body[LANGUAGE_NONE][0]['value'];
+      }
+    }
+  }
+  return search_excerpt(_vesafe_get_search_query(), $excerpt);
+}
+
+
+/**
+ * Implements hook_facet_items_alter().
+ */
+function vesafe_search_facet_items_alter(&$build, &$settings) {
+  if ($settings->facet == "field_risks" || $settings->facet == "field_vehicles" || $settings->facet == "type") {
+    foreach ($build as $key => $item) {
+      if ($item['#active']) {
+        $build[$key]["#markup"] = $item["#markup"] . ' (' . $item['#count'] . ')';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function vesafe_search_menu_local_tasks_alter(&$data) {
+  if(isset($data['tabs'][0]['output'])){
+    foreach ($data['tabs'][0]['output'] as $key => $value) {
+      if ($value['#link']['path'] == 'search/node' || $value['#link']['path'] == 'search/user') {
+        unset($data['tabs'][0]['output'][$key]);
+      }
+    }
   }
 }

@@ -29,7 +29,7 @@ function vesafe_search_default_search_api_index() {
     "name" : "Default SOLR index",
     "machine_name" : "default_solr_index",
     "description" : null,
-    "server" : "default_solr_server",
+    "server" : "solr_server",
     "item_type" : "node",
     "options" : {
       "datasource" : { "bundles" : [ "article", "good_practice", "key_article", "key_article_theme" ] },
@@ -37,9 +37,14 @@ function vesafe_search_default_search_api_index() {
       "cron_limit" : "50",
       "fields" : {
         "attachments_field_gp_factsheet" : { "type" : "text" },
+        "field_gp_getting_started:value" : { "type" : "text" },
+        "field_gp_what_is_it:value" : { "type" : "text", "boost" : "2.0" },
+        "field_gp_what_is_the_benefit:value" : { "type" : "text", "boost" : "2.0" },
+        "field_gp_who_is_for:value" : { "type" : "text", "boost" : "0.2" },
         "field_ka_general_risk_factors" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_ka_general_safety_issues" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_ka_specific_risk_factors" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
+        "field_like_count" : { "type" : "integer" },
         "field_publication_date" : { "type" : "date" },
         "field_related_good_practices" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_risks" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
@@ -49,7 +54,7 @@ function vesafe_search_default_search_api_index() {
         "nid" : { "type" : "integer" },
         "search_api_language" : { "type" : "string" },
         "status" : { "type" : "integer" },
-        "title" : { "type" : "text" },
+        "title" : { "type" : "text", "boost" : "2.0" },
         "title2" : { "type" : "text" },
         "type" : { "type" : "string" }
       },
@@ -118,8 +123,14 @@ function vesafe_search_default_search_api_index() {
             "prefix" : "\\u003Cstrong\\u003E",
             "suffix" : "\\u003C\\/strong\\u003E",
             "excerpt" : 1,
-            "excerpt_length" : "256",
-            "exclude_fields" : [],
+            "excerpt_length" : "250",
+            "exclude_fields" : {
+              "attachments_field_gp_factsheet" : "attachments_field_gp_factsheet",
+              "field_gp_getting_started:value" : "field_gp_getting_started:value",
+              "field_summary" : "field_summary",
+              "title" : "title",
+              "title2" : "title2"
+            },
             "highlight" : "always"
           }
         }
@@ -137,24 +148,21 @@ function vesafe_search_default_search_api_index() {
  */
 function vesafe_search_default_search_api_server() {
   $items = array();
-  $items['default_solr_server'] = entity_import('search_api_server', '{
-    "name" : "Default SOLR server",
-    "machine_name" : "default_solr_server",
+  $items['solr_server'] = entity_import('search_api_server', '{
+    "name" : "Apache Solr server",
+    "machine_name" : "solr_server",
     "description" : "",
     "class" : "search_api_solr_service",
     "options" : {
-      "clean_ids" : true,
-      "site_hash" : true,
       "scheme" : "http",
       "host" : "localhost",
-      "port" : "8983",
+      "port" : 8983,
       "path" : "\\/solr\\/vesafe",
-      "http_user" : "",
-      "http_pass" : "",
+      "http" : { "http_user" : "", "http_pass" : null },
       "excerpt" : 1,
       "retrieve_data" : 1,
-      "highlight_data" : 0,
-      "skip_schema_check" : 0,
+      "highlight_data" : 1,
+      "skip_schema_check" : null,
       "solr_version" : "",
       "http_method" : "AUTO"
     },

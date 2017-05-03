@@ -1,3 +1,197 @@
 @media only screen and (max-width : 991px) {
+	
+
+//header
+.menu-header{
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+        float: left;
+        border: none;
+        padding-left: 0px !important;
+        &:hover, &:focus{
+        	background-color: inherit !important;
+        }
+        .icon-bar{
+        	background-color: white !important;
+        	height: 3px !important;
+        }
+    }
+    .navbar-collapse {
+        border: none;
+        width: 100%;
+        text-align: center;
+        nav{
+        	padding-bottom: 20px; 
+        }
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+/*Page search good practices
+**********************************/
+.page-good-practices,
+.page-search{
+    .page-content-container{
+        padding-left: 0px;
+        padding-right: 0px;
+        > aside{
+            margin-bottom: 15px;
+            .navbar-form{
+                margin-left: 0px;
+                margin-right: 0px;
+                .form-group{
+                    display: block;
+                }
+            }
+            #applied-filters{
+                span{
+                    color: @color-secondary !important;
+                    a{
+                        color: @color-secondary !important;
+                        background-color: white !important;
+                    }
+                }
+            }
+            h2.filters{
+                color: white;
+                background-color: @color-secondary;
+                width: 100%;
+                padding: 10px 12px;
+                margin: 0px;
+                font-size: 1em;
+                border-radius: 3px;
+                cursor: pointer;
+                &:after{
+                    content: "\e253";
+                    font-family: "Glyphicons Halflings";
+                    float: right;
+                    font-size: 0.8em;
+                    line-height: 22px;
+                }
+                &:before{
+                    content:"\f0b0";
+                    font-family: "FontAwesome";
+                    font-size: 1em;
+                    margin-right: 10px;
+                }
+            }
+            ul{
+                li,a{
+                    color: @color-secondary !important;
+                }
+            }
+            .open-filters{
+                &:after{
+                    content: "\e252" !important;
+                    font-family: "Glyphicons Halflings";
+                    float: right;
+                    font-size: 0.8em;
+                    line-height: 25px;
+                }
+            }
+            .well{
+                padding: 15px;
+                background-color: @color-background-grey !important;
+            }
+        }
+    }
+}
+
+.node-type-key-article{
+    .key-articles-menu-container{
+        margin-bottom: 15px;
+        h2{
+            background-color: @color-secondary;
+            margin-bottom: 10px;
+            margin-top: 0px;
+            line-height: inherit;
+            display: block;
+            padding: 7px 10px;
+            color: white;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 1em;
+            &:before{
+                content:"\e236";
+                font-family: "Glyphicons Halflings";
+                margin-right: 10px;
+                vertical-align: text-top;
+            }
+        }
+        .key-menu-arrow-open{
+            &:after{
+                content: "\e252";
+                font-family: "Glyphicons Halflings";
+                float: right;
+                font-size: 0.8em;
+                line-height: 25px;
+            }
+        }
+        .key-menu-arrow-close{
+            &:after{
+                content: "\e253";
+                font-family: "Glyphicons Halflings";
+                float: right;
+                font-size: 0.8em;
+                line-height: 25px;
+            }
+        }
+        > ul{
+            > li{
+                >a, > span{
+                    background-color: white !important;
+                    color: @color-secondary !important;
+                }
+                >ul{
+                    padding-left: 30px;
+                }
+            }
+        }
+    }
+}
+
+/* Type article detail/good practice detail
+***********************************************/
+.node-type-key-article,
+.node-type-good-practice{
+    #block-system-main{
+        .jumbotron-container{
+            margin-bottom: 10px;
+            min-height: inherit;
+            overflow: inherit;
+            position: relative;
+            .page-image-wrapper{
+                //max-height: 320px;
+                overflow: hidden;
+                img{
+                    position: relative;
+                    top: 0%;
+                }
+            }
+        }
+    }
+}
+.node-type-key-article #block-system-main .page-content-container-inside{
+    margin-top: 0px;
+}
+.node-type-key-article #block-system-main .key-articles-menu-container{
+    padding-top: 0px;
+}
+.node-type-key-article #block-system-main .key-article-content > .active{
+    padding-top: 0px;
+}
 
 }

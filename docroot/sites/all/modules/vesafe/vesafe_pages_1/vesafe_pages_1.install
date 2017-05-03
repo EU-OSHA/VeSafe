@@ -1,0 +1,61 @@
+<?php
+
+/*
+ * Features revert: VES-47 - Fixed breadcrumbs on not found page.
+ */
+function vesafe_pages_1_update_7001() {
+  features_revert_module('vesafe_pages_1');
+}
+
+/*
+ * Features revert: VES-74 - Search.
+ */
+function vesafe_pages_1_update_7002() {
+  features_revert_module('vesafe_pages_1');
+}
+
+/*
+ * Features revert: VES-76,VES-77 - SEO metatags.
+ */
+function vesafe_pages_1_update_7003() {
+  variable_set('site_slogan', 'One stop shop for vehicle safety');
+  features_revert_module('vesafe_pages_1');
+}
+
+/*
+ * Features revert: VES-99, VES-100.
+ */
+function vesafe_pages_1_update_7004() {
+  features_revert_module('vesafe_pages_1');
+}
+
+/*
+ * Features revert: VES-100 - HTML Validation.
+ */
+function vesafe_pages_1_update_7005() {
+  features_revert_module('vesafe_pages_1');
+}
+
+/*
+ * Features revert: VES-100 - HTML Validation.
+ */
+function vesafe_pages_1_update_7006() {
+  features_revert_module('vesafe_pages_1');
+}
+
+/*
+ * Features revert: Install views_block_area module, update views headers.
+ */
+function vesafe_pages_1_update_7007() {
+  module_enable(array('views_block_area'));
+  features_revert_module('vesafe_pages_1');
+  features_revert_module('search');
+}
+
+/**
+ * Install and configure no_autocomplete module: MDR-1001 - Password type input with auto-complete enabled.
+ */
+function vesafe_pages_1_update_7008() {
+  module_enable(['no_autocomplete']);
+  variable_set('no_autocomplete_login_form', 1);
+}

@@ -1,0 +1,96 @@
+<?php
+
+function vesafe_structure_install() {
+  variable_set('bootstrap_breadcrumb_home', 1);
+}
+
+function vesafe_structure_update_7001() {
+  variable_set('bootstrap_breadcrumb_home', 1);
+}
+
+/*
+ * Set variable text_resize_scope to body.
+ */
+function vesafe_structure_update_7002() {
+  variable_set('text_resize_scope', 'body');
+}
+
+/*
+ * Features revert: VES-59 - Fixed breadcrumbs display on contact submitted page.
+ */
+function vesafe_structure_update_7003() {
+  features_revert_module('vesafe_structure');
+}
+
+/*
+ * Features revert: VES-70 - Removed Filter by vehicle items with no results.
+ */
+function vesafe_structure_update_7004() {
+  features_revert_module('vesafe_structure');
+}
+
+/*
+ * Features revert: Updated good practices breadcrumbs.
+ */
+function vesafe_structure_update_7005() {
+  features_revert_module('vesafe_structure');
+}
+
+/*
+ * Features revert: VES-72 - Site map: Missing breadcrumb.
+ */
+function vesafe_structure_update_7006() {
+  features_revert_module('vesafe_structure');
+}
+
+/*
+ * Features revert: VES-15 - Thesaurus field in the backend.
+ */
+function vesafe_structure_update_7007() {
+  module_enable(array('ncw_migration', 'multiple_selects'));
+  variable_set('ncw_migration_tax_thesaurus_url', '/export/taxonomy/thesaurus');
+  variable_set('ncw_migration_root_url', 'https://osha.europa.eu');
+  features_revert_module('vesafe_structure');
+}
+
+/*
+ * Features revert: VES-88 - Changed Additional resources to Related Resources.
+ */
+function vesafe_structure_update_7008() {
+  db_delete('field_config_instance')
+    ->condition('id', array(18, 20, 22, 24, 26, 28))
+    ->execute();
+  features_revert_module('vesafe_structure');
+}
+
+/*
+ * Features revert: VES-30 - Hidden 'Printer friendly version' link.
+ */
+function vesafe_structure_update_7009() {
+  features_revert_module('vesafe_structure');
+}
+
+/*
+ * Features revert: VES-70 - Filter by vehicle/risks values from facets on homepage.
+ */
+function vesafe_structure_update_7010() {
+  features_revert_module('vesafe_structure');
+}
+
+/*
+ * Features revert: VES-105 - Updated Good Practices node page breadcrumb.
+ */
+function vesafe_structure_update_7011() {
+  features_revert_module('vesafe_structure');
+}
+
+function vesafe_structure_update_7012() {
+  module_enable(['elysia_cron', 'osha_authentication', 'vesafe_workflow']);
+}
+
+/*
+ * Features revert: VES-121 - Field publication date for article content type.
+ */
+function vesafe_structure_update_7013() {
+  features_revert_module('vesafe_structure');
+}

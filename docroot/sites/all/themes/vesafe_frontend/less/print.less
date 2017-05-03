@@ -1,0 +1,386 @@
+@media print {
+
+	h1, h3, h4, h5, h6{
+		font-size: initial;
+	}
+
+	div, span, article{
+		display: block;
+		float: none !important;
+ 		width: auto !important;
+  		margin:  0 !important;
+  		padding: 0 !important;
+	}
+
+	body {
+		font-family: "Times New Roman" !important;
+	    /* IE 8 + */
+	    //-ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(grayScale=1)';
+	    //-webkit-filter: grayscale(100%); 
+		//filter: grayscale(100%);
+		
+		// a[href^=http]:after {
+		// 	content:" <" attr(href) ">" !important;
+		// }
+		a:link:after, a:visited:after {  
+	      display: none;
+	      content: "";    
+	    }
+	}
+	article{
+		header{
+			border-bottom: none !important;
+			padding-bottom: 0px !important;
+		}
+	}
+	header{
+		border-bottom: 2px solid grey;
+		padding-bottom: 25px;
+		margin-bottom: 0px !important;
+		
+		.header-logo{
+			display: inline-block;
+			width: 49% !important;
+		}
+		.header-sitename{
+			display: inline-block;
+			width: 49% !important;
+			border-left: none !important;
+			img{
+				float: right;
+			}
+		}
+		.header-blocks{
+			display: none;
+		}
+		margin-bottom: 3em;
+	}
+	footer{
+		display: none !important;
+		border-top: 2px solid grey;
+		padding-top: 15px !important;
+		a{
+			display: none !important;
+		}
+	}
+
+	.jumbotron-container{
+		display: none;
+	}
+	.breadcrumb-container{
+		display: none;
+	}
+	.page-title-container{
+		//background-color: grey !important;
+		padding: 1.5em !important;
+		margin-bottom: 0em !important;
+		border-bottom: 2px solid grey;
+		.page-title-container{
+			padding: 0px !important;
+			margin-bottom: 0px !important;
+			border-bottom: none;
+		}
+		h1,p{
+			//color: white !important;
+		}
+		h1{
+			color: #323a93 !important;
+		}
+	}
+	
+	a[target*="_blank"]:after{
+		content: "" !important;
+	}
+	.download-file:after{
+		content: "" !important;
+	}
+
+	.back-arrow-container{
+		display: none !important;
+	}
+
+	/*home*/
+	.front{
+		.panels-flexible-region-new-vehicle_navigation,
+		.panels-flexible-region-new-risk_navigation{
+			width: 50% !important;
+			float: left !important;
+		}
+		.home-page-key-articles{
+			.views-row{
+				width: 33% !important;
+			    float: left !important;
+			    padding: 20px !important;
+			    img{
+			    	display: none !important;
+			    }
+			}
+		}
+		#block-views-did-you-know-block{
+			border-top: 2px solid grey;
+			border-bottom: 2px solid grey;
+			padding-bottom: 15px;
+			#views_slideshow_controls_text_did_you_know-block{
+				display: none;
+			}
+		}
+		#block-block-4{
+			> div{
+				width: 33% !important;
+				float: left !important;
+				padding: 20px !important;
+				p > a{
+					display: none;
+				}
+				img{
+					display: none;
+				}
+			}
+		}
+	}
+	/*End home*/
+
+	/*roles page*/
+	.roles-block{
+		margin-bottom: 25px !important;
+		img{
+			display: none !important;
+		}
+		.employer-link{
+			display: none !important;
+		}
+	}
+	/*End roles page*/
+
+	/*legislation page*/
+	.legislation-block{
+		margin-bottom: 25px !important;
+		.item-block{
+			margin-top: 40px !important;
+		}
+		img{
+			display: none;
+		}
+	}
+	/*End legislation page*/
+
+	/*oira page*/
+	.oira-block{
+		margin-top: 25px !important;
+		margin-bottom: 25px !important;
+		.oira-button{
+			display: none !important;
+		}
+		p{
+			margin-top: 25px;
+		}
+	}
+	/*End oira page*/
+
+	/*E-guide page*/
+	.eguide-block{
+		margin-top: 25px !important;
+		margin-bottom: 25px !important;
+		img{
+			display: none !important;
+		}
+	}
+	/*End e-guide page*/
+
+	/*themes page introduction*/
+	.view-id-themes{
+		margin-top: 25px !important;
+		margin-bottom: 25px !important;
+		.views-row{
+			img{
+				display: none !important;
+
+			}
+			span > a, p{
+				text-align: left !important;
+			}
+		}
+	}
+	/*End themes pages introduction*/
+
+	/*Themes detail page*/
+	.node-type-key-article{
+		.key-articles-menu-container{
+			display: none !important;
+		}
+		.key-article-content{
+			margin-top: 25px !important;
+			h2.titulos-key-articles,
+			h3.titulos-key-articles{
+				font-size: 1.4em;
+				font-weight: bold;
+				margin-bottom: 30px;
+			}
+			span{
+				display: inline !important;
+			}
+			.key-article-next-prev-buttons{
+				display: none !important;
+			}
+		}
+	}
+	/*End themes detail page*/
+	.related-good-practices{
+		display: none !important;
+		height: inherit;
+		display: block;
+		overflow: hidden;
+		.views-slideshow-controls-top{
+			display: none !important;
+
+		}
+		#views_slideshow_cycle_teaser_section_related_good_practices-block{
+			> div{
+				display: block !important;
+				opacity: 1 !important;
+				img{
+					display: none !important;
+				}
+			}
+		}
+	}
+	/*Good practices search page*/
+	.page-good-practices{
+		.page-content-container{
+			aside.col-md-3{
+				display: none;
+			}
+			div.col-md-9{
+				width: 100% !important;
+				.views-exposed-form{
+					border: none !important;
+				}
+				.views-widget-sort-by{
+					display: none;
+				}
+				#block-views-exp-good-practices-page-1{
+					margin-bottom: 10px !important;
+				}
+				.view-good-practices{
+					
+					.view-header{
+						display: none;
+						text-align: right;
+						margin-bottom: 20px;
+					}
+					.view-content{
+						.views-row{
+							border-bottom: 1px solid grey;
+							margin-bottom: 20px !important;
+							padding-bottom: 20px !important;
+							width: 100% !important;
+							.views-field-field-thumbnail{
+								img{
+									display: none !important;
+								}
+							}
+							.views-field-title{
+								.field-content{
+									min-height: inherit !important;
+								}
+							}
+							.views-field-field-gp-what-is-it{
+								min-height: inherit !important;
+								.more-link{
+									display: none !important;
+								}
+							}
+							.views-field-field-like-count{
+								position: inherit !important;
+								bottom: 0px !important;
+								left: 0px !important;
+							}
+						}
+						.views-row:last-child{
+							border: none !important;
+						}
+					}
+				}
+			}
+		}
+	}
+	/*End good practices search page*/
+
+	/*Good practice detail page*/
+	.node-type-good-practice{
+		.back-arrow-container{
+			display: block !important;
+			margin-top: 25px !important;
+			.back-arrow-wrapper{
+				display: none !important;
+			}
+		}
+		.good-practice-block{
+			.good-practices-tags-container{
+				.tags-block{
+					.tags-title,
+					.taxonomy-term-tag{
+						display: inline;
+					}
+				}
+			}
+			.see-more-btn{
+				display: none !important;
+			}
+		}
+	}
+	/*End good practice detail page*/
+	ul.pager{
+		display: none !important;
+	}
+
+	/*Search page*/
+	.page-search{
+		aside.col-md-3{
+			display: none !important;
+		}
+		section.col-md-9{
+			width: 100% !important;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			.view-search{
+				.view-header{
+					text-align: right;
+					border-bottom: 1px solid grey;
+					padding-bottom: 10px !important;
+					.results-for{
+						text-align: left;
+					}
+				}
+				.view-filters{
+					display: none !important;
+				}
+				.view-content{
+					.views-row{
+						padding-bottom: 20px !important;
+						.views-field-type{
+							margin-bottom: 5px !important;
+							span{
+								display: inline;
+							}
+						}
+					}
+					.views-row:last-child{
+						border-bottom: none !important;
+					}
+				}
+			}
+		}
+	}
+	/*End search page*/
+
+	.page-good-practices,
+	.page-search{
+		.page-content-container{
+			.view-header{
+				display: none !important;
+			}
+		}
+	}
+
+}

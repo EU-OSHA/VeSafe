@@ -64,7 +64,15 @@ function theme_facetapi_link_inactive($variables) {
   // link text and are providing additional markup for accessibility.
   $variables['text'] .= $accessible_markup;
   $variables['options']['html'] = TRUE;
-  return theme_link($variables);
+
+  $theme_link = theme_link($variables);
+
+  $theme_link = preg_replace_callback('/<a href=\"(.*)\">(.*)<\/a>/iU',
+    function($m) {
+      return '<a href="' . str_replace(['[',']'],['%5B','%5D'],$m[1]) . '">' . $m[2] . '</a>';
+    },
+    $theme_link);
+  return $theme_link;
 }
 
 /**
@@ -112,7 +120,14 @@ function theme_facetapi_link_active($variables) {
   );
   $variables['text'] = t('!facetapi_deactivate_widget !facetapi_accessible_markup', $replacements);
   $variables['options']['html'] = TRUE;
-  return theme_link($variables) . $link_text;
+  $theme_link = theme_link($variables);
+  $theme_link = preg_replace_callback('/<a href=\"(.*)\">(.*)<\/a>/iU',
+    function($m) {
+      return '<a href="' . str_replace(['[',']'],['%5B','%5D'],$m[1]) . '">' . $m[2] . '</a>';
+    },
+    $theme_link);
+
+  return $theme_link . $link_text;
 }
 
 /**

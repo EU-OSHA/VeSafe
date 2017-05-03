@@ -121,6 +121,13 @@ function vesafe_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_webform';
+  $strongarm->value = '0';
+  $export['comment_webform'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_hide_translation_links_article';
   $strongarm->value = 1;
   $export['entity_translation_hide_translation_links_article'] = $strongarm;
@@ -192,7 +199,7 @@ function vesafe_structure_strongarm() {
     'popup_agree_button_message' => 'OK, I agree',
     'popup_disagree_button_message' => 'No, give me more info',
     'popup_info' => array(
-      'value' => '<h2>The EU/OSHA website uses coockies to gather information necessary for browsing the website in accordance with the EU/OSHA privacy notice.</h2><p>By clicking on any link in the EU/OSHA web pagesyou are giving your consent for the use of cookies.</p>',
+      'value' => '<h2>The EU-OSHA website uses cookies to gather information necessary for browsing the website in accordance with the EU-OSHA privacy notice.</h2><p>By clicking on any link in the EU/OSHA web pages you are giving your consent for the use of cookies.</p>',
       'format' => 'full_html',
     ),
     'popup_agreed_enabled' => 0,
@@ -203,7 +210,7 @@ function vesafe_structure_strongarm() {
       'value' => '<h2>Thank you for accepting cookies</h2><p>You can now hide this message or find out more about cookies.</p>',
       'format' => 'full_html',
     ),
-    'popup_link' => 'http://vesafe.edw.ro/privacy-notice',
+    'popup_link' => 'privacy-notice',
     'popup_link_new_window' => 1,
     'popup_height' => '',
     'popup_width' => '100%',
@@ -330,19 +337,19 @@ function vesafe_structure_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '17',
+          'weight' => '18',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '16',
+          'weight' => '17',
         ),
         'redirect' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
         'xmlsitemap' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
       ),
       'display' => array(),
@@ -355,23 +362,42 @@ function vesafe_structure_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__key_article';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
         'redirect' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
         'xmlsitemap' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
       ),
       'display' => array(),
@@ -384,7 +410,26 @@ function vesafe_structure_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__key_article_theme';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
@@ -446,6 +491,13 @@ function vesafe_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'language_content_type_webform';
+  $strongarm->value = '0';
+  $export['language_content_type_webform'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_article';
   $strongarm->value = array(
     0 => 'main-menu',
@@ -491,6 +543,15 @@ function vesafe_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_webform';
+  $strongarm->value = array(
+    0 => 'menu-footer-menu',
+  );
+  $export['menu_options_webform'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_article';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_article'] = $strongarm;
@@ -522,6 +583,13 @@ function vesafe_structure_strongarm() {
   $strongarm->name = 'menu_parent_key_article_theme';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_key_article_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_webform';
+  $strongarm->value = 'menu-footer-menu:0';
+  $export['menu_parent_webform'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -593,6 +661,16 @@ function vesafe_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_webform';
+  $strongarm->value = array(
+    0 => 'status',
+    1 => 'promote',
+  );
+  $export['node_options_webform'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_article';
   $strongarm->value = '0';
   $export['node_preview_article'] = $strongarm;
@@ -624,6 +702,13 @@ function vesafe_structure_strongarm() {
   $strongarm->name = 'node_preview_key_article_theme';
   $strongarm->value = '0';
   $export['node_preview_key_article_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_webform';
+  $strongarm->value = '1';
+  $export['node_preview_webform'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -719,6 +804,13 @@ function vesafe_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_webform';
+  $strongarm->value = 0;
+  $export['node_submitted_webform'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'page_title_type_article';
   $strongarm->value = '';
   $export['page_title_type_article'] = $strongarm;
@@ -782,15 +874,22 @@ function vesafe_structure_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_did_you_know_slide_pattern';
+  $strongarm->value = 'did-you-know/[node:title]';
+  $export['pathauto_node_did_you_know_slide_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_good_practice_pattern';
-  $strongarm->value = 'goodpractices/[node:title]';
+  $strongarm->value = 'good-practices/[node:title]';
   $export['pathauto_node_good_practice_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_key_article_pattern';
-  $strongarm->value = 'keyarticles/[node:title]';
+  $strongarm->value = 'themes/[node:title]';
   $export['pathauto_node_key_article_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -806,6 +905,34 @@ function vesafe_structure_strongarm() {
   $strongarm->name = 'pathauto_node_pattern';
   $strongarm->value = 'content/[node:title]';
   $export['pathauto_node_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_webform_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_webform_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_pattern';
+  $strongarm->value = '[term:vocabulary]/[term:name]';
+  $export['pathauto_taxonomy_term_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_risk_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_risk_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_vehicle_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_vehicle_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -975,6 +1102,16 @@ function vesafe_structure_strongarm() {
     'priority' => '0.5',
   );
   $export['xmlsitemap_settings_node_key_article_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'xmlsitemap_settings_node_webform';
+  $strongarm->value = array(
+    'status' => '0',
+    'priority' => '0.5',
+  );
+  $export['xmlsitemap_settings_node_webform'] = $strongarm;
 
   return $export;
 }

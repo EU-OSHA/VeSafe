@@ -25,7 +25,6 @@ function devify_solr_drush_command() {
  * Actual function run by the devify_solr command.
  */
 function drush_devify_solr($source = NULL, $destination = NULL) {
-  print 'Devify Solr Server';
   $solr_server = drush_get_option('solr_server');
   $cfg = array_merge(
     array(
@@ -48,6 +47,7 @@ function drush_devify_solr($source = NULL, $destination = NULL) {
   );
   $server = search_api_server_load('solr_server');
   if (!empty($server)) {
+    drush_log('Devify Solr server (solr_server)', 'status');
     $server->name = $cfg['name'];
     $server->enabled = $cfg['enabled'];
     $server->description = $cfg['description'];
@@ -70,7 +70,7 @@ function drush_devify_solr($source = NULL, $destination = NULL) {
     $server->save();
   }
   else {
-    print 'No Solr Server (machine name: solr_server) found in database';
+    drush_set_error("No Solr server (machine name: solr_server) found in database\n");
   }
 
 }

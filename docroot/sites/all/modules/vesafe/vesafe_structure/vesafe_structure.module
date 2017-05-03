@@ -38,5 +38,40 @@ function vesafe_structure_form_alter(&$form, &$form_state, $form_id) {
         VeSafeStructureForms::good_practice_admin_content_view_form_alter($form, $form_state);
       }
       break;
+    case 'webform_client_form_5':
+      VeSafeStructureForms::contact_us_form_alter($form, $form_state);
+      break;
+  }
+}
+
+function vesafe_structure_block_info() {
+  $blocks['print_page'] = array(
+    'info' => t('Print page'),
+  );
+
+  return $blocks;
+}
+/**
+ * Implements hook_block_view_alter().
+ */
+function vesafe_structure_block_view_alter(&$data, $block) {
+  if ($block->delta == 'gtranslate') {
+    $data['content'] = preg_replace('(\<select)','<label for="gtranslate-select">' . t('Select language') . '</label><select name="gtranslate-select" id="gtranslate-select"',$data['content']);
+    $data['content'] .= sprintf('<div class="gtranslate-machinatron">(%s)</div>', t('machine translation'));
+  }
+  if($block->delta == 'print_page'){
+    $data['content'] = '<a href="#" class="print_page" onclick="window.print(); return false;" title="Printer Friendly and PDF">Print page</a>';
+  }
+}
+
+function good_practice_node_form_validate(&$form, &$form_state) {
+  if ($form_state['values']['field_creation_date']['und'][0]['value'] != $form_state['values']['created']) {
+    $form_state['values']['date'] = $form_state['values']['field_creation_date']['und'][0]['value'];
+  }
+}
+
+function key_article_node_form_validate(&$form, &$form_state) {
+  if ($form_state['values']['field_creation_date']['und'][0]['value'] != $form_state['values']['created']) {
+    $form_state['values']['date'] = $form_state['values']['field_creation_date']['und'][0]['value'];
   }
 }

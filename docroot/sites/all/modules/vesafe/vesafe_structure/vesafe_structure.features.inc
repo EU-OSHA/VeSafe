@@ -14,6 +14,9 @@ function vesafe_structure_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
+  if ($module == "path_breadcrumbs" && $api == "path_breadcrumbs") {
+    return array("version" => "1");
+  }
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -76,6 +79,14 @@ function vesafe_structure_node_info() {
       'name' => 'Key article theme',
       'base' => 'node_content',
       'description' => 'Key article themes are linked to key articles',
+      'has_title' => '1',
+      'title_label' => 'Title',
+      'help' => '',
+    ),
+    'webform' => array(
+      'name' => 'Webform',
+      'base' => 'node_content',
+      'description' => 'Create a new form or questionnaire accessible to users. Submission results and statistics are recorded and accessible to privileged users.',
       'has_title' => '1',
       'title_label' => 'Title',
       'help' => '',
