@@ -6724,6 +6724,9 @@ header {
   font-size: 0.75em;
   text-align: center;
 }
+.top-header-container .header-blocks #block-gtranslate-gtranslate .gtranslator-info {
+  display: none;
+}
 /*Menu header
 *************************/
 .menu-header {
