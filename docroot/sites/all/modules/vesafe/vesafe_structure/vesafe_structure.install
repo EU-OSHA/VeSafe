@@ -94,3 +94,10 @@ function vesafe_structure_update_7012() {
 function vesafe_structure_update_7013() {
   features_revert_module('vesafe_structure');
 }
+
+/**
+ * Enable csrf_checks module.
+ */
+function vesafe_structure_update_7014() {
+  module_enable(['csrf_checks']);
+}
