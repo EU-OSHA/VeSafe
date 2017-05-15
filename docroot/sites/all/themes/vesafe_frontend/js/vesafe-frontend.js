@@ -1,5 +1,19 @@
 jQuery(document).ready(function () {
 
+	/*gtranslator info*/
+	var gtranslatorinfo = jQuery(".gtranslator-info");
+	var gtranslatorinfo = gtranslatorinfo.offset();
+
+	jQuery("#gTranslate-modal").css({"top": gtranslatorinfo.top, "left": (gtranslatorinfo.left-270)});
+	jQuery(".gtranslator-info").mouseover(function(){
+		jQuery("#gTranslate-modal").fadeIn('fast');
+	});
+	jQuery("#gTranslate-modal").mouseleave(function(){
+
+		jQuery("#gTranslate-modal").fadeOut('fast');
+	});
+	/*end gtranslator*/
+
     jQuery('#vesafe-search-form-sidebar').submit(function() {
     	jQuery('#edit-submit-sidebar').attr('name','');
 	});
@@ -171,6 +185,19 @@ jQuery(document).ready(function () {
 	var windowWidth= jQuery(window).width();//window size
 
 	jQuery(window).resize(function() {
+		/*gtranslator info*/
+	var gtranslatorinfo = jQuery(".gtranslator-info");
+	var gtranslatorinfo = gtranslatorinfo.offset();
+
+	jQuery("#gTranslate-modal").css({"top": gtranslatorinfo.top, "left": (gtranslatorinfo.left-270)});
+	jQuery(".gtranslator-info").mouseover(function(){
+		jQuery("#gTranslate-modal").fadeIn('fast');
+	});
+	jQuery("#gTranslate-modal").mouseleave(function(){
+
+		jQuery("#gTranslate-modal").fadeOut('fast');
+	});
+	/*end gtranslator*/
 	    windowWidth= jQuery(window).width();//window size, when resizing
 	    if(windowWidth > 992){
 	    }

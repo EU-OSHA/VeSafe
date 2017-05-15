@@ -6723,9 +6723,39 @@ header {
 .top-header-container .header-blocks #block-gtranslate-gtranslate .gtranslate-machinatron {
   font-size: 0.75em;
   text-align: center;
+  display: inline-block;
+  margin-left: 55px;
 }
 .top-header-container .header-blocks #block-gtranslate-gtranslate .gtranslator-info {
+  width: 15px;
+  height: 15px;
+  overflow: hidden;
+  display: inline-block;
+  font-size: .8em;
+  vertical-align: middle;
+  line-height: 15px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.top-header-container .header-blocks #block-gtranslate-gtranslate .gtranslator-info:before {
+  content: "\f059";
+  font-family: "FontAwesome";
+  float: left;
+  font-size: 1.2em;
+  vertical-align: top;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+#gTranslate-modal {
   display: none;
+  position: absolute;
+  background-color: #fbfbfb;
+  max-width: 300px;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: .75em;
+  border: 1px solid #323a93;
+  z-index: 9999;
 }
 /*Menu header
 *************************/
@@ -7827,7 +7857,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 .page-search .page-content-container > aside .well .navbar-form button {
   border: none;
-  background-color: inherit;
+  background-color: transparent;
   color: #ea4a5e;
   position: absolute;
   right: 0px;
@@ -7998,7 +8028,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 .page-good-practices .page-content-container > aside .well #block-vesafe-search-search-vesafe-sidebar-gp .navbar-form button {
   border: none;
-  background-color: inherit;
+  background-color: transparent;
   color: #ea4a5e;
   position: absolute;
   right: 0px;
@@ -8754,7 +8784,7 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
 }
 .page-page-not-found .panel-col-last #search-form button.form-submit {
   border: none;
-  background-color: inherit;
+  background-color: transparent;
   color: #9c9c9c;
   position: absolute;
   right: 0px;
@@ -9078,7 +9108,7 @@ footer #scroll-top span {
   }
   .top-header-container .header-blocks #block-vesafe-search-search-vesafe {
     position: absolute;
-    bottom: -46px;
+    bottom: -49px;
     right: 15px;
     background-color: white;
     z-index: 9999;
@@ -9098,7 +9128,8 @@ footer #scroll-top span {
     position: absolute;
     bottom: -88px;
     z-index: 1;
-    width: 304px;
+    width: 324px;
+    margin-left: -10px;
   }
   .top-header-container .header-blocks #block-gtranslate-gtranslate:before {
     margin-right: 0px;
@@ -9114,6 +9145,7 @@ footer #scroll-top span {
     text-align: left;
     display: inline-block;
     padding-left: 3px;
+    margin-left: 0px;
   }
   /*homepage
 ***************************/
