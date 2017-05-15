@@ -168,6 +168,7 @@
   </div>
 </div>
 
+<div id="gTranslate-modal">The translations of this website from the original English are made by a machine translation service developed by Google. Consequently, the quality of those translations might not be accurate in all instances. You can know more about this system on <a href="https://en.wikipedia.org/wiki/Google_Translate" target="_blank">https://en.wikipedia.org/wiki/Google_Translate</a></div>
 
 
 <?php if (!empty($page['highlighted'])): ?>
