@@ -165,8 +165,8 @@ jQuery(document).ready(function () {
 	/*end hight of page*/
 
 	/*adding border to third level links menu*/
-	jQuery(".node-type-good-practice #navbar ul.menu li:nth-child(2) a").css("border-bottom", "2px solid white");
-	jQuery(".node-type-key-article #navbar ul.menu li:nth-child(3) a").css("border-bottom", "2px solid white");
+	jQuery(".node-type-good-practice #navbar ul.menu li:nth-child(3) a").css("border-bottom", "2px solid white");
+	jQuery(".node-type-key-article #navbar ul.menu li:nth-child(2) a").css("border-bottom", "2px solid white");
 
 	var windowWidth= jQuery(window).width();//window size
 
