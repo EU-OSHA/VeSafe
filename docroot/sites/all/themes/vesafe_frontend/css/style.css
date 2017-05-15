@@ -7399,8 +7399,6 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   display: inline-block;
   margin-bottom: 4px;
   border: 1px solid #a9a9a9;
-  -webkit-filter: hue-rotate(159deg) saturate(3);
-  filter: hue-rotate(159deg) saturate(3);
 }
 .page-node-5 .page-content-container.container form.webform-client-form .captcha #captcha_0_readaudio img {
   visibility: hidden;
@@ -7412,8 +7410,6 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   display: inline-block;
   margin-bottom: 4px;
   border: 1px solid #a9a9a9;
-  -webkit-filter: hue-rotate(159deg) saturate(3);
-  filter: hue-rotate(159deg) saturate(3);
 }
 .page-node-5 .page-content-container.container form.webform-client-form .captcha #captcha_0_refresh img {
   visibility: hidden;
@@ -7473,8 +7469,6 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   height: 25px;
   vertical-align: middle;
   margin-left: 5px;
-  -webkit-filter: hue-rotate(159deg) saturate(3);
-  filter: hue-rotate(159deg) saturate(3);
 }
 .node-type-key-article #block-system-main .jumbotron-container,
 .node-type-good-practice #block-system-main .jumbotron-container {
