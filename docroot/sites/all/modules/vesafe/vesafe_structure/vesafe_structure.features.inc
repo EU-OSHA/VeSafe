@@ -39,6 +39,72 @@ function vesafe_structure_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function vesafe_structure_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: generic_background.
+  $styles['generic_background'] = array(
+    'label' => 'Generic background',
+    'effects' => array(
+      10 => array(
+        'name' => 'manualcrop_crop_and_scale',
+        'data' => array(
+          'width' => 1000,
+          'height' => 393,
+          'upscale' => 1,
+          'respectminimum' => 0,
+          'onlyscaleifcrop' => 0,
+          'style_name' => 'generic_background',
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  // Exported image style: good_practice_thumbnail.
+  $styles['good_practice_thumbnail'] = array(
+    'label' => 'Good practice thumbnail',
+    'effects' => array(
+      8 => array(
+        'name' => 'manualcrop_crop_and_scale',
+        'data' => array(
+          'width' => 1000,
+          'height' => 393,
+          'upscale' => 1,
+          'respectminimum' => 0,
+          'onlyscaleifcrop' => 0,
+          'style_name' => 'good_practice_thumbnail',
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  // Exported image style: key_article_thumbnail.
+  $styles['key_article_thumbnail'] = array(
+    'label' => 'Key article thumbnail',
+    'effects' => array(
+      9 => array(
+        'name' => 'manualcrop_crop_and_scale',
+        'data' => array(
+          'width' => 420,
+          'height' => 315,
+          'upscale' => 1,
+          'respectminimum' => 0,
+          'onlyscaleifcrop' => 0,
+          'style_name' => 'key_article_thumbnail',
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_node_info().
  */
 function vesafe_structure_node_info() {
