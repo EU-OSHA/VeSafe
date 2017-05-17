@@ -167,7 +167,7 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
-    'image_style' => '',
+    'image_style' => 'good_practice_thumbnail',
     'image_link' => '',
   );
   /* Field: Indexed Content: Title */
@@ -1191,7 +1191,7 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
-    'image_style' => 'large',
+    'image_style' => 'key_article_thumbnail',
     'image_link' => '',
   );
   /* Field: Content: Title */

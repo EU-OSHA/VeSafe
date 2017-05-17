@@ -87,7 +87,7 @@
         <img class="img-responsive"
              alt="<?php print $node->field_image[LANGUAGE_NONE][0]['alt'] ?>"
              title="<?php print $node->field_image[LANGUAGE_NONE][0]['title'] ?>"
-             src="<?php print file_create_url($node->field_image[LANGUAGE_NONE][0]['uri']); ?>"/>
+             src="<?php echo image_style_url('generic_background', $node->field_image[LANGUAGE_NONE][0]['uri'])?>"/>
     </div>
 </div>
 <!--general content-->
