@@ -110,3 +110,11 @@ function vesafe_structure_update_7015() {
   features_revert_module('vesafe_structure');
   features_revert_module('vesafe_pages_1');
 }
+
+/**
+ * Enabled linkchecker,osha_linkchecker modules.
+ */
+function vesafe_structure_update_7016() {
+  module_enable(['linkchecker', 'osha_linkchecker']);
+  features_revert_module('osha_linkchecker');
+}
