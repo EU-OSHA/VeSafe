@@ -34,25 +34,24 @@ function vesafe_structure_wysiwyg_plugin($editor, $version=0) {
  * {@inheritdoc}
  */
 function vesafe_structure_form_alter(&$form, &$form_state, $form_id) {
-  drupal_add_css(drupal_get_path('module', 'vesafe_structure') . '/styles/tinymce.css');
   switch ($form_id) {
     case 'did_you_know_slide_node_form':
-      // "Did you know slide" node create/edit form
+      // "Did you know slide" node create/edit form.
       VeSafeStructureForms::did_you_know_slide_node_form_alter($form, $form_state);
       break;
 
     case 'good_practice_node_form':
-      // "Good practice" node create/edit form
+      // "Good practice" node create/edit form.
       VeSafeStructureForms::good_practice_node_form_alter($form, $form_state);
       break;
 
     case 'key_article_node_form':
-      // "Key article" node create/edit form
+      // "Key article" node create/edit form.
       VeSafeStructureForms::key_article_node_form_alter($form, $form_state);
       break;
 
     case 'key_article_theme_node_form':
-      // "Key article theme" node create/edit form
+      // "Key article theme" node create/edit form.
       VeSafeStructureForms::key_article_theme_node_form_alter($form, $form_state);
       break;
 
@@ -61,12 +60,16 @@ function vesafe_structure_form_alter(&$form, &$form_state, $form_id) {
         VeSafeStructureForms::good_practice_admin_content_view_form_alter($form, $form_state);
       }
       break;
+
     case 'webform_client_form_5':
       VeSafeStructureForms::contact_us_form_alter($form, $form_state);
       break;
   }
 }
 
+/**
+ * Implements hook_block_info().
+ */
 function vesafe_structure_block_info() {
   $blocks['print_page'] = array(
     'info' => t('Print page'),
@@ -74,27 +77,43 @@ function vesafe_structure_block_info() {
 
   return $blocks;
 }
+
 /**
  * Implements hook_block_view_alter().
  */
 function vesafe_structure_block_view_alter(&$data, $block) {
   if ($block->delta == 'gtranslate') {
-    $data['content'] = preg_replace('(\<select)','<label for="gtranslate-select">' . t('Select language') . '</label><select name="gtranslate-select" id="gtranslate-select"',$data['content']);
+    $data['content'] = preg_replace('(\<select)', '<label for="gtranslate-select">' . t('Select language') . '</label><select name="gtranslate-select" id="gtranslate-select"', $data['content']);
     $data['content'] .= sprintf('<div class="gtranslate-machinatron">(%s)</div><span class="gtranslator-info">Info-icon</span>', t('machine translation'));
   }
-  if($block->delta == 'print_page'){
+  if ($block->delta == 'print_page') {
     $data['content'] = '<a href="#" class="print_page" onclick="window.print(); return false;" title="Printer Friendly and PDF">Print page</a>';
   }
 }
 
+/**
+ * Implements hook_validate().
+ */
 function good_practice_node_form_validate(&$form, &$form_state) {
   if ($form_state['values']['field_creation_date']['und'][0]['value'] != $form_state['values']['created']) {
     $form_state['values']['date'] = $form_state['values']['field_creation_date']['und'][0]['value'];
   }
 }
 
+/**
+ * Implements hook_validate().
+ */
 function key_article_node_form_validate(&$form, &$form_state) {
   if ($form_state['values']['field_creation_date']['und'][0]['value'] != $form_state['values']['created']) {
     $form_state['values']['date'] = $form_state['values']['field_creation_date']['und'][0]['value'];
+  }
+}
+
+/**
+ * Implements hook_page_build().
+ */
+function vesafe_structure_page_build(&$page) {
+  if (path_is_admin(current_path())) {
+    drupal_add_css(drupal_get_path('module', 'vesafe_structure') . '/styles/vesafe_admin.css', array('group' => CSS_THEME));
   }
 }
