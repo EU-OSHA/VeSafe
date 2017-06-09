@@ -34,14 +34,42 @@ function vesafe_structure_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'body',
     'label' => 'Body',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
-      'display_summary' => TRUE,
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'full_html' => 'full_html',
+          'full_html_minimal' => 'full_html_minimal',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 1,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'full_html' => array(
+              'weight' => -49,
+            ),
+            'full_html_minimal' => array(
+              'weight' => -50,
+            ),
+            'plain_text' => array(
+              'weight' => -48,
+            ),
+          ),
+        ),
+      ),
+      'display_summary' => 1,
       'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
         'rows' => 20,
@@ -131,6 +159,28 @@ function vesafe_structure_field_default_field_instances() {
     'label' => 'Subtitle',
     'required' => 0,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'full_html' => 'full_html',
+          'full_html_minimal' => 'full_html_minimal',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 1,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'full_html' => array(
+              'weight' => -49,
+            ),
+            'full_html_minimal' => array(
+              'weight' => -50,
+            ),
+            'plain_text' => array(
+              'weight' => -48,
+            ),
+          ),
+        ),
+      ),
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -500,6 +550,28 @@ function vesafe_structure_field_default_field_instances() {
     'label' => 'Getting started',
     'required' => 1,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'full_html' => 'full_html',
+          'full_html_minimal' => 'full_html_minimal',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 1,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'full_html' => array(
+              'weight' => -9,
+            ),
+            'full_html_minimal' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -546,6 +618,28 @@ function vesafe_structure_field_default_field_instances() {
     'label' => 'What is it?',
     'required' => 1,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'full_html' => 'full_html',
+          'full_html_minimal' => 'full_html_minimal',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 1,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'full_html' => array(
+              'weight' => -9,
+            ),
+            'full_html_minimal' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -592,6 +686,28 @@ function vesafe_structure_field_default_field_instances() {
     'label' => 'What is the benefit?',
     'required' => 1,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'full_html' => 'full_html',
+          'full_html_minimal' => 'full_html_minimal',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 1,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'full_html' => array(
+              'weight' => -9,
+            ),
+            'full_html_minimal' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -638,6 +754,28 @@ function vesafe_structure_field_default_field_instances() {
     'label' => 'Who is for?',
     'required' => 1,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'full_html' => 'full_html',
+          'full_html_minimal' => 'full_html_minimal',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 1,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'full_html' => array(
+              'weight' => -9,
+            ),
+            'full_html_minimal' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -1039,6 +1177,28 @@ function vesafe_structure_field_default_field_instances() {
     'label' => 'Introduction',
     'required' => 0,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'full_html' => 'full_html',
+          'full_html_minimal' => 'full_html_minimal',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 1,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'full_html' => array(
+              'weight' => -9,
+            ),
+            'full_html_minimal' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
       'display_summary' => 0,
       'entity_translation_sync' => FALSE,
       'linkit' => array(

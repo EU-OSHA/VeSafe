@@ -118,3 +118,37 @@ function vesafe_structure_update_7016() {
   module_enable(['linkchecker', 'osha_linkchecker']);
   features_revert_module('osha_linkchecker');
 }
+
+/**
+ * Update text formats.
+ */
+function vesafe_structure_update_7017() {
+
+  $fields = [
+    'body',
+    'field_subtitle',
+    'field_summary',
+    'field_gp_what_is_it',
+    'field_gp_who_is_for',
+    'field_gp_what_is_the_benefit',
+    'field_gp_getting_started',
+  ];
+
+  foreach ($fields as $field) {
+    $table = "field_data_{$field}";
+    $column = "{$field}_format";
+    $value = "full_html_minimal";
+
+    db_update($table)
+      ->fields([$column => $value])
+      ->execute();
+
+    $table = "field_revision_{$field}";
+    $column = "${field}_format";
+
+    db_update($table)
+      ->fields([$column => $value])
+      ->execute();
+  }
+  features_revert_module('vesafe_structure');
+}
