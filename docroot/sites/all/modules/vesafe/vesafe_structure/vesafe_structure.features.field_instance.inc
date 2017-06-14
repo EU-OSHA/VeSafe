@@ -844,7 +844,7 @@ function vesafe_structure_field_default_field_instances() {
         'manualcrop_default_crop_area' => 1,
         'manualcrop_enable' => 1,
         'manualcrop_inline_crop' => 0,
-        'manualcrop_instant_crop' => 1,
+        'manualcrop_instant_crop' => 0,
         'manualcrop_instant_preview' => 1,
         'manualcrop_keyboard' => 1,
         'manualcrop_maximize_default_crop_area' => 1,
