@@ -34,6 +34,7 @@ function vesafe_structure_wysiwyg_plugin($editor, $version=0) {
  * {@inheritdoc}
  */
 function vesafe_structure_form_alter(&$form, &$form_state, $form_id) {
+  form_actions_top($form,$form_id);
   switch ($form_id) {
     case 'did_you_know_slide_node_form':
       // "Did you know slide" node create/edit form.
@@ -64,6 +65,27 @@ function vesafe_structure_form_alter(&$form, &$form_state, $form_id) {
     case 'webform_client_form_5':
       VeSafeStructureForms::contact_us_form_alter($form, $form_state);
       break;
+  }
+}
+
+function form_actions_top(&$form, $form_id){
+  switch ($form_id) {
+    case 'did_you_know_slide_node_form':
+    case 'good_practice_node_form':
+    case 'key_article_node_form':
+    case 'key_article_theme_node_form':
+    case 'views_exposed_form':
+    case 'webform_client_form_5':
+      if (isset($form['actions'])) {
+        $form['actions_top'] = $form['actions'];
+        $form['actions_top']['#weight'] = -999;
+        $form['actions_top']['#attributes']['class'] = ['text-right'];
+      }
+      break;
+
+    default:
+      break;
+
   }
 }
 
