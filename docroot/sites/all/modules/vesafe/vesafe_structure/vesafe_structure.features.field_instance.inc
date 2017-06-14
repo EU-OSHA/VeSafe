@@ -15,7 +15,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -36,28 +36,6 @@ function vesafe_structure_field_default_field_instances() {
     'label' => 'Body',
     'required' => 0,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'full_html' => 'full_html',
-          'full_html_minimal' => 'full_html_minimal',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 1,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'full_html' => array(
-              'weight' => -49,
-            ),
-            'full_html_minimal' => array(
-              'weight' => -50,
-            ),
-            'plain_text' => array(
-              'weight' => -48,
-            ),
-          ),
-        ),
-      ),
       'display_summary' => 1,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
@@ -84,7 +62,7 @@ function vesafe_structure_field_default_field_instances() {
   $field_instances['node-article-field_publication_date'] = array(
     'bundle' => 'article',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please select the date of publication, if it is not possible to identify leave it empty.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -110,7 +88,7 @@ function vesafe_structure_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_publication_date',
     'label' => 'Publication date',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
       'default_value' => 'now',
       'default_value2' => 'same',
@@ -120,12 +98,14 @@ function vesafe_structure_field_default_field_instances() {
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'date',
       'settings' => array(
         'increment' => 15,
         'input_format' => 'd/m/Y',
         'input_format_custom' => '',
         'label_position' => 'above',
+        'no_fieldset' => 0,
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
@@ -139,7 +119,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -159,28 +139,6 @@ function vesafe_structure_field_default_field_instances() {
     'label' => 'Subtitle',
     'required' => 0,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'full_html' => 'full_html',
-          'full_html_minimal' => 'full_html_minimal',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 1,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'full_html' => array(
-              'weight' => -49,
-            ),
-            'full_html_minimal' => array(
-              'weight' => -50,
-            ),
-            'plain_text' => array(
-              'weight' => -48,
-            ),
-          ),
-        ),
-      ),
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -206,7 +164,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -260,12 +218,61 @@ function vesafe_structure_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-article-title_field'.
+  $field_instances['node-article-title_field'] = array(
+    'bundle' => 'article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Article title. Max. 255 characters.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'title_field',
+    'label' => 'Title',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
   // Exported field_instance: 'node-did_you_know_slide-body'.
   $field_instances['node-did_you_know_slide-body'] = array(
     'bundle' => 'did_you_know_slide',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -308,6 +315,55 @@ function vesafe_structure_field_default_field_instances() {
       ),
       'type' => 'text_textarea_with_summary',
       'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'node-did_you_know_slide-title_field'.
+  $field_instances['node-did_you_know_slide-title_field'] = array(
+    'bundle' => 'did_you_know_slide',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Slide title. Max. 255 characters.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'title_field',
+    'label' => 'Title',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
     ),
   );
 
@@ -360,7 +416,9 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'good_practice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please fill in the Title and URL to access the related resources. 
+The link title is limited to 128 characters maximum.
+You should enter the full URL, including http:// or https://. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -423,7 +481,9 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'good_practice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please fill in the Title and URL to access the external link. 
+The link title is limited to 128 characters maximum.
+You should enter the full URL, including http:// or https://. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -485,7 +545,7 @@ function vesafe_structure_field_default_field_instances() {
   $field_instances['node-good_practice-field_gp_factsheet'] = array(
     'bundle' => 'good_practice',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Good practice factsheet file.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -529,7 +589,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'good_practice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -550,28 +610,6 @@ function vesafe_structure_field_default_field_instances() {
     'label' => 'Getting started',
     'required' => 1,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'full_html' => 'full_html',
-          'full_html_minimal' => 'full_html_minimal',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 1,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'full_html' => array(
-              'weight' => -9,
-            ),
-            'full_html_minimal' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -597,7 +635,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'good_practice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -618,28 +656,6 @@ function vesafe_structure_field_default_field_instances() {
     'label' => 'What is it?',
     'required' => 1,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'full_html' => 'full_html',
-          'full_html_minimal' => 'full_html_minimal',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 1,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'full_html' => array(
-              'weight' => -9,
-            ),
-            'full_html_minimal' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -665,7 +681,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'good_practice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -686,28 +702,6 @@ function vesafe_structure_field_default_field_instances() {
     'label' => 'What is the benefit?',
     'required' => 1,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'full_html' => 'full_html',
-          'full_html_minimal' => 'full_html_minimal',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 1,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'full_html' => array(
-              'weight' => -9,
-            ),
-            'full_html_minimal' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -733,7 +727,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'good_practice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -754,28 +748,6 @@ function vesafe_structure_field_default_field_instances() {
     'label' => 'Who is for?',
     'required' => 1,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'full_html' => 'full_html',
-          'full_html_minimal' => 'full_html_minimal',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 1,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'full_html' => array(
-              'weight' => -9,
-            ),
-            'full_html_minimal' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -800,7 +772,7 @@ function vesafe_structure_field_default_field_instances() {
   $field_instances['node-good_practice-field_image'] = array(
     'bundle' => 'good_practice',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Header image that will be displayed on \'Good Practices\' view.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -912,7 +884,7 @@ function vesafe_structure_field_default_field_instances() {
   $field_instances['node-good_practice-field_publication_date'] = array(
     'bundle' => 'good_practice',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please select the date of publication, if it is not possible to identify leave it empty.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -969,7 +941,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'good_practice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select risks for this content.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1009,7 +981,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'good_practice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please select thesaurus for this content.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1113,7 +1085,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'good_practice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select vehicles for this content.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1148,12 +1120,61 @@ function vesafe_structure_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-good_practice-title_field'.
+  $field_instances['node-good_practice-title_field'] = array(
+    'bundle' => 'good_practice',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Good practice title. Max. 255 characters.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'title_field',
+    'label' => 'Title',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
   // Exported field_instance: 'node-key_article-body'.
   $field_instances['node-key_article-body'] = array(
     'bundle' => 'key_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1177,28 +1198,6 @@ function vesafe_structure_field_default_field_instances() {
     'label' => 'Introduction',
     'required' => 0,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'full_html' => 'full_html',
-          'full_html_minimal' => 'full_html_minimal',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 1,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'full_html' => array(
-              'weight' => -9,
-            ),
-            'full_html_minimal' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
       'display_summary' => 0,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
@@ -1225,7 +1224,7 @@ function vesafe_structure_field_default_field_instances() {
   $field_instances['node-key_article-field_image'] = array(
     'bundle' => 'key_article',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1292,7 +1291,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'key_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please add general safety issues.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1341,7 +1340,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'key_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please add general safety issues.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1390,7 +1389,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'key_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please add specific risk factors.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1437,7 +1436,7 @@ function vesafe_structure_field_default_field_instances() {
   $field_instances['node-key_article-field_publication_date'] = array(
     'bundle' => 'key_article',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please select the date of publication, if it is not possible to identify leave it empty.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1494,7 +1493,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'key_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please add related good practices.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1542,7 +1541,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'key_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1588,7 +1587,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'key_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1695,12 +1694,61 @@ function vesafe_structure_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-key_article-title_field'.
+  $field_instances['node-key_article-title_field'] = array(
+    'bundle' => 'key_article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Key article title. Max. 255 characters.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'title_field',
+    'label' => 'Title',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
   // Exported field_instance: 'node-key_article_theme-body'.
   $field_instances['node-key_article_theme-body'] = array(
     'bundle' => 'key_article_theme',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1750,7 +1798,7 @@ function vesafe_structure_field_default_field_instances() {
   $field_instances['node-key_article_theme-field_publication_date'] = array(
     'bundle' => 'key_article_theme',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please select the date of publication, if it is not possible to identify leave it empty.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1807,7 +1855,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'key_article_theme',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1852,7 +1900,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'key_article_theme',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please introduce in this box the text of this section.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1898,7 +1946,7 @@ function vesafe_structure_field_default_field_instances() {
     'bundle' => 'key_article_theme',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please select thesaurus for this content.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1928,6 +1976,55 @@ function vesafe_structure_field_default_field_instances() {
       'settings' => array(),
       'type' => 'multiple_selects',
       'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-key_article_theme-title_field'.
+  $field_instances['node-key_article_theme-title_field'] = array(
+    'bundle' => 'key_article_theme',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Key article theme title. Max. 255 characters.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'title_field',
+    'label' => 'Title',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
     ),
   );
 
@@ -2086,6 +2183,7 @@ function vesafe_structure_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Article title. Max. 255 characters.');
   t('Body');
   t('Description');
   t('Disclaimer file');
@@ -2094,21 +2192,42 @@ function vesafe_structure_field_default_field_instances() {
   t('General risk factors');
   t('General safety issues');
   t('Getting started');
+  t('Good practice factsheet file.');
+  t('Good practice title. Max. 255 characters.');
+  t('Header image that will be displayed on \'Good Practices\' view.');
   t('Image');
   t('Image that will be displayed on \'Good Practices\' view. Upload an image with a 2.54:1 aspect radio.');
   t('Introduction');
+  t('Key article theme title. Max. 255 characters.');
+  t('Key article title. Max. 255 characters.');
   t('Like count');
   t('Name');
+  t('Please add general safety issues.');
+  t('Please add related good practices.');
+  t('Please add specific risk factors.');
+  t('Please fill in the Title and URL to access the external link. 
+The link title is limited to 128 characters maximum.
+You should enter the full URL, including http:// or https://. ');
+  t('Please fill in the Title and URL to access the related resources. 
+The link title is limited to 128 characters maximum.
+You should enter the full URL, including http:// or https://. ');
+  t('Please introduce in this box the text of this section.');
+  t('Please select the date of publication, if it is not possible to identify leave it empty.');
+  t('Please select thesaurus for this content.');
   t('Publication date');
   t('Related good practices');
   t('Related resources');
   t('Risks');
+  t('Select risks for this content.');
+  t('Select vehicles for this content.');
+  t('Slide title. Max. 255 characters.');
   t('Specific risk factors');
   t('Subtitle');
   t('Summary');
   t('The image that will be used on the views were more than one Key Article is displayed');
   t('Thesaurus');
   t('Thumbnail');
+  t('Title');
   t('Vehicles');
   t('What is it?');
   t('What is the benefit?');

@@ -153,7 +153,16 @@ function vesafe_structure_update_7017() {
   features_revert_module('vesafe_structure');
 }
 
+/**
+ * Feature revert.
+ */
 function vesafe_structure_update_7018() {
   features_revert_module('vesafe_structure');
 }
 
+/**
+ * Feature revert: MDR-1265
+ */
+function vesafe_structure_update_7019() {
+  features_revert_module('vesafe_structure');
+}

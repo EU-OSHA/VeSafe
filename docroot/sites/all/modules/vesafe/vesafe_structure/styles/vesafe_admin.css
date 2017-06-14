@@ -71,3 +71,11 @@ ul.tinymce-visual-html li a:hover{
 .text-right{
     text-align: right;
 }
+.field-widget-link-field .description,
+.field-widget-entityreference-view-widget .description,
+.field-widget-multiple-selects .description{
+    padding:0px 50px !important;
+    border-left:1px solid #bebfb9;
+    border-right:1px solid #bebfb9;
+    margin:0px !important;
+}
