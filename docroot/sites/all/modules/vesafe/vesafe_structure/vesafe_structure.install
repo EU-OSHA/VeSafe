@@ -152,3 +152,8 @@ function vesafe_structure_update_7017() {
   }
   features_revert_module('vesafe_structure');
 }
+
+function vesafe_structure_update_7018() {
+  features_revert_module('vesafe_structure');
+}
+
