@@ -23,7 +23,9 @@
  */
 ?>
 <?php
-  key_article_template_output($row->entity->nid, $output, $row->entity->type, $row->entity->title);
+  if(isset($row->entity->nid) && isset($row->entity->type) && isset($row->entity->title)){
+    key_article_template_output($row->entity->nid, $output, $row->entity->type, $row->entity->title);
+  }
   print $output;
 ?>
 

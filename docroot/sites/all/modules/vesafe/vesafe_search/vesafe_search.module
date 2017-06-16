@@ -553,16 +553,12 @@ function vesafe_search_menu_local_tasks_alter(&$data) {
 
 
 function key_article_template_output($nid, &$output, $entity_type, $title) {
+  if ($entity_type != 'key_article_theme') {
+    return FALSE;
+  }
   $url = key_article_url($nid, $entity_type);
-  $hash = NULL;
   preg_match('/<a href=\"(.*)\"(.*)/iU', $output, $link);
   if (isset($link[1]) && !empty($link[1])) {
-    $links = explode('/', $link[1]);
-    $hash = end($links);
-    /*if ($hash) {
-      key_article_theme_sanitize_hash($hash);
-      $url .= "#{$hash}";
-    }*/
     $url .= key_article_theme_generate_hash($title);
     $output = str_replace($link[1], $url, $output);
   }
