@@ -143,7 +143,7 @@ jQuery(document).ready(function () {
 	jQuery(".see-more-btn").click(function(){
 		jQuery(".hidden-links").slideToggle("fast", function(){
 			if(jQuery(".hidden-links").is(":visible")){
-				jQuery(".see-more-btn").text("See less links");
+				jQuery(".see-more-btn").text("See fewer links");
 			}else{
 				jQuery(".see-more-btn").text("See more links");
 			}
