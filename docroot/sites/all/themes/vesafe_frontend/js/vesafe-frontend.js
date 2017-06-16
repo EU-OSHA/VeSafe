@@ -80,8 +80,8 @@ jQuery(document).ready(function () {
 	
 
 	/*key articles menu/next/prev functionality*/
-	jQuery(".key-article-content > div").addClass("close");
-	jQuery(".key-article-content > div#introduction").removeClass("close").addClass("active");
+	//jQuery(".key-article-content > div").addClass("close");
+	//jQuery(".key-article-content > div#introduction").removeClass("close").addClass("active");
 
 	jQuery(".key-articles-menu-container a").click(function(){
 		var href=jQuery(this).attr("href");
