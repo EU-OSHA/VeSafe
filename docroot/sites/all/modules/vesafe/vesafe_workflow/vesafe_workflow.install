@@ -1,12 +1,87 @@
 <?php
 
+
+/**
+ * Implements hook_schema().
+ */
+function vesafe_workflow_schema() {
+  $schema = array();
+
+  $schema['osha_workflow_node_approval'] = array(
+    'description' => 'Base table for node approval entity',
+    'fields' => array(
+      'apid' => array(
+        'description' => 'Identifier for the approved item',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'nid' => array(
+        'description' => 'Moderated node ID (nid)',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'description' => 'Account doing the moderation',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'approved' => array(
+        'description' => 'NULL not voted, approved or rejected',
+        'type' => 'varchar',
+        'length' => 64,
+        'default' => NULL,
+        'not null' => FALSE,
+      ),
+      'next' => array(
+        'description' => '0 - no, 1 - yes',
+        'type' => 'int',
+        'default' => 0,
+        'not null' => TRUE,
+      ),
+      'weight' => array(
+        'description' => 'Order of moderation, lowest first',
+        'type' => 'int',
+        'default' => 0,
+        'not null' => TRUE,
+      ),
+      'message' => array(
+        'description' => 'Message left by the moderator',
+        'type' => 'text',
+        'size' => 'medium',
+      ),
+    ),
+    'primary key' => array('apid'),
+    'indexes' => array(
+      'moderator_uid' => array('uid'),
+    ),
+    'unique keys' => array(
+      'moderation_unique' => array('nid', 'uid'),
+    ),
+    'foreign keys' => array(
+      'uid' => array(
+        'table' => 'users',
+        'columns' => array('uid' => 'uid'),
+      ),
+      'nid' => array(
+        'table' => 'node',
+        'columns' => array('nid' => 'nid'),
+      ),
+    ),
+  );
+
+  return $schema;
+}
+
 function vesafe_workflow_install() {
   module_load_include('inc', 'vesafe_workflow', 'includes/VeSafeWorkflow');
   $roles = array(
     VeSafeWorkflow::ROLE_APPROVER,
     VeSafeWorkflow::ROLE_PROJECT_MANAGER,
     VeSafeWorkflow::ROLE_REVIEWER,
-    VeSafeWorkflow::ROLE_EDITOR
+    VeSafeWorkflow::ROLE_EDITOR,
   );
   foreach ($roles as $rolename) {
     $role = new stdClass();
@@ -14,4 +89,11 @@ function vesafe_workflow_install() {
     watchdog('vesafe_workflow', 'Creating new role: !role', array('!role' => $rolename), WATCHDOG_WARNING);
     user_role_save($role);
   }
+}
+
+/**
+ * Create approvers table.
+ */
+function vesafe_workflow_update_7001() {
+  db_create_table('osha_workflow_node_approval', vesafe_workflow_schema()['osha_workflow_node_approval']);
 }
