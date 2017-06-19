@@ -79,3 +79,10 @@ ul.tinymce-visual-html li a:hover{
     border-right:1px solid #bebfb9;
     margin:0px !important;
 }
+.charRemaining{
+    display:block;
+    color: #666;
+    font-size: 0.923em;
+    line-height: 1.231em;
+    margin: 5px;
+}
