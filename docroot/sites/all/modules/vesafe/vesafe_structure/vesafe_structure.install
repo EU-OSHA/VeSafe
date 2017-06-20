@@ -193,6 +193,6 @@ function vesafe_structure_update_7022() {
  */
 function vesafe_structure_update_7023() {
   features_revert_module('vesafe_structure');
-  module_enable('vesafe_workflow');
+  module_enable(['vesafe_workflow']);
   features_revert_module('vesafe_workflow');
 }
