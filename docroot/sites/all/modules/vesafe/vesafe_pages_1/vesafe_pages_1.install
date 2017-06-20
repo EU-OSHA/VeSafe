@@ -66,3 +66,10 @@ function vesafe_pages_1_update_7008() {
 function vesafe_pages_1_update_7009() {
   features_revert_module('vesafe_pages_1');
 }
+
+/**
+ * VES-162: Update - Features revert.
+ */
+function vesafe_pages_1_update_7010() {
+  features_revert_module('vesafe_pages_1');
+}

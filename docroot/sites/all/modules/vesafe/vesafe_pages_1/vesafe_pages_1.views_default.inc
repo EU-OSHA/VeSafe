@@ -614,10 +614,11 @@ function vesafe_pages_1_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  /* Sort criterion: Content: Publication date (field_publication_date) */
+  $handler->display->display_options['sorts']['field_publication_date_value']['id'] = 'field_publication_date_value';
+  $handler->display->display_options['sorts']['field_publication_date_value']['table'] = 'field_data_field_publication_date';
+  $handler->display->display_options['sorts']['field_publication_date_value']['field'] = 'field_publication_date_value';
+  $handler->display->display_options['sorts']['field_publication_date_value']['order'] = 'DESC';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
