@@ -229,6 +229,7 @@ function vesafe_workflow_user_default_permissions() {
     'name' => 'moderate content from final_draft to needs_review',
     'roles' => array(
       'administrator' => 'administrator',
+      'project manager' => 'project manager',
       'reviewer' => 'reviewer',
     ),
     'module' => 'workbench_moderation',

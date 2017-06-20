@@ -129,14 +129,14 @@ function theme_vesafe_workflow_approval_form($variables) {
     foreach ($items as $uid) {
       $moderator = $form['rows'][$uid]['#row'];
       $status = '';
-      if (isset($moderator->vesafe_workflow_node_approval)) {
-        $val = $moderator->vesafe_workflow_node_approval->approved;
+      if (isset($moderator->osha_workflow_node_approval)) {
+        $val = $moderator->osha_workflow_node_approval->approved;
         if ($val === NULL) {
           // NULL - not reviewed yet.
-          // $status = t('Waiting to approve');
+          $status = t('Waiting to approve');
         }
         else {
-          $status = ($last == $uid) ? ucfirst($val) : t('User created a new revision');
+          $status = $val . (!empty($moderator->osha_workflow_node_approval->message) ? ' - ' . $moderator->osha_workflow_node_approval->message : '');
         }
       }
       $row = array();

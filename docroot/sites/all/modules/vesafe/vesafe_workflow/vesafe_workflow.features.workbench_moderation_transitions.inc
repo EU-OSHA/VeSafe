@@ -14,15 +14,15 @@ function vesafe_workflow_workbench_moderation_export_transitions() {
       'to_name' => 'final_draft',
       'name' => 'Send to Reviewer',
     ),
-    'final_draft:draft' => array(
-      'from_name' => 'draft',
-      'to_name' => 'final_draft',
-      'name' => 'Send back to editor',
-    ),
     'draft:published' => array(
       'from_name' => 'draft',
       'to_name' => 'published',
       'name' => 'Publish',
+    ),
+    'final_draft:draft' => array(
+      'from_name' => 'final_draft',
+      'to_name' => 'draft',
+      'name' => 'Send back to editor',
     ),
     'final_draft:needs_review' => array(
       'from_name' => 'final_draft',

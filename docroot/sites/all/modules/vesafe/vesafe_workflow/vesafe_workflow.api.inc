@@ -34,7 +34,7 @@ function vesafe_workflow_get_default_approvers() {
  *   Array of users.
  */
 function vesafe_workflow_get_node_approvers($nid, $default = TRUE) {
-  $ret = array();
+  $ret = [];
   $query = new EntityFieldQuery();
   $moderators = $query->entityCondition('entity_type', 'node_approval')
     ->propertyCondition('nid', $nid)
@@ -43,8 +43,8 @@ function vesafe_workflow_get_node_approvers($nid, $default = TRUE) {
   if (!empty($moderators['node_approval'])) {
     $ids = array_keys($moderators['node_approval']);
     $rows = vesafe_workflow_node_approval_load_multiple($ids);
-    $uids = array();
-    $rows_by_uid = array();
+    $uids = [];
+    $rows_by_uid = [];
     foreach ($rows as $row) {
       $rows_by_uid[$row->uid] = $row;
       $uids[] = $row->uid;
@@ -58,7 +58,7 @@ function vesafe_workflow_get_node_approvers($nid, $default = TRUE) {
     return $users;
   }
   elseif ($default) {
-    $ret = osha_workflow_get_default_approvers();
+    $ret = vesafe_workflow_get_default_approvers();
   }
   return $ret;
 }
@@ -108,7 +108,7 @@ function vesafe_workflow_set_node_approvers($nid, $moderators) {
 function vesafe_workflow_reset_node_approvers($nid) {
   $transaction = db_transaction();
   try {
-    $rows = osha_workflow_get_node_approvers($nid, FALSE);
+    $rows = vesafe_workflow_get_node_approvers($nid, FALSE);
     $first = NULL;
     if (!empty($rows)) {
       $first = current($rows);
@@ -193,7 +193,7 @@ function vesafe_workflow_is_last_approver($node, $user = NULL) {
   if (empty($user)) {
     global $user;
   }
-  $all_users = osha_workflow_get_node_approvers($node->nid, FALSE);
+  $all_users = vesafe_workflow_get_node_approvers($node->nid, FALSE);
   if (!empty($all_users)) {
     $last = array_pop($all_users);
     $ret = $user->uid == $last->uid;
@@ -209,7 +209,7 @@ function vesafe_workflow_needs_last_approver($node, $user = NULL) {
     ->propertyOrderBy('weight')
     ->execute();
   if (isset($miids['node_approval'])) {
-    $rows = osha_workflow_node_approval_load_multiple(array_keys($miids['node_approval']));
+    $rows = vesafe_workflow_node_approval_load_multiple(array_keys($miids['node_approval']));
     reset($rows);
     $last = array_pop($rows);
     $ret = $last->next == 1;
@@ -259,19 +259,18 @@ function vesafe_workflow_approve($node, $vote, $message = '', $voter = NULL) {
       ->propertyOrderBy('weight')
       ->execute();
     if (isset($miids['node_approval'])) {
-      $rows = osha_workflow_node_approval_load_multiple(array_keys($miids['node_approval']));
+      $rows = vesafe_workflow_node_approval_load_multiple(array_keys($miids['node_approval']));
       reset($rows);
       $mark_next = FALSE;
       foreach ($rows as $row) {
-        if (($row->uid == $voter->uid || user_access('moderate content from ready_to_publish to published'))
-          && $row->next == 1) {
+        if ($row->next == 1) {
           $mark_next = TRUE;
           $row->next = 0;
           $row->approved = $vote;
           if ($row->uid != $voter->uid) {
-            $message .= $voter->name . 'approved the content.';
+            $message .= $voter->name . ' approved the content.';
           }
-          $row->mesage = $message;
+          $row->message = $message;
           entity_save('node_approval', $row);
           continue;
         }
@@ -329,4 +328,23 @@ function vesafe_workflow_users_get_users_from_role($role_name) {
     $ret = user_load_multiple($uids);
   }
   return $ret;
+}
+
+/**
+ *  Set default approvers list for a node.
+ */
+function vesafe_workflow_assign_default_cpm($node) {
+  $default_cpms = _hwc_workflow_get_default_cpm();
+  $weight = 0;
+  foreach ($default_cpms as $cpm) {
+    $row = array(
+      'uid' => $cpm->uid,
+      'weight' => $weight,
+      'nid' => $node->nid,
+    );
+    _hwc_workflow_admin_approvers_save_row($row);
+    $weight++;
+  }
+  drupal_set_message('Default Campaign Project Managers were set for this node');
+  return $default_cpms;
 }
