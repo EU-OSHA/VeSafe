@@ -180,3 +180,10 @@ function vesafe_structure_update_7020() {
 function vesafe_structure_update_7021() {
   features_revert_module('vesafe_structure');
 }
+
+/**
+ * Feature revert: MDR-1269.
+ */
+function vesafe_structure_update_7022() {
+  features_revert_module('vesafe_structure');
+}
