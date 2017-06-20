@@ -75,7 +75,7 @@ function form_text_fields_placeholders(&$form, $form_id){
     case 'good_practice_node_form':
     case 'key_article_node_form':
     case 'key_article_theme_node_form':
-    case 'webform_client_form_5':
+    case 'webform_node_form':
     case 'article_node_form':
       if (isset($form['title'])) {
         $form['#after_build'][] = 'form_text_fields_placeholders_after_build';
@@ -99,7 +99,7 @@ function form_actions_top(&$form, $form_id){
     case 'good_practice_node_form':
     case 'key_article_node_form':
     case 'key_article_theme_node_form':
-    case 'webform_client_form_5':
+    case 'webform_node_form':
     case 'article_node_form':
       if (isset($form['actions'])) {
         $form['actions_top'] = $form['actions'];
