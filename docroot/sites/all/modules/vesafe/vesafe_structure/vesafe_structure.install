@@ -197,3 +197,17 @@ function vesafe_structure_update_7023() {
   cache_clear_all();
   features_revert_module('vesafe_workflow');
 }
+
+/**
+ * Feature revert: VES-136, MDR-1267.
+ */
+function vesafe_structure_update_7024() {
+  features_revert_module('vesafe_structure');
+}
+
+/**
+ * Feature revert: VES-136.
+ */
+function vesafe_structure_update_7025() {
+  features_revert_module('vesafe_structure');
+}
