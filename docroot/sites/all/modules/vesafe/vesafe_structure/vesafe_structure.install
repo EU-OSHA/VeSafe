@@ -203,3 +203,10 @@ function vesafe_structure_update_7023() {
 function vesafe_structure_update_7024() {
   features_revert_module('vesafe_structure');
 }
+
+/**
+ * Feature revert: VES-136.
+ */
+function vesafe_structure_update_7025() {
+  features_revert_module('vesafe_structure');
+}
