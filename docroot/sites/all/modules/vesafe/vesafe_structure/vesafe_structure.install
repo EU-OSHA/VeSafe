@@ -218,3 +218,26 @@ function vesafe_structure_update_7025() {
 function vesafe_structure_update_7026() {
   module_enable(['search_and_replace']);
 }
+
+/**
+ * Re save all moderated content to get a current revision.
+ */
+function vesafe_structure_update_7027() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', ['key_article', 'good_practice'], 'IN');
+  $result = $query->execute();
+  if (isset($result['node'])) {
+    $nids = array_keys($result['node']);
+    foreach ($nids as $nid) {
+      $node = node_load($nid);
+      if ($node->status == 1) {
+        workbench_moderation_moderate($node, 'published');
+      }
+      else {
+        workbench_moderation_moderate($node, 'draft');
+      }
+      node_save($node);
+    }
+  }
+}
