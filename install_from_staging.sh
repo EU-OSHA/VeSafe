@@ -35,9 +35,6 @@ if [ ! -z "$pre_update" ]; then
   ../$pre_update
 fi
 
-# TEMP
-drush en workbench_moderation -y
-
 drush devify --yes
 ecode=$?
 if [ ${ecode} != 0 ]; then

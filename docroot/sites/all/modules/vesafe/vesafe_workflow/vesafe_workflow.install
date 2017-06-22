@@ -76,18 +76,8 @@ function vesafe_workflow_schema() {
 }
 
 function vesafe_workflow_install() {
-  module_load_include('inc', 'vesafe_workflow', 'includes/VeSafeWorkflow');
-  $roles = array(
-    VeSafeWorkflow::ROLE_APPROVER,
-    VeSafeWorkflow::ROLE_PROJECT_MANAGER,
-    VeSafeWorkflow::ROLE_REVIEWER,
-    VeSafeWorkflow::ROLE_EDITOR,
-  );
-  foreach ($roles as $rolename) {
-    $role = new stdClass();
-    $role->name = $rolename;
-    watchdog('vesafe_workflow', 'Creating new role: !role', array('!role' => $rolename), WATCHDOG_WARNING);
-    user_role_save($role);
+  if (!db_table_exists('osha_workflow_node_approval')) {
+    db_create_table('osha_workflow_node_approval', vesafe_workflow_schema()['osha_workflow_node_approval']);
   }
 }
 
@@ -95,5 +85,7 @@ function vesafe_workflow_install() {
  * Create approvers table.
  */
 function vesafe_workflow_update_7001() {
-  db_create_table('osha_workflow_node_approval', vesafe_workflow_schema()['osha_workflow_node_approval']);
+  if (!db_table_exists('osha_workflow_node_approval')) {
+    db_create_table('osha_workflow_node_approval', vesafe_workflow_schema()['osha_workflow_node_approval']);
+  }
 }
