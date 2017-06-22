@@ -23,6 +23,17 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: 'access content'.
+  $permissions['access content'] = array(
+    'name' => 'access content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'access content overview'.
   $permissions['access content overview'] = array(
     'name' => 'access content overview',
@@ -36,6 +47,15 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'access media browser'.
+  $permissions['access media browser'] = array(
+    'name' => 'access media browser',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'media',
+  );
+
   // Exported permission: 'access site in maintenance mode'.
   $permissions['access site in maintenance mode'] = array(
     'name' => 'access site in maintenance mode',
@@ -43,6 +63,50 @@ function vesafe_workflow_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'system',
+  );
+
+  // Exported permission: 'access toolbar'.
+  $permissions['access toolbar'] = array(
+    'name' => 'access toolbar',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'approver' => 'approver',
+      'editor' => 'editor',
+      'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
+    ),
+    'module' => 'toolbar',
+  );
+
+  // Exported permission: 'advanced migration information'.
+  $permissions['advanced migration information'] = array(
+    'name' => 'advanced migration information',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'migrate',
+  );
+
+  // Exported permission: 'bypass node access'.
+  $permissions['bypass node access'] = array(
+    'name' => 'bypass node access',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create files'.
+  $permissions['create files'] = array(
+    'name' => 'create files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'approver' => 'approver',
+      'editor' => 'editor',
+      'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: 'create good_practice content'.
@@ -63,6 +127,16 @@ function vesafe_workflow_user_default_permissions() {
       'project manager' => 'project manager',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'create url aliases'.
+  $permissions['create url aliases'] = array(
+    'name' => 'create url aliases',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'project manager' => 'project manager',
+    ),
+    'module' => 'path',
   );
 
   // Exported permission: 'delete any content in draft'.
@@ -252,6 +326,15 @@ function vesafe_workflow_user_default_permissions() {
       'reviewer' => 'reviewer',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'migration information'.
+  $permissions['migration information'] = array(
+    'name' => 'migration information',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'migrate',
   );
 
   // Exported permission: 'moderate content from draft to final_draft'.
@@ -564,6 +647,45 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'workbench_moderation',
   );
 
+  // Exported permission: 'use manualcrop'.
+  $permissions['use manualcrop'] = array(
+    'name' => 'use manualcrop',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'approver' => 'approver',
+      'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
+      'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
+    ),
+    'module' => 'manualcrop',
+  );
+
+  // Exported permission: 'use text format full_html'.
+  $permissions['use text format full_html'] = array(
+    'name' => 'use text format full_html',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'approver' => 'approver',
+      'editor' => 'editor',
+      'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
+    ),
+    'module' => 'filter',
+  );
+
+  // Exported permission: 'use text format full_html_minimal'.
+  $permissions['use text format full_html_minimal'] = array(
+    'name' => 'use text format full_html_minimal',
+    'roles' => array(
+      'approver' => 'approver',
+      'editor' => 'editor',
+      'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
+    ),
+    'module' => 'filter',
+  );
+
   // Exported permission: 'use workbench_moderation needs review tab'.
   $permissions['use workbench_moderation needs review tab'] = array(
     'name' => 'use workbench_moderation needs review tab',
@@ -584,6 +706,17 @@ function vesafe_workflow_user_default_permissions() {
       'reviewer' => 'reviewer',
     ),
     'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: 'view files'.
+  $permissions['view files'] = array(
+    'name' => 'view files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: 'view moderation history'.
@@ -608,6 +741,32 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'workbench_moderation',
   );
 
+  // Exported permission: 'view own files'.
+  $permissions['view own files'] = array(
+    'name' => 'view own files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'approver' => 'approver',
+      'editor' => 'editor',
+      'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'view own private files'.
+  $permissions['view own private files'] = array(
+    'name' => 'view own private files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'approver' => 'approver',
+      'editor' => 'editor',
+      'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
+    ),
+    'module' => 'file_entity',
+  );
+
   // Exported permission: 'view own unpublished content'.
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
@@ -615,6 +774,19 @@ function vesafe_workflow_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'view private files'.
+  $permissions['view private files'] = array(
+    'name' => 'view private files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'approver' => 'approver',
+      'editor' => 'editor',
+      'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: 'view revisions'.
