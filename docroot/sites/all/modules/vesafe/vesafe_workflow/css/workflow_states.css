@@ -1,0 +1,11 @@
+.vesafe-workflow-list-widget {
+    list-style: none;
+}
+.vesafe-workflow-list-widget li {
+    display: inline-block;
+    background: yellow;
+}
+
+.vesafe-workflow-list-widget li.active {
+    background: red;
+}

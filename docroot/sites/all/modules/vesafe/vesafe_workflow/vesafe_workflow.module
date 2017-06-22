@@ -253,7 +253,9 @@ function vesafe_workflow_form_node_form_alter(&$form, $form_state) {
     return;
   }
   if (isset($form['#node']->workbench_moderation['current']->state)) {
+    $state = $form['#node']->workbench_moderation['current']->state;
     $form['#validate'][] = 'vesafe_workflow_node_form_validate';
+    $form['options']['vesafe_workflow_list'] = _vesafe_workflow_get_states_list($state);
   }
 }
 
@@ -293,17 +295,7 @@ function vesafe_workflow_block_view($delta = '') {
 
     $state = $node->workbench_moderation['current']->state;
 
-    $items = [];
-    foreach ($states as $state_key => $state_label) {
-      $items[] = [
-        'data' => $state_label,
-        'class' => [$state_key == $state ? 'active' : ''],
-      ];
-    }
-    $content['states'] = [
-      '#theme' => 'item_list',
-      '#items' => $items,
-    ];
+    $content['states'] = _vesafe_workflow_get_states_list($state);
 
     //  workbench_moderation_node_current_load
     $content['form'] = drupal_get_form('vesafe_workflow_quick_moderation_form', $node);
@@ -314,6 +306,37 @@ function vesafe_workflow_block_view($delta = '') {
     );
     return $block;
   }
+  return NULL;
+}
+
+
+function _vesafe_workflow_get_states_list($active_state) {
+  $states = [
+    'draft' => 'Draft',
+    'final_draft' => 'Final Draft',
+    'needs_review' => 'To be reviewed',
+    'to_be_approved' => 'To be approved',
+    'ready_to_publish' => 'To be published',
+    'published' => 'Published',
+  ];
+
+  $items = [];
+  foreach ($states as $state_key => $state_label) {
+    $items[] = [
+      'data' => $state_label,
+      'class' => [$state_key == $active_state ? 'active' : ''],
+    ];
+  }
+  return [
+    '#theme' => 'item_list',
+    '#items' => $items,
+    '#attached' => [
+      'css' => [
+        drupal_get_path('module', 'vesafe_workflow') . '/css/workflow_states.css'
+      ]
+    ],
+    '#attributes' => ['class' => ['vesafe-workflow-list-widget']],
+  ];
 }
 
 function vesafe_workflow_quick_moderation_form($form, &$form_state, $node) {
@@ -335,6 +358,7 @@ function vesafe_workflow_quick_moderation_form($form, &$form_state, $node) {
       $form[$trans->to_name] = [
         '#type' => 'submit',
         '#value' => $trans->name,
+        '#attributes' => ['class' => ['btn',  'btn-primary']],
       ];
     }
   }
