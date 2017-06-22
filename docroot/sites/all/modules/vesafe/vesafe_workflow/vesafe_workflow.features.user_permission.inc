@@ -52,6 +52,10 @@ function vesafe_workflow_user_default_permissions() {
     'name' => 'access media browser',
     'roles' => array(
       'administrator' => 'administrator',
+      'approver' => 'approver',
+      'editor' => 'editor',
+      'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
     ),
     'module' => 'media',
   );
@@ -94,6 +98,15 @@ function vesafe_workflow_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'bypass workbench moderation'.
+  $permissions['bypass workbench moderation'] = array(
+    'name' => 'bypass workbench moderation',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'workbench_moderation',
   );
 
   // Exported permission: 'create files'.
@@ -152,7 +165,9 @@ function vesafe_workflow_user_default_permissions() {
   // Exported permission: 'delete any content in final_draft'.
   $permissions['delete any content in final_draft'] = array(
     'name' => 'delete any content in final_draft',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'vesafe_workflow',
   );
 
@@ -177,14 +192,18 @@ function vesafe_workflow_user_default_permissions() {
   // Exported permission: 'delete any content in ready_to_publish'.
   $permissions['delete any content in ready_to_publish'] = array(
     'name' => 'delete any content in ready_to_publish',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'vesafe_workflow',
   );
 
   // Exported permission: 'delete any content in to_be_approved'.
   $permissions['delete any content in to_be_approved'] = array(
     'name' => 'delete any content in to_be_approved',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'vesafe_workflow',
   );
 
@@ -222,6 +241,7 @@ function vesafe_workflow_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'editor' => 'editor',
+      'project manager' => 'project manager',
     ),
     'module' => 'vesafe_workflow',
   );
@@ -230,6 +250,8 @@ function vesafe_workflow_user_default_permissions() {
   $permissions['edit any content in final_draft'] = array(
     'name' => 'edit any content in final_draft',
     'roles' => array(
+      'administrator' => 'administrator',
+      'project manager' => 'project manager',
       'reviewer' => 'reviewer',
     ),
     'module' => 'vesafe_workflow',
@@ -258,7 +280,10 @@ function vesafe_workflow_user_default_permissions() {
   // Exported permission: 'edit any content in ready_to_publish'.
   $permissions['edit any content in ready_to_publish'] = array(
     'name' => 'edit any content in ready_to_publish',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'project manager' => 'project manager',
+    ),
     'module' => 'vesafe_workflow',
   );
 
@@ -266,6 +291,7 @@ function vesafe_workflow_user_default_permissions() {
   $permissions['edit any content in to_be_approved'] = array(
     'name' => 'edit any content in to_be_approved',
     'roles' => array(
+      'administrator' => 'administrator',
       'approver' => 'approver',
     ),
     'module' => 'vesafe_workflow',
@@ -299,6 +325,7 @@ function vesafe_workflow_user_default_permissions() {
   $permissions['edit node approvers'] = array(
     'name' => 'edit node approvers',
     'roles' => array(
+      'administrator' => 'administrator',
       'project manager' => 'project manager',
     ),
     'module' => 'vesafe_workflow',
@@ -348,15 +375,6 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'workbench_moderation',
   );
 
-  // Exported permission: 'moderate content from draft to needs_review'.
-  $permissions['moderate content from draft to needs_review'] = array(
-    'name' => 'moderate content from draft to needs_review',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'workbench_moderation',
-  );
-
   // Exported permission: 'moderate content from draft to published'.
   $permissions['moderate content from draft to published'] = array(
     'name' => 'moderate content from draft to published',
@@ -367,10 +385,20 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'workbench_moderation',
   );
 
+  // Exported permission: 'moderate content from draft to ready_to_publish'.
+  $permissions['moderate content from draft to ready_to_publish'] = array(
+    'name' => 'moderate content from draft to ready_to_publish',
+    'roles' => array(
+      'project manager' => 'project manager',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
   // Exported permission: 'moderate content from final_draft to draft'.
   $permissions['moderate content from final_draft to draft'] = array(
     'name' => 'moderate content from final_draft to draft',
     'roles' => array(
+      'project manager' => 'project manager',
       'reviewer' => 'reviewer',
     ),
     'module' => 'workbench_moderation',
@@ -381,17 +409,8 @@ function vesafe_workflow_user_default_permissions() {
     'name' => 'moderate content from final_draft to needs_review',
     'roles' => array(
       'administrator' => 'administrator',
-      'reviewer' => 'reviewer',
-    ),
-    'module' => 'workbench_moderation',
-  );
-
-  // Exported permission: 'moderate content from needs_review to draft'.
-  $permissions['moderate content from needs_review to draft'] = array(
-    'name' => 'moderate content from needs_review to draft',
-    'roles' => array(
-      'administrator' => 'administrator',
       'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -410,6 +429,15 @@ function vesafe_workflow_user_default_permissions() {
     'name' => 'moderate content from needs_review to published',
     'roles' => array(
       'administrator' => 'administrator',
+      'project manager' => 'project manager',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: 'moderate content from needs_review to ready_to_publish'.
+  $permissions['moderate content from needs_review to ready_to_publish'] = array(
+    'name' => 'moderate content from needs_review to ready_to_publish',
+    'roles' => array(
       'project manager' => 'project manager',
     ),
     'module' => 'workbench_moderation',
@@ -470,16 +498,16 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'workbench_moderation',
   );
 
-  // Exported permission: 'moderate good_practice state from draft to needs_review'.
-  $permissions['moderate good_practice state from draft to needs_review'] = array(
-    'name' => 'moderate good_practice state from draft to needs_review',
+  // Exported permission: 'moderate good_practice state from draft to published'.
+  $permissions['moderate good_practice state from draft to published'] = array(
+    'name' => 'moderate good_practice state from draft to published',
     'roles' => array(),
     'module' => 'workbench_moderation',
   );
 
-  // Exported permission: 'moderate good_practice state from draft to published'.
-  $permissions['moderate good_practice state from draft to published'] = array(
-    'name' => 'moderate good_practice state from draft to published',
+  // Exported permission: 'moderate good_practice state from draft to ready_to_publish'.
+  $permissions['moderate good_practice state from draft to ready_to_publish'] = array(
+    'name' => 'moderate good_practice state from draft to ready_to_publish',
     'roles' => array(),
     'module' => 'workbench_moderation',
   );
@@ -498,13 +526,6 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'workbench_moderation',
   );
 
-  // Exported permission: 'moderate good_practice state from needs_review to draft'.
-  $permissions['moderate good_practice state from needs_review to draft'] = array(
-    'name' => 'moderate good_practice state from needs_review to draft',
-    'roles' => array(),
-    'module' => 'workbench_moderation',
-  );
-
   // Exported permission: 'moderate good_practice state from needs_review to final_draft'.
   $permissions['moderate good_practice state from needs_review to final_draft'] = array(
     'name' => 'moderate good_practice state from needs_review to final_draft',
@@ -515,6 +536,13 @@ function vesafe_workflow_user_default_permissions() {
   // Exported permission: 'moderate good_practice state from needs_review to published'.
   $permissions['moderate good_practice state from needs_review to published'] = array(
     'name' => 'moderate good_practice state from needs_review to published',
+    'roles' => array(),
+    'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: 'moderate good_practice state from needs_review to ready_to_publish'.
+  $permissions['moderate good_practice state from needs_review to ready_to_publish'] = array(
+    'name' => 'moderate good_practice state from needs_review to ready_to_publish',
     'roles' => array(),
     'module' => 'workbench_moderation',
   );
@@ -563,16 +591,16 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'workbench_moderation',
   );
 
-  // Exported permission: 'moderate key_article state from draft to needs_review'.
-  $permissions['moderate key_article state from draft to needs_review'] = array(
-    'name' => 'moderate key_article state from draft to needs_review',
+  // Exported permission: 'moderate key_article state from draft to published'.
+  $permissions['moderate key_article state from draft to published'] = array(
+    'name' => 'moderate key_article state from draft to published',
     'roles' => array(),
     'module' => 'workbench_moderation',
   );
 
-  // Exported permission: 'moderate key_article state from draft to published'.
-  $permissions['moderate key_article state from draft to published'] = array(
-    'name' => 'moderate key_article state from draft to published',
+  // Exported permission: 'moderate key_article state from draft to ready_to_publish'.
+  $permissions['moderate key_article state from draft to ready_to_publish'] = array(
+    'name' => 'moderate key_article state from draft to ready_to_publish',
     'roles' => array(),
     'module' => 'workbench_moderation',
   );
@@ -591,13 +619,6 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'workbench_moderation',
   );
 
-  // Exported permission: 'moderate key_article state from needs_review to draft'.
-  $permissions['moderate key_article state from needs_review to draft'] = array(
-    'name' => 'moderate key_article state from needs_review to draft',
-    'roles' => array(),
-    'module' => 'workbench_moderation',
-  );
-
   // Exported permission: 'moderate key_article state from needs_review to final_draft'.
   $permissions['moderate key_article state from needs_review to final_draft'] = array(
     'name' => 'moderate key_article state from needs_review to final_draft',
@@ -608,6 +629,13 @@ function vesafe_workflow_user_default_permissions() {
   // Exported permission: 'moderate key_article state from needs_review to published'.
   $permissions['moderate key_article state from needs_review to published'] = array(
     'name' => 'moderate key_article state from needs_review to published',
+    'roles' => array(),
+    'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: 'moderate key_article state from needs_review to ready_to_publish'.
+  $permissions['moderate key_article state from needs_review to ready_to_publish'] = array(
+    'name' => 'moderate key_article state from needs_review to ready_to_publish',
     'roles' => array(),
     'module' => 'workbench_moderation',
   );
