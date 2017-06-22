@@ -211,3 +211,10 @@ function vesafe_structure_update_7024() {
 function vesafe_structure_update_7025() {
   features_revert_module('vesafe_structure');
 }
+
+/**
+ * Enable search and replace module.
+ */
+function vesafe_structure_update_7026() {
+  module_enable(['search_and_replace']);
+}
