@@ -289,7 +289,7 @@ function vesafe_workflow_block_view($delta = '') {
       'final_draft' => 'Final Draft',
       'needs_review' => 'To be reviewed',
       'to_be_approved' => 'To be approved',
-      'ready_to_publish' => 'To be published',
+      'ready_to_publish' => 'Ready to publish',
       'published' => 'Published',
     ];
 
