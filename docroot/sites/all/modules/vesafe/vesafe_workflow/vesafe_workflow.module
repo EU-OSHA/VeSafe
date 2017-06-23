@@ -1,1 +1,569 @@
 <?php
+
+include_once 'vesafe_workflow.features.inc';
+include_once 'vesafe_workflow.api.inc';
+
+/* Workflow states */
+define('OSHA_WORKFLOW_STATE_DRAFT', 'draft');
+define('OSHA_WORKFLOW_STATE_FINAL_DRAFT', 'final_draft');
+define('OSHA_WORKFLOW_STATE_TO_BE_REVIEWED', 'needs_review');
+define('OSHA_WORKFLOW_STATE_TO_BE_APPROVED', 'to_be_approved');
+define('OSHA_WORKFLOW_STATE_READY_TO_PUBLISH', 'ready_to_publish');
+define('OSHA_WORKFLOW_STATE_PUBLISHED', 'published');
+
+define('OSHA_WORKFLOW_ROLE_PM', 'project manager');
+
+
+function vesafe_workflow_menu() {
+  $items = array();
+
+  $items['admin/config/workbench/access/approvers'] = array(
+    'title' => 'Default Approvers',
+    'description' => 'Define the list of default approvers',
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('entity-collection/approvers/content'),
+    'access arguments' => array('manage content in moderators_group entity collections'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => -13,
+  );
+
+  $items['node/%node/approve'] = array(
+    'title' => 'Approve',
+    'description' => 'Approval page for the OSHA approval workflow.',
+    'type' => MENU_LOCAL_TASK,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('vesafe_workflow_node_approval_form', 1),
+    'access callback' => 'vesafe_workflow_node_approval_access',
+    'access arguments' => array(1),
+    'file' => 'vesafe_workflow.admin.inc',
+    'weight' => 10,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ *
+ * We need this to define permissions granted to content moderators.
+ */
+function vesafe_workflow_permission() {
+  $permissions = array();
+  // Per state permissions. Used by workbench_moderation_node_access().
+  $states = workbench_moderation_states();
+  foreach ($states as $state) {
+    $permissions['edit any content in ' . $state->name] = array(
+      'title' => t('Edit any content in @state', array('@state' => $state->label)),
+    );
+    $permissions['delete any content in ' . $state->name] = array(
+      'title' => t('Delete any content in @state', array('@state' => $state->label)),
+    );
+  }
+
+  $permissions['edit node approvers'] = array('title' => t("Can edit approvers on a node"));
+
+  return $permissions;
+}
+
+function vesafe_workflow_node_access($node, $operation, $user) {
+  if ($operation == 'view') {
+    return NODE_ACCESS_IGNORE;
+  }
+  if (!is_object($node)) {
+    return NODE_ACCESS_IGNORE;
+  }
+
+  $is_moderated = workbench_moderation_node_moderated($node);
+  if (!$is_moderated) {
+    return NODE_ACCESS_IGNORE;
+  }
+  $state = $node->workbench_moderation['current']->state;
+  if ($operation == 'update') {
+    // Deny access if doesn't have the perm toq edit in current state.
+    if (!user_access('edit any content in ' . $state, $user)) {
+      return NODE_ACCESS_DENY;
+    }
+
+    /* Approver */
+    // Allow next approver permission.
+    if ($state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED) {
+      $next_approver = vesafe_workflow_get_next_approver($node->nid);
+      $is_next_approver = isset($next_approver->uid) && $user->uid == $next_approver->uid;
+      // Check the user is next to take action. Otherwise deny change.
+      if (!$is_next_approver) {
+        return NODE_ACCESS_DENY;
+      }
+    }
+
+  }
+  elseif ($operation == 'delete') {
+    // Deny access if doesn't have the perm toq edit in current state.
+    $state = $node->workbench_moderation['current']->state;
+    if (!user_access('delete any content in ' . $state, $user)) {
+      return NODE_ACCESS_DENY;
+    }
+  }
+
+  return NODE_ACCESS_IGNORE;
+}
+
+/**
+ * Implements hook_workbench_moderation_access_alter().
+ *
+ * {@inheritdoc}
+ */
+function vesafe_workflow_workbench_moderation_access_alter(&$access, $op, $node) {
+  global $user;
+  // Allow everyone access to moderation history
+  if ($op == 'view history' && user_access('view moderation history')) {
+    $access = 1;
+    return NULL;
+  }
+
+  // Allow everyone access to view revisions
+  if ($op == 'view revisions' && user_access('view revisions')) {
+    $access = 1;
+    return NULL;
+  }
+  if ($op == 'update') {
+    $state = $node->workbench_moderation['current']->state;
+
+    /* Approver */
+    // Allow next approver permission
+    if ($state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED) {
+      $next_approver = vesafe_workflow_get_next_approver($node->nid);
+      $is_next_approver = isset($next_approver->uid) && $user->uid == $next_approver->uid;
+      // Check the user is next to take action. Otherwise deny change.
+      if ($is_next_approver) {
+        $access = TRUE;
+        return NULL;
+      }
+    }
+  }
+
+}
+
+function vesafe_workflow_node_approval_access($node) {
+  if (workbench_moderation_node_type_moderated($node->type)) {
+    return user_access('edit node approvers');
+  }
+  return FALSE;
+}
+
+
+/**
+ * Implements hook_entity_info().
+ */
+function vesafe_workflow_entity_info() {
+  module_load_include('inc', 'vesafe_workflow', 'vesafe_workflow.entity');
+  return array(
+    'node_approval' => array(
+      'label' => t('Node approval'),
+      'module' => 'vesafe_workflow',
+      'controller class' => 'VesafeWorkflowApprovalItemController',
+      'base table' => 'osha_workflow_node_approval',
+      'entity keys' => array(
+        'id' => 'apid',
+      ),
+      'views controller class' => 'EntityDefaultViewsController',
+    ),
+  );
+}
+
+/**
+ * Implements hook_entity_property_info().
+ */
+function vesafe_workflow_entity_property_info() {
+  $info = array();
+
+  // Add meta-data for node_approval entity.
+  $properties = &$info['node_approval']['properties'];
+  $properties['user'] = array(
+    'label' => t("User"),
+    'type' => 'user',
+    'description' => t("The User that can review the node."),
+    'getter callback' => 'entity_metadata_node_get_properties',
+    'computed' => TRUE,
+    'entity views field' => TRUE,
+    'required' => TRUE,
+    'schema field' => 'uid',
+  );
+  $properties['node'] = array(
+    'label' => t("Node"),
+    'type' => 'node',
+    'description' => t("The Node that needs review."),
+    'getter callback' => 'entity_metadata_node_get_properties',
+    'computed' => TRUE,
+    'entity views field' => TRUE,
+    'required' => TRUE,
+    'schema field' => 'nid',
+  );
+  $properties['next'] = array(
+    'label' => t("Next"),
+    'type' => 'integer',
+    'description' => t("If the user is next who needs to approve"),
+    'getter callback' => 'entity_property_verbatim_get',
+    'schema field' => 'next',
+  );
+
+  return $info;
+}
+
+/**
+  * Alter LEFT JOIN node_revision ON node.vid = node_revision.vid
+  * to LEFT JOIN node_revision ON node.nid = node_revision.nid
+  */
+function vesafe_workflow_views_query_alter(&$view, &$query) {
+  // Switch from JOIN to LEFT JOIN with workbench_moderation_node_history
+  // to allow adding content types which are not moderated (i.e. page).
+  if ($view->name == 'Content') {
+    if (isset($query->table_queue['workbench_moderation_node_history']['join']->type)) {
+      $query->table_queue['workbench_moderation_node_history']['join']->type = 'LEFT';
+    }
+    if (isset($query->table_queue['node_revision'])) {
+      $query->table_queue['node_revision']['join']->field = 'nid';
+      $query->table_queue['node_revision']['join']->left_field = 'nid';
+    }
+  }
+}
+
+
+function vesafe_workflow_workbench_moderation_transition($node, $old, $new) {
+  $from_fdraft_to_review = $old == OSHA_WORKFLOW_STATE_FINAL_DRAFT && $new == OSHA_WORKFLOW_STATE_TO_BE_REVIEWED;
+  if ($from_fdraft_to_review) {
+    $approvers = vesafe_workflow_get_node_approvers($node->nid, TRUE);
+    if (!empty($approvers)) {
+      vesafe_workflow_set_node_approvers($node->nid, array_keys($approvers));
+    }
+  }
+  if ($old != OSHA_WORKFLOW_STATE_TO_BE_APPROVED && $new == OSHA_WORKFLOW_STATE_TO_BE_APPROVED) {
+    vesafe_workflow_reset_node_approvers($node->nid);
+    $next_approver = vesafe_workflow_get_next_approver($node->nid);
+    if (!empty($next_approver)) {
+      rules_invoke_event('node_to_be_approved', $node, $next_approver);
+    }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function vesafe_workflow_form_node_form_alter(&$form, $form_state) {
+  global $user;
+  if (!workbench_moderation_node_moderated($form['#node'])) {
+    return;
+  }
+  if (isset($form['#node']->workbench_moderation['current']->state)) {
+    $state = $form['#node']->workbench_moderation['current']->state;
+    $form['#validate'][] = 'vesafe_workflow_node_form_validate';
+    $form['options']['vesafe_workflow_list'] = _vesafe_workflow_get_states_list($state);
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function vesafe_workflow_block_info() {
+  $blocks['vesafe_workflow_info'] = array(
+    'info' => 'Vesafe workflow',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function vesafe_workflow_block_view($delta = '') {
+  if (!user_access('view all unpublished content')) {
+    return NULL;
+  }
+  if ($delta == 'vesafe_workflow_info') {
+    $node = menu_get_object();
+    $is_node = !empty($node);
+    $is_moderated = $is_node && workbench_moderation_node_type_moderated($node->type);
+    if (!$is_node || !$is_moderated) {
+      return NULL;
+    }
+    $states = [
+      'draft' => 'Draft created',
+      'final_draft' => 'Final Draft',
+      'needs_review' => 'To be reviewed',
+      'to_be_approved' => 'To be approved',
+      'ready_to_publish' => 'To be published',
+      'published' => 'Published',
+    ];
+
+    $state = $node->workbench_moderation['current']->state;
+
+    $content['states'] = _vesafe_workflow_get_states_list($state);
+
+    //  workbench_moderation_node_current_load
+    $content['form'] = drupal_get_form('vesafe_workflow_quick_moderation_form', $node);
+
+    $block = array(
+      'subject' => '',
+      'content' => $content,
+    );
+    return $block;
+  }
+  return NULL;
+}
+
+
+function _vesafe_workflow_get_states_list($active_state) {
+  $states = [
+    'draft' => 'Draft',
+    'final_draft' => 'Final Draft',
+    'needs_review' => 'To be reviewed',
+    'to_be_approved' => 'To be approved',
+    'ready_to_publish' => 'To be published',
+    'published' => 'Published',
+  ];
+
+  $items = [];
+  foreach ($states as $state_key => $state_label) {
+    $items[] = [
+      'data' => $state_label,
+      'class' => [$state_key == $active_state ? 'active' : ''],
+    ];
+  }
+  return [
+    '#theme' => 'item_list',
+    '#items' => $items,
+    '#attached' => [
+      'css' => [
+        drupal_get_path('module', 'vesafe_workflow') . '/css/workflow_states.css'
+      ]
+    ],
+    '#attributes' => ['class' => ['vesafe-workflow-list-widget']],
+  ];
+}
+
+function vesafe_workflow_quick_moderation_form($form, &$form_state, $node) {
+  global $user;
+  $is_pm = _vesafe_workflow_user_has_role(OSHA_WORKFLOW_ROLE_PM);
+  $is_admin = _vesafe_workflow_user_has_role('administrator');
+  $form['#node'] = $node;
+  $state = $node->workbench_moderation['current']->state;
+  $states = workbench_moderation_states_next($state, $user, $form['#node']);
+  $transitions = workbench_moderation_transitions();
+  $to = [];
+  foreach ($transitions as $transition) {
+    if ($transition->from_name == $state && in_array($transition->to_name, array_keys($states))) {
+      $to[$transition->to_name] = $transition;
+    }
+  }
+  if (!empty($to)) {
+    foreach ($to as $trans) {
+      $form[$trans->to_name] = [
+        '#type' => 'submit',
+        '#value' => $trans->name,
+        '#attributes' => ['class' => ['btn',  'btn-primary']],
+      ];
+    }
+  }
+
+  if ($state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED) {
+    $next_approver = vesafe_workflow_get_next_approver($node->nid);
+    $is_next_approver = isset($next_approver->uid) && $user->uid == $next_approver->uid;
+    // Check the user is next to take action. Otherwise deny change.
+    if ($is_next_approver) {
+      $form['approve'] = [
+        '#type' => 'submit',
+        '#value' => 'Approve',
+        '#submit' => ['vesafe_workflow_quick_moderation_approve_form_submit'],
+      ];
+      $form['reject'] = [
+        '#type' => 'submit',
+        '#value' => 'Reject (send back to reviewer)',
+        '#submit' => ['vesafe_workflow_quick_moderation_approve_form_submit'],
+      ];
+    }
+    elseif (isset($next_approver) && ($is_admin || $is_pm)) {
+      $form['approve'] = [
+        '#type' => 'submit',
+        '#value' => 'Approve in name of ' . $next_approver->name,
+        '#submit' => ['vesafe_workflow_quick_moderation_approve_form_submit'],
+      ];
+    }
+  }
+
+  return $form;
+}
+
+function vesafe_workflow_quick_moderation_form_validate(&$form, &$form_state) {
+  $values = $form_state['values'];
+  // OP has the same value as button, so prevent overwrite on flip.
+  unset($values['op']);
+  $op = $form_state['values']['op'];
+  $next_state = array_flip($values)[$op];
+  if ($next_state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED && empty(vesafe_workflow_get_node_approvers($form['#node']->nid, FALSE))) {
+    form_set_error('', t('Cannot change state because the approval queue is empty. Use the approve tab to set the approver list'));
+  }
+}
+
+function vesafe_workflow_node_form_validate(&$form, &$form_state) {
+  $values = $form_state['values'];
+  $next_state = $values['workbench_moderation_state_new'];
+  if ($next_state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED && empty(vesafe_workflow_get_node_approvers($form['#node']->nid, FALSE))) {
+    form_set_error('', t('Cannot change state because the approval queue is empty. Use the approve tab to set the approver list'));
+  }
+}
+
+function vesafe_workflow_quick_moderation_form_submit(&$form, &$form_state) {
+  $values = $form_state['values'];
+  // OP has the same value as button, so prevent overwrite on flip.
+  unset($values['op']);
+  $op = $form_state['values']['op'];
+  $next_state = array_flip($values)[$op];
+  workbench_moderation_moderate($form['#node'], $next_state);
+  drupal_set_message(t('Content was set to @state', ['@state' => $values[$next_state]]));
+}
+
+function vesafe_workflow_quick_moderation_reject_form_submit(&$form, &$form_state) {
+  $node = $form['#node'];
+  $state = $node->workbench_moderation['current']->state;
+  if ($state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED) {
+    vesafe_workflow_approve($node, 'rejected');
+    workbench_moderation_moderate($node, OSHA_WORKFLOW_STATE_FINAL_DRAFT);
+  }
+}
+function vesafe_workflow_quick_moderation_approve_form_submit(&$form, &$form_state) {
+  $node = $form['#node'];
+  vesafe_workflow_approve($node, 'approved');
+  $next_approver = vesafe_workflow_get_next_approver($node->nid);
+  if (!empty($next_approver)) {
+    rules_invoke_event('node_to_be_approved', $node, $next_approver);
+  }
+  else {
+    workbench_moderation_moderate($node, OSHA_WORKFLOW_STATE_READY_TO_PUBLISH);
+  }
+}
+
+function _vesafe_workflow_user_has_role($role_name, $usr = NULL) {
+  global $user;
+  if (empty($usr)) {
+    $usr = $user;
+  }
+  if (isset($usr->roles)) {
+    return in_array($role_name, $usr->roles);
+  }
+  return FALSE;
+}
+
+function vesafe_workflow_get_node_owner($nid, $uid = NULL) {
+  $result = db_select('workbench_moderation_node_history', 'wmnh')
+    ->fields('wmnh');
+  $draft_to_draft = db_and()
+    ->condition('from_state', OSHA_WORKFLOW_STATE_DRAFT)
+    ->condition('state', OSHA_WORKFLOW_STATE_DRAFT);
+  $draft_to_final = db_and()
+    ->condition('from_state', OSHA_WORKFLOW_STATE_DRAFT)
+    ->condition('state', OSHA_WORKFLOW_STATE_FINAL_DRAFT);
+  $publ_to_draft = db_and()
+    ->condition('from_state', OSHA_WORKFLOW_STATE_PUBLISHED)
+    ->condition('state', OSHA_WORKFLOW_STATE_DRAFT);
+  $or = db_or()
+    ->condition($draft_to_draft)
+    ->condition($draft_to_final)
+    ->condition($publ_to_draft);
+  $result->condition($or);
+  $result->condition('wmnh.nid', $nid);
+  $result->orderBy('hid', 'DESC');
+  $result->range(0, 1);
+  $result = $result->execute();
+  $result = $result->fetchAllAssoc('uid');
+  if (!empty($result)) {
+    return current(array_keys($result));
+  }
+  else {
+    if (!$uid) {
+      $node = node_load($nid);
+      $uid = $node->uid;
+    }
+    return $uid;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function vesafe_workflow_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'entity_collection_content_add_form') {
+    if ($collection = $form_state['entity_collection']) {
+      if ($collection->bundle == 'moderators_group') {
+        $options = vesafe_workflow_users_get_users_from_role_as_options('approver');
+        $users = array();
+        foreach ($options as $uid => $account) {
+          $users['user:' . $uid] = $account;
+        }
+        $form['add_content']['#title'] = t('Add approvers into the list');
+        $form['add_content']['entity_type']['#access'] = FALSE;
+        $form['add_content']['content_select'] = array(
+          '#type' => 'select',
+          '#options' => $users,
+          '#description' => t('Select the person account from the list then press <b>Add content</b>'),
+        );
+      }
+    }
+  }
+  elseif ($form_id == 'entity_collection_content_form') {
+    if ($collection = $form_state['entity_collection']) {
+      if ($collection->bundle == 'moderators_group' && !empty($form['content'])) {
+        foreach ($form['content'] as &$row) {
+          hide($row['style']);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ *
+ * @codeCoverageIgnore
+ */
+function vesafe_workflow_theme() {
+  return array(
+    'vesafe_workflow_approval_form' => array(
+      'render element' => 'form',
+      'file' => 'vesafe_workflow.admin.inc',
+    ),
+  );
+}
+
+
+/**
+ * Form validator.
+ */
+function vesafe_workflow_workbench_moderation_approval_form_validate($form, $form_state) {
+  $node = $form_state['values']['node'];
+  $state = $form_state['values']['state'];
+  if ($state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED) {
+    $approvers = vesafe_workflow_get_node_approvers($node->nid, FALSE);
+    if (empty($approvers)) {
+      form_set_error('', t('Cannot change state because the approval queue is empty. Use the approve tab to set the approver list'));
+    }
+  }
+}
+
+/**
+ * Load node_approval entities from database.
+ *
+ * @param array $ids
+ *   An array of entity IDs, or FALSE to load all entities.
+ * @param array $conditions
+ *   (deprecated) An associative array of conditions on the base table, where
+ *   the keys are the database fields and the values are the values those
+ *   fields must have. Instead, it is preferable to use EntityFieldQuery to
+ *   retrieve a list of entity IDs loadable by this function.
+ * @param bool $reset
+ *   Whether to reset the internal cache for the requested entity type.
+ *
+ * @return mixed
+ *   An array of entity objects indexed by their ids. When no results are
+ *   found, an empty array is returned.
+ */
+function vesafe_workflow_node_approval_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('node_approval', $ids, $conditions, $reset);
+}

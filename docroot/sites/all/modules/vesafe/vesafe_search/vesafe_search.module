@@ -73,7 +73,9 @@ function vesafe_search_autocomplete_callback($search = '*') {
   // Make the search.
   $request = $connection->search($search, $params);
 
+
   $data = json_decode($request->data);
+
   $total_groups = count($data->grouped->ss_type->groups);
   $total_items = $data->grouped->ss_type->matches;
   $return = array();
@@ -118,7 +120,6 @@ function vesafe_search_autocomplete_callback($search = '*') {
       $return[] = $ac_item;
     }
   }
-
   print_r(json_encode($return));
   exit;
 }
@@ -133,9 +134,16 @@ function vesafe_search_autocomplete_add_group($group,  $showing_items, $search, 
   $in_this_categ = $group->doclist->numFound;
   foreach ($group->doclist->docs as &$item) {
     $count_items++;
+
+    $link = url('node/' . $item->is_nid);
+    $title = current($item->{'tm_title'});
+    $key_article_url = key_article_url($item->is_nid, $item->ss_type);
+    if ($key_article_url) {
+      $link = $key_article_url . key_article_theme_generate_hash($title);
+    }
     $ac_item = array(
-      "link" => url('node/' . $item->is_nid),
-      "value" => current($item->{'tm_title'}),
+      "link" => $link,
+      "value" => $title,
       "fields" => array(
         "title_field" => current($item->{'tm_title'}),
       ),
@@ -178,6 +186,7 @@ function vesafe_search_autocomplete_add_group($group,  $showing_items, $search, 
       $return[] = $ac_item;
     }
   }
+
   return array(
     'results' => $return,
     'count' => $count_items,
@@ -540,4 +549,58 @@ function vesafe_search_menu_local_tasks_alter(&$data) {
       }
     }
   }
+}
+
+
+function key_article_template_output($nid, &$output, $entity_type, $title) {
+  if ($entity_type != 'key_article_theme') {
+    return FALSE;
+  }
+  $url = key_article_url($nid, $entity_type);
+  preg_match('/<a href=\"(.*)\"(.*)/iU', $output, $link);
+  if (isset($link[1]) && !empty($link[1])) {
+    $url .= key_article_theme_generate_hash($title);
+    $output = str_replace($link[1], $url, $output);
+  }
+}
+
+function key_article_theme_sanitize_hash(&$hash){
+  $hash = preg_replace("/\-\d$/", '', $hash);
+}
+
+function key_article_theme_generate_hash($title){
+  $hash = str_replace([' ', ',', '.', '(', ')'], ['-', '', '', '', ''], strtolower($title));
+  return "#{$hash}";
+}
+
+function key_article_url($nid, $entity_type) {
+  if ($entity_type != 'key_article_theme') {
+    return FALSE;
+  }
+  $query = new EntityFieldQuery();
+  $key_article = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'key_article')
+    ->fieldCondition('field_ka_specific_risk_factors', 'target_id', $nid)
+    ->execute();
+  if (!$key_article) {
+    $query = new EntityFieldQuery();
+    $key_article = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'key_article')
+      ->fieldCondition('field_ka_general_safety_issues', 'target_id', $nid)
+      ->execute();
+  }
+  if (!$key_article) {
+    $query = new EntityFieldQuery();
+    $key_article = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'key_article')
+      ->fieldCondition('field_ka_general_risk_factors', 'target_id', $nid)
+      ->execute();
+  }
+
+  if (isset($key_article['node'])) {
+    reset($key_article['node']);
+    $url = url('node/' . key($key_article['node']));
+    return $url;
+  }
+  return false;
 }

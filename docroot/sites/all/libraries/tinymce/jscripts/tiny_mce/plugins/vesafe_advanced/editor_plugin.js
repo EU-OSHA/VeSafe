@@ -7,9 +7,13 @@
             jQuery('#wysiwyg-toggle-'+ed.id).hide();
             var visual_html = jQuery('#' + ed.id + '_visual_html').length;
             if(visual_html == 0){
-                jQuery('#' + ed.id).after('<div class="form-wrapper"><div class="form-item">' + Drupal.t('Editor mode: ') + '<select id="' + ed.id + '_visual_html" name="' + ed.id + '_visual_html" class="form-select"><option value="visual">' + Drupal.t('Visual') + '</option><option name="html">' + Drupal.t('HTML') + '</option></select></div></div>');
-                jQuery('#' + ed.id + '_visual_html').bind('change', function(){
-                    jQuery('#wysiwyg-toggle-'+ed.id).trigger( "click" );
+                jQuery('label[for="' + ed.id + '"]').append('<ul class="tabs primary tinymce-visual-html" id="' + ed.id + '_visual_html"><li><a href="#" id="' + ed.id + '_visual" class="active">' + Drupal.t('Visual') + '</a></li><li><a href="#" id="' + ed.id + '_html">' + Drupal.t('HTML') + '</a></li></ul>');
+                jQuery('#' + ed.id + '_visual_html a').bind('click', function(){
+                    if(!jQuery(this).hasClass('active')){
+                        jQuery('#' + ed.id + '_visual_html a').removeClass('active');
+                        jQuery(this).addClass('active');
+                        jQuery('#wysiwyg-toggle-'+ed.id).trigger( "click" );
+                    }
                 });
             }
             jQuery('#' + ed.id.replace('-value','-format')).hide();

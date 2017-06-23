@@ -152,3 +152,92 @@ function vesafe_structure_update_7017() {
   }
   features_revert_module('vesafe_structure');
 }
+
+/**
+ * Feature revert.
+ */
+function vesafe_structure_update_7018() {
+  features_revert_module('vesafe_structure');
+}
+
+/**
+ * Feature revert: MDR-1265.
+ */
+function vesafe_structure_update_7019() {
+  features_revert_module('vesafe_structure');
+}
+
+/**
+ * Feature revert: MDR-1267.
+ */
+function vesafe_structure_update_7020() {
+  features_revert_module('vesafe_structure');
+}
+
+/**
+ * Feature revert: MDR-1269.
+ */
+function vesafe_structure_update_7021() {
+  features_revert_module('vesafe_structure');
+}
+
+/**
+ * Feature revert: MDR-1269.
+ */
+function vesafe_structure_update_7022() {
+  features_revert_module('vesafe_structure');
+}
+
+/**
+ * Enable workflow module.
+ */
+function vesafe_structure_update_7023() {
+  features_revert_module('vesafe_structure');
+  module_enable(['vesafe_workflow'], TRUE);
+  cache_clear_all();
+  features_revert_module('vesafe_workflow');
+}
+
+/**
+ * Feature revert: VES-136, MDR-1267.
+ */
+function vesafe_structure_update_7024() {
+  features_revert_module('vesafe_structure');
+}
+
+/**
+ * Feature revert: VES-136.
+ */
+function vesafe_structure_update_7025() {
+  features_revert_module('vesafe_structure');
+}
+
+/**
+ * Enable search and replace module.
+ */
+function vesafe_structure_update_7026() {
+  module_enable(['search_and_replace']);
+}
+
+/**
+ * Re save all moderated content to get a current revision.
+ */
+function vesafe_structure_update_7027() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', ['key_article', 'good_practice'], 'IN');
+  $result = $query->execute();
+  if (isset($result['node'])) {
+    $nids = array_keys($result['node']);
+    foreach ($nids as $nid) {
+      $node = node_load($nid);
+      if ($node->status == 1) {
+        workbench_moderation_moderate($node, 'published');
+      }
+      else {
+        workbench_moderation_moderate($node, 'draft');
+      }
+      node_save($node);
+    }
+  }
+}

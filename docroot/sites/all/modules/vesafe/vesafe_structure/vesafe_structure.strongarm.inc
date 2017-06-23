@@ -14,28 +14,28 @@ function vesafe_structure_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_article';
-  $strongarm->value = 'edit-xmlsitemap';
+  $strongarm->value = 'edit-submission';
   $export['additional_settings__active_tab_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_good_practice';
-  $strongarm->value = 'edit-print';
+  $strongarm->value = 'edit-submission';
   $export['additional_settings__active_tab_good_practice'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_key_article';
-  $strongarm->value = 'edit-print';
+  $strongarm->value = 'edit-submission';
   $export['additional_settings__active_tab_key_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_key_article_theme';
-  $strongarm->value = 'edit-print';
+  $strongarm->value = 'edit-submission';
   $export['additional_settings__active_tab_key_article_theme'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -700,7 +700,8 @@ function vesafe_structure_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_good_practice';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_good_practice'] = $strongarm;
 
@@ -709,7 +710,8 @@ function vesafe_structure_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_key_article';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_key_article'] = $strongarm;
 
@@ -736,35 +738,35 @@ function vesafe_structure_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_article';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['node_preview_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_did_you_know_slide';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['node_preview_did_you_know_slide'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_good_practice';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['node_preview_good_practice'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_key_article';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['node_preview_key_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_key_article_theme';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['node_preview_key_article_theme'] = $strongarm;
 
   $strongarm = new stdClass();
