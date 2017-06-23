@@ -254,9 +254,12 @@ function vesafe_workflow_form_node_form_alter(&$form, $form_state) {
   }
   if (isset($form['#node']->workbench_moderation['current']->state)) {
     $state = $form['#node']->workbench_moderation['current']->state;
-    $form['#validate'][] = 'vesafe_workflow_node_form_validate';
-    $form['options']['vesafe_workflow_list'] = _vesafe_workflow_get_states_list($state);
   }
+  else {
+    $state = 'draft';
+  }
+  $form['#validate'][] = 'vesafe_workflow_node_form_validate';
+  $form['options']['vesafe_workflow_list'] = _vesafe_workflow_get_states_list($state);
 }
 
 /**
