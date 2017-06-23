@@ -378,8 +378,8 @@ function vesafe_workflow_quick_moderation_form($form, &$form_state, $node) {
       ];
       $form['reject'] = [
         '#type' => 'submit',
-        '#value' => 'Reject (send back to reviewer)',
-        '#submit' => ['vesafe_workflow_quick_moderation_approve_form_submit'],
+        '#value' => 'Reject (send back to be reviewed)',
+        '#submit' => ['vesafe_workflow_quick_moderation_reject_form_submit'],
       ];
     }
     elseif (isset($next_approver) && ($is_admin || $is_pm)) {
@@ -428,9 +428,10 @@ function vesafe_workflow_quick_moderation_reject_form_submit(&$form, &$form_stat
   $state = $node->workbench_moderation['current']->state;
   if ($state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED) {
     vesafe_workflow_approve($node, 'rejected');
-    workbench_moderation_moderate($node, OSHA_WORKFLOW_STATE_FINAL_DRAFT);
+    workbench_moderation_moderate($node, OSHA_WORKFLOW_STATE_TO_BE_REVIEWED);
   }
 }
+
 function vesafe_workflow_quick_moderation_approve_form_submit(&$form, &$form_state) {
   $node = $form['#node'];
   vesafe_workflow_approve($node, 'approved');

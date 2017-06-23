@@ -474,9 +474,7 @@ function vesafe_workflow_user_default_permissions() {
   // Exported permission: 'moderate content from to_be_approved to final_draft'.
   $permissions['moderate content from to_be_approved to final_draft'] = array(
     'name' => 'moderate content from to_be_approved to final_draft',
-    'roles' => array(
-      'approver' => 'approver',
-    ),
+    'roles' => array(),
     'module' => 'workbench_moderation',
   );
 
