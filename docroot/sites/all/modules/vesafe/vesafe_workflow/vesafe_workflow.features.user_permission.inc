@@ -704,6 +704,7 @@ function vesafe_workflow_user_default_permissions() {
   $permissions['use text format full_html_minimal'] = array(
     'name' => 'use text format full_html_minimal',
     'roles' => array(
+      'administrator' => 'administrator',
       'approver' => 'approver',
       'editor' => 'editor',
       'project manager' => 'project manager',
