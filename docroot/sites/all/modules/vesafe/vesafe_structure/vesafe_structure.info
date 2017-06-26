@@ -181,6 +181,7 @@ features[variable][] = field_bundle_settings_node__good_practice
 features[variable][] = field_bundle_settings_node__key_article
 features[variable][] = field_bundle_settings_node__key_article_theme
 features[variable][] = field_bundle_settings_node__webform
+features[variable][] = file_entity_file_upload_wizard_skip_scheme
 features[variable][] = language_content_type_article
 features[variable][] = language_content_type_did_you_know_slide
 features[variable][] = language_content_type_good_practice
