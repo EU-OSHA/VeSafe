@@ -242,3 +242,10 @@ function vesafe_structure_update_7027() {
     }
   }
 }
+
+/**
+ * Freature revert: VES-213.
+ */
+function vesafe_structure_update_7028() {
+  features_revert_module(['vesafe_structure']);
+}
