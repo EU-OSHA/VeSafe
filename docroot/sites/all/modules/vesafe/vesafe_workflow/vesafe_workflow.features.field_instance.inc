@@ -15,7 +15,7 @@ function vesafe_workflow_field_default_field_instances() {
     'bundle' => 'user',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 1,
       ),
     ),
     'deleted' => 0,

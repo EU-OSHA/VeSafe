@@ -82,6 +82,32 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'toolbar',
   );
 
+  // Exported permission: 'add content to moderators_group entity collections'.
+  $permissions['add content to moderators_group entity collections'] = array(
+    'name' => 'add content to moderators_group entity collections',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'project manager' => 'project manager',
+    ),
+    'module' => 'entity_collection',
+  );
+
+  // Exported permission: 'administer entity_collection types'.
+  $permissions['administer entity_collection types'] = array(
+    'name' => 'administer entity_collection types',
+    'roles' => array(),
+    'module' => 'entity_collection',
+  );
+
+  // Exported permission: 'administer entity_collections'.
+  $permissions['administer entity_collections'] = array(
+    'name' => 'administer entity_collections',
+    'roles' => array(
+      'project manager' => 'project manager',
+    ),
+    'module' => 'entity_collection',
+  );
+
   // Exported permission: 'advanced migration information'.
   $permissions['advanced migration information'] = array(
     'name' => 'advanced migration information',
@@ -140,6 +166,15 @@ function vesafe_workflow_user_default_permissions() {
       'project manager' => 'project manager',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'create moderators_group entity collections'.
+  $permissions['create moderators_group entity collections'] = array(
+    'name' => 'create moderators_group entity collections',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'entity_collection',
   );
 
   // Exported permission: 'create url aliases'.
@@ -219,6 +254,15 @@ function vesafe_workflow_user_default_permissions() {
     'name' => 'delete any key_article content',
     'roles' => array(),
     'module' => 'node',
+  );
+
+  // Exported permission: 'delete moderators_group entity collections'.
+  $permissions['delete moderators_group entity collections'] = array(
+    'name' => 'delete moderators_group entity collections',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'entity_collection',
   );
 
   // Exported permission: 'delete own good_practice content'.
@@ -321,6 +365,15 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit moderators_group entity collections'.
+  $permissions['edit moderators_group entity collections'] = array(
+    'name' => 'edit moderators_group entity collections',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'entity_collection',
+  );
+
   // Exported permission: 'edit node approvers'.
   $permissions['edit node approvers'] = array(
     'name' => 'edit node approvers',
@@ -353,6 +406,16 @@ function vesafe_workflow_user_default_permissions() {
       'reviewer' => 'reviewer',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'manage content in moderators_group entity collections'.
+  $permissions['manage content in moderators_group entity collections'] = array(
+    'name' => 'manage content in moderators_group entity collections',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'project manager' => 'project manager',
+    ),
+    'module' => 'entity_collection',
   );
 
   // Exported permission: 'migration information'.
@@ -745,6 +808,16 @@ function vesafe_workflow_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: 'view moderators_group entity collections'.
+  $permissions['view moderators_group entity collections'] = array(
+    'name' => 'view moderators_group entity collections',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'project manager' => 'project manager',
+    ),
+    'module' => 'entity_collection',
   );
 
   // Exported permission: 'view own files'.
