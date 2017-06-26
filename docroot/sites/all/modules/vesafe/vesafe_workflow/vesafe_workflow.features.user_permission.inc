@@ -471,13 +471,6 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'workbench_moderation',
   );
 
-  // Exported permission: 'moderate content from to_be_approved to final_draft'.
-  $permissions['moderate content from to_be_approved to final_draft'] = array(
-    'name' => 'moderate content from to_be_approved to final_draft',
-    'roles' => array(),
-    'module' => 'workbench_moderation',
-  );
-
   // Exported permission: 'moderate content from to_be_approved to ready_to_publish'.
   $permissions['moderate content from to_be_approved to ready_to_publish'] = array(
     'name' => 'moderate content from to_be_approved to ready_to_publish',
@@ -566,13 +559,6 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'workbench_moderation',
   );
 
-  // Exported permission: 'moderate good_practice state from to_be_approved to final_draft'.
-  $permissions['moderate good_practice state from to_be_approved to final_draft'] = array(
-    'name' => 'moderate good_practice state from to_be_approved to final_draft',
-    'roles' => array(),
-    'module' => 'workbench_moderation',
-  );
-
   // Exported permission: 'moderate good_practice state from to_be_approved to ready_to_publish'.
   $permissions['moderate good_practice state from to_be_approved to ready_to_publish'] = array(
     'name' => 'moderate good_practice state from to_be_approved to ready_to_publish',
@@ -655,13 +641,6 @@ function vesafe_workflow_user_default_permissions() {
   // Exported permission: 'moderate key_article state from ready_to_publish to published'.
   $permissions['moderate key_article state from ready_to_publish to published'] = array(
     'name' => 'moderate key_article state from ready_to_publish to published',
-    'roles' => array(),
-    'module' => 'workbench_moderation',
-  );
-
-  // Exported permission: 'moderate key_article state from to_be_approved to final_draft'.
-  $permissions['moderate key_article state from to_be_approved to final_draft'] = array(
-    'name' => 'moderate key_article state from to_be_approved to final_draft',
     'roles' => array(),
     'module' => 'workbench_moderation',
   );

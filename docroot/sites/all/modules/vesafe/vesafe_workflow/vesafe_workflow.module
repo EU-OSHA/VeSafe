@@ -219,6 +219,8 @@ function vesafe_workflow_views_query_alter(&$view, &$query) {
     if (isset($query->table_queue['workbench_moderation_node_history']['join']->type)) {
       $query->table_queue['workbench_moderation_node_history']['join']->type = 'LEFT';
     }
+  }
+  if (in_array($view->name, ['Content', 'osh_workflow_admin'])) {
     if (isset($query->table_queue['node_revision'])) {
       $query->table_queue['node_revision']['join']->field = 'nid';
       $query->table_queue['node_revision']['join']->left_field = 'nid';
@@ -319,7 +321,7 @@ function _vesafe_workflow_get_states_list($active_state) {
     'final_draft' => 'Final Draft',
     'needs_review' => 'To be reviewed',
     'to_be_approved' => 'To be approved',
-    'ready_to_publish' => 'To be published',
+    'ready_to_publish' => 'Ready to publish',
     'published' => 'Published',
   ];
 
