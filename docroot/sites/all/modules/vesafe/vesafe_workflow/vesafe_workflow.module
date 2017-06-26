@@ -228,6 +228,22 @@ function vesafe_workflow_views_query_alter(&$view, &$query) {
   }
 }
 
+/**
+ * Implements hook_mail_alter().
+ */
+function vesafe_workflow_mail_alter(&$message) {
+  if (strpos($message['key'], 'vesafe_workflow')) {
+    // Block mails that are send for vesafe workflow if user's preference.
+    $user = user_load_by_mail($message['to']);
+    $send_notif = variable_get('vesafe_workflow_send_mail', TRUE);
+    // When using rereoute mail, the to address is not of an user.
+    $usr_receive_notif = empty($user) || !empty($user->field_cmw_mail_notifications[LANGUAGE_NONE][0]['value']);
+    if (!$send_notif || !$usr_receive_notif) {
+      $message['send'] = FALSE;
+    }
+  }
+}
+
 
 function vesafe_workflow_workbench_moderation_transition($node, $old, $new) {
   $from_fdraft_to_review = $old == OSHA_WORKFLOW_STATE_FINAL_DRAFT && $new == OSHA_WORKFLOW_STATE_TO_BE_REVIEWED;
