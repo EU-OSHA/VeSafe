@@ -277,6 +277,10 @@ function vesafe_structure_page_build(&$page) {
           array('type' => 'inline', 'scope' => 'footer', 'weight' => 4));
       }
     }
+    else {
+      drupal_add_js("_paq.push(['setCustomVariable',1,'Language','English','page']);paq.push(['trackPageView']);",
+        array('type' => 'inline', 'scope' => 'footer', 'weight' => 4));
+    }
     drupal_add_js(
       drupal_get_path('module', 'vesafe_structure') . '/js/vesafe_gtranslate.js',
       array('scope' => 'footer', 'weight' => 5)
