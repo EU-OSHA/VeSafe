@@ -156,6 +156,7 @@ features[workbench_moderation_states][] = published
 features[workbench_moderation_states][] = ready_to_publish
 features[workbench_moderation_states][] = to_be_approved
 features[workbench_moderation_transitions][] = draft:final_draft
+features[workbench_moderation_transitions][] = draft:needs_review
 features[workbench_moderation_transitions][] = draft:published
 features[workbench_moderation_transitions][] = draft:ready_to_publish
 features[workbench_moderation_transitions][] = final_draft:draft

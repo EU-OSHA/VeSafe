@@ -279,6 +279,7 @@ function vesafe_workflow_form_node_form_alter(&$form, $form_state) {
   $form['#validate'][] = 'vesafe_workflow_node_form_validate';
   $form['options']['vesafe_workflow_list'] = _vesafe_workflow_get_states_list($state);
   $form['revision_information']['vesafe_workflow_list'] = _vesafe_workflow_get_states_list($state);
+  $form['revision_information']['#title'] = t('Publishing options');
 }
 
 /**
