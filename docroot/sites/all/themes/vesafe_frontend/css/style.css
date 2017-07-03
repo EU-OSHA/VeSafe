@@ -6566,21 +6566,26 @@ header {
 .top-header-container .header-logo .logo {
   margin-top: 0px;
   margin-bottom: 0px;
+  border-right: 2px solid #323a93;
+  height: 95px;
+  padding-right: 10px;
 }
 .top-header-container .header-logo .eu-logo {
-  bottom: 0px;
-  position: absolute;
-  margin-left: 15px;
+  float: left;
+  margin-left: 20px;
+  max-width: 35%;
+  margin-right: 15px;
+  margin-top: 10px;
 }
 .top-header-container .header-sitename {
+  display: inline-block;
   border-left: 2px solid #323a93;
+  padding-left: 15px;
 }
 .top-header-container .header-sitename img {
   min-width: inherit;
   width: inherit;
   height: 95px;
-  margin: 0 auto;
-  margin-top: 5px;
 }
 .top-header-container .header-blocks {
   max-width: 273px;
@@ -6804,11 +6809,47 @@ header {
   }
 }
 @media only screen and (max-width: 991px) {
+  .top-header-container {
+    width: 100%;
+  }
+  .top-header-container .header-logo .logo {
+    height: 70px;
+  }
   .top-header-container .header-logo .logo img {
-    max-width: 200px;
+    max-width: 169px;
   }
   .top-header-container .header-sitename {
     max-width: 170px;
+  }
+  .top-header-container .header-sitename img {
+    height: 70px;
+  }
+}
+@media (min-width: 767px) and (max-width: 800px) {
+  .top-header-container .header-logo {
+    max-width: 491px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .top-header-container .header-logo {
+    max-width: 100%;
+  }
+  .top-header-container .header-logo .eu-logo {
+    max-width: 195px;
+  }
+}
+@media only screen and (max-width: 532px) {
+  .top-header-container .header-logo {
+    max-width: 100%;
+  }
+  .top-header-container .header-logo .eu-logo {
+    clear: both;
+    width: 161px;
+  }
+  .top-header-container .header-sitename {
+    border: none;
+    position: absolute;
+    right: 15px;
   }
 }
 /*Sticky menu
@@ -6827,13 +6868,17 @@ header {
   }
   .sticky-menu .header-logo {
     margin-top: 0px;
-    max-width: 250px;
+    max-width: 405px;
+    padding-right: 0px;
+  }
+  .sticky-menu .header-logo .logo {
+    height: 51px;
   }
   .sticky-menu .header-logo .logo img {
     width: 150px;
   }
   .sticky-menu .header-logo .eu-logo {
-    width: 50px;
+    max-width: 135px;
   }
   .sticky-menu .header-sitename {
     max-width: 80px;
@@ -6844,8 +6889,8 @@ header {
     margin: 0px;
   }
   .sticky-menu .header-blocks {
-    max-width: 350px;
-    min-width: 350px;
+    max-width: 340px;
+    min-width: 340px;
     position: relative;
     margin-top: 18px;
   }
@@ -6859,11 +6904,10 @@ header {
   }
   .sticky-menu .header-blocks #block-vesafe-search-search-vesafe {
     display: inline-block;
-    max-width: 225px;
+    max-width: 205px;
     margin-left: 10px;
     position: absolute;
     top: -12px;
-    right: 0px;
   }
 }
 /*end sticky menu*/
@@ -9075,20 +9119,6 @@ footer #scroll-top span {
   }
   .top-header-container {
     padding-top: 0px;
-  }
-  .top-header-container .header-logo .logo img {
-    width: 160px;
-  }
-  .top-header-container .header-logo .eu-logo {
-    width: 40px;
-  }
-  .top-header-container .header-sitename {
-    max-width: inherit;
-    border: none;
-  }
-  .top-header-container .header-sitename img {
-    height: 66px;
-    margin-right: 0px;
   }
   .top-header-container .header-blocks {
     min-width: inherit;

@@ -298,7 +298,7 @@ function vesafe_search_form_gp($form, $form_state) {
         '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
         '#attributes' => ['class' => ['btn-default']],
       ],
-    ],
+    ]
   ];
   if (!empty($_GET['f'])) {
     // Preserve facet values.
