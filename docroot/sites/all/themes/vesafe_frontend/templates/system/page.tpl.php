@@ -92,11 +92,10 @@
             <div class="header-sitename">
               <?php if (!empty($site_name)): ?>
                 <a class="sitename" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-                <img class="img-responsive" src="/sites/all/themes/vesafe_frontend/images/icons/logo-vesafe.png" alt="Vesafe"/></a>
+                    <img class="img-responsive" src="<?php print $GLOBALS['base_url'];?>/sites/all/themes/vesafe_frontend/images/icons/logo-vesafe.png" alt="Vesafe"/></a>
               <?php endif; ?>
             </div>
           </div>
-          
           <div class="header-blocks col-xs-12 col-sm-3 col-md-4">
             <?php print render($page['header_block']); ?>
           </div>
