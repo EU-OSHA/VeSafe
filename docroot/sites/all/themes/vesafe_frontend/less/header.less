@@ -49,21 +49,30 @@ header{
 		.logo{
 			margin-top: 0px;
 			margin-bottom: 0px;
+			border-right: 2px solid @color-primary;
+			height: 95px;
+			padding-right: 10px;
 		}
 		.eu-logo{
-			bottom: 0px;
-		    position: absolute;
-		    margin-left: 15px;
+			float: left;
+			//bottom: 0px;
+		    //position: absolute;
+		    margin-left: 20px;
+		    max-width: 35%;
+		    margin-right: 15px;
+		    margin-top: 10px;
 		}
 	}
 	.header-sitename{
+		display: inline-block;
 		border-left: 2px solid @color-primary;
+		padding-left: 15px;
 		img{
 			min-width: inherit;
 			width: inherit;
 		    height: 95px;
-		    margin: 0 auto;
-		    margin-top: 5px;
+		    //margin: 0 auto;
+		    //margin-top: 5px;
 		}
 	}
 	.header-blocks{
@@ -306,15 +315,70 @@ header{
 
 @media only screen and (max-width : 991px){
 	.top-header-container{
+		width: 100%;
 		.header-logo{
 			.logo{
+				height: 70px;
 				img{
-					max-width: 200px;
+					max-width: 169px;
 				}
 			}
 		}
 		.header-sitename{
 			max-width: 170px;
+			img{
+				height: 70px;
+			}
+		}
+	}
+}
+
+@media (min-width : 767px) and (max-width : 800px){
+	.top-header-container{
+		.header-logo{
+			max-width: 491px;
+		}
+	}
+}
+
+@media only screen and (max-width : 767px){
+	.top-header-container{
+		.header-logo{
+			max-width: 100%;
+			.logo{
+				img{
+				}
+			}
+			.eu-logo{
+				max-width: 195px;
+			}
+		}
+		.header-sitename{
+			img{
+			}
+		}
+	}
+}
+
+@media only screen and (max-width : 532px){
+	.top-header-container{
+		.header-logo{
+			max-width: 100%;
+			.logo{
+				img{
+				}
+			}
+			.eu-logo{
+				clear: both;
+				width: 161px;
+			}
+		}
+		.header-sitename{
+			border: none;
+			position: absolute;
+			right: 15px;
+			img{
+			}
 		}
 	}
 }
@@ -332,18 +396,20 @@ header{
 		top: 0px;
 		.top-header-container {
 		    padding-top: 5px;
-		    padding-bottom: 5px;
+		    padding-bottom: 5px;	
 		}
 		.header-logo{
 			margin-top: 0px;
-			max-width: 250px;
+			max-width: 405px;
+			padding-right: 0px;
 			.logo{
+				height: 51px;
 				img{
 					width: 150px;
 				}
 			}
 			.eu-logo{
-				width: 50px;
+				max-width: 135px;
 			}
 		}
 		.header-sitename{
@@ -355,8 +421,8 @@ header{
 			}
 		}
 		.header-blocks{
-			max-width: 350px;
-			min-width: 350px;
+			max-width: 340px;
+			min-width: 340px;
 			position: relative;
 			margin-top: 18px;
 			#block-text-resize-0,
@@ -369,11 +435,11 @@ header{
 			}
 			#block-vesafe-search-search-vesafe{
 				display: inline-block;
-				max-width: 225px;
+				max-width: 205px;
 				margin-left: 10px;
 				position: absolute;
 				top: -12px;
-				right: 0px;
+				//right: 0px;
 			}
 		}
 	}
