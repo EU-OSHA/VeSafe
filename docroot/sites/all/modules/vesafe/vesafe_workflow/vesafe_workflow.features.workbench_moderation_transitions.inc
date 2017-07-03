@@ -14,6 +14,11 @@ function vesafe_workflow_workbench_moderation_export_transitions() {
       'to_name' => 'final_draft',
       'name' => 'Send to final draft',
     ),
+    'draft:needs_review' => array(
+      'from_name' => 'draft',
+      'to_name' => 'needs_review',
+      'name' => 'Submit for Review',
+    ),
     'draft:published' => array(
       'from_name' => 'draft',
       'to_name' => 'published',

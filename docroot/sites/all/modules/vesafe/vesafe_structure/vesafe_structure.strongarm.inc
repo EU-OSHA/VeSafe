@@ -1104,6 +1104,12 @@ function vesafe_structure_strongarm() {
   $strongarm->name = 'search_and_replace_fields';
   $strongarm->value = array(
     'body' => 'body',
+    'field_gp_getting_started' => 'field_gp_getting_started',
+    'field_gp_what_is_it' => 'field_gp_what_is_it',
+    'field_gp_what_is_the_benefit' => 'field_gp_what_is_the_benefit',
+    'field_gp_who_is_for' => 'field_gp_who_is_for',
+    'field_summary' => 'field_summary',
+    'field_subtitle' => 'field_subtitle',
   );
   $export['search_and_replace_fields'] = $strongarm;
 
