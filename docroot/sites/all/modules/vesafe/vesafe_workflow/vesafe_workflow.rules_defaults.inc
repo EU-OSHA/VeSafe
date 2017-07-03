@@ -84,7 +84,7 @@ function vesafe_workflow_default_rules_configuration() {
         { "mail" : {
             "to" : [ "user:mail" ],
             "subject" : "[Vesafe website] New content needs your approval ",
-            "message" : "\\u003Cp\\u003EDear Approver,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThere is a new content to be reviewed by you: \\u003Ca href=\\u0022[node:edit-url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E. You can access also to the \\u003Ca href=\\u0022[site:url]\\/admin\\/content?state=to_be_approved\\u0022\\u003Elist of items\\u003C\\/a\\u003E that need to review.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThank you,\\u003C\\/p\\u003E",
+            "message" : "\\u003Cp\\u003EDear Approver,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThere is a new content to be reviewed by you: \\u003Ca href=\\u0022[node:edit-url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E. You can access also to the \\u003Ca href=\\u0022[site:url]\\/admin\\/content\\/approve\\u0022\\u003Elist of items\\u003C\\/a\\u003E that need to review.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThank you,\\u003C\\/p\\u003E",
             "language" : [ "" ]
           }
         }

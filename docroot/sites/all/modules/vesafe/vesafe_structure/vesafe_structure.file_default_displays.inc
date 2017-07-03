@@ -50,7 +50,7 @@ function vesafe_structure_file_default_displays() {
   $file_display->weight = -45;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'image_style' => 'medium',
+    'image_style' => 'media_thumbnail',
     'image_link' => 'file',
   );
   $export['image__preview__file_field_image'] = $file_display;

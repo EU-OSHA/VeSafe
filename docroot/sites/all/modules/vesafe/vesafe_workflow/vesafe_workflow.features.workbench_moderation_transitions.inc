@@ -14,6 +14,11 @@ function vesafe_workflow_workbench_moderation_export_transitions() {
       'to_name' => 'final_draft',
       'name' => 'Send to final draft',
     ),
+    'draft:needs_review' => array(
+      'from_name' => 'draft',
+      'to_name' => 'needs_review',
+      'name' => 'Submit for Review',
+    ),
     'draft:published' => array(
       'from_name' => 'draft',
       'to_name' => 'published',
@@ -64,10 +69,10 @@ function vesafe_workflow_workbench_moderation_export_transitions() {
       'to_name' => 'published',
       'name' => 'Publish',
     ),
-    'to_be_approved:final_draft' => array(
+    'to_be_approved:needs_review' => array(
       'from_name' => 'to_be_approved',
-      'to_name' => 'final_draft',
-      'name' => 'Send back to final draft',
+      'to_name' => 'needs_review',
+      'name' => 'Send back to needs review',
     ),
     'to_be_approved:ready_to_publish' => array(
       'from_name' => 'to_be_approved',

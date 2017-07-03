@@ -193,6 +193,7 @@ function vesafe_structure_update_7022() {
  */
 function vesafe_structure_update_7023() {
   features_revert_module('vesafe_structure');
+  cache_clear_all();
   module_enable(['vesafe_workflow'], TRUE);
   cache_clear_all();
   features_revert_module('vesafe_workflow');
@@ -240,4 +241,13 @@ function vesafe_structure_update_7027() {
       node_save($node);
     }
   }
+}
+
+/**
+ * Freature revert: VES-213.
+ */
+function vesafe_structure_update_7028() {
+  features_revert_module(['vesafe_structure']);
+  workbench_moderation_transition_delete('to_be_approved:needs_review');
+  workbench_moderation_transition_delete('needs_review:draft');
 }

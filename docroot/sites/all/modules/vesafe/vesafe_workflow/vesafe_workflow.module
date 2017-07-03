@@ -219,9 +219,27 @@ function vesafe_workflow_views_query_alter(&$view, &$query) {
     if (isset($query->table_queue['workbench_moderation_node_history']['join']->type)) {
       $query->table_queue['workbench_moderation_node_history']['join']->type = 'LEFT';
     }
+  }
+  if (in_array($view->name, ['Content', 'osh_workflow_admin'])) {
     if (isset($query->table_queue['node_revision'])) {
       $query->table_queue['node_revision']['join']->field = 'nid';
       $query->table_queue['node_revision']['join']->left_field = 'nid';
+    }
+  }
+}
+
+/**
+ * Implements hook_mail_alter().
+ */
+function vesafe_workflow_mail_alter(&$message) {
+  if (strpos($message['key'], 'vesafe_workflow')) {
+    // Block mails that are send for vesafe workflow if user's preference.
+    $user = user_load_by_mail($message['to']);
+    $send_notif = variable_get('vesafe_workflow_send_mail', TRUE);
+    // When using rereoute mail, the to address is not of an user.
+    $usr_receive_notif = empty($user) || !empty($user->field_cmw_mail_notifications[LANGUAGE_NONE][0]['value']);
+    if (!$send_notif || !$usr_receive_notif) {
+      $message['send'] = FALSE;
     }
   }
 }
@@ -249,14 +267,19 @@ function vesafe_workflow_workbench_moderation_transition($node, $old, $new) {
  */
 function vesafe_workflow_form_node_form_alter(&$form, $form_state) {
   global $user;
-  if (!workbench_moderation_node_moderated($form['#node'])) {
+  if (!workbench_moderation_node_type_moderated($form['#node']->type)) {
     return;
   }
   if (isset($form['#node']->workbench_moderation['current']->state)) {
     $state = $form['#node']->workbench_moderation['current']->state;
-    $form['#validate'][] = 'vesafe_workflow_node_form_validate';
-    $form['options']['vesafe_workflow_list'] = _vesafe_workflow_get_states_list($state);
   }
+  else {
+    $state = 'draft';
+  }
+  $form['#validate'][] = 'vesafe_workflow_node_form_validate';
+  $form['options']['vesafe_workflow_list'] = _vesafe_workflow_get_states_list($state);
+  $form['revision_information']['vesafe_workflow_list'] = _vesafe_workflow_get_states_list($state);
+  $form['revision_information']['#title'] = t('Publishing options');
 }
 
 /**
@@ -284,14 +307,6 @@ function vesafe_workflow_block_view($delta = '') {
     if (!$is_node || !$is_moderated) {
       return NULL;
     }
-    $states = [
-      'draft' => 'Draft created',
-      'final_draft' => 'Final Draft',
-      'needs_review' => 'To be reviewed',
-      'to_be_approved' => 'To be approved',
-      'ready_to_publish' => 'To be published',
-      'published' => 'Published',
-    ];
 
     $state = $node->workbench_moderation['current']->state;
 
@@ -316,7 +331,7 @@ function _vesafe_workflow_get_states_list($active_state) {
     'final_draft' => 'Final Draft',
     'needs_review' => 'To be reviewed',
     'to_be_approved' => 'To be approved',
-    'ready_to_publish' => 'To be published',
+    'ready_to_publish' => 'Ready to publish',
     'published' => 'Published',
   ];
 
@@ -375,8 +390,8 @@ function vesafe_workflow_quick_moderation_form($form, &$form_state, $node) {
       ];
       $form['reject'] = [
         '#type' => 'submit',
-        '#value' => 'Reject (send back to reviewer)',
-        '#submit' => ['vesafe_workflow_quick_moderation_approve_form_submit'],
+        '#value' => 'Reject (send back to be reviewed)',
+        '#submit' => ['vesafe_workflow_quick_moderation_reject_form_submit'],
       ];
     }
     elseif (isset($next_approver) && ($is_admin || $is_pm)) {
@@ -425,9 +440,10 @@ function vesafe_workflow_quick_moderation_reject_form_submit(&$form, &$form_stat
   $state = $node->workbench_moderation['current']->state;
   if ($state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED) {
     vesafe_workflow_approve($node, 'rejected');
-    workbench_moderation_moderate($node, OSHA_WORKFLOW_STATE_FINAL_DRAFT);
+    workbench_moderation_moderate($node, OSHA_WORKFLOW_STATE_TO_BE_REVIEWED);
   }
 }
+
 function vesafe_workflow_quick_moderation_approve_form_submit(&$form, &$form_state) {
   $node = $form['#node'];
   vesafe_workflow_approve($node, 'approved');
