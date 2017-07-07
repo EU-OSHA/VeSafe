@@ -73,7 +73,6 @@ Disallow: /vehicle-safety/admin/
 Disallow: /vehicle-safety/comment/reply/
 Disallow: /vehicle-safety/filter/tips/
 Disallow: /vehicle-safety/node/add/
-Disallow: /vehicle-safety/search/
 Disallow: /vehicle-safety/user/register/
 Disallow: /vehicle-safety/user/password/
 Disallow: /vehicle-safety/user/login/
@@ -83,7 +82,6 @@ Disallow: /vehicle-safety/?q=admin/
 Disallow: /vehicle-safety/?q=comment/reply/
 Disallow: /vehicle-safety/?q=filter/tips/
 Disallow: /vehicle-safety/?q=node/add/
-Disallow: /vehicle-safety/?q=search/
 Disallow: /vehicle-safety/?q=user/password/
 Disallow: /vehicle-safety/?q=user/register/
 Disallow: /vehicle-safety/?q=user/login/
