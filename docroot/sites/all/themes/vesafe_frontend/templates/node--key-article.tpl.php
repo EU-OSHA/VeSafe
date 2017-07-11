@@ -78,7 +78,8 @@
 
 <div class="back-arrow-container container">
     <div class="back-arrow-wrapper">
-        <a href="/themes" class="back-arrow">Return to list</a>
+        <a href="#" onclick="vesafeBackURL('/themes','<?php print $GLOBALS['base_url'];?>');"
+           class="back-arrow"><?php print t('Return to list');?></a>
     </div>
 </div>
 <!--page image block-->

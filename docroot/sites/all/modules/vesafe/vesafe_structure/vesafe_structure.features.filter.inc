@@ -40,7 +40,7 @@ function vesafe_structure_filter_default_formats() {
         'status' => 1,
         'settings' => array(
           'local_paths' => '',
-          'protocol_style' => 'path',
+          'protocol_style' => 'full',
         ),
       ),
     ),
@@ -76,7 +76,7 @@ function vesafe_structure_filter_default_formats() {
         'status' => 1,
         'settings' => array(
           'local_paths' => '',
-          'protocol_style' => 'path',
+          'protocol_style' => 'full',
         ),
       ),
     ),

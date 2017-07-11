@@ -303,12 +303,12 @@ jQuery(document).ready(function () {
 	}
 });
 
-function vesafeBackURL(referrer){
-	referrer_found = document.referrer.indexOf(referrer);
-    if(referrer_found!=-1){
+function vesafeBackURL(referrer, base_url){
+	var referrer_found = document.referrer.indexOf(base_url);
+    if(referrer_found!=-1 && document.referrer.indexOf('?')!=-1){
     	document.location.href = document.referrer;
 	}else{
-        document.location.href = referrer;
+        document.location.href = base_url + referrer;
 	}
-	return FALSE;
+    return;
 }

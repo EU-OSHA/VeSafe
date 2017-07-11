@@ -276,7 +276,7 @@ function _vesafe_get_search_query($parameter = 'search_api_views_fulltext') {
  */
 function vesafe_search_form_gp($form, $form_state) {
   $form = [
-    '#action' => '/good-practices',
+    '#action' => url('good-practices'),
     '#method' => 'get',
     '#always_process' => TRUE,
     '#token' => FALSE,
@@ -298,7 +298,7 @@ function vesafe_search_form_gp($form, $form_state) {
         '#value' => t('<span class="glyphicon glyphicon-search"></span>'),
         '#attributes' => ['class' => ['btn-default']],
       ],
-    ],
+    ]
   ];
   if (!empty($_GET['f'])) {
     // Preserve facet values.
@@ -325,7 +325,7 @@ function vesafe_search_form_gp($form, $form_state) {
  */
 function vesafe_search_form($form, $form_state) {
   $form = [
-    '#action' => '/search',
+    '#action' => url('search'),
     '#method' => 'get',
     '#always_process' => TRUE,
     '#token' => FALSE,
@@ -373,7 +373,7 @@ function vesafe_search_form($form, $form_state) {
  */
 function vesafe_search_form_sidebar($form, $form_state) {
   $form = [
-    '#action' => '/search',
+    '#action' => url('search'),
     '#method' => 'get',
     '#always_process' => TRUE,
     '#token' => FALSE,
