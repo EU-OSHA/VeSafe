@@ -59,3 +59,7 @@ function vesafe_pages_1_update_7008() {
   module_enable(['no_autocomplete']);
   variable_set('no_autocomplete_login_form', 1);
 }
+
+function vesafe_pages_1_update_7009() {
+  features_revert_module('vesafe_pages_1');
+}

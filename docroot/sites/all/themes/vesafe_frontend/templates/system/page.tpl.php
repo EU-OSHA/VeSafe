@@ -87,7 +87,9 @@
               </a>
             <?php endif; ?>
             <?php if ($eu_logo): ?>
+              <a href="http://ec.europa.eu/social/main.jsp?langId=en&catId=656" target="_blank" title="<?php print t('European commission'); ?>">
               <img class="eu-logo" src="<?php print $eu_logo; ?>" alt="<?php print t('European Union'); ?>" />
+              </a>
             <?php endif; ?>
             <div class="header-sitename">
               <?php if (!empty($site_name)): ?>
