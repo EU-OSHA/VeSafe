@@ -310,6 +310,5 @@ function vesafeBackURL(referrer, base_url){
 	}else{
         document.location.href = base_url + referrer;
 	}
-    document.location.href = base_url;
     return;
 }
