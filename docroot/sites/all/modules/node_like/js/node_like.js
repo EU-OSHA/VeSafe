@@ -1,24 +1,28 @@
 jQuery(document).ready(function () {
-  var likedNodes, cookie;
+  var likedNodes = '', cookie;
+
   if (document.cookie.indexOf('liked-nodes') != -1) {
+    getLikedNodes();  
+  }    
+  var links = jQuery('a.node-like-link');
+  debugger;
+  var href = '', nodeId= '';
+  for (var i = 0; i < links.size(); i++) {
+    href = jQuery(links[i]).attr('href');
+    nodeId = href.replace('/node/','');
+    nodeId = nodeId.replace('/like', '');
 
-    getLikedNodes();
-    var links = jQuery('a.node-like-link');
-    var href = '';
-    for (var i = 0; i < links.size(); i++) {
-      href = jQuery(links[i]).attr('href');
-      href = href.replace('/node/','');
-      href = href.replace('/like', '');
-
-      if (likedNodes.indexOf(href) > -1) {
-        jQuery(links[i]).attr('title', 'Already liked');
-        jQuery(links[i]).attr('data-toggle', 'tooltip');
-        jQuery(links[i]).hover(function(){jQuery(this).tooltip('show');});
-        jQuery(links[i]).attr('onclick', 'return false');
-        jQuery(links[i]).attr('href', '#');
-        jQuery(links[i]).addClass('node-liked-link');
-        jQuery(links[i]).removeClass('node-like-link');
-      }
+    if (likedNodes.indexOf(nodeId) > -1) {
+      jQuery(links[i]).attr('title', 'Already liked');
+      jQuery(links[i]).attr('data-toggle', 'tooltip');
+      jQuery(links[i]).hover(function(){jQuery(this).tooltip('show');});
+      jQuery(links[i]).attr('onclick', 'return false');
+      jQuery(links[i]).attr('href', '#');
+      jQuery(links[i]).addClass('node-liked-link');
+      jQuery(links[i]).removeClass('node-like-link');
+    } else {
+      href = window.location.pathname.substr(0, window.location.pathname.indexOf('/good-practices')) + href;
+      jQuery(links[i]).attr('href', href);
     }
   }
 
