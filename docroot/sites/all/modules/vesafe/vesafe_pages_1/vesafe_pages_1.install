@@ -73,3 +73,7 @@ function vesafe_pages_1_update_7009() {
 function vesafe_pages_1_update_7010() {
   features_revert_module('vesafe_pages_1');
 }
+
+function vesafe_pages_1_update_7011() {
+	features_revert_module('vesafe_pages_1');
+}
