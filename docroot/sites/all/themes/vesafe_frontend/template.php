@@ -34,13 +34,13 @@ function vesafe_frontend_process_html_tag(&$variables) {
 }
 
 function vesafe_frontend_preprocess_page(&$vars) {
-  global $language;
+  global $language, $base_url;
   if (drupal_is_front_page()) {
     unset($vars['page']['content']['system_main']['default_message']);
   }
-  $vars['logo'] = '/sites/all/themes/vesafe_frontend/images/eu-osha-logo/EU-OSHA-'.($language->language).'.png';
-  $vars['eu_logo'] = '/sites/all/themes/vesafe_frontend/images/europeLogo.png';
-  $vars['vesafe_logo'] = '/sites/all/themes/vesafe_frontend/images/vesafeLogo.gif';
+  $vars['logo'] = $base_url . '/sites/all/themes/vesafe_frontend/images/eu-osha-logo/EU-OSHA-'.($language->language).'.png';
+  $vars['eu_logo'] = $base_url . '/sites/all/themes/vesafe_frontend/images/europeLogo.png';
+  $vars['vesafe_logo'] = $base_url . '/sites/all/themes/vesafe_frontend/images/vesafeLogo.gif';
 
   // Set info status for contact confirmation submission
   if (!empty($vars['page']['contact_form_widget']['webform_client-block-43'])) {
