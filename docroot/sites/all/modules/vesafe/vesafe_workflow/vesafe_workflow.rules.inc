@@ -20,6 +20,21 @@ function vesafe_workflow_rules_event_info() {
       ),
       'access callback' => 'rules_node_integration_access',
     ),
+    'notify_pm_review' => array(
+      'label' => t('When system wants to notify PM that content was not reviewed in a while'),
+      'group' => t('Vesafe workflow'),
+      'variables' => array(
+        'content_type' => array(
+          'type' => 'text',
+          'label' => t('Content type label'),
+        ),
+        'content_type_key' => array(
+          'type' => 'text',
+          'label' => t('Content type key'),
+        ),
+      ),
+      'access callback' => 'rules_node_integration_access',
+    ),
   );
   return $items;
 }

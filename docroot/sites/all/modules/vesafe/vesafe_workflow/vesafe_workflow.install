@@ -72,12 +72,61 @@ function vesafe_workflow_schema() {
     ),
   );
 
+  $schema['vesafe_workflow_sections_review'] = array(
+    'description' => 'Base table for section review messages.',
+    'fields' => array(
+      'srid' => array(
+        'description' => 'Identifier',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'section' => array(
+        'description' => 'Section reviewed.',
+        'type' => 'varchar',
+        'length' => '80',
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'description' => 'User that made the review.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'created' => array(
+        'description' => 'Changed timestamp.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'message' => array(
+        'description' => 'Message left by the reviewer.',
+        'type' => 'text',
+        'size' => 'medium',
+      ),
+    ),
+    'primary key' => array('srid'),
+    'indexes' => array(
+      'osha_workflow_sr_uid' => array('uid'),
+    ),
+    'foreign keys' => array(
+      'uid' => array(
+        'table' => 'users',
+        'columns' => array('uid' => 'uid'),
+      ),
+    ),
+  );
+
   return $schema;
 }
 
 function vesafe_workflow_install() {
   if (!db_table_exists('osha_workflow_node_approval')) {
     db_create_table('osha_workflow_node_approval', vesafe_workflow_schema()['osha_workflow_node_approval']);
+  }
+
+  if (!db_table_exists('vesafe_workflow_sections_review')) {
+    db_create_table('vesafe_workflow_sections_review', vesafe_workflow_schema()['vesafe_workflow_sections_review']);
   }
 }
 
@@ -88,4 +137,14 @@ function vesafe_workflow_update_7001() {
   if (!db_table_exists('osha_workflow_node_approval')) {
     db_create_table('osha_workflow_node_approval', vesafe_workflow_schema()['osha_workflow_node_approval']);
   }
+}
+
+/**
+ * Create reviews table.
+ */
+function vesafe_workflow_update_7002() {
+  if (!db_table_exists('vesafe_workflow_sections_review')) {
+    db_create_table('vesafe_workflow_sections_review', vesafe_workflow_schema()['vesafe_workflow_sections_review']);
+  }
+  features_revert_module('vesafe_workflow');
 }

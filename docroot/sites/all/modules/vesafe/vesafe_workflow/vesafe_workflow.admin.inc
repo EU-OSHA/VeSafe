@@ -217,3 +217,187 @@ function vesafe_workflow_node_approval_form_submit($form, $form_state) {
   }
   vesafe_workflow_set_node_approvers($node->nid, $users);
 }
+
+function vesafe_workflow_workbench_project_managers($type = NULL) {
+  $types = ['good_practice', 'key_article'];
+  if (empty($type)) {
+    $rows = [];
+    $output = '';
+    $pms = vesafe_workflow_users_get_users_from_role(OSHA_WORKFLOW_ROLE_PM);
+    if (empty($pms)) {
+      $output .= '<p>No Project Managers are defined yet for the site</p>';
+      return ['#markup' => $output];
+    }
+    $header = array(t('Section'), t('Review'), t('Broken Links'));
+
+    $names = [];
+    foreach ($pms as $pm) {
+      $names[] = $pm->name;
+    }
+    $output .= '<p>Project Managers for this sections are: ' . implode(', ', $names) . '</p>';
+
+    foreach ($types as $type) {
+      $row = [];
+      $bundle = node_type_load($type);
+      $reviews = vesafe_workflow_workbench_pm_get_review($type);
+      $review = current($reviews);
+
+      $row[] = $bundle->name;
+
+      if (empty($review)) {
+        $text = 'Not reviewed yet';
+      }
+      else {
+        $user_name = $review->uid;
+        $user = user_load($review->uid);
+        if (!empty($user)) {
+          $user_name = $user->name;
+        }
+        $last_review = new DateTime(date("c", $review->created));
+        $now = new DateTime();
+        $since_last_review = $now->diff($last_review);
+        $text = t('Last reviewed by @user on @date (@months months ago)', [
+          '@user' => $user_name,
+          '@date' => date('d-m-Y', $review->created),
+          '@months' => $since_last_review->m,
+        ]);
+      }
+      $text = l($text, 'admin/config/workbench/access/managers/review/' . $type);
+
+      $row[] = $text;
+
+      $row[] = l(t('See the broken links'),
+        'admin/content/linkchecker-broken-links',
+        array('query' => array('type' => $type))
+      );
+
+      $rows[] = $row;
+    }
+    $output = theme('table', array('header' => $header, 'rows' => $rows));
+    $build['content']['#markup'] = $output;
+    return $build;
+  }
+
+  return drupal_get_form('vesafe_workflow_section_review_form', $type);
+}
+
+/**
+ * PM Review Section form.
+ */
+function vesafe_workflow_section_review_form($form, &$form_state, $type) {
+  $bundle = node_type_load($type);
+  $output = '<h2>' . t('%name PM section review', array('%name' => $bundle->name)) . '</h2>';
+
+  $form_state['#section'] = $type;
+
+  $form['title'] = array(
+    '#markup' => $output,
+  );
+
+  $form['actions'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Reviews'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['actions']['review_message'] = array(
+    '#type' => 'textarea',
+    '#title' => 'Message',
+    '#description' => t('You can enter a message for your review.'),
+  );
+
+  $form['actions']['mark_as_reviewed'] = array(
+    '#type' => 'submit',
+    '#submit' => array('vesafe_workflow_access_section_review_form_submit'),
+    '#validate' => array(),
+    '#value' => 'Mark this section as Reviewed',
+    '#access' => array('mark access section as reviewed'),
+  );
+  $form['go_back'] = array(
+    '#theme' => 'link',
+    '#text' => t('Go back'),
+    '#path' => 'admin/config/workbench/access/managers',
+    '#options' => array(
+      'attributes' => array(),
+      'html' => FALSE,
+    ),
+  );
+
+  $form['actions']['#access'] = FALSE;
+  if (_vesafe_workflow_user_has_role(OSHA_WORKFLOW_ROLE_PM)
+    || _vesafe_workflow_user_has_role('administrator')) {
+    $form['actions']['#access'] = TRUE;
+  }
+
+  // Add review history.
+  $form['reviews'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Reviews'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $reviews = vesafe_workflow_workbench_pm_get_review($type);
+  $rows = array();
+  foreach ($reviews as $review) {
+    $reviewer = user_load($review->uid);
+    $rows[] = array(
+      $reviewer->name,
+      date('d-m-Y', $review->created),
+      $review->message,
+    );
+  }
+  $header = array('Reviewer', 'Data', 'Mesaj');
+  $form['reviews']['table'] = array(
+    '#markup' => theme('table', array('header' => $header, 'rows' => $rows)),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit callback for PM Review Section.
+ */
+function vesafe_workflow_access_section_review_form_submit($form, &$form_state) {
+  global $user;
+  $message = $form_state['values']['review_message'];
+  $review = array(
+    'uid' => $user->uid,
+    'section' => $form_state['#section'],
+    'message' => $message,
+    'created' => REQUEST_TIME,
+  );
+  // Add the review.
+  drupal_write_record('vesafe_workflow_sections_review', $review);
+
+  drupal_set_message(t('Section reviewed successfully!'));
+  $form_state['redirect'] = 'admin/config/workbench/access/managers/review';
+}
+
+function vesafe_workflow_workbench_pm_get_review($section) {
+  return db_select('vesafe_workflow_sections_review', 'sr')
+    ->fields('sr')
+    ->condition('sr.section', $section)
+    ->orderBy('sr.srid', 'DESC')
+    ->range(0, 1)
+    ->execute()->fetchAllAssoc('srid');
+}
+
+function vesafe_workflow_get_sections_to_notify() {
+  $sections = [];
+  $types = ['good_practice', 'key_article'];
+  $notify_interval = variable_get('vesafe_workflow_pm_reminders_interval', 6);
+  foreach ($types as $type) {
+    $review = vesafe_workflow_workbench_pm_get_review($type);
+    $review = current($review);
+    if (!empty($review)) {
+      $last_review = new DateTime(date("c", $review->created));
+      $now = new DateTime();
+      $since_last_review = $now->diff($last_review);
+      if ($since_last_review->m >= $notify_interval) {
+        $sections[] = $type;
+      }
+    }
+  }
+  return $sections;
+}
