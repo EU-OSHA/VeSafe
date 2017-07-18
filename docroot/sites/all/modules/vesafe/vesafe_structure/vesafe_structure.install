@@ -251,3 +251,10 @@ function vesafe_structure_update_7028() {
   workbench_moderation_transition_delete('to_be_approved:needs_review');
   workbench_moderation_transition_delete('needs_review:draft');
 }
+
+/**
+ * Freature revert: VES-235.
+ */
+function vesafe_structure_update_7029() {
+  features_revert_module(['vesafe_structure']);
+}
