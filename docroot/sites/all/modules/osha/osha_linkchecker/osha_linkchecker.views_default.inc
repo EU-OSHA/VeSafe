@@ -31,6 +31,13 @@ function osha_linkchecker_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
   $handler->display->display_options['style_plugin'] = 'table';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No broken links found';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html_minimal';
   /* Relationship: Linkchecker Links: Link ID */
   $handler->display->display_options['relationships']['lid']['id'] = 'lid';
   $handler->display->display_options['relationships']['lid']['table'] = 'linkchecker_link';
@@ -76,6 +83,25 @@ function osha_linkchecker_views_default_views() {
   $handler->display->display_options['filters']['error']['table'] = 'linkchecker_link';
   $handler->display->display_options['filters']['error']['field'] = 'error';
   $handler->display->display_options['filters']['error']['operator'] = '!=';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['relationship'] = 'nid';
+  $handler->display->display_options['filters']['type']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Content type';
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -101,11 +127,13 @@ function osha_linkchecker_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
+    t('No broken links found'),
     t('Linkchecker Node Links'),
     t('Content'),
     t('Code'),
     t('URL'),
     t('Title'),
+    t('Content type'),
     t('Page'),
   );
   $export['broken_links'] = $view;
