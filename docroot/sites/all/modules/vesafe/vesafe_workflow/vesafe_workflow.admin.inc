@@ -273,7 +273,7 @@ function vesafe_workflow_workbench_project_managers($type = NULL) {
 
       $rows[] = $row;
     }
-    $output = theme('table', array('header' => $header, 'rows' => $rows));
+    $output .= theme('table', array('header' => $header, 'rows' => $rows));
     $build['content']['#markup'] = $output;
     return $build;
   }
@@ -317,7 +317,7 @@ function vesafe_workflow_section_review_form($form, &$form_state, $type) {
   $form['go_back'] = array(
     '#theme' => 'link',
     '#text' => t('Go back'),
-    '#path' => 'admin/config/workbench/access/managers',
+    '#path' => 'admin/config/workbench/access/managers/review',
     '#options' => array(
       'attributes' => array(),
       'html' => FALSE,

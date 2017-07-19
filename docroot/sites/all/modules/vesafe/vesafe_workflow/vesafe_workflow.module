@@ -18,15 +18,15 @@ define('OSHA_WORKFLOW_ROLE_PM', 'project manager');
 function vesafe_workflow_menu() {
   $items = array();
 
-  $items['admin/config/workbench/access/managers/review'] = array(
-    'title' => 'Project Managers',
+  $items['admin/content/review'] = array(
+    'title' => 'Content review',
     'description' => 'Assignment of project managers for each website section.',
     'page callback' => 'vesafe_workflow_workbench_project_managers',
     'page arguments' => array(),
     'access callback' => array('_vesafe_workflow_menu_access_role'),
     'access arguments' => array(OSHA_WORKFLOW_ROLE_PM),
-    'type' => MENU_NORMAL_ITEM,
-    'weight' => -12,
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 100,
     'file' => 'vesafe_workflow.admin.inc',
   );
 
