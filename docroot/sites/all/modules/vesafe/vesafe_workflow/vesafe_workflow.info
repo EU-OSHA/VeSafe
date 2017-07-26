@@ -170,6 +170,7 @@ features[workbench_moderation_transitions][] = to_be_approved:ready_to_publish
 features_exclude[dependencies][entity] = entity
 features_exclude[dependencies][vesafe_workflow] = vesafe_workflow
 files[] = include/VeSafeWorkflow.inc
+files[] = include/VeSafeWorkflowEmailCount.inc
 files[] = vesafe_workflow.admin.inc
 files[] = vesafe_workflow.api.inc
 files[] = vesafe_workflow.entity.inc
