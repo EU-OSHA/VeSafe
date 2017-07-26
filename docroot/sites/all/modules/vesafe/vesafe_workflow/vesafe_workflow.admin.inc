@@ -262,7 +262,7 @@ function vesafe_workflow_workbench_project_managers($type = NULL) {
           '@months' => $since_last_review->m,
         ]);
       }
-      $text = l($text, 'admin/config/workbench/access/managers/review/' . $type);
+      $text = l($text, 'admin/content/review/' . $type);
 
       $row[] = $text;
 
