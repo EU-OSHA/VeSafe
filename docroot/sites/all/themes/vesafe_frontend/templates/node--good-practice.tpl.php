@@ -80,8 +80,8 @@
                     class="good-likes"><?php print $node->field_like_count[LANGUAGE_NONE][0]['value']; ?></span></a>
     </div>
     <div class="back-arrow-wrapper">
-        <a href="#" onclick="vesafeBackURL('/good-practices');"
-           class="back-arrow">Return to list</a>
+        <a href="#" onclick="vesafeBackURL('/good-practices','<?php print $GLOBALS['base_url'];?>');"
+           class="back-arrow"><?php print t('Return to list');?></a>
     </div>
 </div>
 

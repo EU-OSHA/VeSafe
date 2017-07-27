@@ -1,0 +1,1 @@
+jQuery("#edit-title").charactersRemaining();

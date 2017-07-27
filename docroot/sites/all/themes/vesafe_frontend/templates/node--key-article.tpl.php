@@ -78,7 +78,8 @@
 
 <div class="back-arrow-container container">
     <div class="back-arrow-wrapper">
-        <a href="/themes" class="back-arrow">Return to list</a>
+        <a href="#" onclick="vesafeBackURL('/themes','<?php print $GLOBALS['base_url'];?>');"
+           class="back-arrow"><?php print t('Return to list');?></a>
     </div>
 </div>
 <!--page image block-->
@@ -157,7 +158,7 @@
         </ul>
     </div>
     <div class="key-article-content col-md-9 col-sm-12">
-        <div id="introduction">
+        <div id="introduction" class="close">
             <div class="key-article-text">
                 <h2 class="titulos-key-articles"><?php print t('Introduction');?></h2>
                 <div class="body-key-article">
@@ -193,7 +194,7 @@
                   // Next-Previous Button div closure.
                   print '</div>';
                   // Key Article Theme div closure.
-                  print '<div id="' . $titleLink . '">';
+                  print '<div id="' . $titleLink . '" class="close">';
                   // Key Article Theme div open.
                   print '<div  class="key-article-text">';
                   print '<h2 class="titulos-key-articles">' . $title . '</h2>';
@@ -230,7 +231,7 @@
                   // Next-Previous Button div closure.
                   print '</div>';
                   // Key Article Theme div closure.
-                  print '<div id="' . $titleLink . '">';
+                  print '<div id="' . $titleLink . '" class="close">';
                   // Key Article Theme div open.
                   print '<div  class="key-article-text">';
                   print '<h2 class="titulos-key-articles">' . $title . '</h2>';
@@ -266,7 +267,7 @@
                   // Next-Previous Button div closure.
                   print '</div>';
                   // Key Article Theme div closure.
-                  print '<div id="' . $titleLink . '">';
+                  print '<div id="' . $titleLink . '" class="close">';
                   // Key Article Theme div open.
                   print '<div  class="key-article-text">';
                   print '<h2 class="titulos-key-articles">' . $title . '</h2>';
@@ -305,3 +306,20 @@
   }
   ?>
 </div>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        var hash = window.location.hash;
+        if(hash){
+            var link_element = jQuery("a[href='"+ hash +"']");
+            if(link_element){
+                link_element.css({ "font-weight": "bold", "text-decoration": "none" });
+                link_element.parent().parent().css({"display": "block"});
+                jQuery(hash).removeClass("close").addClass("active");
+            }else{
+                jQuery(".key-article-content > div#introduction").removeClass("close").addClass("active");
+            }
+        }else{
+            jQuery(".key-article-content > div#introduction").removeClass("close").addClass("active");
+        }
+    });
+</script>

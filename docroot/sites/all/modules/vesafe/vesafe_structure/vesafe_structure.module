@@ -6,30 +6,54 @@
 
 include_once 'vesafe_structure.features.inc';
 
+
+function vesafe_structure_wysiwyg_editor_settings_alter(&$settings, $context){
+  $settings['theme_advanced_buttons1'] .= ',vesafe_advanced,vesafe_minimal';
+}
+
+function vesafe_structure_wysiwyg_plugin($editor, $version=0) {
+  switch ($editor) {
+    case 'tinymce':
+        return array(
+          'vesafe_advanced' => array(
+            'extensions' => array(
+              'vesafe_advanced' => t('Vesafe advanced selector'),
+              'vesafe_minimal' => t('Vesafe minimal selector'),
+            ),
+            'load' => TRUE,
+            'internal' => FALSE,
+          ),
+        );
+      break;
+  }
+}
+
 /**
  * Implements hook_form_alter().
  *
  * {@inheritdoc}
  */
 function vesafe_structure_form_alter(&$form, &$form_state, $form_id) {
+  form_actions_top($form,$form_id);
+  form_text_fields_placeholders($form,$form_id);
   switch ($form_id) {
     case 'did_you_know_slide_node_form':
-      // "Did you know slide" node create/edit form
+      // "Did you know slide" node create/edit form.
       VeSafeStructureForms::did_you_know_slide_node_form_alter($form, $form_state);
       break;
 
     case 'good_practice_node_form':
-      // "Good practice" node create/edit form
+      // "Good practice" node create/edit form.
       VeSafeStructureForms::good_practice_node_form_alter($form, $form_state);
       break;
 
     case 'key_article_node_form':
-      // "Key article" node create/edit form
+      // "Key article" node create/edit form.
       VeSafeStructureForms::key_article_node_form_alter($form, $form_state);
       break;
 
     case 'key_article_theme_node_form':
-      // "Key article theme" node create/edit form
+      // "Key article theme" node create/edit form.
       VeSafeStructureForms::key_article_theme_node_form_alter($form, $form_state);
       break;
 
@@ -38,12 +62,61 @@ function vesafe_structure_form_alter(&$form, &$form_state, $form_id) {
         VeSafeStructureForms::good_practice_admin_content_view_form_alter($form, $form_state);
       }
       break;
+
     case 'webform_client_form_5':
       VeSafeStructureForms::contact_us_form_alter($form, $form_state);
       break;
   }
 }
 
+function form_text_fields_placeholders(&$form, $form_id){
+  switch ($form_id) {
+    case 'did_you_know_slide_node_form':
+    case 'good_practice_node_form':
+    case 'key_article_node_form':
+    case 'key_article_theme_node_form':
+    case 'webform_node_form':
+    case 'article_node_form':
+      if (isset($form['title'])) {
+        $form['#after_build'][] = 'form_text_fields_placeholders_after_build';
+      }
+      break;
+
+    default:
+      break;
+
+  }
+}
+function form_text_fields_placeholders_after_build($form, &$form_state) {
+  drupal_add_js(drupal_get_path('module', 'vesafe_structure') . '/js/jquery.charactersRemaining.js');
+  drupal_add_js(drupal_get_path('module', 'vesafe_structure') . '/js/charactersRemaining.js', array('scope' => 'footer'));
+  return $form;
+}
+
+function form_actions_top(&$form, $form_id){
+  switch ($form_id) {
+    case 'did_you_know_slide_node_form':
+    case 'good_practice_node_form':
+    case 'key_article_node_form':
+    case 'key_article_theme_node_form':
+    case 'webform_node_form':
+    case 'article_node_form':
+      if (isset($form['actions'])) {
+        $form['actions_top'] = $form['actions'];
+        $form['actions_top']['#weight'] = -999;
+        $form['actions_top']['#attributes']['class'] = ['text-right'];
+      }
+      break;
+
+    default:
+      break;
+
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
 function vesafe_structure_block_info() {
   $blocks['print_page'] = array(
     'info' => t('Print page'),
@@ -51,27 +124,166 @@ function vesafe_structure_block_info() {
 
   return $blocks;
 }
+
 /**
  * Implements hook_block_view_alter().
  */
 function vesafe_structure_block_view_alter(&$data, $block) {
   if ($block->delta == 'gtranslate') {
-    $data['content'] = preg_replace('(\<select)','<label for="gtranslate-select">' . t('Select language') . '</label><select name="gtranslate-select" id="gtranslate-select"',$data['content']);
+    $data['content'] = preg_replace('(\<select\ onchange\=\"doGTranslate\(this\)\;")', '<label for="gtranslate-select">' . t('Select language') . '</label><select name="gtranslate-select" id="gtranslate-select"  onchange="vesafe_doGTranslate(this);"', $data['content']);
     $data['content'] .= sprintf('<div class="gtranslate-machinatron">(%s)</div><span class="gtranslator-info">Info-icon</span>', t('machine translation'));
   }
-  if($block->delta == 'print_page'){
+  if ($block->delta == 'print_page') {
     $data['content'] = '<a href="#" class="print_page" onclick="window.print(); return false;" title="Printer Friendly and PDF">Print page</a>';
   }
 }
 
+/**
+ * Implements hook_validate().
+ */
 function good_practice_node_form_validate(&$form, &$form_state) {
   if ($form_state['values']['field_creation_date']['und'][0]['value'] != $form_state['values']['created']) {
     $form_state['values']['date'] = $form_state['values']['field_creation_date']['und'][0]['value'];
   }
 }
 
+/**
+ * Implements hook_validate().
+ */
 function key_article_node_form_validate(&$form, &$form_state) {
   if ($form_state['values']['field_creation_date']['und'][0]['value'] != $form_state['values']['created']) {
     $form_state['values']['date'] = $form_state['values']['field_creation_date']['und'][0]['value'];
+  }
+}
+
+/**
+ * Implements hook_page_build().
+ */
+function vesafe_structure_page_build(&$page) {
+  if (path_is_admin(current_path())) {
+    drupal_add_css(drupal_get_path('module', 'vesafe_structure') . '/styles/vesafe_admin.css', array('group' => CSS_THEME));
+  }
+  else {
+    if (isset($_COOKIE['googtrans']) && !empty($_COOKIE['googtrans'])) {
+      $languages = array(
+        'en' => 'English',
+        'ar' => 'Arabic',
+        'bg' => 'Bulgarian',
+        'zh-CN' => 'Chinese (Simplified)',
+        'zh-TW' => 'Chinese (Traditional)',
+        'hr' => 'Croatian',
+        'cs' => 'Czech',
+        'da' => 'Danish',
+        'nl' => 'Dutch',
+        'fi' => 'Finnish',
+        'fr' => 'French',
+        'de' => 'German',
+        'el' => 'Greek',
+        'hi' => 'Hindi',
+        'it' => 'Italian',
+        'ja' => 'Japanese',
+        'ko' => 'Korean',
+        'no' => 'Norwegian',
+        'pl' => 'Polish',
+        'pt' => 'Portuguese',
+        'ro' => 'Romanian',
+        'ru' => 'Russian',
+        'es' => 'Spanish',
+        'sv' => 'Swedish',
+        'ca' => 'Catalan',
+        'tl' => 'Filipino',
+        'iw' => 'Hebrew',
+        'id' => 'Indonesian',
+        'lv' => 'Latvian',
+        'lt' => 'Lithuanian',
+        'sr' => 'Serbian',
+        'sk' => 'Slovak',
+        'sl' => 'Slovenian',
+        'uk' => 'Ukrainian',
+        'vi' => 'Vietnamese',
+        'sq' => 'Albanian',
+        'et' => 'Estonian',
+        'gl' => 'Galician',
+        'hu' => 'Hungarian',
+        'mt' => 'Maltese',
+        'th' => 'Thai',
+        'tr' => 'Turkish',
+        'fa' => 'Persian',
+        'af' => 'Afrikaans',
+        'ms' => 'Malay',
+        'sw' => 'Swahili',
+        'ga' => 'Irish',
+        'cy' => 'Welsh',
+        'be' => 'Belarusian',
+        'is' => 'Icelandic',
+        'mk' => 'Macedonian',
+        'yi' => 'Yiddish',
+        'hy' => 'Armenian',
+        'az' => 'Azerbaijani',
+        'eu' => 'Basque',
+        'ka' => 'Georgian',
+        'ht' => 'Haitian Creole',
+        'ur' => 'Urdu',
+        'bn' => 'Bengali',
+        'bs' => 'Bosnian',
+        'ceb' => 'Cebuano',
+        'eo' => 'Esperanto',
+        'gu' => 'Gujarati',
+        'ha' => 'Hausa',
+        'hmn' => 'Hmong',
+        'ig' => 'Igbo',
+        'jw' => 'Javanese',
+        'kn' => 'Kannada',
+        'km' => 'Khmer',
+        'lo' => 'Lao',
+        'la' => 'Latin',
+        'mi' => 'Maori',
+        'mr' => 'Marathi',
+        'mn' => 'Mongolian',
+        'ne' => 'Nepali',
+        'pa' => 'Punjabi',
+        'so' => 'Somali',
+        'ta' => 'Tamil',
+        'te' => 'Telugu',
+        'yo' => 'Yoruba',
+        'zu' => 'Zulu',
+        'my' => 'Myanmar (Burmese)',
+        'ny' => 'Chichewa',
+        'kk' => 'Kazakh',
+        'mg' => 'Malagasy',
+        'ml' => 'Malayalam',
+        'si' => 'Sinhala',
+        'st' => 'Sesotho',
+        'su' => 'Sudanese',
+        'tg' => 'Tajik',
+        'uz' => 'Uzbek',
+        'am' => 'Amharic',
+        'co' => 'Corsican',
+        'haw' => 'Hawaiian',
+        'ku' => 'Kurdish (Kurmanji)',
+        'ky' => 'Kyrgyz',
+        'lb' => 'Luxembourgish',
+        'ps' => 'Pashto',
+        'sm' => 'Samoan',
+        'gd' => 'Scottish Gaelic',
+        'sn' => 'Shona',
+        'sd' => 'Sindhi',
+        'fy' => 'Frisian',
+        'xh' => 'Xhosa',
+      );
+      $lang = explode('/', $_COOKIE['googtrans']);
+      if (isset($lang[2]) && isset($languages[$lang[2]])) {
+        drupal_add_js("_paq.push(['setCustomVariable',1,'Language','" . $languages[$lang[2]] . "','page']);paq.push(['trackPageView']);",
+          array('type' => 'inline', 'scope' => 'footer', 'weight' => 4));
+      }
+    }
+    else {
+      drupal_add_js("_paq.push(['setCustomVariable',1,'Language','English','page']);paq.push(['trackPageView']);",
+        array('type' => 'inline', 'scope' => 'footer', 'weight' => 4));
+    }
+    drupal_add_js(
+      drupal_get_path('module', 'vesafe_structure') . '/js/vesafe_gtranslate.js',
+      array('scope' => 'footer', 'weight' => 5)
+    );
   }
 }

@@ -80,8 +80,8 @@ jQuery(document).ready(function () {
 	
 
 	/*key articles menu/next/prev functionality*/
-	jQuery(".key-article-content > div").addClass("close");
-	jQuery(".key-article-content > div#introduction").removeClass("close").addClass("active");
+	//jQuery(".key-article-content > div").addClass("close");
+	//jQuery(".key-article-content > div#introduction").removeClass("close").addClass("active");
 
 	jQuery(".key-articles-menu-container a").click(function(){
 		var href=jQuery(this).attr("href");
@@ -143,7 +143,7 @@ jQuery(document).ready(function () {
 	jQuery(".see-more-btn").click(function(){
 		jQuery(".hidden-links").slideToggle("fast", function(){
 			if(jQuery(".hidden-links").is(":visible")){
-				jQuery(".see-more-btn").text("See less links");
+				jQuery(".see-more-btn").text("See fewer links");
 			}else{
 				jQuery(".see-more-btn").text("See more links");
 			}
@@ -303,12 +303,12 @@ jQuery(document).ready(function () {
 	}
 });
 
-function vesafeBackURL(referrer){
-	referrer_found = document.referrer.indexOf(referrer);
-    if(referrer_found!=-1){
+function vesafeBackURL(referrer, base_url){
+	var referrer_found = document.referrer.indexOf(base_url);
+    if(referrer_found!=-1 && document.referrer.indexOf('?')!=-1){
     	document.location.href = document.referrer;
 	}else{
-        document.location.href = referrer;
+        document.location.href = base_url + referrer;
 	}
-	return FALSE;
+    return;
 }

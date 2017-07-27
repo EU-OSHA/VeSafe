@@ -1,0 +1,88 @@
+/*tinyMCE*/
+.defaultSkin .mceButton.mce_vesafe_advanced{
+    width:auto !important;
+}
+.defaultSkin span.mceIcon.mce_vesafe_advanced,
+.defaultSkin img.mceIcon.mce_vesafe_advanced{
+    width:auto !important;
+    margin-top:1px !important;
+    padding:0px 10px;
+}
+.mceIcon.mce_vesafe_advanced:before{
+    content: "Advanced editor";
+    color: #0074bd;
+}
+
+.defaultSkin .mceButton.mce_vesafe_minimal{
+    width:auto !important;
+}
+.defaultSkin span.mceIcon.mce_vesafe_minimal,
+.defaultSkin img.mceIcon.mce_vesafe_minimal{
+    width:auto !important;
+    margin-top:1px !important;
+    padding:0px 10px;
+}
+.mceIcon.mce_vesafe_minimal:before{
+    content: "Basic editor" !important;
+    color: #0074bd;
+}
+/*forms*/
+.form-wrapper.field-widget-link-field > div > div > .clearfix:last-child,
+.form-wrapper.field-widget-entityreference-view-widget > div > .clearfix:last-child,
+.form-wrapper.field-widget-multiple-selects > div > div > .clearfix:last-child{
+    /*background:#f3f4ee !important;*/
+    border: 1px solid #bebfb9 !important;
+    border-top: none !important;
+    padding-left: 30px;
+    padding-top:10px;
+}
+.form-wrapper.field-widget-link-field table.field-multiple-table,
+.form-wrapper.field-widget-entityreference-view-widget table.field-multiple-table,
+.form-wrapper.field-widget-multiple-selects table.field-multiple-table{
+    border-bottom:none !important;
+}
+
+.form-wrapper.field-widget-link-field table.field-multiple-table th.field-label label,
+.form-wrapper.field-widget-entityreference-view-widget table.field-multiple-table th.field-label label,
+.form-wrapper.field-widget-multiple-selects table.field-multiple-table th.field-label label{
+    padding-left:15px;
+}
+ul.tinymce-visual-html{
+    margin-right: 20px;
+}
+
+ul.tinymce-visual-html li a,
+ul.tinymce-visual-html li a:link,
+ul.tinymce-visual-html li a:visited,
+ul.tinymce-visual-html li a:hover,
+ul.tinymce-visual-html li.active a{
+    padding:0px 10px !important;
+    color:#0074bd;
+    background-color: transparent;
+    font-weight:normal;
+    text-transform: none;
+}
+ul.tinymce-visual-html li.active a,
+ul.tinymce-visual-html li a.active,
+ul.tinymce-visual-html li a:hover{
+    background-color: #f0f0ee !important;
+    color:#000000  !important;
+}
+.text-right{
+    text-align: right;
+}
+.field-widget-link-field .description,
+.field-widget-entityreference-view-widget .description,
+.field-widget-multiple-selects .description{
+    padding:0px 50px !important;
+    border-left:1px solid #bebfb9;
+    border-right:1px solid #bebfb9;
+    margin:0px !important;
+}
+.charRemaining{
+    display:block;
+    color: #666;
+    font-size: 0.923em;
+    line-height: 1.231em;
+    margin: 5px;
+}

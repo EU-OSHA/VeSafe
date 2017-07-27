@@ -59,3 +59,24 @@ function vesafe_pages_1_update_7008() {
   module_enable(['no_autocomplete']);
   variable_set('no_autocomplete_login_form', 1);
 }
+
+/**
+ * VES-162: Features revert.
+ */
+function vesafe_pages_1_update_7009() {
+  features_revert_module('vesafe_pages_1');
+}
+
+/**
+ * VES-162: Update - Features revert.
+ */
+function vesafe_pages_1_update_7010() {
+  features_revert_module('vesafe_pages_1');
+}
+
+/**
+ * VES-162: Update - Features revert.
+ */
+function vesafe_pages_1_update_7011() {
+  features_revert_module('vesafe_pages_1');
+}
