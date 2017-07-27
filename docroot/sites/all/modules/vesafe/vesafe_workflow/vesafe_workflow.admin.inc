@@ -371,7 +371,7 @@ function vesafe_workflow_access_section_review_form_submit($form, &$form_state) 
   drupal_write_record('vesafe_workflow_sections_review', $review);
 
   drupal_set_message(t('Section reviewed successfully!'));
-  $form_state['redirect'] = 'admin/config/workbench/access/managers/review';
+  $form_state['redirect'] = 'admin/content/review';
 }
 
 function vesafe_workflow_workbench_pm_get_review($section) {
