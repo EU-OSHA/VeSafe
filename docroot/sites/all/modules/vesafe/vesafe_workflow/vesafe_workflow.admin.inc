@@ -386,7 +386,7 @@ function vesafe_workflow_workbench_pm_get_review($section) {
 function vesafe_workflow_get_sections_to_notify() {
   $sections = [];
   $types = ['good_practice', 'key_article'];
-  $notify_interval = variable_get('vesafe_workflow_pm_reminders_interval', 6);
+  $notify_interval = variable_get('vesafe_workflow_pm_reminders_interval', 3);
   foreach ($types as $type) {
     $review = vesafe_workflow_workbench_pm_get_review($type);
     $review = current($review);
