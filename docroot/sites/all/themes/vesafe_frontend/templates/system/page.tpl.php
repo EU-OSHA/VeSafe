@@ -94,7 +94,7 @@
             <div class="header-sitename">
               <?php if (!empty($site_name)): ?>
                 <a class="sitename" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-                    <img class="img-responsive" src="<?php print $GLOBALS['base_url'];?>/sites/all/themes/vesafe_frontend/images/icons/logo-vesafe.png" alt="Vesafe"/></a>
+                <img class="img-responsive" src="<?php print $GLOBALS['base_url'];?>/sites/all/themes/vesafe_frontend/images/icons/logo-vesafe.png" alt="Vesafe"/></a>
               <?php endif; ?>
             </div>
           </div>
