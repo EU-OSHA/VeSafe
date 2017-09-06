@@ -399,6 +399,7 @@ function _vesafe_workflow_get_states_list($active_state) {
 
 function vesafe_workflow_quick_moderation_form($form, &$form_state, $node) {
   global $user;
+
   $is_pm = _vesafe_workflow_user_has_role(OSHA_WORKFLOW_ROLE_PM);
   $is_admin = _vesafe_workflow_user_has_role('administrator');
   $form['#node'] = $node;
@@ -406,6 +407,7 @@ function vesafe_workflow_quick_moderation_form($form, &$form_state, $node) {
   $states = workbench_moderation_states_next($state, $user, $form['#node']);
   $transitions = workbench_moderation_transitions();
   $to = [];
+
   foreach ($transitions as $transition) {
     if ($transition->from_name == $state && in_array($transition->to_name, array_keys($states))) {
       $to[$transition->to_name] = $transition;
@@ -417,6 +419,7 @@ function vesafe_workflow_quick_moderation_form($form, &$form_state, $node) {
         '#type' => 'submit',
         '#value' => $trans->name,
         '#attributes' => ['class' => ['btn',  'btn-primary']],
+        '#weight' => vesafe_workflow_moderation_status_weight($trans->to_name),
       ];
     }
   }
@@ -447,6 +450,21 @@ function vesafe_workflow_quick_moderation_form($form, &$form_state, $node) {
   }
 
   return $form;
+}
+
+function vesafe_workflow_moderation_status_weight($status){
+  switch($status){
+    case 'ready_to_publish':
+      return 9;
+      break;
+    case 'published':
+      return 10;
+      break;
+
+    default:
+      return 0;
+      break;
+  }
 }
 
 function vesafe_workflow_quick_moderation_form_validate(&$form, &$form_state) {

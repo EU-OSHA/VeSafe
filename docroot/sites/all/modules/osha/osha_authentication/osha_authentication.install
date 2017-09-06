@@ -19,3 +19,10 @@ function osha_authentication_update_7001() {
   // set file path to our own password.inc
   variable_set('password_inc', drupal_get_path('module', 'ldap_authentication') . '/ldap_authentication.password.inc');
 }
+
+/**
+ * VES-240 revert osha_authentication module to remove invalid LDAP mapping
+ */
+function osha_authentication_update_7002() {
+  features_revert(array('osha_authentication' => array('variable')));
+}
