@@ -5,7 +5,6 @@ jQuery(document).ready(function () {
     getLikedNodes();  
   }    
   var links = jQuery('a.node-like-link');
-  debugger;
   var href = '', nodeId= '';
   for (var i = 0; i < links.size(); i++) {
     href = jQuery(links[i]).attr('href');
