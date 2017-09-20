@@ -19,7 +19,7 @@ function vesafe_workflow_default_rules_configuration() {
         { "mail_to_users_of_role" : {
             "roles" : { "value" : { "5" : "5" } },
             "subject" : "[Vesafe Website] Reminders: Content Update Status",
-            "message" : "\\u003Cp\\u003EDear Project Manager,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EAs you know the contents on the website have to be reviewed every 6 months. This is a reminder for you to check the content status of the section [content-type:value] \\u003Ca href=\\u0022[site:url]\\/admin\\/config\\/workbench\\/access\\/managers\\/review\\/[content-type-key:value]\\u0022\\u003Ein this screen\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EYou can check the broken links in \\u003Ca href=\\u0022[site:url]\\/admin\\/content\\/linkchecker-broken-links?type=[content-type-key:value]\\u0022\\u003Ethis page\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThank you,\\u003C\\/p\\u003E\\r\\n"
+            "message" : "\\u003Cp\\u003EDear Project Manager,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EAs you know the contents on the website have to be reviewed every 3 months. This is a reminder for you to check the content status of the section [content-type:value] \\u003Ca href=\\u0022[site:url]\\/admin\\/config\\/workbench\\/access\\/managers\\/review\\/[content-type-key:value]\\u0022\\u003Ein this screen\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EYou can check the broken links in \\u003Ca href=\\u0022[site:url]\\/admin\\/content\\/linkchecker-broken-links?type=[content-type-key:value]\\u0022\\u003Ethis page\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThank you,\\u003C\\/p\\u003E\\r\\n"
           }
         }
       ]
