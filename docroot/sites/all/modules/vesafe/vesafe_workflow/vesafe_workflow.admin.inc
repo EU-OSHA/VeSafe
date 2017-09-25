@@ -398,6 +398,9 @@ function vesafe_workflow_get_sections_to_notify() {
         $sections[] = $type;
       }
     }
+    else {
+      $sections[] = $type;
+    }
   }
   return $sections;
 }
