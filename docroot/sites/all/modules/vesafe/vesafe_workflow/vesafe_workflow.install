@@ -148,3 +148,10 @@ function vesafe_workflow_update_7002() {
   }
   features_revert_module('vesafe_workflow');
 }
+
+/**
+ * Create My workbench view.
+ */
+function vesafe_workflow_update_7003() {
+  features_revert_module('vesafe_workflow');
+}
