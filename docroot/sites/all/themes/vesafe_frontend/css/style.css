@@ -6601,7 +6601,7 @@ header {
 .top-header-container .header-blocks #block-block-3 p {
   margin: 0px;
   border-right: 2px solid #323a93;
-  padding-right: 7px;
+  padding-right: 12px;
   font-size: 16px;
 }
 .top-header-container .header-blocks #block-block-3 p a {
@@ -6639,12 +6639,13 @@ header {
   border-left: 2px solid #323a93;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 8px;
+  padding-left: 9px;
   width: 30px;
   overflow: hidden;
   display: block;
   height: 22px;
   font-size: 4px;
+  margin-left: 2px;
 }
 .top-header-container .header-blocks #block-vesafe-structure-print-page a:before {
   content: "\e045";
@@ -6663,6 +6664,7 @@ header {
   background-color: #323a93;
   border-radius: 13px;
   min-height: 27px;
+  width: 187px;
 }
 .top-header-container .header-blocks #block-vesafe-search-search-vesafe .navbar-form {
   margin: 0px;
@@ -6719,7 +6721,7 @@ header {
 }
 .top-header-container .header-blocks #block-gtranslate-gtranslate select {
   border-color: #323a93;
-  min-width: 83% !important;
+  width: 150px;
   display: inline-block !important;
 }
 .top-header-container .header-blocks #block-gtranslate-gtranslate .chosen-container.chosen-container-single.chosen-processed {
@@ -6729,7 +6731,7 @@ header {
   font-size: 0.75em;
   text-align: center;
   display: inline-block;
-  margin-left: 55px;
+  margin-left: 45px;
 }
 .top-header-container .header-blocks #block-gtranslate-gtranslate .gtranslator-info {
   width: 15px;
