@@ -1017,7 +1017,7 @@ function vesafe_workflow_views_default_views() {
 
 
   /* Display: My workbench */
-  $handler = $view->new_display('page', 'My workbench', 'page_1');
+  $handler = $view->new_display('page', 'My workbench', 'page_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'My workbench';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
