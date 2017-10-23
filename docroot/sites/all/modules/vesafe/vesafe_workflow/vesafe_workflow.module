@@ -251,13 +251,57 @@ function vesafe_workflow_entity_property_info() {
   return $info;
 }
 
+/*
+ * Get moderation states based on user roles
+ */
+function vesafe_workflow_get_allowed_moderation_states() {
+  global $user;
+  $states = [];
+  if (isset($user->roles)) {
+    /*
+    all
+    draft
+    final_draft
+    needs_review
+    to_be_approved
+    published
+    ready_to_publish
+    */
+
+    // Editor = 7.
+    if (isset($user->roles[7])) {
+      $states[] = 'draft';
+    }
+    // Reviewer = 6.
+    if (isset($user->roles[6])) {
+      $states[] = 'final_draft';
+    }
+    // Project manager = 5.
+    if (isset($user->roles[5])) {
+      $states[] = 'draft';
+      $states[] = 'final_draft';
+      $states[] = 'needs_review';
+      $states[] = 'to_be_approved';
+      $states[] = 'ready_to_publish';
+    }
+    // Approver = 4.
+    if (isset($user->roles[4])) {
+      $states[] = 'to_be_approved';
+    }
+  }
+
+  return $states;
+}
+
 /**
+  * Implements hook_views_query_alter().
   * Alter LEFT JOIN node_revision ON node.vid = node_revision.vid
   * to LEFT JOIN node_revision ON node.nid = node_revision.nid
   */
 function vesafe_workflow_views_query_alter(&$view, &$query) {
   // Switch from JOIN to LEFT JOIN with workbench_moderation_node_history
   // to allow adding content types which are not moderated (i.e. page).
+
   if ($view->name == 'Content') {
     if (isset($query->table_queue['workbench_moderation_node_history']['join']->type)) {
       $query->table_queue['workbench_moderation_node_history']['join']->type = 'LEFT';
@@ -267,6 +311,16 @@ function vesafe_workflow_views_query_alter(&$view, &$query) {
     if (isset($query->table_queue['node_revision'])) {
       $query->table_queue['node_revision']['join']->field = 'nid';
       $query->table_queue['node_revision']['join']->left_field = 'nid';
+    }
+  }
+  if ($view->name == 'workbench_moderation' && $view->current_display == 'page_1') {
+    $states = vesafe_workflow_get_allowed_moderation_states();
+    if ($states) {
+      $query->where[1]['conditions'][] = [
+        'field' => 'workbench_moderation_node_history.state',
+        'value' => $states,
+        'operator' => 'in',
+      ];
     }
   }
 }
@@ -601,6 +655,15 @@ function vesafe_workflow_form_alter(&$form, &$form_state, $form_id) {
       if ($collection->bundle == 'moderators_group' && !empty($form['content'])) {
         foreach ($form['content'] as &$row) {
           hide($row['style']);
+        }
+      }
+    }
+  } elseif ($form_id == 'views_exposed_form') {
+    $states = vesafe_workflow_get_allowed_moderation_states();
+    if ($states) {
+      foreach($form['state_1']['#options'] as $k => $v) {
+        if (!in_array($k, $states)) {
+          unset($form['state_1']['#options'][$k]);
         }
       }
     }

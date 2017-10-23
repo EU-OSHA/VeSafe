@@ -373,6 +373,103 @@ $handler->display->display_options['path'] = 'admin/workbench/drafts';
 $handler->display->display_options['menu']['type'] = 'tab';
 $handler->display->display_options['menu']['title'] = 'My drafts';
 $handler->display->display_options['menu']['weight'] = '98';
+
+/* Display: My workbench */
+$handler = $view->new_display('page', 'My workbench', 'page_1');
+$handler->display->display_options['defaults']['title'] = FALSE;
+$handler->display->display_options['title'] = 'My workbench';
+$handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+$handler->display->display_options['defaults']['access'] = FALSE;
+$handler->display->display_options['access']['type'] = 'role';
+$handler->display->display_options['access']['role'] = array(
+  3 => '3',
+  4 => '4',
+  7 => '7',
+  5 => '5',
+  6 => '6',
+);
+$handler->display->display_options['defaults']['empty'] = FALSE;
+/* No results behavior: Global: Text area */
+$handler->display->display_options['empty']['area']['id'] = 'area';
+$handler->display->display_options['empty']['area']['table'] = 'views';
+$handler->display->display_options['empty']['area']['field'] = 'area';
+$handler->display->display_options['empty']['area']['content'] = 'This list displays content in the "Needs review" state that you can moderate. Currently there is no such content.';
+$handler->display->display_options['empty']['area']['format'] = 'plain_text';
+$handler->display->display_options['defaults']['filter_groups'] = FALSE;
+$handler->display->display_options['defaults']['filters'] = FALSE;
+/* Filter criterion: Workbench Moderation: Current */
+$handler->display->display_options['filters']['current']['id'] = 'current';
+$handler->display->display_options['filters']['current']['table'] = 'workbench_moderation_node_history';
+$handler->display->display_options['filters']['current']['field'] = 'current';
+$handler->display->display_options['filters']['current']['value'] = '1';
+/* Filter criterion: Workbench Moderation: State */
+$handler->display->display_options['filters']['state']['id'] = 'state';
+$handler->display->display_options['filters']['state']['table'] = 'workbench_moderation_node_history';
+$handler->display->display_options['filters']['state']['field'] = 'state';
+$handler->display->display_options['filters']['state']['operator'] = 'not in';
+$handler->display->display_options['filters']['state']['value'] = array(
+  'published' => 'published',
+);
+$handler->display->display_options['filters']['state']['expose']['label'] = 'Workbench Moderation: State';
+$handler->display->display_options['filters']['state']['expose']['operator'] = 'state_op';
+$handler->display->display_options['filters']['state']['expose']['identifier'] = 'state';
+/* Filter criterion: Content: Title */
+$handler->display->display_options['filters']['title']['id'] = 'title';
+$handler->display->display_options['filters']['title']['table'] = 'node';
+$handler->display->display_options['filters']['title']['field'] = 'title';
+$handler->display->display_options['filters']['title']['relationship'] = 'nid';
+$handler->display->display_options['filters']['title']['operator'] = 'contains';
+$handler->display->display_options['filters']['title']['exposed'] = TRUE;
+$handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
+$handler->display->display_options['filters']['title']['expose']['label'] = 'Title';
+$handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
+$handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+$handler->display->display_options['filters']['title']['expose']['remember'] = TRUE;
+/* Filter criterion: Content: Type */
+$handler->display->display_options['filters']['type']['id'] = 'type';
+$handler->display->display_options['filters']['type']['table'] = 'node';
+$handler->display->display_options['filters']['type']['field'] = 'type';
+$handler->display->display_options['filters']['type']['relationship'] = 'nid';
+$handler->display->display_options['filters']['type']['exposed'] = TRUE;
+$handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+$handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
+$handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+$handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+$handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
+/* Filter criterion: Workbench Moderation: State */
+$handler->display->display_options['filters']['state_1']['id'] = 'state_1';
+$handler->display->display_options['filters']['state_1']['table'] = 'workbench_moderation_node_history';
+$handler->display->display_options['filters']['state_1']['field'] = 'state';
+$handler->display->display_options['filters']['state_1']['value'] = array(
+  'draft' => 'draft',
+  'final_draft' => 'final_draft',
+  'needs_review' => 'needs_review',
+  'to_be_approved' => 'to_be_approved',
+  'ready_to_publish' => 'ready_to_publish',
+);
+$handler->display->display_options['filters']['state_1']['exposed'] = TRUE;
+$handler->display->display_options['filters']['state_1']['expose']['operator_id'] = 'state_1_op';
+$handler->display->display_options['filters']['state_1']['expose']['label'] = 'State';
+$handler->display->display_options['filters']['state_1']['expose']['operator'] = 'state_1_op';
+$handler->display->display_options['filters']['state_1']['expose']['identifier'] = 'state_1';
+$handler->display->display_options['filters']['state_1']['expose']['multiple'] = TRUE;
+$handler->display->display_options['filters']['state_1']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  3 => 0,
+  4 => 0,
+  5 => 0,
+  6 => 0,
+  7 => 0,
+);
+$handler->display->display_options['filters']['state_1']['expose']['reduce'] = TRUE;
+$handler->display->display_options['path'] = 'admin/workbench';
+$handler->display->display_options['menu']['type'] = 'normal';
+$handler->display->display_options['menu']['title'] = 'My workbench';
+$handler->display->display_options['menu']['weight'] = '99';
+$handler->display->display_options['menu']['name'] = 'management';
+$handler->display->display_options['menu']['context'] = 0;
+$handler->display->display_options['menu']['context_only_inline'] = 0;
 $translatables['workbench_moderation'] = array(
   t('Defaults'),
   t('Content I\'ve edited'),
@@ -411,4 +508,5 @@ $translatables['workbench_moderation'] = array(
   t('Drafts page'),
   t('My drafts'),
   t('This list displays content you have created that is not published. Currently there is no such content.'),
+  t('My workbench'),
 );
