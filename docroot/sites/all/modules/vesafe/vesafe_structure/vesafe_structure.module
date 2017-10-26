@@ -273,12 +273,12 @@ function vesafe_structure_page_build(&$page) {
       );
       $lang = explode('/', $_COOKIE['googtrans']);
       if (isset($lang[2]) && isset($languages[$lang[2]])) {
-        drupal_add_js("_paq.push(['setCustomVariable',1,'Language','" . $languages[$lang[2]] . "','page']);_paq.push(['trackPageView']);",
+        drupal_add_js("_paq.push(['trackEvent', 'googleTranslateMenu', 'languageTranslate','" . $languages[$lang[2]] . "',1]);_paq.push(['trackPageView']);",
           array('type' => 'inline', 'scope' => 'footer', 'weight' => 4));
       }
     }
     else {
-      drupal_add_js("_paq.push(['setCustomVariable',1,'Language','English','page']);_paq.push(['trackPageView']);",
+      drupal_add_js("_paq.push(['trackEvent', 'googleTranslateMenu', 'languageTranslate','English',1]);_paq.push(['trackPageView']);",
         array('type' => 'inline', 'scope' => 'footer', 'weight' => 4));
     }
     drupal_add_js(
