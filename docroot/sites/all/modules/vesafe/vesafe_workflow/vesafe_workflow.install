@@ -163,3 +163,9 @@ function vesafe_workflow_update_7004() {
   features_revert_module('vesafe_workflow');
 }
 
+/**
+ * MDR-1479 Reviewer: add content.
+ */
+function vesafe_workflow_update_7005() {
+  features_revert(array('vesafe_workflow' => ['user_permission']));
+}
