@@ -660,10 +660,17 @@ function vesafe_workflow_form_alter(&$form, &$form_state, $form_id) {
     }
   } elseif ($form_id == 'views_exposed_form') {
     $states = vesafe_workflow_get_allowed_moderation_states();
-    if ($states) {
+    if ($states && isset($form['state_1']['#options'])) {
       foreach($form['state_1']['#options'] as $k => $v) {
-        if (!in_array($k, $states)) {
+        if (!in_array($k, $states) && ($k != 'All')) {
           unset($form['state_1']['#options'][$k]);
+        }
+      }
+    }
+    if ($states && isset($form['state']['#options'])) {
+      foreach($form['state']['#options'] as $k => $v) {
+        if (!in_array($k, $states) && ($k != 'All')) {
+          unset($form['state']['#options'][$k]);
         }
       }
     }
