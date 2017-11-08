@@ -154,6 +154,7 @@ function vesafe_workflow_user_default_permissions() {
     'roles' => array(
       'editor' => 'editor',
       'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
     ),
     'module' => 'node',
   );
@@ -164,6 +165,7 @@ function vesafe_workflow_user_default_permissions() {
     'roles' => array(
       'editor' => 'editor',
       'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
     ),
     'module' => 'node',
   );
@@ -316,7 +318,9 @@ function vesafe_workflow_user_default_permissions() {
     'name' => 'edit any content in published',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
       'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
     ),
     'module' => 'vesafe_workflow',
   );

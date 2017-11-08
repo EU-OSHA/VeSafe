@@ -8,11 +8,6 @@ function vesafe_doGTranslate(lang_pair){
 }
 
 function setPiwikLanguage(language){
-    _paq.push(['setCustomVariable',
-        1,
-        "Language",
-        language,
-        "page"
-    ]);
+    _paq.push(['trackEvent', 'googleTranslateMenu', 'languageTranslate', language, 1]);
     _paq.push(['trackPageView']);
 }
