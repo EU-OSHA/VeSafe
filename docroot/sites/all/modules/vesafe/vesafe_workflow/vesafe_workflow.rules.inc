@@ -118,7 +118,7 @@ function vesafe_workflow_rules_count_type_list() {
     OSHA_WORKFLOW_STATE_FINAL_DRAFT => 'Final draft',
     OSHA_WORKFLOW_STATE_READY_TO_PUBLISH => 'Ready to publish',
     OSHA_WORKFLOW_STATE_TO_BE_APPROVED => 'To be approved',
-    OSHA_WORKFLOW_STATE_TO_BE_REVIEWED => 'To be reviewed',
+    OSHA_WORKFLOW_STATE_TO_BE_REVIEWED => 'To be reviewed by EU-OSHA',
   );
 }
 

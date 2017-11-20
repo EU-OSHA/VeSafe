@@ -110,7 +110,7 @@ function vesafe_workflow_default_rules_configuration() {
     }
   }');
   $items['vesafe_workflow_vesafe_workflow_review'] = entity_import('rules_config', '{ "vesafe_workflow_vesafe_workflow_review" : {
-      "LABEL" : "Reviewer accepted, state changed to be reviewed",
+      "LABEL" : "Reviewer accepted, state changed to be reviewed by EU-OSHA",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "workflow" ],

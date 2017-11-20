@@ -176,3 +176,10 @@ function vesafe_workflow_update_7005() {
 function vesafe_workflow_update_7006() {
   features_revert(array('vesafe_workflow' => ['user_permission']));
 }
+
+/**
+ * MDR-1518 Change the nomenclature of the status "To be reviewed".
+ */
+function vesafe_workflow_update_7007() {
+  features_revert_module('vesafe_workflow');
+}
