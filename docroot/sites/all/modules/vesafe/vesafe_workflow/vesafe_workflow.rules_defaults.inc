@@ -60,7 +60,7 @@ function vesafe_workflow_default_rules_configuration() {
       ],
       "DO" : [
         { "vesafe_workflow_mail_to_users_of_role" : {
-            "roles" : { "value" : { "6" : "6" } },
+            "roles" : { "value" : { "6" : "6", "7" : "7" } },
             "subject" : "[Vesafe website] New content needs your review ",
             "message" : "\\u003Cp\\u003EDear Reviewer,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThere is a new content to be reviewed by you: \\u003Ca href=\\u0022[node:edit-url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E. You can access also to the \\u003Ca href=\\u0022[site:url]\\/admin\\/content?state=final_draft\\u0022\\u003Elist of {{count}} items\\u003C\\/a\\u003E that need to review.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThank you,\\u003C\\/p\\u003E",
             "count_type" : { "value" : { "final_draft" : "final_draft" } }

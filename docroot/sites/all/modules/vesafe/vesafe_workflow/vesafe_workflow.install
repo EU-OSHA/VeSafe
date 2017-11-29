@@ -183,3 +183,10 @@ function vesafe_workflow_update_7006() {
 function vesafe_workflow_update_7007() {
   features_revert_module('vesafe_workflow');
 }
+
+/**
+ * MDR-1520 Editor and reviewer permissions.
+ */
+function vesafe_workflow_update_7008() {
+  features_revert(array('vesafe_workflow' => ['user_permission', 'rules_config']));
+}
