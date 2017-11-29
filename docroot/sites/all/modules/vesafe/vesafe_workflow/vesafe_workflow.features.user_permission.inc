@@ -441,6 +441,7 @@ function vesafe_workflow_user_default_permissions() {
       'administrator' => 'administrator',
       'editor' => 'editor',
       'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
     ),
     'module' => 'workbench_moderation',
   );
