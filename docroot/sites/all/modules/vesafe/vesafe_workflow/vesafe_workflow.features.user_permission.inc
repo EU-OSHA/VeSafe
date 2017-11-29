@@ -195,6 +195,7 @@ function vesafe_workflow_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'editor' => 'editor',
+      'reviewer' => 'reviewer',
     ),
     'module' => 'vesafe_workflow',
   );
@@ -288,6 +289,7 @@ function vesafe_workflow_user_default_permissions() {
       'administrator' => 'administrator',
       'editor' => 'editor',
       'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
     ),
     'module' => 'vesafe_workflow',
   );
@@ -297,6 +299,7 @@ function vesafe_workflow_user_default_permissions() {
     'name' => 'edit any content in final_draft',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
       'project manager' => 'project manager',
       'reviewer' => 'reviewer',
     ),
@@ -438,6 +441,7 @@ function vesafe_workflow_user_default_permissions() {
       'administrator' => 'administrator',
       'editor' => 'editor',
       'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -465,6 +469,7 @@ function vesafe_workflow_user_default_permissions() {
   $permissions['moderate content from final_draft to draft'] = array(
     'name' => 'moderate content from final_draft to draft',
     'roles' => array(
+      'editor' => 'editor',
       'project manager' => 'project manager',
       'reviewer' => 'reviewer',
     ),
@@ -476,6 +481,7 @@ function vesafe_workflow_user_default_permissions() {
     'name' => 'moderate content from final_draft to needs_review',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
       'project manager' => 'project manager',
       'reviewer' => 'reviewer',
     ),

@@ -37,7 +37,7 @@ function vesafe_workflow_workbench_moderation_export_transitions() {
     'final_draft:needs_review' => array(
       'from_name' => 'final_draft',
       'to_name' => 'needs_review',
-      'name' => 'Send to be reviewed',
+      'name' => 'Send to be reviewed by EU-OSHA',
     ),
     'needs_review:final_draft' => array(
       'from_name' => 'needs_review',
