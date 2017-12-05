@@ -426,7 +426,7 @@ function _vesafe_workflow_get_states_list($active_state) {
   $states = [
     'draft' => 'Draft',
     'final_draft' => 'Final Draft',
-    'needs_review' => 'To be reviewed',
+    'needs_review' => 'To be reviewed by EU-OSHA',
     'to_be_approved' => 'To be approved',
     'ready_to_publish' => 'Ready to publish',
     'published' => 'Published',
@@ -490,7 +490,7 @@ function vesafe_workflow_quick_moderation_form($form, &$form_state, $node) {
       ];
       $form['reject'] = [
         '#type' => 'submit',
-        '#value' => 'Reject (send back to be reviewed)',
+        '#value' => 'Reject (send back to be reviewed by EU-OSHA)',
         '#submit' => ['vesafe_workflow_quick_moderation_reject_form_submit'],
       ];
     }

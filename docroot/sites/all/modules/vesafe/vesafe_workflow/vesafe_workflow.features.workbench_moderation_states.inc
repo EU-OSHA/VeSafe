@@ -23,8 +23,8 @@ function vesafe_workflow_workbench_moderation_export_states() {
     ),
     'needs_review' => array(
       'name' => 'needs_review',
-      'label' => 'To Be Reviewed',
-      'description' => 'Review Manager can set the Final Draft to To Be Reviewed or To Be Approved ',
+      'label' => 'To be reviewed by EU-OSHA',
+      'description' => 'Review Manager can set the Final Draft to To Be Reviewed by EU-OSHA or To Be Approved ',
       'weight' => -6,
     ),
     'published' => array(
@@ -42,7 +42,7 @@ function vesafe_workflow_workbench_moderation_export_states() {
     'to_be_approved' => array(
       'name' => 'to_be_approved',
       'label' => 'To Be Approved',
-      'description' => 'Review Manager can set the Final Draft to To Be Reviewed or To Be Approved ',
+      'description' => 'Review Manager can set the Final Draft to To Be Reviewed by EU-OSHA or To Be Approved ',
       'weight' => -5,
     ),
   );
