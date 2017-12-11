@@ -131,5 +131,23 @@ function vesafe_workflow_default_rules_configuration() {
       ]
     }
   }');
+  $items['vesafe_workflow_vesafe_workflow_to_be_reviewed'] = entity_import('rules_config', '{ "vesafe_workflow_vesafe_workflow_to_be_reviewed" : {
+      "LABEL" : "Notify reviewer content is in state To be reviewed",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "TAGS" : [ "workflow" ],
+      "REQUIRES" : [ "rules", "vesafe_workflow" ],
+      "ON" : { "node_to_be_reviewed" : [] },
+      "DO" : [
+        { "vesafe_workflow_mail" : {
+            "to" : [ "user:mail" ],
+            "subject" : "[Vesafe website] New content needs your reviewing",
+            "message" : "\\u003Cp\\u003EDear Reviewer,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThere is a new content to be reviewed by you: \\u003Ca href=\\u0022[node:edit-url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E. You can access also to the \\u003Ca href=\\u0022[site:url]\\/admin\\/content\\/review\\u0022\\u003Elist of {{count}} items\\u003C\\/a\\u003E that need to review.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThank you,\\u003C\\/p\\u003E",
+            "count_type" : { "value" : { "final_draft" : "final_draft" } }
+          }
+        }
+      ]
+    }
+  }');
   return $items;
 }
