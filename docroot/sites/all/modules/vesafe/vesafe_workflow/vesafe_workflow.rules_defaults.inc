@@ -50,6 +50,7 @@ function vesafe_workflow_default_rules_configuration() {
   $items['vesafe_workflow_final_draft'] = entity_import('rules_config', '{ "vesafe_workflow_final_draft" : {
       "LABEL" : "Editor finished, notify reviewer about final draft",
       "PLUGIN" : "reaction rule",
+      "ACTIVE" : false,
       "OWNER" : "rules",
       "TAGS" : [ "workflow" ],
       "REQUIRES" : [ "workbench_moderation", "rules", "vesafe_workflow" ],

@@ -269,3 +269,10 @@ function vesafe_workflow_update_7009() {
   }
   features_revert(array('vesafe_workflow' => ['entity_collection', 'rules_config', 'user_permission', 'views_view']));
 }
+
+/**
+ * MDR-1560 Notifications are sent to all the existing editors/reviewers.
+ */
+function vesafe_workflow_update_7010() {
+  features_revert(array('vesafe_workflow' => ['rules_config']));
+}
