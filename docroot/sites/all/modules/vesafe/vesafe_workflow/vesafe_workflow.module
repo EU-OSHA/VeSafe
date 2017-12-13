@@ -593,11 +593,6 @@ function vesafe_workflow_quick_moderation_form($form, &$form_state, $node) {
         '#value' => 'Review',
         '#submit' => ['vesafe_workflow_quick_moderation_review_form_submit'],
       ];
-      $form['reject'] = [
-        '#type' => 'submit',
-        '#value' => 'Reject (send back to be reviewed by EU-OSHA)',
-        '#submit' => ['vesafe_workflow_quick_moderation_reject_form_submit'],
-      ];
     }
     elseif (isset($next_reviewer) && ($is_admin || $is_pm)) {
       $form['needs_review'] = [
