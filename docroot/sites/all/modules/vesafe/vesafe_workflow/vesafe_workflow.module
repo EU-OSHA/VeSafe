@@ -602,7 +602,7 @@ function vesafe_workflow_quick_moderation_form($form, &$form_state, $node) {
     elseif (isset($next_reviewer) && ($is_admin || $is_pm)) {
       $form['needs_review'] = [
         '#type' => 'submit',
-        '#value' => 'Reviewer in name of ' . $next_reviewer->name,
+        '#value' => 'Review in name of ' . $next_reviewer->name,
         '#submit' => ['vesafe_workflow_quick_moderation_review_form_submit'],
       ];
     }
