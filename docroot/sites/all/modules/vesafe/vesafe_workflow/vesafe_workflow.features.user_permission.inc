@@ -391,6 +391,17 @@ function vesafe_workflow_user_default_permissions() {
     'module' => 'vesafe_workflow',
   );
 
+  // Exported permission: 'edit node reviewers'.
+  $permissions['edit node reviewers'] = array(
+    'name' => 'edit node reviewers',
+    'roles' => array(
+      'editor' => 'editor',
+      'project manager' => 'project manager',
+      'reviewer' => 'reviewer',
+    ),
+    'module' => 'vesafe_workflow',
+  );
+
   // Exported permission: 'edit own good_practice content'.
   $permissions['edit own good_practice content'] = array(
     'name' => 'edit own good_practice content',
@@ -439,9 +450,7 @@ function vesafe_workflow_user_default_permissions() {
     'name' => 'moderate content from draft to final_draft',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
       'project manager' => 'project manager',
-      'reviewer' => 'reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -481,9 +490,7 @@ function vesafe_workflow_user_default_permissions() {
     'name' => 'moderate content from final_draft to needs_review',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
       'project manager' => 'project manager',
-      'reviewer' => 'reviewer',
     ),
     'module' => 'workbench_moderation',
   );
