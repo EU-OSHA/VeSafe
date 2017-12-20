@@ -72,6 +72,71 @@ function vesafe_workflow_schema() {
     ),
   );
 
+  $schema['osha_workflow_node_review'] = array(
+    'description' => 'Base table for node review entity',
+    'fields' => array(
+      'rpid' => array(
+        'description' => 'Identifier for the reviewed item',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'nid' => array(
+        'description' => 'Moderated node ID (nid)',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'description' => 'Account doing the moderation',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'reviewed' => array(
+        'description' => 'NULL not voted, reviewed or rejected',
+        'type' => 'varchar',
+        'length' => 64,
+        'default' => NULL,
+        'not null' => FALSE,
+      ),
+      'next' => array(
+        'description' => '0 - no, 1 - yes',
+        'type' => 'int',
+        'default' => 0,
+        'not null' => TRUE,
+      ),
+      'weight' => array(
+        'description' => 'Order of moderation, lowest first',
+        'type' => 'int',
+        'default' => 0,
+        'not null' => TRUE,
+      ),
+      'message' => array(
+        'description' => 'Message left by the moderator',
+        'type' => 'text',
+        'size' => 'medium',
+      ),
+    ),
+    'primary key' => array('rpid'),
+    'indexes' => array(
+      'moderator_uid' => array('uid'),
+    ),
+    'unique keys' => array(
+      'moderation_unique' => array('nid', 'uid'),
+    ),
+    'foreign keys' => array(
+      'uid' => array(
+        'table' => 'users',
+        'columns' => array('uid' => 'uid'),
+      ),
+      'nid' => array(
+        'table' => 'node',
+        'columns' => array('nid' => 'nid'),
+      ),
+    ),
+  );
+
   $schema['vesafe_workflow_sections_review'] = array(
     'description' => 'Base table for section review messages.',
     'fields' => array(
@@ -123,6 +188,10 @@ function vesafe_workflow_schema() {
 function vesafe_workflow_install() {
   if (!db_table_exists('osha_workflow_node_approval')) {
     db_create_table('osha_workflow_node_approval', vesafe_workflow_schema()['osha_workflow_node_approval']);
+  }
+
+  if (!db_table_exists('osha_workflow_node_review')) {
+    db_create_table('osha_workflow_node_review', vesafe_workflow_schema()['osha_workflow_node_review']);
   }
 
   if (!db_table_exists('vesafe_workflow_sections_review')) {
@@ -189,4 +258,21 @@ function vesafe_workflow_update_7007() {
  */
 function vesafe_workflow_update_7008() {
   features_revert(array('vesafe_workflow' => ['user_permission', 'rules_config']));
+}
+
+/**
+ * MDR-1539 Visafe list of reviewers in the CMW.
+ */
+function vesafe_workflow_update_7009() {
+  if (!db_table_exists('osha_workflow_node_review')) {
+    db_create_table('osha_workflow_node_review', vesafe_workflow_schema()['osha_workflow_node_review']);
+  }
+  features_revert(array('vesafe_workflow' => ['entity_collection', 'rules_config', 'user_permission', 'views_view']));
+}
+
+/**
+ * MDR-1560 Notifications are sent to all the existing editors/reviewers.
+ */
+function vesafe_workflow_update_7010() {
+  features_revert(array('vesafe_workflow' => ['rules_config']));
 }
