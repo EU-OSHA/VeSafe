@@ -5,6 +5,21 @@
  */
 function vesafe_workflow_rules_event_info() {
   $items = array(
+    'node_to_be_reviewed' => array(
+      'label' => t('When setting a node to be reviewed'),
+      'group' => t('Vesafe workflow'),
+      'variables' => array(
+        'node' => array(
+          'type' => 'node',
+          'label' => t('Node'),
+        ),
+        'user' => array(
+          'type' => 'user',
+          'label' => t('Next reviewer'),
+        ),
+      ),
+      'access callback' => 'rules_node_integration_access',
+    ),
     'node_to_be_approved' => array(
       'label' => t('When setting a node to be approved'),
       'group' => t('Vesafe workflow'),
@@ -118,7 +133,7 @@ function vesafe_workflow_rules_count_type_list() {
     OSHA_WORKFLOW_STATE_FINAL_DRAFT => 'Final draft',
     OSHA_WORKFLOW_STATE_READY_TO_PUBLISH => 'Ready to publish',
     OSHA_WORKFLOW_STATE_TO_BE_APPROVED => 'To be approved',
-    OSHA_WORKFLOW_STATE_TO_BE_REVIEWED => 'To be reviewed',
+    OSHA_WORKFLOW_STATE_TO_BE_REVIEWED => 'To be reviewed by EU-OSHA',
   );
 }
 

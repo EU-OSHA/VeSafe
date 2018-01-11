@@ -34,8 +34,15 @@ function vesafe_structure_wysiwyg_plugin($editor, $version=0) {
  * {@inheritdoc}
  */
 function vesafe_structure_form_alter(&$form, &$form_state, $form_id) {
+  global $user;
   form_actions_top($form,$form_id);
   form_text_fields_placeholders($form,$form_id);
+
+  if ($form_id == 'views_form_Content_main_page' && !in_array('administrator', $user->roles)) {
+    $form_state['build_info']['args'][0]->field = array();
+    $form['views_bulk_operations'] = FALSE;
+  }
+
   switch ($form_id) {
     case 'did_you_know_slide_node_form':
       // "Did you know slide" node create/edit form.
@@ -273,12 +280,12 @@ function vesafe_structure_page_build(&$page) {
       );
       $lang = explode('/', $_COOKIE['googtrans']);
       if (isset($lang[2]) && isset($languages[$lang[2]])) {
-        drupal_add_js("_paq.push(['setCustomVariable',1,'Language','" . $languages[$lang[2]] . "','page']);_paq.push(['trackPageView']);",
+        drupal_add_js("_paq.push(['trackEvent', 'googleTranslateMenu', 'languageTranslate','" . $languages[$lang[2]] . "',1]);_paq.push(['trackPageView']);",
           array('type' => 'inline', 'scope' => 'footer', 'weight' => 4));
       }
     }
     else {
-      drupal_add_js("_paq.push(['setCustomVariable',1,'Language','English','page']);_paq.push(['trackPageView']);",
+      drupal_add_js("_paq.push(['trackEvent', 'googleTranslateMenu', 'languageTranslate','English',1]);_paq.push(['trackPageView']);",
         array('type' => 'inline', 'scope' => 'footer', 'weight' => 4));
     }
     drupal_add_js(

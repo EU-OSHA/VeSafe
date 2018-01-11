@@ -12,7 +12,7 @@ function vesafe_workflow_workbench_moderation_export_transitions() {
     'draft:final_draft' => array(
       'from_name' => 'draft',
       'to_name' => 'final_draft',
-      'name' => 'Send to final draft',
+      'name' => 'Send to Reviewer',
     ),
     'draft:needs_review' => array(
       'from_name' => 'draft',
@@ -32,17 +32,17 @@ function vesafe_workflow_workbench_moderation_export_transitions() {
     'final_draft:draft' => array(
       'from_name' => 'final_draft',
       'to_name' => 'draft',
-      'name' => 'Send back to draft',
+      'name' => 'Send back to editor',
     ),
     'final_draft:needs_review' => array(
       'from_name' => 'final_draft',
       'to_name' => 'needs_review',
-      'name' => 'Send to be reviewed',
+      'name' => 'Send to be reviewed by EU-OSHA',
     ),
     'needs_review:final_draft' => array(
       'from_name' => 'needs_review',
       'to_name' => 'final_draft',
-      'name' => 'Send back to final draft',
+      'name' => 'Send back to reviewer',
     ),
     'needs_review:published' => array(
       'from_name' => 'needs_review',
@@ -57,12 +57,12 @@ function vesafe_workflow_workbench_moderation_export_transitions() {
     'needs_review:to_be_approved' => array(
       'from_name' => 'needs_review',
       'to_name' => 'to_be_approved',
-      'name' => 'Send to be approved',
+      'name' => 'Send for approval',
     ),
     'ready_to_publish:final_draft' => array(
       'from_name' => 'ready_to_publish',
       'to_name' => 'final_draft',
-      'name' => 'Send back to final draft',
+      'name' => 'Send back to reviewer',
     ),
     'ready_to_publish:published' => array(
       'from_name' => 'ready_to_publish',
@@ -77,7 +77,7 @@ function vesafe_workflow_workbench_moderation_export_transitions() {
     'to_be_approved:ready_to_publish' => array(
       'from_name' => 'to_be_approved',
       'to_name' => 'ready_to_publish',
-      'name' => 'Ready to be publish',
+      'name' => 'Send for publishing',
     ),
   );
   return $items;

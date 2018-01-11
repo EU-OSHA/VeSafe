@@ -131,7 +131,7 @@ function vesafe_structure_node_info() {
     'good_practice' => array(
       'name' => 'Good practice',
       'base' => 'node_content',
-      'description' => 'Content appearing in the Good practices section of the vehicle safety portal',
+      'description' => 'Content appearing in the Good practices section of the vehicle safety portal. You can download the template of the Factsheet <a target="_blank" href="/vehicle-safety/system/files/EU-OSHA_VS_Factsheet%20template.docx">here</a>',
       'has_title' => '1',
       'title_label' => 'Title',
       'help' => '',
