@@ -8438,9 +8438,9 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   display: block;
   text-align: center;
   font-weight: bold;
-  padding-top: 20px;
-  padding-bottom: 10px;
-  font-size: 1.2em;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-size: 19.8px;
 }
 .page-node-242.node-type-article .view-id-themes .views-row .views-field-field-summary {
   text-align: center;
