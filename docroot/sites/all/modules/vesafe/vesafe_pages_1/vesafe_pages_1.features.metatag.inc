@@ -16,7 +16,7 @@ function vesafe_pages_1_metatag_export_default() {
     'disabled' => FALSE,
     'config' => array(
       'title' => array(
-        'value' => '[current-page:title] - [current-page:pager] - [site:name]',
+        'value' => '[current-page:title] - [current-page:pager] - [site:name] - Vehicle safety e-guide - European Agency for Safety and Health at Work',
       ),
       'description' => array(
         'value' => 'A guide to good practice for managing work related vehicle risks in the EU, with a specific focus on workplace transport, driving for work and working on or near a road.',
@@ -25,7 +25,7 @@ function vesafe_pages_1_metatag_export_default() {
         'value' => '',
       ),
       'keywords' => array(
-        'value' => 'Vehicle safety, Legistlation, Safe driving for work, Working on or near a road, Workplace transport safety, OSH, OSHA, EU-OSHA, Occupational safety, Occupational health, European Agency',
+        'value' => 'Vehicle safety, Legislation, Safe driving for work, Working on or near a road, Workplace transport safety, OSH, OSHA, EU-OSHA, Occupational safety, Occupational health, European Agency',
       ),
       'robots' => array(
         'value' => array(
@@ -208,7 +208,7 @@ function vesafe_pages_1_metatag_export_default() {
     'disabled' => FALSE,
     'config' => array(
       'title' => array(
-        'value' => '[site:name] - [current-page:pager] - [site:slogan]',
+        'value' => '[site:name] - [current-page:pager] - [site:slogan]  - Vehicle safety e-guide - European Agency for Safety and Health at Work',
       ),
       'canonical' => array(
         'value' => '[site:url]',
@@ -234,7 +234,7 @@ function vesafe_pages_1_metatag_export_default() {
     'disabled' => FALSE,
     'config' => array(
       'title' => array(
-        'value' => '[node:title] - [current-page:pager] - [site:name]',
+        'value' => '[node:title] - [current-page:pager] - [site:name] - Vehicle safety e-guide - European Agency for Safety and Health at Work',
       ),
       'description' => array(
         'value' => '[node:summary]',
@@ -277,7 +277,7 @@ function vesafe_pages_1_metatag_export_default() {
     'disabled' => FALSE,
     'config' => array(
       'title' => array(
-        'value' => '[term:name] - [current-page:pager] - [site:name]',
+        'value' => '[term:name] - [current-page:pager] - [site:name] -  - Vehicle safety e-guide - European Agency for Safety and Health at Work',
       ),
       'description' => array(
         'value' => '[term:description]',
@@ -297,7 +297,7 @@ function vesafe_pages_1_metatag_export_default() {
     'disabled' => FALSE,
     'config' => array(
       'title' => array(
-        'value' => '[user:name] - [site:name]',
+        'value' => '[user:name] - [site:name] - Vehicle safety e-guide - European Agency for Safety and Health at Work',
       ),
       'image_src' => array(
         'value' => '[user:picture:url]',
