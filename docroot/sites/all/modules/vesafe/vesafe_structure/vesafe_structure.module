@@ -6,6 +6,20 @@
 
 include_once 'vesafe_structure.features.inc';
 
+function vesafe_structure_user_profile_form_redirect_profile($form, &$form_state) {
+  global $user;
+  $form_state['redirect'] = 'user/' . $user->uid;
+  drupal_redirect_form($form_state);
+}
+
+/**
+ * Implments hook_form_FORM_ID_alter().
+ */
+function vesafe_structure_form_user_profile_form_alter(&$form, $form_state) {
+  if (isset($_REQUEST['pass-reset-token'])) {
+    $form['#submit'][] = 'vesafe_structure_user_profile_form_redirect_profile';
+  }
+}
 
 function vesafe_structure_wysiwyg_editor_settings_alter(&$settings, $context){
   $settings['theme_advanced_buttons1'] .= ',vesafe_advanced,vesafe_minimal';
