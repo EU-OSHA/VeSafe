@@ -6524,7 +6524,12 @@ button.close {
   background-color: #323232 !important;
 }
 #sliding-popup .popup-content.info #popup-text {
+  color: #fff;
+  float: none;
+  font-weight: bold;
   margin: 10px 0px;
+  max-width: 100%;
+  text-align: center;
 }
 #sliding-popup .popup-content.info #popup-text h2 {
   margin-bottom: 15px;
@@ -6535,6 +6540,12 @@ button.close {
   font-size: 0.85em;
   font-weight: 400;
 }
+#sliding-popup .popup-content.info #popup-buttons {
+  float: none;
+  margin: 0 0 1em 0;
+  max-width: 100%;
+  text-align: center;
+}
 #sliding-popup .popup-content.info #popup-buttons button {
   background: #ea4a5e !important;
   border: none;
@@ -6543,10 +6554,12 @@ button.close {
   color: white;
   font-weight: normal;
   font-size: 0.85em;
-  margin-top: 1.7em;
-}
-#sliding-popup .popup-content.info #popup-buttons .find-more-button {
-  opacity: 0.5;
+  margin: 0 2px 0 2px !important;
+  border-radius: 6px;
+  padding: 4px 8px;
+  text-decoration: none;
+  vertical-align: bottom;
+  opacity: 0.9;
 }
 #sliding-popup .popup-content.info #popup-buttons .find-more-button:hover {
   opacity: 1;

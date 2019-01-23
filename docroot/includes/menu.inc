@@ -576,7 +576,8 @@ function _menu_load_objects(&$item, &$map) {
           // 'load arguments' in the hook_menu() entry, but they need
           // some processing. In this case the $function is the key to the
           // load_function array, and the value is the list of arguments.
-          list($function, $args) = each($function);
+          $args = current($function);
+          $function = key($function);
           $load_functions[$index] = $function;
 
           // Some arguments are placeholders for dynamic items to process.
@@ -1637,11 +1638,6 @@ function theme_menu_link(array $variables) {
   $element = $variables['element'];
   $sub_menu = '';
 
-  // Set the encode option to FALSE for query parameter so query parameters
-  // does not encode.
-  if (isset($element['#localized_options']['query'])) {
-    $element['#localized_options']['encode'] = FALSE;
-  }
   if ($element['#below']) {
     $sub_menu = drupal_render($element['#below']);
   }
@@ -1880,11 +1876,6 @@ function menu_navigation_links($menu_name, $level = 0) {
       if ($item['link']['in_active_trail']) {
         $class = ' active-trail';
         $l['attributes']['class'][] = 'active-trail';
-      }
-      // If query parameter available set the encode option to FALSE for query
-      // parameter so query parameters does not encode.
-      if (!empty($item['link']['options']) && isset($item['link']['options']['query'])) {
-        $l['encode'] = FALSE;
       }
       // Normally, l() compares the href of every link with $_GET['q'] and sets
       // the active class accordingly. But local tasks do not appear in menu
@@ -2412,7 +2403,8 @@ function menu_set_active_trail($new_trail = NULL) {
       // a stripped down menu tree containing the active trail only, in case
       // the given menu has not been built in this request yet.
       $tree = menu_tree_page_data($preferred_link['menu_name'], NULL, TRUE);
-      list($key, $curr) = each($tree);
+      $curr = current($tree);
+      next($tree);
     }
     // There is no link for the current path.
     else {
@@ -2442,7 +2434,8 @@ function menu_set_active_trail($new_trail = NULL) {
         }
         $tree = $curr['below'] ? $curr['below'] : array();
       }
-      list($key, $curr) = each($tree);
+      $curr = current($tree);
+      next($tree);
     }
     // Make sure the current page is in the trail to build the page title, by
     // appending either the preferred link or the menu router item for the
