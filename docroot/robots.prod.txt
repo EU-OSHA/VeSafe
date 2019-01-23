@@ -54,7 +54,11 @@ Disallow: /vehicle-safety/misc/
 Disallow: /vehicle-safety/modules/
 Disallow: /vehicle-safety/profiles/
 Disallow: /vehicle-safety/scripts/
-Disallow: /vehicle-safety/themes/
+Disallow: /vehicle-safety/themes/README.txt
+Disallow: /vehicle-safety/themes/bartik
+Disallow: /vehicle-safety/themes/engines
+Disallow: /vehicle-safety/themes/garland
+Disallow: /vehicle-safety/themes/stark
 # Files
 Disallow: /vehicle-safety/CHANGELOG.txt
 Disallow: /vehicle-safety/cron.php
