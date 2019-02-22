@@ -8882,6 +8882,52 @@ body > .page-title-container .after_title p a[target*="_blank"]:after {
   padding: 0px 210px;
   top: -30%;
 }
+blockquote.image-field-caption {
+  border-left: 0;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+blockquote.image-field-caption p {
+  z-index: 999;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  color: #000;
+  float: left;
+}
+.field.field-name-field-image {
+  position: relative;
+}
+blockquote.in-image {
+  position: absolute;
+  width: 100%;
+  top: 335px;
+  font-size: 10px;
+}
+blockquote.in-image p {
+  background: transparent;
+  right: 1%;
+  text-align: right;
+  color: #FFF;
+  text-shadow: 1px 1px #000;
+}
+.page-tools-and-publications .view-view-campaign-materials .group-left .field-name-field-image {
+  overflow: initial;
+}
+.view blockquote.image-field-caption {
+  display: none;
+}
+.field-name-field-recommended-resources blockquote.image-field-caption,
+.field-name-field-recommended-articles blockquote.image-field-caption {
+  display: none;
+}
+.node-type-tk-article .group-left blockquote.image-field-caption {
+  display: none;
+}
 /*Footer
 ***********************/
 .site-footer-container {
