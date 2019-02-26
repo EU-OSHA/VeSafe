@@ -8888,6 +8888,7 @@ blockquote.image-field-caption {
   padding: 0;
   margin: 0;
   width: 100%;
+  border: 0;
 }
 blockquote.image-field-caption p {
   z-index: 999;
@@ -8907,6 +8908,7 @@ blockquote.in-image {
   width: 100%;
   top: 335px;
   font-size: 10px;
+  border: 0;
 }
 blockquote.in-image p {
   background: transparent;
