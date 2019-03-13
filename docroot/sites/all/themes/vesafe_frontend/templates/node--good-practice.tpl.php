@@ -92,6 +92,9 @@
               alt="<?php print $node->field_image[LANGUAGE_NONE][0]['alt'] ?>"
               title="<?php print $node->field_image[LANGUAGE_NONE][0]['title'] ?>"
               src="<?php echo image_style_url('generic_background', $node->field_image[LANGUAGE_NONE][0]['uri'])?>"/>
+        <blockquote class="in-image">
+          <?php print $node->field_image['und'][0]['image_field_caption']['value'] ?> 
+        </blockquote>
     </div>
 </div>
 

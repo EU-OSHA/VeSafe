@@ -1,7 +1,7 @@
 VeSafe
 ======
 
-##Pre-requisites
+## Pre-requisites
 
 Note: setting up a LAMP stack is outside the scope of this project, it depends on the
 operating system and is subject to each developer's decision. 
@@ -24,7 +24,7 @@ In order to make the project work the following assumptions are made:
 
 
 
-##Project setup
+## Project setup
 
 ### Setup database
 
@@ -284,7 +284,7 @@ Here’s a sample of the required commands:
   ./start
 ```
 
-##Repository Layout##
+## Repository Layout ##
 Breakdown for what each directory/file is used for. See also readme inside directories.
 
 * [conf](https://github.com/EU-OSHA/osha-website/tree/master/conf)
@@ -305,7 +305,7 @@ Breakdown for what each directory/file is used for. See also readme inside direc
 * [.gitignore](https://github.com/EU-OSHA/osha-website/blob/master/.gitignore)
  * Contains the a list of the most common excluded files.
 
-##Branches##
+## Branches ##
 
 This repo branching model follows the article ["A successful Git branching model"](http://nvie.com/posts/a-successful-git-branching-model)
 
