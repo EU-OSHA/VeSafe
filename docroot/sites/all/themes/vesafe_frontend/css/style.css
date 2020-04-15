@@ -6520,8 +6520,9 @@ button.close {
 }
 /*cockies*/
 #sliding-popup {
-  overflow: hidden;
-  background-color: #323232 !important;
+  background: url('../images/background-cookies.png') repeat !important;
+  height: auto !important;
+  position: fixed;
 }
 #sliding-popup .popup-content.info #popup-text {
   color: #fff;
@@ -6534,7 +6535,9 @@ button.close {
 #sliding-popup .popup-content.info #popup-text h2 {
   margin-bottom: 15px;
   font-weight: 400;
-  font-size: 1em;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 0;
 }
 #sliding-popup .popup-content.info #popup-text p {
   font-size: 0.85em;
@@ -6547,19 +6550,33 @@ button.close {
   text-align: center;
 }
 #sliding-popup .popup-content.info #popup-buttons button {
-  background: #ea4a5e !important;
-  border: none;
-  box-shadow: none;
-  text-shadow: none;
-  color: white;
-  font-weight: normal;
-  font-size: 0.85em;
-  margin: 0 2px 0 2px !important;
+  font-size: 11.5px;
+  max-width: 100%;
+  box-sizing: border-box;
+  line-height: normal;
+  text-transform: none;
+  -webkit-appearance: button;
+  padding: 1px 5px!important;
+  display: inline;
+  height: auto;
+  margin: 0;
+  background: none;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-top: 0.7em;
+  vertical-align: middle;
+  overflow: visible;
+  width: auto;
+  box-shadow: inset 0 1px 0 0 #ffffff;
   border-radius: 6px;
-  padding: 4px 8px;
+  border: 1px solid #dcdcdc;
+  color: #000!important;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
   text-decoration: none;
-  vertical-align: bottom;
-  opacity: 0.9;
+  text-shadow: 1px 1px 0 #ffffff;
+  background-color: #dfdfdf;
+  background-image: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
 }
 #sliding-popup .popup-content.info #popup-buttons .find-more-button:hover {
   opacity: 1;
