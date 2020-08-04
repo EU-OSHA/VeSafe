@@ -27,6 +27,12 @@ function ncw_migration_migrate_api() {
         'class_name' => 'NCWTaxonomyThesaurusMigration',
         'entity_type' => 'taxonomy_term',
       ),
+      'tax_thesaurus_2020' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWSingleThesaurusMigration',
+        'entity_type' => 'node',
+      ),
     ),
   );
 }
@@ -254,7 +260,7 @@ abstract class AbstractNCWNodeMigration extends Migration {
    * News should be imported only in EN - MH-19.
    */
   public function allowMigrateTranslation() {
-    return !in_array($this->bundle, array('news'));
+    return !in_array($this->bundle, array('news','thesaurus'));
   }
 
   /**
