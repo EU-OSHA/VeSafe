@@ -96,7 +96,7 @@ abstract class AbstractNCWNodeMigration extends Migration {
    */
   protected function addFieldMappings() {
     // Node base fields.
-    $this->addFieldMapping('uid')->defaultValue(0);
+    $this->addFieldMapping('uid')->defaultValue(1);
     $this->addFieldMapping('comment')->defaultValue(0);
     $this->addFieldMapping('status', 'status');
     $this->addFieldMapping('title', 'title');
@@ -210,15 +210,19 @@ abstract class AbstractNCWNodeMigration extends Migration {
    * To adapt JSON fields data to what migrate expects in the field.
    */
   public function prepareRow($row) {
+//file_put_contents("/var/tmp/output.txt", "IN PREPARE ROW", FILE_APPEND);
     try {
       ncw_migration_debug('!klass:      * Preparing source node: !id', array(
         '!klass' => get_class($this),
         '!id' => $row->nid,
       ));
+//file_put_contents("/var/tmp/output.txt", "NID: ".$row->nid.PHP_EOL, FILE_APPEND);
+//file_put_contents("/var/tmp/output.txt", empty($row->path['alias']).PHP_EOL, FILE_APPEND);
       $row->path = !empty($row->path['alias']) ? $row->path['alias'] : NULL;
       // Normalize JSON structure, to match migrate expectations for field data.
-      $fields = field_info_instances('node', $this->bundle);
+      $fields = field_info_instances('node', $this->bundle);     
       foreach ($fields as $field_name => $field_info) {
+//file_put_contents("/var/tmp/output.txt", $field_name . PHP_EOL, FILE_APPEND);
         if (in_array($field_name, $this->getManuallyMigratedFields())) {
           continue;
         }
@@ -228,10 +232,11 @@ abstract class AbstractNCWNodeMigration extends Migration {
           continue;
         }
         $normalizer = 'osha_migration_normalize_field_' . $fi['type'];
+//file_put_contents("/var/tmp/output.txt", $normalizer . PHP_EOL, FILE_APPEND);
         if (function_exists($normalizer)) {
           $filter_languages = array();
           if (!$this->allowMigrateTranslation()) {
-            $filter_languages = array('en');
+            $filter_languages = array('en','und');
           }
           $normalizer($row, $field_name, $fi, $filter_languages);
         }
@@ -241,6 +246,7 @@ abstract class AbstractNCWNodeMigration extends Migration {
           $row->{$field_name} = array();
         }
       }
+//file_put_contents("/var/tmp/output.txt", "END TRY PREPAREROW".PHP_EOL, FILE_APPEND);
     }
     catch (Exception $e) {
       ncw_migration_debug(t("Exception while preparing the row: !nid", array('!nid' => $row->nid)), 'error');
@@ -260,7 +266,7 @@ abstract class AbstractNCWNodeMigration extends Migration {
    * News should be imported only in EN - MH-19.
    */
   public function allowMigrateTranslation() {
-    return !in_array($this->bundle, array('news','thesaurus'));
+    return !in_array($this->bundle, array('news', 'thesaurus'));
   }
 
   /**
@@ -331,7 +337,7 @@ abstract class AbstractNCWNodeMigration extends Migration {
     $node->title = format_string(MIGRATE_STUB_MARKER . ' stub for original nid: !id', array('!id' => $source_id[0]));
     $node->language = 'en';
     $node->type = $this->destination->getBundle();
-    $node->uid = 0;
+    $node->uid = 1;
     $node->status = 1;
     $node->path['pathauto'] = 0;
     $node->path['alias'] = '';
@@ -472,6 +478,8 @@ abstract class AbstractNCWNodeSource extends MigrateSource {
    * Remote call to load the data from the endpoint URL.
    */
   public function readData() {
+//file_put_contents("/var/tmp/output.txt", "IN READ DATA".PHP_EOL, FILE_APPEND);
+
     ncw_migration_debug('!klass: Starting reading items from !url', array('!klass' => get_class($this), '!url' => $this->endpoint_url));
     $this->rows = array();
     $content = $this->fileGetContents($this->endpoint_url);
@@ -494,7 +502,21 @@ abstract class AbstractNCWNodeSource extends MigrateSource {
         if (in_array($id, $this->skip_ids)) {
           continue;
         }
-        $this->rows[$id] = $ob;
+        $node_url = $this->itemURL($id);
+        if ($rowd = $this->fileGetContents($node_url)) {
+          if ($row_ob = json_decode($rowd, TRUE)) {
+            $row = new stdClass();
+            foreach ($row_ob as $k => $v) {
+              $row->$k = $v;
+            }
+            $this->rows[$id] = $row;
+            // $this->rows[$id] = $ob;
+          }
+        }
+        else {
+          $this->rows[$id] = NULL;
+        }
+        //$this->rows[$id] = $ob;
 //        if (!isset($ob->changed)) {
 //          $ob->changed = 0;
 //          $last_imported = 0;
@@ -935,7 +957,7 @@ function ncw_migration_file_get_contents($url) {
  * @return int
  */
 function osha_migration_author_uid() {
-  return 0;
+  return 1;
 }
 
 
@@ -1026,11 +1048,17 @@ function osha_migration_normalize_field_link_field($row, $field_name, $field_inf
 }
 
 function osha_migration_normalize_field_text($row, $field_name, $field_info, $filter_languages) {
+//file_put_contents("/var/tmp/output.txt", "\t\tIN NORMALIZER".PHP_EOL, FILE_APPEND);
   $field = array();
   $languages = array();
+//file_put_contents("/var/tmp/output.txt", "\t\tEMPTY? ".empty($row->{$field_name}).PHP_EOL, FILE_APPEND);
+//file_put_contents("/var/tmp/output.txt", "\t\tARRAY? ".is_array($row->{$field_name}).PHP_EOL, FILE_APPEND);
   if (!empty($row->{$field_name}) && is_array($row->{$field_name})) {
+//file_put_contents("/var/tmp/output.txt", "\t\tIN IF".PHP_EOL, FILE_APPEND);
     foreach ($row->{$field_name} as $language => $values) {
+//file_put_contents("/var/tmp/output.txt", "\t\tIN FOREACH".PHP_EOL, FILE_APPEND);
       if (!empty($filter_languages) && !in_array($language, $filter_languages)) {
+//file_put_contents("/var/tmp/output.txt", "\t\tIN SECOND IF SKIP".PHP_EOL, FILE_APPEND);
         continue;
       }
       foreach($values as $v) {
@@ -1041,6 +1069,7 @@ function osha_migration_normalize_field_text($row, $field_name, $field_info, $fi
   }
   $row->{$field_name} = $field;
   $row->{$field_name . '_language'} = $languages;
+//file_put_contents("/var/tmp/output.txt", "\t\tOUT NORMALIZER".PHP_EOL, FILE_APPEND);
 }
 
 function osha_migration_normalize_field_email($row, $field_name, $field_info, $filter_languages) {
