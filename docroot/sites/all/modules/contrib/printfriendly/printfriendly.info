@@ -7,9 +7,10 @@ files[] = views/printfriendly_views_handler_field_pfbutton.inc
 
 configure = admin/config/services/printfriendly
 
-; Information added by drupal.org packaging script on 2013-08-21
-version = "7.x-1.2"
+
+; Information added by Drupal.org packaging script on 2017-11-21
+version = "7.x-5.2"
 core = "7.x"
 project = "printfriendly"
-datestamp = "1377053501"
+datestamp = "1511275686"
 
