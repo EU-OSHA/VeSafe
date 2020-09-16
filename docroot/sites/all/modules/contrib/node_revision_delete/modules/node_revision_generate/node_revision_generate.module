@@ -1,0 +1,225 @@
+<?php
+
+/**
+ * @file
+ * Node Revision Generate Module.
+ */
+
+require_once dirname(__FILE__) . '/node_revision_generate.helpers.inc';
+require_once dirname(__FILE__) . '/../../node_revision_delete.helpers.inc';
+
+/**
+ * Implements hook_help().
+ */
+function node_revision_generate_help($path, $arg) {
+  switch ($path) {
+    // Main module help for the node_revision_generate module.
+    case 'admin/help#node_revision_generate':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Node Revision Generate module allow you to generate node revisions. This module is for test purpose.') . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Generating revisions') . '</dt>';
+      $output .= '<dd>' . t('To generate revisions visit the <a href="@generate-page">Node Revision Generate</a> page and select the content type for which you are going to generate revisions, then select the number of revision to generate for each node and the age between each revision and click on the Generate revisions button. The first revision for each node will be generated starting from the created date of the last revision and the last one will not have a date in the future.', array('@generate-page' => url('admin/config/content/node_revision_delete/generate_revisions'))) . '</dd>';
+      $output .= '</dl>';
+
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function node_revision_generate_permission() {
+  return array(
+    'generate revisions' => array(
+      'title' => t('Generate revisions'),
+      'description' => t('Allows generate revisions for content types.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function node_revision_generate_menu() {
+  $items = array();
+
+  $items['admin/config/content/node_revision_delete/generate_revisions'] = array(
+    'title' => 'Node Revision Generate',
+    'description' => 'Form to generate revisions.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('node_revision_generate_form'),
+    'access callback' => 'user_access',
+    'access arguments' => array('generate revisions'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function node_revision_generate_node_presave($node) {
+  // Set the timestamp of the revision. The node_revision_generate flag is set
+  // in node_revision_generate_create_revisions().
+  if (isset($node->node_revision_generate) && $node->node_revision_generate) {
+    $node->timestamp = $node->next_revision;
+  }
+}
+
+/**
+ * Generate revisions form.
+ *
+ * @param array $form
+ *   The form element.
+ * @param array $form_state
+ *   The form state.
+ *
+ * @return array
+ *   The form.
+ */
+function node_revision_generate_form(array $form, array &$form_state) {
+  $form = array();
+
+  $form['bundles'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Content types'),
+    '#options' => node_type_get_names(),
+    '#required' => TRUE,
+  );
+
+  $form['revisions_number'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Revisions number'),
+    '#default_value' => 1,
+    '#description' => t('The number of revisions that will be created for each node of the selected content types.'),
+    '#required' => TRUE,
+  );
+
+  $form['age'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Revisions age'),
+    '#description' => t('The age between each generated revision.'),
+    '#required' => TRUE,
+  );
+
+  $form['age']['number'] = array(
+    '#type' => 'textfield',
+    '#default_value' => 1,
+    '#required' => TRUE,
+  );
+
+  $time_options = array(
+    '86400' => t('Day'),
+    '604800' => t('Week'),
+    '2592000' => t('Month'),
+  );
+
+  $form['age']['time'] = array(
+    '#type' => 'select',
+    '#options' => $time_options,
+  );
+
+  $form['description'] = array(
+    '#type' => 'item',
+    '#markup' => t('The first revision will be generated starting from the created date of the last node revision and the last one will not have a date in the future. So, depending on this maybe we will not generate the number of revisions you expect.'),
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Generate revisions'),
+  );
+
+  // Adding the donation text.
+  $form['#prefix'] = _node_revision_delete_get_donation_text();
+
+  return $form;
+}
+
+/**
+ * Generate revisions form submit.
+ *
+ * @param array $form
+ *   The form element.
+ * @param array $form_state
+ *   The form state.
+ *
+ * @return array
+ *   The form.
+ */
+function node_revision_generate_form_submit(array $form, array &$form_state) {
+  // Get selected content types.
+  $bundles = array_filter(
+    $form_state['values']['bundles'],
+    function ($bundles_selected) {
+      return $bundles_selected !== 0;
+    }
+  );
+
+  // Get form values.
+  $revisions_number = $form_state['values']['revisions_number'];
+  $interval_number  = $form_state['values']['number'];
+  $interval_time    = $form_state['values']['time'];
+
+  // Get interval to generate revisions.
+  $revisions_age = $interval_number * $interval_time;
+
+  node_revision_generate_create_revisions($bundles, $revisions_number, $revisions_age);
+}
+
+/**
+ * Generate and save revisions for selected content types.
+ *
+ * @param array $bundles
+ *   An array with the selected content types to generate node revisions.
+ * @param int $revisions_number
+ *   Number of revisions to generate.
+ * @param int $revisions_age
+ *   Interval in Unix timestamp format to add to the last revision date of the
+ *   node.
+ */
+function node_revision_generate_create_revisions(array $bundles, $revisions_number, $revisions_age) {
+  // Get the available nodes to generate revisions.
+  $nodes_for_revisions = _node_revision_generate_get_available_nodes_for_revisions($bundles, $revisions_age);
+  // Check if there is nodes to generate revisions.
+  if ($nodes_for_revisions) {
+    // Build batch operations, one per revision.
+    $operations = array();
+    foreach ($nodes_for_revisions as $node) {
+      $revision_timestamp = $node->timestamp;
+      // Initializing variables.
+      $i = 0;
+      $revision_timestamp += $revisions_age;
+      // Adding operations.
+      while ($i < $revisions_number && $revision_timestamp <= REQUEST_TIME) {
+        $operations[] = array(
+          'node_revision_generate_create_operation',
+          array(
+            $node->nid,
+            $revision_timestamp,
+          ),
+        );
+        $revision_timestamp += $revisions_age;
+        $i++;
+      }
+    }
+
+    // Build the batch.
+    $batch = array(
+      'title' => t('Generate revisions'),
+      'operations' => $operations,
+      'init_message' => t('Starting the creation of revisions.'),
+      'file' => drupal_get_path('module', 'node_revision_generate') . '/node_revision_generate.batch.inc',
+      'progress_message' => t('Processed @current out of @total (@percentage%). Estimated time: @estimate.'),
+      'finished' => 'node_revision_generate_create_finished',
+      'error_message' => t('The revision creation process has encountered an error.'),
+    );
+    batch_set($batch);
+  }
+  else {
+    drupal_set_message(t('There are not more available nodes to generate revisions of the selected content types and specified options.'), 'warning', FALSE);
+  }
+}
