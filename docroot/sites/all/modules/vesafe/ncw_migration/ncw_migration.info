@@ -8,3 +8,4 @@ dependencies[] = migrate
 configure = admin/config/system/ncw_migration
 files[] = ncw_migration.migrate.inc
 files[] = ncw_migration.migrate.taxonomies.inc
+files[] = ncw_migration.migrate.node.inc
