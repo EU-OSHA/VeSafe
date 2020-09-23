@@ -50,8 +50,7 @@ class NCWSingleThesaurusSource extends AbstractNCWNodeSource {
       'field_term_reference',
       'field_term_reference_format',
       'field_notes',
-      'field_notes_format',
-      'field_father'
+      'field_notes_format'
     );
     return array_combine($ret, $ret);
   }
