@@ -49,6 +49,7 @@ class VeSafeStructureForms {
     $form['title']['#required'] = false;
     hide($form['title']);
     array_unshift($form['actions']['submit']['#submit'], [self::class, 'did_you_know_slide_node_form_submit']);
+    array_unshift($form['#submit'], [self::class, 'did_you_know_slide_node_form_submit']);
   }
 
   public static function did_you_know_slide_node_form_submit($form, &$form_state) {
