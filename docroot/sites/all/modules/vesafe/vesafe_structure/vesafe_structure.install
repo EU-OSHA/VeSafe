@@ -265,3 +265,17 @@ function vesafe_structure_update_7029() {
 function vesafe_structure_update_7030() {
   features_revert_module(['vesafe_structure']);
 }
+
+/**
+ * MDR-4018 Vesafe: When clicking on 'Save' in staging it directs to an error page.
+ */
+function vesafe_structure_update_7031() {
+  $result = db_query("select id from xmlsitemap where type = 'node' group by id having count(id) > 1");
+  foreach($result as $row) {
+    db_delete('xmlsitemap')
+      ->condition('id', $row->id)
+      ->condition('type', 'node')
+      ->condition('language', 'en')
+      ->execute();
+  }
+}
