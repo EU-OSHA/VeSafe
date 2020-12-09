@@ -564,6 +564,12 @@ function vesafe_workflow_quick_moderation_form($form, &$form_state, $node) {
       $to[$transition->to_name] = $transition;
     }
   }
+  if (!empty($node->workbench_moderation['current']) && !empty($node->workbench_moderation['published'])) {
+    if ($node->workbench_moderation['current']->vid != $node->vid) {
+      return $form;
+    }
+  }
+
   if (!empty($to)) {
     foreach ($to as $trans) {
       $form[$trans->to_name] = [
