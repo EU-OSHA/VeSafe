@@ -1,9 +1,7 @@
-name = Node Revision Delete
-description = "Track and prune node revisions."
+name = Node Revision Generate
+description = "Generates node revisions. This module is for test purpose."
 core = 7.x
 package = Content
-dependencies[] = node
-configure = admin/config/content/node_revision_delete
 
 ; Information added by Drupal.org packaging script on 2020-03-11
 version = "7.x-3.1"
