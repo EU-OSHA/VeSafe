@@ -51,29 +51,6 @@
   <?php print $styles; ?>
   <?php print $scripts; ?>
 
-<!-- Hotjar Tracking Code for https://eguides.osha.europa.eu/vehicle-safety/ -->
-  <script>
-(function(h,o,t,j,a,r){
-  h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-  h._hjSettings={hjid:"2105912",hjsv:"6"};
-  a=o.getElementsByTagName('head')[0];
-  r=o.createElement('script');r.async=1;
-  r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-  a.appendChild(r);
-})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-<script type="text/javascript">var _paq = _paq || [];
-(function(){var u=(("https:" == document.location.protocol) ? "https://piwik.osha.europa.eu/piwik/" : "http://piwik.osha.europa.eu/piwik/");
-_paq.push(["setSiteId", "24"]);
-_paq.push(["setTrackerUrl", u+"piwik.php"]);
-_paq.push(["setDoNotTrack", 1]);
-_paq.push(["trackPageView"]);
-_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);
-_paq.push(["enableLinkTracking"]);
-var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];
-g.type="text/javascript";g.defer=true;g.async=true;g.src=u+"piwik.js";s.parentNode.insertBefore(g,s);})();
-</script>
-
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <div id="skip-link">
