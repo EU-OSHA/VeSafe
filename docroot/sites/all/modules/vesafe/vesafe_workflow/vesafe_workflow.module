@@ -564,6 +564,12 @@ function vesafe_workflow_quick_moderation_form($form, &$form_state, $node) {
       $to[$transition->to_name] = $transition;
     }
   }
+  if (!empty($node->workbench_moderation['current']) && !empty($node->workbench_moderation['published'])) {
+    if ($node->workbench_moderation['current']->vid != $node->vid) {
+      return $form;
+    }
+  }
+
   if (!empty($to)) {
     foreach ($to as $trans) {
       $form[$trans->to_name] = [
@@ -698,6 +704,8 @@ function vesafe_workflow_quick_moderation_form_submit(&$form, &$form_state) {
   $next_state = array_flip($values)[$op];
   workbench_moderation_moderate($form['#node'], $next_state);
   drupal_set_message(t('Content was set to @state', ['@state' => $values[$next_state]]));
+  $form_state['redirect'] = 'node/' . $form['#node']->nid;
+  drupal_redirect_form($form_state);
 }
 
 function vesafe_workflow_quick_moderation_reject_form_submit(&$form, &$form_state) {
