@@ -299,8 +299,8 @@ function vesafe_structure_page_build(&$page) {
       }
     }
     else {
-      drupal_add_js("_paq.push(['trackEvent', 'googleTranslateMenu', 'languageTranslate','English',1]);_paq.push(['trackPageView']);",
-        array('type' => 'inline', 'scope' => 'footer', 'weight' => 4));
+//      drupal_add_js("_paq.push(['trackEvent', 'googleTranslateMenu', 'languageTranslate','English',1]);_paq.push(['trackPageView']);",
+//        array('type' => 'inline', 'scope' => 'footer', 'weight' => 4));
     }
     drupal_add_js(
       drupal_get_path('module', 'vesafe_structure') . '/js/vesafe_gtranslate.js',
