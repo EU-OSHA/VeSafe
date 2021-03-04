@@ -74,18 +74,15 @@ function vesafe_frontend_preprocess_page(&$vars) {
 function vesafe_frontend_preprocess_html(&$vars) {
   $site_id = variable_get('piwik_site_id', '');
   if (variable_get('add_tracking_code', TRUE) && $site_id) {
-    $value = variable_get('custom_piwik_code', '<!-- Matomo -->
-<script type="text/javascript">
+    $value = variable_get('custom_piwik_code', '
 var _paq = window._paq = window._paq || [];
 /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
 _paq.push([\'trackPageView\']);
 _paq.push([\'enableLinkTracking\']);
 (function()
 
-{ var u="https://piwik.osha.europa.eu/piwik/"; _paq.push([\'setTrackerUrl\', u+\'matomo.php\']); _paq.push([\'setSiteId\', \'' . $site_id . '\']); var d=document, g=d.createElement(\'script\'), s=d.getElementsByTagName(\'script\')[0]; g.type=\'text/javascript\'; g.async=true; g.src=u+\'matomo.js\'; s.parentNode.insertBefore(g,s); }
-)();
-</script>
-<!-- End Matomo Code -->');
+{ var u="https://piwik.osha.europa.eu/piwik/"; _paq.push([\'setTrackerUrl\', u+\'piwik.php\']); _paq.push([\'setSiteId\', \'' . $site_id . '\']); var d=document, g=d.createElement(\'script\'), s=d.getElementsByTagName(\'script\')[0]; g.type=\'text/javascript\'; g.async=true; g.src=u+\'piwik.js\'; s.parentNode.insertBefore(g,s); }
+)();');
 
     $script = [
       '#tag' => 'script',
@@ -332,7 +329,7 @@ function vesafe_frontend_colorbox_image_formatter($variables) {
     $caption = drupal_substr($caption, 0, $trim_length - 5) . '...';
   }
   // Build the gallery id.
-  list($id, $vid, $bundle) = entity_extract_ids($entity_type, $entity);
+  [$id, $vid, $bundle] = entity_extract_ids($entity_type, $entity);
   $entity_id = !empty($id) ? $entity_type . '-' . $id : 'entity-id';
   switch ($settings['colorbox_gallery']) {
     case 'post':
@@ -579,10 +576,10 @@ function vesafe_frontend_block_view_alter(&$data, $block){
       $items = array();
       foreach ($data['content']['facets']['#items'] as $item) {
         $text =  preg_replace('/<a href=\"(.*)\">(.*)\<span class=\"(.*)\">(.*)\<\/span\><\/a>/iU','$2',$item['data']);
-        list($name,$count) = explode('(',$text);
+        [$name,$count] = explode('(',$text);
         $items[(trim($name))] = preg_replace_callback('/<a href=\"(.*)\">(.*)\<span class=\"(.*)\">(.*)\<\/span\><\/a>/iU',
           function($m) {
-            list($name,$count) = explode('(',$m[2]);
+            [$name,$count] = explode('(',$m[2]);
             return '<a href="' . str_replace(['[',']'],['%5B','%5D'],$m[1]) . '">' . $name . '</a>';
           },
           $item['data']);
