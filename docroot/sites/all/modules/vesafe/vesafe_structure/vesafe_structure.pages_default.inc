@@ -175,6 +175,8 @@ function vesafe_structure_default_page_manager_pages() {
   $display->cache = array();
   $display->title = 'Welcome to the one stop shop for vehicle safety';
   $display->uuid = 'da281de1-7b2b-4e65-afa5-f1c6cae69151';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'page_home_page__panel';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
