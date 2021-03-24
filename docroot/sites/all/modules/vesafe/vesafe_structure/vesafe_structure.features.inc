@@ -51,7 +51,7 @@ function vesafe_structure_image_default_styles() {
   $styles['generic_background'] = array(
     'label' => 'Generic background',
     'effects' => array(
-      10 => array(
+      4 => array(
         'name' => 'manualcrop_crop_and_scale',
         'data' => array(
           'width' => 1000,

@@ -279,3 +279,14 @@ function vesafe_structure_update_7031() {
       ->execute();
   }
 }
+
+/**
+ * MDR-4249 Vesafe - remove the old thesaurus.
+ */
+function vesafe_structure_update_7032() {
+  $instance = field_info_instance('node','field_thesaurus','good_practice');
+  field_delete_instance($instance);
+  $instance = field_info_instance('node','field_thesaurus','key_article_theme');
+  field_delete_instance($instance);
+  features_revert_module('vesafe_structure');
+}
